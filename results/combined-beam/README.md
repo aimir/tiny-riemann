@@ -5,6 +5,9 @@ This experiment produced the **295-state machine**, now the default
 The [literal table](../../machine/riemann295.tm) is formally proved to halt
 exactly when the unchanged arithmetic counterexample predicate has a witness.
 See the [formal guide](../../formal/README.md) for checking the proof.
+The [construction guide](../../CONSTRUCTION.md) explains the arithmetic and
+tape reductions, and the [verification contract](../../formal/ACCEPTANCE.md)
+states the unchanged specification.
 
 ## Search and result
 

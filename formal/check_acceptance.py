@@ -1,8 +1,9 @@
-"""Strict final acceptance gate; intentionally fails while the theorem is absent.
+"""Strict acceptance gate for the proved, frozen 299-state theorem.
 
 The pinned files define the approved semantics, predicate and literal table.
 Only the final unconditional theorem, with the permitted foundational axioms,
 can pass this gate. Successful intermediate builds do not count as acceptance.
+check_current.py retains this gate and additionally checks the 295-state headline.
 """
 from pathlib import Path
 import hashlib

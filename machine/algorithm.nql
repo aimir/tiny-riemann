@@ -1,5 +1,6 @@
-/* Readable version of the algorithm. The reproducible state-minimized
-   compilation input is riemann.nql, which includes deliberate padding. */
+/* Readable version of the algorithm. Reproduce the current 295-state machine
+   with riemann295.nql and riemann295.layout.json, including deliberate padding
+   and physical register placement. See ../CONSTRUCTION.md. */
 global x;
 global lcm;
 global num;

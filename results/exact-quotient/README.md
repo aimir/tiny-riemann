@@ -1,4 +1,4 @@
-# Exact quotient and final-count search experiment
+# Historical 297-state quotient and final-count search experiment
 
 This earlier machine has **297 nonhalting states**, two symbols, and a separate
 HALT state. Lean verifies the same arithmetic specification as the frozen
@@ -45,7 +45,7 @@ partition construction**. The UNSAT result is not a Lean-checked lower bound,
 and says nothing about other equivalent Turing machines. Timeouts in earlier
 probes are recorded as `unknown`, not as impossibility results.
 
-The solver is not trusted for correctness of the new machine. Its mapping was
+The solver is not trusted for correctness of this 297-state machine. Its mapping was
 checked against every specified transition, then imported into Lean. The
 kernel checked all transition equations and an unbounded halting equivalence
 with the already verified machine. The resulting theorem uses only
@@ -95,7 +95,7 @@ the solver's answer or alter the original accepted theorem.
 
 ## Pilot search using final state counts
 
-The new [search tool](../../tools/search_final.py) maintains a diverse beam.
+The [search tool](../../tools/search_final.py) maintains a diverse beam.
 It screens candidates with macro simplification, narrow-window reachability,
 and an actual greedy quotient count. Promoted candidates then receive **all
 11 reachability passes from the release manifest** and the same bank of eight

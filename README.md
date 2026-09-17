@@ -30,7 +30,8 @@ This is the smallest candidate found here; global minimality is not claimed.
   [register layout](machine/riemann295.layout.json): both are needed to reproduce
   this compilation. The arithmetic source is unchanged; the physical positions
   of `denom` and `_scratch_2` are exchanged.
-- [Readable algorithm](machine/algorithm.nql) and [arithmetic argument](PROOF.md).
+- [Readable algorithm](machine/algorithm.nql) and
+  [construction and correctness guide](CONSTRUCTION.md).
 - [Compiled table](machine/riemann295.compiled.tm),
   [shortened table](machine/riemann295.macro.tm),
   [short-path certificate](machine/riemann295.macros.json), and

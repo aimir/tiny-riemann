@@ -13,7 +13,8 @@ entry point: `headlineMachine` is `machine295`, and `headline_correct` proves
 its specification. The default build and the main `RiemannMachineVerification`
 import include this result.
 
-The original [approved theorem](ACCEPTANCE.md), `machine299_correct`, and the
+The [verification contract](ACCEPTANCE.md) records both the current result and
+the preserved original approval. The original `machine299_correct` and the
 later `machine297_correct` remain available. The original machine, semantics,
 predicate, and four acceptance pins are unchanged. The new machine uses the
 same logical register program with a different physical register allocation.
@@ -59,6 +60,9 @@ requires neither Z3 nor regeneration. The generator
 backend and reduction certificates were produced; it is not trusted by Lean.
 
 ## Proof structure
+
+The [construction guide](../CONSTRUCTION.md) explains the arithmetic and
+optimizations in plain language. The checked proof composes these results:
 
 1. `Reallocated.machine342_iff_machine295` checks the exact quotient of the new
    shortened table. Four generated tape-invariant stages justify the read masks
