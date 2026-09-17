@@ -1,0 +1,52 @@
+option fused_decrement;
+option canonical_temps;
+
+global x;
+global lcm;
+global l;
+global num;
+global denom;
+global i;
+global c;
+global d;
+
+proc harmonic() {
+    num = 0;
+    denom = 1;
+    while (i > 0) {
+        num = num * i + denom;
+        denom = denom * i;
+        i = i - 1;
+    }
+}
+
+proc main() {
+
+        x = x + 1;
+lcm = 1;
+        i = x;
+        while (i > 0) {
+            num = lcm;
+            denom = 0;
+            while (num > 0) {
+                if (denom == 0) { denom = i; }
+                num = num - 1;
+                denom = denom - 1;
+            }
+            if (denom > 0) { lcm = lcm + 1; i = x; }
+            else { i = i - 1; }
+        }
+i = lcm;
+        harmonic();
+        num = num - denom * x;
+        lcm = num;
+        c = denom;
+        i = x;
+        harmonic(); square();
+        num = num * c;
+        denom = denom * lcm;
+        square();
+        if (denom > num * x) { return; }
+}
+
+proc square() { num = num * num; denom = denom * denom; }

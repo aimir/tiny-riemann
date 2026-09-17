@@ -1,0 +1,97 @@
+{
+  "upstream_repository": "https://github.com/sorear/metamath-turing-machines",
+  "upstream_commit": "0b8032c35bfb2107d94023f6ca2c2ffe6067faa8",
+  "baseline_states": 744,
+  "compiled_states": 381,
+  "macro_states": 342,
+  "states": 299,
+  "symbols": 2,
+  "blank_symbol": 0,
+  "initial_state": "!ENTRY",
+  "halting_state": "HALT",
+  "halting_state_included_in_count": false,
+  "pc_bits": 11,
+  "registers": 9,
+  "merge_seed": 248,
+  "analysis_windows": [
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      14,
+      2
+    ],
+    [
+      2,
+      14
+    ],
+    [
+      10,
+      6
+    ]
+  ],
+  "sha256": {
+    "PROOF.md": "4f3907b09bacd440cf7985f7c171d19b3edaf1231db1126c8503b2dd35ab88a2",
+    "README.md": "86ae882ed572f06de59bce64700b3d22b13616a26bdaec4224f593217254fced",
+    "machine/algorithm.nql": "7d3f158e2c42af270f141d41dae9dc113417606d5dc8a8744282706393f299c4",
+    "machine/execution.txt": "745aaf0f2d59c89ccdbaf8de43dea47032e1eee84f3476b576dd7922a547360b",
+    "machine/macro_lengths.tsv": "1b11bc9ed83efb579fd027dfd5e5dd74b481008108bfe0469ffb6f0072f54095",
+    "machine/macros.json": "c6f00941b44aa2f4b701d8d044b54c20cf623bbfcf739bce2e9e753580e0007d",
+    "machine/reduction.json": "3f46bbbbb2efbcc658dbe0affcfb1479ad9b9447303eeacb43c1aeab4ed6c90a",
+    "machine/riemann.compiled.tm": "de8f516f8de26a18c9b128f8e8173a8a3d0a78ba2bdd928e677dd9c2b53c49ab",
+    "machine/riemann.macro.tm": "bf53eb23ff1f823cb89854f6ccfc1a4339e35deebc1943eb70c403ebdd669d79",
+    "machine/riemann.nql": "5a3ff0e3d2689e0d54a59b7f615bdbc9e2d3924ff367b3806749a89dac2dfa7f",
+    "machine/riemann.tm": "00402eabd3bcc448d97042458ea0186598d0f7c066673d9584262eed87c9840a",
+    "machine/state_map.tsv": "4d107fc76f3b3bf824d509597e92184fa43eccf4aaf37e878f3ec871682a9ecf",
+    "machine/validation.json": "fa7b4fd68063730b6b3e6fb201bb5e0abf2a00eab3df03be7d577bc11389e928",
+    "reference/LICENSE": "4c7865ef0cd64846547b21588f114c4a940d49ef4790cc3bad566fb08632513f",
+    "reference/riemann-744.nql": "ab1e40a5fa4b336ef935eba31eba78a989219b4bf3d14ca3c3aa762a2f0cf1ec",
+    "reference/riemann-744.tm": "de0084433909f2600a5052eeb0bb2acd9b0ac315078abd1b92d4f3595601dd31",
+    "requirements.txt": "ea104e7679e2c69279fdefa9a4c87d77903f3a87e7d1664f924951e0e0cdf068",
+    "tools/build.py": "a64de192950f2dada3801378b4305edf1e38f1c8c7992fd471bbc9189167c6f5",
+    "tools/check.py": "56e6a95721966cf2a4865fc838a08dd2e0bae3825e6e3d9d453db79b95536fca",
+    "tools/compile.py": "abdae5b7eea93815b9f60381f30a241294fba36fccff04e891ca16e8b785217c",
+    "tools/context_reduce.py": "eef0a2225a595f239215e086d64f7828b4e9a20378e918165d5017b6a6e5f951",
+    "tools/execution_inputs.py": "825a37c78dc452c8c63c82b80164990bb3504bbc20af32ca4602c130d2f6900d",
+    "tools/macro_reduce.py": "3ab41f43ff7b8a8f727814b5ac5971c31029053f6a65154f125aabd545a22449",
+    "tools/optimized.py": "96e9bf958d5e2231fd2ef0f27f9a17ab05ddd1a9c12eb1fffa5e039c7823e3d8",
+    "tools/simulate.cpp": "3f5b62f50c083da9f265d86ba97a7bd93bd77a8edb40c645efd5c91855bdf084",
+    "tools/tm_reduce.py": "f4417810e94b6916e180c88d2ab627b4b179620f09a19c4ae771b6d7d7daae51",
+    "tools/verify.py": "bbb37656c8a5198264423544d45e897ee773952e418e32f7e5e01675f52b9739",
+    "tools/verify_macros.py": "dea7a5b75f93981e778d52a73d0d85602f018b521bdcd271188642ff5a84cfe4",
+    "vendor/nql/LICENSE": "4c7865ef0cd64846547b21588f114c4a940d49ef4790cc3bad566fb08632513f",
+    "vendor/nql/framework.py": "2ec61fcbe5a48cf3d98e1a6c5702378d473e88372a6cd9f8c76b251a63671e6d",
+    "vendor/nql/nqlaconic.py": "01237a69c855ff9db06fab8054bd3ec0ed169b34282d8ae3c31b717f9539616f",
+    "vendor/nql/nqlast.py": "63b6640c78702b54cc2419e0146708ca8db441e0a553cd457c743cf186edabfd",
+    "vendor/nql/nqlgrammar.py": "8ccf495e6603e06daceea84404f0a45b7264f63b26b4ae20610b3ea84c47465d"
+  }
+}

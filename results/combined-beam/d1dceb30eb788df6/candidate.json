@@ -1,0 +1,34 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gi",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "riemann",
+  "mutation": "padding",
+  "parent": "a7fec66fd0056c9faba8dff7a9fb0338f19a84dc661cf1757fbb047d78825a02",
+  "key": "d1dceb30eb788df6f52a90740d000bd16bbf08b3f1185b0a978a8f3b6a2b2ba4",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gi",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 400,
+  "macro_states": 359,
+  "graph": "80ddd2d34b3611db05cb31d4c7e849795c177f6779c06b5e73c1284a0a819cfd",
+  "proxy": 321.9,
+  "screen_states": 321,
+  "screen_seconds": 0.24076862500078278
+}

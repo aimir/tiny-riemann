@@ -1,0 +1,84 @@
+{
+  "seed": 297,
+  "windows": [
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      14,
+      2
+    ],
+    [
+      2,
+      14
+    ],
+    [
+      10,
+      6
+    ]
+  ],
+  "merge_seeds": [
+    0,
+    1,
+    2,
+    3,
+    248,
+    715,
+    1181,
+    1235
+  ],
+  "history": [
+    {
+      "generation": 0,
+      "screened": 12,
+      "promoted": [
+        "2a8a9767b0ec007ad65b5e5e75c78b78733ba16afa7c274bf4be7180ee93d8c5",
+        "b3abe9f050ccb0ccb4c79803f4f3fd6b24cdf8b099be02dfbfa9143fd79198a3",
+        "75d948bc1da4b5e8ae0babab0f7aa999119dab2ea4343834057e4069405c7090",
+        "970fc9ee7596c0b983c407d24e2e663d64ed647da64ccf18def614cbc8915b4e"
+      ],
+      "beam": [
+        "68531394cb3cfdba0a0fd16513e95fd9bd9b45754cf8148aa503928c40f7fcf4",
+        "2a8a9767b0ec007ad65b5e5e75c78b78733ba16afa7c274bf4be7180ee93d8c5",
+        "75d948bc1da4b5e8ae0babab0f7aa999119dab2ea4343834057e4069405c7090",
+        "e6a9b26b9885f82861f9375ff50c679b34b070421128976de8db8fcf26c3e07a"
+      ]
+    }
+  ],
+  "best_states": 299,
+  "scope": "Feasible reduced counts. New source/compiler candidates are not yet formally verified.",
+  "checks": {
+    "explicit_register_allocation_fixtures": 9
+  },
+  "fully_evaluated_candidates": 7,
+  "screened_candidate_artifacts": 15
+}

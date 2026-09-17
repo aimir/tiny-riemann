@@ -1,0 +1,27 @@
+{
+  "verified_at_utc": "2026-09-17T08:01:16.964877+00:00",
+  "status": "verified current headline",
+  "theorem": "RiemannMachineVerification.machine297_correct",
+  "statement": "HaltsBlank machine297 \u2194 \u2203 n : \u2115, Counterexample n",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "lean_toolchain": "leanprover/lean4:v4.32.2",
+  "mathlib_revision": "905b95818eb32af7874a58b427f50c1711a5e96c",
+  "machine_states": 297,
+  "machine_sha256": "724fb7359ca178e9919390958f157b98d9576999cb6cd62a140eef9fe1a50ae3",
+  "proof_file": "formal/RiemannMachineVerification/Quotient297.lean",
+  "proof_sha256": "304ce4d06eeda9f8b68cb5d5b017a40dbbc6deea694d3012eec79ed080fdadbf",
+  "checks": {
+    "lean_kernel": "passed: python3 formal/check_current.py",
+    "all_specified_transitions": "passed",
+    "solver_encoding_exhaustive_small_cases": 72,
+    "release_manifest_hashes": 33,
+    "original_acceptance_pins": "unchanged and checked"
+  },
+  "lower_bound_scope": "Z3 reports UNSAT for 296 under the fixed 342-state table and read masks. This lower-bound claim has not been formalized in Lean.",
+  "headline": "RiemannMachineVerification.headline_correct",
+  "current_verification_report": "formal/verification.json"
+}

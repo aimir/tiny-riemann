@@ -1,0 +1,24 @@
+{
+  "order": [],
+  "family": "xfirst-1101-halt",
+  "mutation": "extract",
+  "parent": "e6a9b26b9885f82861f9375ff50c679b34b070421128976de8db8fcf26c3e07a",
+  "key": "643300a9f5990a1cb2d05de96d5c0b9c9ce2ecfb3e1b2ac4304f745f3f030c77",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gdenom",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 398,
+  "macro_states": 359,
+  "graph": "0f0012f00269a0df6c39102ebacad6ab9ae3a4c73e9b19918a5a0e581dd1554f",
+  "proxy": 321.5,
+  "screen_states": 319,
+  "screen_seconds": 0.2356251669998528
+}

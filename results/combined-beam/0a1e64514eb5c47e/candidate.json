@@ -1,0 +1,77 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "riemann",
+  "mutation": "extract",
+  "parent": "a05b6ab14ce4d329f76bf1ab6102eefe05cbf1485097ef4847edefb9e6a63b34",
+  "key": "0a1e64514eb5c47e8e327392e6d8e084aa03fcca3f4bf269d3131218c7b1044e",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 381,
+  "macro_states": 342,
+  "graph": "6da3e86b884f1374e57a21370486be5502d76b5bb69d9118dc768e844f612bc0",
+  "proxy": 310.1,
+  "screen_states": 313,
+  "screen_seconds": 0.19899712499955058,
+  "final_states": 299,
+  "merge_counts": [
+    [
+      0,
+      302
+    ],
+    [
+      1,
+      302
+    ],
+    [
+      2,
+      302
+    ],
+    [
+      3,
+      303
+    ],
+    [
+      248,
+      299
+    ],
+    [
+      715,
+      299
+    ],
+    [
+      1181,
+      303
+    ],
+    [
+      1235,
+      303
+    ]
+  ],
+  "full_seconds": 12.06040429099994,
+  "exact": {
+    "target": 296,
+    "status": "unsat",
+    "seconds": 0.00012108300052204868,
+    "problem_sha256": "dd1d9e654bbe88c295777fd757c2ba12083f0d1452d8374e7e5a0522884e173f",
+    "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/exact-quotient/quotient-296.smt2"
+  }
+}

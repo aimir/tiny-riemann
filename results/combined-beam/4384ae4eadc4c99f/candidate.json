@@ -1,0 +1,34 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "riemann",
+  "mutation": "assignments",
+  "parent": "633541de8e59b7afe4bbd886096308e452cc29621f54bc2c8d82a7abc3cc1b04",
+  "key": "4384ae4eadc4c99fb5bf43633bba5e06885ddab43365747726720a99ce24bffd",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 380,
+  "macro_states": 342,
+  "graph": "9687b5c92776917612327aa15abeddd96bb15064c3d9b68cff85fdc7fb894631",
+  "proxy": 310.8,
+  "screen_states": 314,
+  "screen_seconds": 0.20030858400059515
+}

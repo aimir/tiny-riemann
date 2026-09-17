@@ -1,0 +1,77 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gc",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom"
+  ],
+  "family": "xfirst-1101-halt",
+  "mutation": "assignments",
+  "parent": "e9b9d3e100353bb1a8a0a0806d82f40854e5a47cd4af2699ed0a092d3d99d48b",
+  "key": "a975ff06681430e125d3f72f08a1cb0656b8d49cb4f3daa53170966855bd310a",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gc",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom"
+  ],
+  "compiled_states": 376,
+  "macro_states": 339,
+  "graph": "06351687e2a53afdcd5c026e1fc75799a1002af1a3fa4c21581242f77c15dc11",
+  "proxy": 315.8,
+  "screen_states": 320,
+  "screen_seconds": 0.19900249999955122,
+  "final_states": 303,
+  "merge_counts": [
+    [
+      0,
+      305
+    ],
+    [
+      1,
+      303
+    ],
+    [
+      2,
+      308
+    ],
+    [
+      3,
+      308
+    ],
+    [
+      248,
+      305
+    ],
+    [
+      715,
+      308
+    ],
+    [
+      1181,
+      307
+    ],
+    [
+      1235,
+      305
+    ]
+  ],
+  "full_seconds": 11.72333933399932,
+  "exact": {
+    "target": 296,
+    "status": "unsat",
+    "seconds": 0.24127512499944714,
+    "problem_sha256": "1ed3e8690ced64ab18999b3e047a07ce9d900025f534a13ec787a83bc5023f73",
+    "reused_from": null
+  }
+}

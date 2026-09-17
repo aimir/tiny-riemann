@@ -1,0 +1,70 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "xfirst-1101-halt",
+  "mutation": "registers",
+  "parent": "e6a9b26b9885f82861f9375ff50c679b34b070421128976de8db8fcf26c3e07a",
+  "key": "8d05d084ae44b3c4b4a4cf588a776b6e04c486d7d62e994a7cb0b0c668f730da",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 371,
+  "macro_states": 337,
+  "graph": "17e0a383f2181de7be1f1588ad3966791f54b7be95428d561bda50d06152b9f4",
+  "proxy": 317.2,
+  "screen_states": 320,
+  "screen_seconds": 0.2123001669997393,
+  "final_states": 304,
+  "merge_counts": [
+    [
+      0,
+      305
+    ],
+    [
+      1,
+      305
+    ],
+    [
+      2,
+      306
+    ],
+    [
+      3,
+      308
+    ],
+    [
+      248,
+      308
+    ],
+    [
+      715,
+      306
+    ],
+    [
+      1181,
+      307
+    ],
+    [
+      1235,
+      304
+    ]
+  ],
+  "full_seconds": 11.791084333999606
+}

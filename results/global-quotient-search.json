@@ -1,0 +1,13 @@
+[
+  {
+    "target": 298,
+    "status": "sat",
+    "seconds": 18.38777141599985,
+    "checked_states": 298
+  },
+  {
+    "target": 297,
+    "status": "unknown",
+    "seconds": 20.02131612500034
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "live_states": 325,
+  "core_states": 69,
+  "potential_pairs": 445,
+  "target_states": 298,
+  "solver_output": "sat\nsat\n",
+  "seconds": 11.269436333000158
+}

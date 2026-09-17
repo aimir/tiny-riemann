@@ -1,0 +1,10 @@
+import RiemannMachineVerification.BackendCorrectness
+import RiemannMachineVerification.MacroRegisterCorrectness
+import RiemannMachineVerification.Reduction
+
+namespace RiemannMachineVerification
+
+theorem machine299_iff_macro : HaltsBlank machine299 ↔ RegisterHalts macroProgram :=
+  machine381_iff_machine299.symm.trans (machine381_iff_primitive.trans primitive_iff_macro)
+
+end RiemannMachineVerification

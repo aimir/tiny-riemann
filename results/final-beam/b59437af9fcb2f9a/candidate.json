@@ -1,0 +1,24 @@
+{
+  "order": [],
+  "family": "xfirst-1101-halt",
+  "mutation": "padding",
+  "parent": "e6a9b26b9885f82861f9375ff50c679b34b070421128976de8db8fcf26c3e07a",
+  "key": "b59437af9fcb2f9ae1f36a1bd4908fc198bfecc9bd90182df46dc663a547bf92",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gdenom",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 393,
+  "macro_states": 354,
+  "graph": "48f068a85a54a9530b4076218283285ac06a420a2641f9fd18da0ad2a7f8b1d0",
+  "proxy": 326.6,
+  "screen_states": 328,
+  "screen_seconds": 0.25152437500037195
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+upstream/
+results/search-*.jsonl
+results/simulate
+
+# Generated release bundles duplicate the versioned source artifacts.
+riemann-*.zip
+riemann-*.zip.sha256

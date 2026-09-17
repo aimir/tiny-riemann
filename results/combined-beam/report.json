@@ -1,0 +1,105 @@
+{
+  "seed": 296,
+  "windows": [
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      12,
+      2
+    ],
+    [
+      2,
+      12
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      14,
+      2
+    ],
+    [
+      2,
+      14
+    ],
+    [
+      10,
+      6
+    ]
+  ],
+  "merge_seeds": [
+    0,
+    1,
+    2,
+    3,
+    248,
+    715,
+    1181,
+    1235
+  ],
+  "history": [
+    {
+      "generation": 0,
+      "screened": 40,
+      "promoted": [
+        "0c0c8d60b2466e12988711fb7934ec8d7a66bbdd2006773d71a8272deec358a3",
+        "633541de8e59b7afe4bbd886096308e452cc29621f54bc2c8d82a7abc3cc1b04",
+        "a05b6ab14ce4d329f76bf1ab6102eefe05cbf1485097ef4847edefb9e6a63b34",
+        "a7fec66fd0056c9faba8dff7a9fb0338f19a84dc661cf1757fbb047d78825a02",
+        "e9b9d3e100353bb1a8a0a0806d82f40854e5a47cd4af2699ed0a092d3d99d48b",
+        "8d05d084ae44b3c4b4a4cf588a776b6e04c486d7d62e994a7cb0b0c668f730da"
+      ],
+      "beam": [
+        "633541de8e59b7afe4bbd886096308e452cc29621f54bc2c8d82a7abc3cc1b04",
+        "0c0c8d60b2466e12988711fb7934ec8d7a66bbdd2006773d71a8272deec358a3",
+        "a05b6ab14ce4d329f76bf1ab6102eefe05cbf1485097ef4847edefb9e6a63b34",
+        "a7fec66fd0056c9faba8dff7a9fb0338f19a84dc661cf1757fbb047d78825a02",
+        "e9b9d3e100353bb1a8a0a0806d82f40854e5a47cd4af2699ed0a092d3d99d48b",
+        "e6a9b26b9885f82861f9375ff50c679b34b070421128976de8db8fcf26c3e07a"
+      ]
+    },
+    {
+      "generation": 1,
+      "screened": 40,
+      "promoted": [
+        "0a1e64514eb5c47e8e327392e6d8e084aa03fcca3f4bf269d3131218c7b1044e",
+        "113008c08aac7e8735f5a8ddde7a0a31911507d9641bfd7daf47964701d5ed4c",
+        "5f99985cc811ee399bb8dbdd24e72182c9f5ea3f95647c5027c1498be850560b",
+        "a7fec66fd0056c9faba8dff7a9fb0338f19a84dc661cf1757fbb047d78825a02",
+        "a975ff06681430e125d3f72f08a1cb0656b8d49cb4f3daa53170966855bd310a",
+        "c89c6905abd19cc8be7c93914b29ec34706e0cf56b077a71be0b68e8ef7333b4"
+      ],
+      "beam": [
+        "113008c08aac7e8735f5a8ddde7a0a31911507d9641bfd7daf47964701d5ed4c",
+        "0a1e64514eb5c47e8e327392e6d8e084aa03fcca3f4bf269d3131218c7b1044e",
+        "0c0c8d60b2466e12988711fb7934ec8d7a66bbdd2006773d71a8272deec358a3",
+        "c89c6905abd19cc8be7c93914b29ec34706e0cf56b077a71be0b68e8ef7333b4",
+        "a975ff06681430e125d3f72f08a1cb0656b8d49cb4f3daa53170966855bd310a",
+        "e9b9d3e100353bb1a8a0a0806d82f40854e5a47cd4af2699ed0a092d3d99d48b"
+      ]
+    }
+  ],
+  "best_states": 296,
+  "exact_target": 296,
+  "exact_finalists": 3,
+  "scope": "Feasible reduced counts. New source/compiler candidates are not yet formally verified."
+}

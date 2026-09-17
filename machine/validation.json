@@ -1,0 +1,27 @@
+{
+  "baseline_states": 744,
+  "baseline_byte_exact": true,
+  "cutoff_cases": 253,
+  "arithmetic": {
+    "harmonic_inputs": 81,
+    "square_inputs": 200,
+    "full_iterations": 10
+  },
+  "comparison_cases": 100,
+  "lowering_cases": 260,
+  "compiled_register_execution": {
+    "completed_iterations": 2,
+    "instructions": 5032
+  },
+  "macros": {
+    "macro_rewrites": 85,
+    "exhaustive_tape_windows": 1360,
+    "states": 342,
+    "certificate": "valid"
+  },
+  "reduction": {
+    "compiled_states": 342,
+    "reduced_states": 299,
+    "certificate": "valid"
+  }
+}

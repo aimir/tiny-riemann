@@ -1,0 +1,77 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "riemann",
+  "mutation": "extract",
+  "parent": "633541de8e59b7afe4bbd886096308e452cc29621f54bc2c8d82a7abc3cc1b04",
+  "key": "113008c08aac7e8735f5a8ddde7a0a31911507d9641bfd7daf47964701d5ed4c",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 381,
+  "macro_states": 342,
+  "graph": "b73f0f71d1a5136f08d6a0ac1bf12e9514aab535e9f49b3b0bc3618ea58dd609",
+  "proxy": 310.1,
+  "screen_states": 313,
+  "screen_seconds": 0.1966279170001144,
+  "final_states": 296,
+  "merge_counts": [
+    [
+      0,
+      301
+    ],
+    [
+      1,
+      299
+    ],
+    [
+      2,
+      303
+    ],
+    [
+      3,
+      302
+    ],
+    [
+      248,
+      302
+    ],
+    [
+      715,
+      300
+    ],
+    [
+      1181,
+      305
+    ],
+    [
+      1235,
+      305
+    ]
+  ],
+  "full_seconds": 11.988912542000435,
+  "exact": {
+    "target": 296,
+    "status": "sat",
+    "seconds": 0.0001710839997031144,
+    "problem_sha256": "f35209d10d0ca63be85ee6bae5bcacc0a629af8a8edf19eb336bd1abcb5758be",
+    "reused_from": "results/combined-beam/633541de8e59b7af/quotient-296.smt2"
+  }
+}

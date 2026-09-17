@@ -1,0 +1,87 @@
+option fused_decrement;
+option canonical_temps;
+
+option no_sort_transfers;
+
+option inplace;
+
+option relative_jumps;
+
+global x;
+
+global lcm;
+
+global l;
+
+global num;
+
+global denom;
+
+global i;
+
+global c;
+
+global d;
+
+proc harmonic() {
+    denom = 1;
+    num = 0;
+    while ((i > 0)) {
+        num = (denom + (i * num));
+        denom = (i * denom);
+        noop_3();
+        noop_2();
+        i = (i - 1);
+    }
+    noop_0();
+}
+
+proc main() {
+    lcm = 1;
+    x = (x + 1);
+    i = x;
+    while ((i > 0)) {
+        num = lcm;
+        denom = 0;
+        while ((num > 0)) {
+            noop_2();
+            if ((denom == 0)) {
+                denom = i;
+            }
+            num = (num - 1);
+            denom = (denom - 1);
+        }
+        if ((denom > 0)) {
+            noop_1();
+            lcm = (lcm + 1);
+            i = x;
+            noop_2();
+            noop_0();
+        } else {
+            i = (i - 1);
+            noop_3();
+        }
+        noop_2();
+        noop_1();
+    }
+    noop_3();
+    i = lcm;
+    harmonic();
+    num = (num - (denom * x));
+    c = denom;
+    lcm = num;
+    i = x;
+    harmonic();
+    square();
+    num = (c * num);
+    denom = (lcm * denom);
+    square();
+    if ((denom > (num * x))) {
+        return;
+    }
+}
+
+proc square() {
+    num = (num * num);
+    denom = (denom * denom);
+}

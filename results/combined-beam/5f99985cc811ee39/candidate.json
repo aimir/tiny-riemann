@@ -1,0 +1,70 @@
+{
+  "order": [
+    "_Glcm",
+    "_Gx",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gi",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "family": "riemann",
+  "mutation": "operands",
+  "parent": "a7fec66fd0056c9faba8dff7a9fb0338f19a84dc661cf1757fbb047d78825a02",
+  "key": "5f99985cc811ee399bb8dbdd24e72182c9f5ea3f95647c5027c1498be850560b",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gdenom",
+    "_scratch_1",
+    "_Gi",
+    "_Gnum",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 381,
+  "macro_states": 342,
+  "graph": "93378920054e703408c22ca3d32c8e462f3418e8e474631e4a40e2cb09e6fa56",
+  "proxy": 310.1,
+  "screen_states": 313,
+  "screen_seconds": 0.19616566700005933,
+  "final_states": 301,
+  "merge_counts": [
+    [
+      0,
+      302
+    ],
+    [
+      1,
+      304
+    ],
+    [
+      2,
+      303
+    ],
+    [
+      3,
+      304
+    ],
+    [
+      248,
+      301
+    ],
+    [
+      715,
+      302
+    ],
+    [
+      1181,
+      306
+    ],
+    [
+      1235,
+      304
+    ]
+  ],
+  "full_seconds": 12.034079916999872
+}

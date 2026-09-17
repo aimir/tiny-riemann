@@ -1,0 +1,520 @@
+import RiemannMachineVerification.DispatcherData
+
+set_option maxRecDepth 8192
+set_option maxHeartbeats 0
+
+namespace RiemannMachineVerification
+
+theorem dispatcher_check_1984 : DispatcherCheck ⟨1984, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1985 : DispatcherCheck ⟨1985, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1986 : DispatcherCheck ⟨1986, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1987 : DispatcherCheck ⟨1987, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1988 : DispatcherCheck ⟨1988, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1989 : DispatcherCheck ⟨1989, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1990 : DispatcherCheck ⟨1990, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1991 : DispatcherCheck ⟨1991, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1992 : DispatcherCheck ⟨1992, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1993 : DispatcherCheck ⟨1993, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1994 : DispatcherCheck ⟨1994, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1995 : DispatcherCheck ⟨1995, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1996 : DispatcherCheck ⟨1996, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1997 : DispatcherCheck ⟨1997, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1998 : DispatcherCheck ⟨1998, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_1999 : DispatcherCheck ⟨1999, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2000 : DispatcherCheck ⟨2000, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2001 : DispatcherCheck ⟨2001, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2002 : DispatcherCheck ⟨2002, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2003 : DispatcherCheck ⟨2003, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2004 : DispatcherCheck ⟨2004, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2005 : DispatcherCheck ⟨2005, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2006 : DispatcherCheck ⟨2006, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2007 : DispatcherCheck ⟨2007, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2008 : DispatcherCheck ⟨2008, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2009 : DispatcherCheck ⟨2009, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2010 : DispatcherCheck ⟨2010, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2011 : DispatcherCheck ⟨2011, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2012 : DispatcherCheck ⟨2012, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2013 : DispatcherCheck ⟨2013, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2014 : DispatcherCheck ⟨2014, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2015 : DispatcherCheck ⟨2015, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2016 : DispatcherCheck ⟨2016, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2017 : DispatcherCheck ⟨2017, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2018 : DispatcherCheck ⟨2018, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2019 : DispatcherCheck ⟨2019, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2020 : DispatcherCheck ⟨2020, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2021 : DispatcherCheck ⟨2021, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2022 : DispatcherCheck ⟨2022, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2023 : DispatcherCheck ⟨2023, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2024 : DispatcherCheck ⟨2024, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2025 : DispatcherCheck ⟨2025, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2026 : DispatcherCheck ⟨2026, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2027 : DispatcherCheck ⟨2027, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2028 : DispatcherCheck ⟨2028, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2029 : DispatcherCheck ⟨2029, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2030 : DispatcherCheck ⟨2030, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2031 : DispatcherCheck ⟨2031, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2032 : DispatcherCheck ⟨2032, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2033 : DispatcherCheck ⟨2033, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2034 : DispatcherCheck ⟨2034, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2035 : DispatcherCheck ⟨2035, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2036 : DispatcherCheck ⟨2036, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2037 : DispatcherCheck ⟨2037, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2038 : DispatcherCheck ⟨2038, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2039 : DispatcherCheck ⟨2039, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2040 : DispatcherCheck ⟨2040, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2041 : DispatcherCheck ⟨2041, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2042 : DispatcherCheck ⟨2042, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2043 : DispatcherCheck ⟨2043, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2044 : DispatcherCheck ⟨2044, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2045 : DispatcherCheck ⟨2045, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2046 : DispatcherCheck ⟨2046, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+theorem dispatcher_check_2047 : DispatcherCheck ⟨2047, by decide⟩ := by
+  constructor
+  · rfl
+  · apply FiniteWindow.config_ext
+    · rfl
+    · rfl
+    · funext p; fin_cases p <;> rfl
+
+end RiemannMachineVerification
