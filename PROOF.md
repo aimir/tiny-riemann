@@ -1,10 +1,11 @@
 # Why the smaller machine has the same blank-tape halting behavior
 
-This is a mathematical correctness argument with executable checks. It is not
-a proof formalized in a proof assistant. The original NQL compiler and the
-stated local lowering rules remain part of the trusted implementation. The
-final transition-table reduction has a separately checked, unbounded simulation
-certificate.
+This is the informal arithmetic and construction argument. A complete
+[Lean verification](formal/README.md) now proves that the literal 295-state
+machine halts exactly when the arithmetic predicate below has a witness.
+That proof checks the tape backend and reduction certificates without trusting
+the compiler or solver. The mathematical connection of the predicate to RH
+remains outside the formal proof's scope.
 
 ## 1. The predicate computed by the original program
 

@@ -60,8 +60,8 @@
     ]
   ],
   "sha256": {
-    "PROOF.md": "4f3907b09bacd440cf7985f7c171d19b3edaf1231db1126c8503b2dd35ab88a2",
-    "README.md": "86ae882ed572f06de59bce64700b3d22b13616a26bdaec4224f593217254fced",
+    "PROOF.md": "548b1836b5c3f974ee5f5530bc7c728dda7a830715ae9d6c34f6c30d5a6d5790",
+    "README.md": "a477db170b389a4d4abb6601a616dfde866f524a11451d591ea82f4ad8015bc8",
     "machine/algorithm.nql": "7d3f158e2c42af270f141d41dae9dc113417606d5dc8a8744282706393f299c4",
     "machine/execution.txt": "745aaf0f2d59c89ccdbaf8de43dea47032e1eee84f3476b576dd7922a547360b",
     "machine/macro_lengths.tsv": "1b11bc9ed83efb579fd027dfd5e5dd74b481008108bfe0469ffb6f0072f54095",

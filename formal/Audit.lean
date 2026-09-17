@@ -8,8 +8,12 @@ import RiemannMachineVerification.SourceCorrectness
 import RiemannMachineVerification.RegisterReduction
 import RiemannMachineVerification.Correctness
 import RiemannMachineVerification.Headline
+import RiemannMachineVerification.Quotient297
 
 #print axioms RiemannMachineVerification.headline_correct
+#print axioms RiemannMachineVerification.machine295_correct
+#print axioms RiemannMachineVerification.Reallocated.machine381_iff_primitive
+#print axioms RiemannMachineVerification.Reallocated.machine342_iff_machine295
 #print axioms RiemannMachineVerification.machine297_correct
 #print axioms RiemannMachineVerification.machine297_iff_machine299
 

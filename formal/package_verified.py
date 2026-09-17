@@ -1,4 +1,4 @@
-"""Package the current 297-state result, its proof, and the preserved baseline."""
+"""Package the current 295-state result, its proof, and the preserved baseline."""
 from pathlib import Path
 import hashlib
 import json
@@ -17,8 +17,8 @@ def package():
     assert acceptance.rstrip().endswith(
         'ACCEPTED: the frozen unconditional theorem is proved with only permitted axioms.')
     report = json.loads((FORMAL / 'verification.json').read_text())
-    assert report['status'] == 'accepted' and report['machine_states'] == 297
-    assert report['theorem'] == 'RiemannMachineVerification.machine297_correct'
+    assert report['status'] == 'accepted' and report['machine_states'] == 295
+    assert report['theorem'] == 'RiemannMachineVerification.machine295_correct'
     assert report['headline'] == 'RiemannMachineVerification.headline_correct'
     assert digest(ROOT / report['machine_file']) == report['machine_sha256']
     for name, expected in report['proof_source_sha256'].items():
@@ -30,17 +30,20 @@ def package():
     paths = {ROOT / name for name in manifest['sha256']}
     paths.add(ROOT / 'machine/manifest.json')
     paths.update(p for p in FORMAL.iterdir() if p.is_file() and p.name != 'MacroProbe.lean')
-    paths.update((FORMAL / 'RiemannMachineVerification').glob('*.lean'))
+    paths.update((FORMAL / 'RiemannMachineVerification').rglob('*.lean'))
+    paths.update((ROOT / 'machine').glob('riemann295.*'))
     paths.add(FORMAL / 'experiments/Quotient297.lean')
-    for name in ('solve_quotient.py', 'test_solve_quotient.py', 'search_final.py', 'search_layout.py'):
+    for name in ('solve_quotient.py', 'test_solve_quotient.py', 'search_final.py',
+                 'search_layout.py', 'check_reallocated.py', 'test_search_final.py'):
         paths.add(ROOT / 'tools' / name)
-    for name in ('macro-layout-best.nql', 'xfirst-1101-halt.nql'):
+    for name in ('macro-layout-best.nql', 'macro-layout-second.nql', 'xfirst-1101-halt.nql'):
         paths.add(ROOT / 'candidates' / name)
-    for directory in ('results/exact-quotient', 'results/final-beam'):
+    for directory in ('results/exact-quotient', 'results/final-beam',
+                      'results/combined-beam', 'results/combined-296-exact'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
 
-    target = ROOT / 'riemann-297-verified.zip'
-    prefix = 'riemann-297/'
+    target = ROOT / 'riemann-295-verified.zip'
+    prefix = 'riemann-295/'
     with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as result:
         for path in sorted(paths):
             name = prefix + path.relative_to(ROOT).as_posix()

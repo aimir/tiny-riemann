@@ -1,199 +1,165 @@
-# A formally verified 297-state Riemann machine
+# A formally verified 295-state Riemann machine
 
-**Formally verified in Lean:** the delivered machine halts on a blank tape
-if and only if the approved arithmetic counterexample predicate has a witness.
-The [complete proof and verification guide](formal/README.md) are included.
+**Formally verified in Lean:** the machine halts on a blank tape if and only
+if the approved arithmetic counterexample predicate has a witness. The
+[complete verification guide](formal/README.md) and proof sources are included.
 
-The machine has **297 nonhalting states and two symbols**, down from the
-original **744**: **447 fewer states (60.1%)**. It starts on a blank zero tape
-in state `!ENTRY`.
-The distinguished `HALT` state is excluded from both counts.
+The machine has **295 nonhalting states and two symbols**, down from the
+original **744**: **449 fewer states (60.3%)**. It starts on a blank zero tape
+in state `!ENTRY`. The separate `HALT` state is excluded from both counts.
+This is the smallest candidate found here; global minimality is not claimed.
 
-This is the smallest candidate found in this workspace, not a claim of global
-minimality. The reduction deliberately trades runtime for fewer states.
-
-| Stage | Nonhalting states |
+| Construction | Nonhalting states |
 |---|---:|
 | Original, reproduced byte for byte | 744 |
-| Optimized program and opt-in lowering | 381 |
+| Optimized compiled program | 381 |
 | Exact short transition replacements | 342 |
-| Certified reachability analysis and greedy state merging | 299 |
-| Global constraint solving with a Lean-checked quotient | **297** |
+| Earlier greedy quotient | 299 |
+| Earlier exact quotient, original register layout | 297 |
+| New register layout and exact quotient | **295** |
 
-## Result and supporting artifacts
+## Results and artifacts
 
-The [verified 297-state archive](riemann-297-verified.zip) contains the current
-machine, proof, certificates, and reproduction tools
-([SHA-256 checksum](riemann-297-verified.zip.sha256)).
+- [Current transition table](machine/riemann295.tm): the literal 295-state machine.
+- [Headline theorem](formal/RiemannMachineVerification/Headline.lean):
+  `headline_correct` selects `machine295_correct`, proved in
+  [Correctness295.lean](formal/RiemannMachineVerification/Correctness295.lean).
+- [Verification report](formal/verification.json): checked theorem, axiom
+  dependencies, machine identity, and hashes of the complete proof sources.
+- [Compilation input](machine/riemann295.nql) and
+  [register layout](machine/riemann295.layout.json): both are needed to reproduce
+  this compilation. The arithmetic source is unchanged; the physical positions
+  of `denom` and `_scratch_2` are exchanged.
+- [Readable algorithm](machine/algorithm.nql) and [arithmetic argument](PROOF.md).
+- [Compiled table](machine/riemann295.compiled.tm),
+  [shortened table](machine/riemann295.macro.tm),
+  [short-path certificate](machine/riemann295.macros.json), and
+  [quotient certificate](machine/riemann295.reduction.json).
+- [Combined search results](results/combined-beam/README.md): search settings,
+  candidate provenance, exact solving, and verification details.
 
-* [Final transition table](results/exact-quotient/quotient-297.tm): the actual 297-state machine.
-* [Headline theorem](formal/RiemannMachineVerification/Headline.lean): the stable
-  `headline_correct` entry point now selects `machine297_correct`, proved in
-  [Quotient297.lean](formal/RiemannMachineVerification/Quotient297.lean).
-  This proves equivalence between blank-tape halting and the approved arithmetic
-  predicate. The [verification report](formal/verification.json) records the
-  successful acceptance check, axiom audit, and proof-source hashes.
-* [Compilation input](machine/riemann.nql): includes deliberate no-op padding
-  that improves sharing in the compiler's decision graph.
-* [Readable algorithm](machine/algorithm.nql): the same arithmetic without
-  layout padding.
-* [Correctness argument](PROOF.md): the arithmetic transformation, removal of
-  the cutoff, compiler rules, and both forms of transition reduction.
-* [Baseline build manifest](machine/manifest.json): the preserved 299-state
-  construction's counts, upstream revision,
-  deterministic analysis parameters, merge seed, and SHA-256 hashes.
-* [Baseline validation report](machine/validation.json): results of the independent
-  executable checks on that construction.
-* [Exact quotient results](results/exact-quotient/README.md): the 297-state
-  mapping, solver experiment, and search using final reduction counts.
-
-The intermediate tables and certificates are also included:
-[compiled table](machine/riemann.compiled.tm),
-[shortened table](machine/riemann.macro.tm),
-[short-path certificate](machine/macros.json), and
-[297-state reduction certificate](results/exact-quotient/quotient-297.certificate.json).
-The original [299-state table](machine/riemann.tm) and
-[its certificate](machine/reduction.json) remain as the frozen acceptance baseline.
-
-The formal proof covers **unbounded execution**, connecting the literal
-297-state transition table to the arithmetic search through the state
-reductions and compiled register program. It checks the compiler's output
-without assuming compiler correctness.
+The original [299-state table](machine/riemann.tm), its
+[build manifest](machine/manifest.json), and the
+[297-state result](results/exact-quotient/README.md) remain available. They are
+historical verified results, not the current headline machine.
 
 ## Formal verification
 
-The proved theorem is:
+The current theorem is:
 
 ```lean
-theorem machine297_correct :
-    HaltsBlank machine297 ↔ ∃ n : ℕ, Counterexample n
+theorem machine295_correct :
+    HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-`HaltsBlank` describes execution of the literal machine on an initially zero
+`HaltsBlank` describes the literal machine on an initially zero, two-sided
 infinite binary tape. `Counterexample n` is the approved exact rational
-inequality, including the original `254 ≤ n` bound. The mathematical
-equivalence of that criterion to RH is outside the formal proof's scope.
-See the [detailed verification README](formal/README.md) for the specification,
-proof structure, artifact identity, and dependency versions.
-The main Lean library exports this theorem and the stable `headline_correct`
-alias. The originally approved `machine299_correct` theorem and its acceptance
-pins remain unchanged.
+inequality, including the original `254 ≤ n` bound. Its mathematical
+equivalence to RH remains outside the formal proof's scope.
+
+The proof covers **unbounded execution**. It checks the reallocated tape
+backend, all 2,048 dispatch cases, macro rewrites, reachability invariants,
+and the new quotient. The logical register program is unchanged, so the
+existing arithmetic proof applies. Neither the compiler nor Z3 is trusted.
+The originally approved `machine299_correct` theorem and its acceptance pins
+remain unchanged.
 
 Install `elan` so that `lean` and `lake` are on your path, and use Python 3.
-The project pins Lean to **4.32.2** and its mathlib dependency to a specific
-commit. Initial toolchain and dependency downloads require network access.
-From the repository root, run:
+Lean is pinned to **4.32.2**, and mathlib to a specific commit. Initial dependency
+downloads require network access. From the repository root:
 
 ```sh
 cd formal
-lake exe cache get             # Optional: fetch the pinned mathlib build cache.
-python3 check_current.py       # Check the 297-state headline and frozen 299-state target.
-lake env lean Audit.lean       # Report axiom dependencies of the main results.
+lake exe cache get          # Optional: fetch the pinned mathlib build cache.
+python3 check_current.py    # Build and check the headline and original target.
+lake env lean Audit.lean    # Audit the principal theorems' axiom dependencies.
 cd ..
 ```
 
-The current-result check verifies both exact theorem types, the unchanged approved
-definitions, the final machine's hash, all four literal tables, and the theorem's
-axiom dependencies.
-It succeeds only with the permitted foundational axioms `propext`,
-`Classical.choice`, and `Quot.sound`; no `sorry` or additional axiom is accepted.
-Successful output ends with:
+The check verifies exact theorem types, literal table imports and hashes,
+and axiom dependencies. Only `propext`, `Classical.choice`, and `Quot.sound`
+are permitted; no `sorry` or additional axiom is accepted. Successful output
+ends with:
 
 ```text
-ACCEPTED: the 297-state headline and original 299-state target are proved with only permitted axioms.
+ACCEPTED: the 295-state headline and original 299-state target are proved with only permitted axioms.
 ```
 
-## Reproduce the construction and run executable checks
+See [formal/README.md](formal/README.md) for the proof structure and table identity.
 
-The existing build and executable-check commands reproduce the compiled and
-shortened tables and the frozen **299-state baseline**:
+## Reproduce and independently check the construction
 
-Requires Python 3 and the pinned `pyparsing` dependency. No network access is
-needed after installing that dependency; the original compiler is vendored.
+Python tools require the pinned dependency in `requirements.txt`. The original
+compiler is vendored; Z3 is unnecessary to reproduce the saved quotient:
 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python tools/check_reallocated.py
+```
+
+This rebuilds the compiled, shortened, and final tables byte for byte, then
+independently checks the short-path and unbounded state-reduction certificates.
+The state names in the intermediate tables are normalized by the bijection
+recorded in [proof-inputs.json](machine/riemann295.proof-inputs.json).
+
+The earlier construction's arithmetic and compiler tests remain available:
+
+```sh
 .venv/bin/python tools/build.py --check
 .venv/bin/python tools/check.py
 ```
 
-`build.py --check` rebuilds in a temporary directory and requires byte-for-byte
-identical tables and certificates, plus matching hashes. `check.py` independently
-checks the arithmetic, the compiler transformations, all relevant tape windows
-for the short-path replacements, and the unbounded state-reduction certificate.
-The wider reachability passes can require several hundred megabytes of memory.
+Those commands check the preserved **299-state baseline**. Its
+[validation report](machine/validation.json) covers all 253 removed cutoff
+cases, harmonic sums, squaring, comparisons, compiler lowering, and two complete
+register-machine iterations. Its [concrete execution log](machine/execution.txt)
+is supplementary evidence for that earlier table, not a finite-run proof of
+correctness for the new table.
 
-To regenerate those baseline tables in place, use `tools/build.py` without
-`--check`. To inspect the source compilation alone:
+The former ZIP downloads are replaced by files in this repository. Nothing
+requires downloading an archive:
 
-```sh
-.venv/bin/python tools/compile.py machine/riemann.nql
-```
+| Archive contents | Repository location |
+|---|---|
+| Current machine, source, layout, and certificates | [Results and artifacts above](#results-and-artifacts), under [machine/](machine) |
+| Lean proofs and verification report | [formal/](formal), with [verification instructions](formal/README.md) |
+| Python compiler, reducers, search, and independent checkers | [tools/](tools) and [requirements.txt](requirements.txt) |
+| Original compiler and its license | [vendor/nql/](vendor/nql) |
+| Original 744-state source, table, and license | [reference/](reference) |
+| Saved search candidates, queries, and solver output | [results/](results) and [candidates/](candidates) |
+| Earlier 299-state release, checks, and hashes | [machine/manifest.json](machine/manifest.json), [validation report](machine/validation.json), and [execution log](machine/execution.txt) |
+| Earlier verified 297-state release | [results/exact-quotient/](results/exact-quotient) |
 
-The 297-state result uses the same compiled and shortened tables with a new
-quotient mapping. `check_current.py` checks that saved mapping in Lean without
-requiring Z3. To repeat the global search with the `z3` executable installed:
-
-```sh
-.venv/bin/python tools/solve_quotient.py --target 297 --minimum 296 --timeout 120 --output results/reproduced-quotient
-```
-
-Different solver versions can find different valid mappings. See the
-[exact quotient guide](results/exact-quotient/README.md) for certificates and
-reproduction details.
-
-An optional standalone C++ interpreter is provided for concrete execution:
+Generated ZIPs and Lean build binaries are ignored by Git. After verification,
+an optional local bundle can be produced with:
 
 ```sh
-.venv/bin/python tools/execution_inputs.py
-c++ -O3 -std=c++17 tools/simulate.cpp -o /tmp/riemann-simulate
-/tmp/riemann-simulate machine/riemann.compiled.tm machine/riemann.tm 11 100000000 3 machine/macro_lengths.tsv machine/state_map.tsv
+python3 formal/package_verified.py
 ```
 
-This command checks the preserved 299-state baseline. It uses the certified
-correspondence to compare every reduced step with the appropriate one or three
-compiled steps. That machine passed through
-its first two complete iterations: **12,169,826 compiled steps correspond to
-12,118,618 reduced steps**. The [execution log](machine/execution.txt) records
-the register checkpoints. This concrete test supplements the unbounded
-certificates; it is not a substitute for them.
+## Combined optimization search
 
-## What changed
+The search screens source and register-layout mutations cheaply, evaluates
+promoted candidates through the complete reduction pipeline, and selects a
+diverse beam using the resulting counts. Exact quotient solving is applied
+before survivor selection. Identical constraint problems reuse decisive solver
+results; timeouts remain unresolved and are not cached as impossibility claims.
 
-The program shares its harmonic-sum and squaring routines, reuses dead
-registers, recomputes the LCM using a small divisibility loop, and implements
-the last strict comparison using saturating subtraction. A finite exact
-certificate permits removing the original `x > 253` guard. A seeded search
-adjusts harmless padding and operand order to improve decision-graph sharing.
+Two generations found a register allocation whose greedy reduction still had
+299 states, but exact solving produced 296 and then **295**. The 294-state query
+timed out. The earlier UNSAT result for 296 applied only to the original table
+and read masks; it did not constrain this new allocation.
 
-Two machine-level passes then remove short sequences equivalent to one step,
-and merge states using proved unreachable read-symbol combinations.
-Global constraint solving replaces the greedy partition and reduces the result
-from 299 to 297 states. Z3 reports UNSAT for 296 under that fixed transition
-table and those reachability masks. This is a result about that quotient
-construction, not a general machine-size lower bound; the UNSAT claim itself
-has not been formalized in Lean.
-
-A first search using complete reduction counts confirmed that candidates with
-the same old proxy score can finish at 299 or 302 states. Its small initial
-pilot found no further reduction. The search now supports a diverse beam,
-register placement, expression order, procedure boundaries, and padding.
-
-The arithmetic tests cover every removed cutoff case, harmonic sums for
-inputs 0–80, 200 squaring cases, 100 comparison cases, ten complete algorithm
-iterations, and 260 compiler cases. Two complete iterations also execute in
-the compiled register-machine interpreter. Full Turing execution is feasible
-only for tiny prefixes; runtime and tape use grow extremely quickly.
-
-In the workspace, `candidates/`, `results/`, and `tools/search_*.py` retain the research
-trail. The current final table and its quotient certificate are in
-`results/exact-quotient/`; the other search candidates are not needed to verify it.
+The [search guide](results/combined-beam/README.md) gives reproduction commands.
+Layout candidates and arithmetic variants remain in `candidates/` and `results/`.
+Runtime and tape usage grow extremely quickly; minimizing states deliberately
+trades away execution speed.
 
 ## Provenance
 
 Based on [Stefan O'Rear's repository and the Matiyasevich–Aaronson
 744-state construction](https://github.com/sorear/metamath-turing-machines/tree/master/machines/2016-riemann-matiyasevich-aaronson-744),
 pinned to commit `0b8032c35bfb2107d94023f6ca2c2ffe6067faa8`.
-The unchanged compiler and its MIT license are in [vendor/nql](vendor/nql).
+The original compiler and MIT license are in [vendor/nql](vendor/nql).
 The reference source and transition table are in [reference](reference).

@@ -1,6 +1,6 @@
 # Exact quotient and final-count search experiment
 
-The new machine has **297 nonhalting states**, two symbols, and a separate
+This earlier machine has **297 nonhalting states**, two symbols, and a separate
 HALT state. Lean verifies the same arithmetic specification as the frozen
 299-state machine:
 
@@ -22,9 +22,9 @@ Files:
 - [Solver queries and results](report.json)
 
 The original 299-state theorem and its acceptance pins remain intact. The
-297-state proof is now part of the default Lean build and is selected by the
-headline theorem. The READMEs, library entry point, and verification report
-have been updated accordingly.
+297-state proof remains part of the default Lean build. The current headline
+selects the [295-state result from the combined search](../combined-beam/README.md),
+which uses a different physical register allocation.
 
 ## What the exact solver established
 
@@ -133,7 +133,7 @@ and timings. A fixed seed bank makes the heuristic comparison reproducible;
 these final counts remain feasible upper bounds until exact solving settles
 the corresponding quotient problem.
 
-The next useful experiment is a broader diverse beam, with more arithmetic
-families and exact solving of finalists. Exact solving has exhausted the
-current fixed quotient below 297 according to Z3; further reductions must
-change its table, reachability premises, or quotient construction.
+The subsequent [combined search](../combined-beam/README.md) used a broader
+diverse beam and exact solving of finalists. It found 295 states by changing
+register placement. The UNSAT result here applies only to this earlier fixed
+table, read masks, and quotient construction.

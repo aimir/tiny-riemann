@@ -1,4 +1,4 @@
-"""Check the current 297-state headline and the unchanged original acceptance target."""
+"""Check the current 295-state headline and the unchanged original acceptance target."""
 from pathlib import Path
 import datetime
 import hashlib
@@ -9,11 +9,12 @@ import sys
 import tempfile
 
 from generate_candidate_quotient import generate_candidate
+from generate_tables import generate
 
 ROOT = Path(__file__).resolve().parent
-MACHINE = ROOT.parent / 'results/exact-quotient/quotient-297.tm'
-CERTIFICATE = MACHINE.with_suffix('.certificate.json')
-MACHINE_SHA256 = '724fb7359ca178e9919390958f157b98d9576999cb6cd62a140eef9fe1a50ae3'
+MACHINE = ROOT.parent / 'machine/riemann295.tm'
+CERTIFICATE = ROOT.parent / 'machine/riemann295.reduction.json'
+MACHINE_SHA256 = 'd79512cf945e8828ff587662990ee595e596871928f402fa6fef470b144d7079'
 ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
@@ -38,9 +39,22 @@ def run(command, log_name):
 
 def main():
     assert digest(MACHINE) == MACHINE_SHA256, 'The current literal machine changed.'
-    n, expected = generate_candidate(MACHINE, CERTIFICATE)
-    proof = ROOT / 'RiemannMachineVerification/Quotient297.lean'
-    assert n == 297 and proof.read_text() == expected, 'Literal table or quotient import changed.'
+    # Keep checking the previous 297-state literal import as well.
+    old = ROOT.parent / 'results/exact-quotient/quotient-297.tm'
+    n, expected = generate_candidate(old, old.with_suffix('.certificate.json'))
+    assert n == 297 and (ROOT / 'RiemannMachineVerification/Quotient297.lean').read_text() == expected
+    for n, path, module in (
+        (295, 'machine/riemann295.tm', 'Machine295'),
+        (381, 'machine/riemann295.compiled.tm', 'Reallocated/Machine381'),
+        (342, 'machine/riemann295.macro.tm', 'Reallocated/Machine342'),
+    ):
+        expected = generate(n, path, digest(ROOT.parent / path))
+        if module.startswith('Reallocated/'):
+            expected = expected.replace('namespace RiemannMachineVerification\n',
+                                        'namespace RiemannMachineVerification.Reallocated\n')
+            expected = expected.replace('end RiemannMachineVerification',
+                                        'end RiemannMachineVerification.Reallocated')
+        assert (ROOT / 'RiemannMachineVerification' / (module + '.lean')).read_text() == expected, module
     # This preserves all four original acceptance pins and also builds the headline.
     run([sys.executable, 'check_acceptance.py'], 'acceptance.log')
     run([sys.executable, 'generate_tables.py', '--check'], 'tables.log')
@@ -48,14 +62,14 @@ def main():
         probe = Path(directory) / 'HeadlineCheck.lean'
         probe.write_text('''import RiemannMachineVerification
 open RiemannMachineVerification
-example : headlineMachine = machine297 := rfl
-example : HaltsBlank machine297 ↔ ∃ n : ℕ, Counterexample n := machine297_correct
-example : HaltsBlank machine297 ↔ ∃ n : ℕ, Counterexample n := headline_correct
-#print axioms RiemannMachineVerification.machine297_correct
+example : headlineMachine = machine295 := rfl
+example : HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n := machine295_correct
+example : HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n := headline_correct
+#print axioms RiemannMachineVerification.machine295_correct
 #print axioms RiemannMachineVerification.headline_correct
 ''')
         output = run(['lake', 'env', 'lean', str(probe)], 'headline.log')
-    for theorem in ('machine297_correct', 'headline_correct'):
+    for theorem in ('machine295_correct', 'headline_correct'):
         name = 'RiemannMachineVerification.' + theorem
         match = re.search(r"'" + re.escape(name) + r"' depends on axioms: \[([^\]]*)\]", output)
         if match:
@@ -66,26 +80,26 @@ example : HaltsBlank machine297 ↔ ∃ n : ℕ, Counterexample n := headline_co
             raise SystemExit(f'Unrecognized axiom audit for {name}.')
         assert axioms <= ALLOWED, f'Forbidden axioms for {name}: {axioms - ALLOWED}'
     paths = [ROOT / 'RiemannMachineVerification.lean', ROOT / 'Audit.lean']
-    paths += sorted((ROOT / 'RiemannMachineVerification').glob('*.lean'))
+    paths += sorted((ROOT / 'RiemannMachineVerification').rglob('*.lean'))
     report = {
         'verified_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
         'status': 'accepted',
-        'theorem': 'RiemannMachineVerification.machine297_correct',
+        'theorem': 'RiemannMachineVerification.machine295_correct',
         'headline': 'RiemannMachineVerification.headline_correct',
-        'statement': 'HaltsBlank machine297 ↔ ∃ n : ℕ, Counterexample n',
+        'statement': 'HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n',
         'axioms': sorted(axioms),
         'lean_toolchain': (ROOT / 'lean-toolchain').read_text().strip(),
         'mathlib_revision': '905b95818eb32af7874a58b427f50c1711a5e96c',
-        'machine_states': 297,
+        'machine_states': 295,
         'machine_file': str(MACHINE.relative_to(ROOT.parent)),
         'machine_sha256': MACHINE_SHA256,
         'original_target': 'RiemannMachineVerification.machine299_correct',
         'checks': {'frozen_acceptance': 'passed', 'headline_type_and_axioms': 'passed',
-                   'all_four_literal_tables': 'passed', 'quotient_import': 'byte-for-byte match'},
+                   'all_seven_literal_tables': 'passed', 'literal_imports': 'byte-for-byte match'},
         'proof_source_sha256': {str(p.relative_to(ROOT)): digest(p) for p in paths},
     }
     (ROOT / 'verification.json').write_text(json.dumps(report, indent=2) + '\n')
-    print('ACCEPTED: the 297-state headline and original 299-state target are proved with only permitted axioms.')
+    print('ACCEPTED: the 295-state headline and original 299-state target are proved with only permitted axioms.')
 
 
 if __name__ == '__main__':
