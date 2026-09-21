@@ -18,7 +18,7 @@ Lean theorem is outstanding; the verified default remains `machine295_correct`.
   [macro certificate](../unified-target278/fefaa549f250fd12/macros.json)
 - [Quotient certificate](fefaa549f250fd12/quotient-278.certificate.json),
   [SMT query](fefaa549f250fd12/quotient-278.smt2), and
-  [solver response](fefaa549f250fd12/quotient-278.solver.txt)
+  [structured query result](fefaa549f250fd12/report.json)
 - [Independent checks](fefaa549f250fd12/verification.json),
   [packing equivalence](fefaa549f250fd12/packing-check.json), and
   [artifact hashes](manifest.json)
@@ -125,3 +125,7 @@ searches were active, so replaying a larger completed pool can encounter a
 different candidate first. `--exact-order clique` is also available directly
 in the beam and neighborhood search tools; their default remains `source`
 so earlier configurations remain reproducible.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

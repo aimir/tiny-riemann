@@ -1,5 +1,9 @@
 # Register liveness and arithmetic lowering: 285-state candidate
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 This experiment produced a **285-state, two-symbol candidate**, six states
 smaller than the previous 291-state PC-layout result. It retains nine
 registers and a 10-bit program counter. **It is not formally verified in
@@ -175,3 +179,7 @@ replacements, reachability facts, and final quotient must then be checked and
 composed in Lean. Regression tests and Python certificate checks do not supply
 that theorem. The [formal acceptance contract](../../formal/ACCEPTANCE.md),
 headline theorem, and proof-source pins remain unchanged.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

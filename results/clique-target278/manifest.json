@@ -21,7 +21,6 @@
         "results/clique-target278/d859aef2158f0ec5/quotient-278.tm": "942e6e7709f90f8b3743c48d5cea83cf9adcea1880be3678a8e69b51faf736f1",
         "results/clique-target278/d859aef2158f0ec5/quotient-278.certificate.json": "5124f95ca98247bfe47eb601399f1a2f4d4aa0c1fd73cf72c74613a6081c8825",
         "results/clique-target278/d859aef2158f0ec5/quotient-278.smt2": "55443a46868784f3cbb6641458a08d3baa556986557b28e19a2164328208a298",
-        "results/clique-target278/d859aef2158f0ec5/quotient-278.solver.txt": "8568555c8bad573f2ed31db2c769450e8cef41d136b2494925a02014ab5138d9",
         "results/clique-target278/d859aef2158f0ec5/packing-check.json": "f59cfa6378bf4beb189ad4c5b7dc7ef1b331b48354ded057ea43ec29daa7fc9c"
       }
     },
@@ -39,7 +38,6 @@
         "results/clique-target278/fefaa549f250fd12/quotient-278.tm": "268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306",
         "results/clique-target278/fefaa549f250fd12/quotient-278.certificate.json": "663d0f0760d3e7a39d61d4afc4d78f5384870254aacda60fc4208000ac6c0ffa",
         "results/clique-target278/fefaa549f250fd12/quotient-278.smt2": "4d35cb7c5c0217ff9099de2079fe69038cc0f123d805b8c6bc7948e73e56adca",
-        "results/clique-target278/fefaa549f250fd12/quotient-278.solver.txt": "3a484ba4c1b8db6cd6a2d08e6679d4762ecaa75a60977a4260f1070d1b6556b3",
         "results/clique-target278/fefaa549f250fd12/packing-check.json": "f59cfa6378bf4beb189ad4c5b7dc7ef1b331b48354ded057ea43ec29daa7fc9c"
       }
     }

@@ -31,8 +31,12 @@ def audit(directory):
             assert (path.parent/'compiled.tm').read_bytes()==(old/'compiled.tm').read_bytes()
             assert (path.parent/'macro.tm').read_bytes()==(old/'macro.tm').read_bytes()
         for query in c.get('exact_history',[]):
-            answer=(path.parent/f"quotient-{query['target']}.solver.txt").read_text()
-            assert answer.splitlines()[0]==query['status']
+            # Solver transcripts are local logs, not verification inputs.
+            # Check query identity; SAT witnesses are checked above. Historical
+            # UNSAT/UNKNOWN statuses are metadata, not re-established here.
+            saved=(path.parent/f"quotient-{query['target']}.smt2").read_text()
+            assert hashlib.sha256(saved.split('\n',1)[1].encode()).hexdigest()==query['problem_sha256']
+            assert query['status'] in ('sat','unsat','unknown','error')
     assert len(candidates)==report['screened']
     assert certificates==report['fully_reduced']
     best=min(c['final_states'] for c in candidates.values() if 'final_states' in c)
@@ -77,6 +81,7 @@ def audit(directory):
                 source_variants=len(sources),configuration_variants=features,
                 best_per_generation=counts,parents_per_generation=[len(r['parents']) for r in report['generations']],
                 pending_generation=pending,
+                solver_status_scope='Recorded metadata; query hashes and quotient witnesses checked, solver statuses not rerun.',
                 best_states=best,scope='Artifact and search audit; not a whole-machine Lean proof.')
 
 

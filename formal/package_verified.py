@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -12,21 +13,7 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def package():
-    acceptance = (FORMAL / '.logs/acceptance.log').read_text()
-    assert acceptance.rstrip().endswith(
-        'ACCEPTED: the frozen unconditional theorem is proved with only permitted axioms.')
-    report = json.loads((FORMAL / 'verification.json').read_text())
-    assert report['status'] == 'accepted' and report['machine_states'] == 295
-    assert report['theorem'] == 'RiemannMachineVerification.machine295_correct'
-    assert report['headline'] == 'RiemannMachineVerification.headline_correct'
-    assert digest(ROOT / report['machine_file']) == report['machine_sha256']
-    for name, expected in report['proof_source_sha256'].items():
-        assert digest(FORMAL / name) == expected, name
-    manifest = json.loads((ROOT / 'machine/manifest.json').read_text())
-    for name, expected in manifest['sha256'].items():
-        assert digest(ROOT / name) == expected, name
-
+def package_paths(manifest):
     paths = {ROOT / name for name in manifest['sha256']}
     paths.add(ROOT / 'machine/manifest.json')
     paths.update(p for p in FORMAL.iterdir() if p.is_file() and p.name != 'MacroProbe.lean')
@@ -58,6 +45,28 @@ def package():
                       'results/unified-target278', 'results/neighborhood278',
                       'results/clique-target278'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
+
+    # Local runs may leave transcripts beside certificates. Only versioned
+    # inputs belong in a distributable bundle, even when logs exist on disk.
+    tracked = set(subprocess.check_output(
+        ['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0'))
+    return {p for p in paths if p.relative_to(ROOT).as_posix() in tracked}
+
+
+def package():
+    # Verification reports and proof hashes are the durable inputs; console
+    # logs are intentionally optional and never included in the archive.
+    report = json.loads((FORMAL / 'verification.json').read_text())
+    assert report['status'] == 'accepted' and report['machine_states'] == 295
+    assert report['theorem'] == 'RiemannMachineVerification.machine295_correct'
+    assert report['headline'] == 'RiemannMachineVerification.headline_correct'
+    assert digest(ROOT / report['machine_file']) == report['machine_sha256']
+    for name, expected in report['proof_source_sha256'].items():
+        assert digest(FORMAL / name) == expected, name
+    manifest = json.loads((ROOT / 'machine/manifest.json').read_text())
+    for name, expected in manifest['sha256'].items():
+        assert digest(ROOT / name) == expected, name
+    paths = package_paths(manifest)
 
     target = ROOT / 'riemann-295-verified.zip'
     prefix = 'riemann-295/'

@@ -1,5 +1,9 @@
 # Wider joint search: 16 retained candidates
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 This follow-up expands the [six-candidate search](../unified-beam/README.md)
 to a beam of **16 distinct machine graphs**. It retains all three optimization
 families and source mutations, scores survivors after complete reduction, and
@@ -134,6 +138,11 @@ From the repository root, with Python dependencies and Z3 installed:
 Use a fresh output directory. Set `--workers 1` for sequential full reductions.
 The run retains source and configuration metadata for screened candidates,
 complete tables and certificates for reduced candidates, generation ancestry,
-and all solver queries and responses. UNKNOWN is unresolved; UNSAT applies
+and solver queries with structured result summaries. Raw solver transcripts
+remain local. UNKNOWN is unresolved; UNSAT applies
 only to the particular quotient constraints, never to equivalent Turing
 machines in general.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

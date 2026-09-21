@@ -141,7 +141,7 @@ bound is claimed. Z3 and Python propose artifacts; the Lean kernel checks the
 complete correctness proof.
 
 All former archive contents are available directly in the repository; see the
-[artifact directory](../README.md#reproduce-and-independently-check-the-construction).
+[artifact directory](../README.md#repository-artifacts-and-local-logs).
 This folder contains the Lean sources, pinned dependencies, generators, checks,
 and report. Machine tables and certificates are in [machine/](../machine),
 and saved optimization runs are in [results/](../results).
@@ -149,3 +149,11 @@ and saved optimization runs are in [results/](../results).
 Release ZIPs are generated locally, not committed. After checking the proof,
 `python3 package_verified.py` packages the current result, all proof sources,
 certificates, and the preserved baseline artifacts.
+
+
+Verification commands may create ignored local logs under `.logs/`. These
+console transcripts, solver outputs and execution traces are neither committed
+nor packaged. The durable verification report, accepted proof-source hashes,
+machine tables and certificates remain versioned. The packaging script checks
+those artifacts and includes only versioned files; it does not require a saved
+acceptance-console log. See the [artifact policy](../README.md#repository-artifacts-and-local-logs).

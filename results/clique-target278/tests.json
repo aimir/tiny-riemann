@@ -1,5 +1,14 @@
 {
-  "quotient_encoding": "PASS: 72 exhaustive comparisons in both orders, SAT model checks and UNSAT boundary checks.",
+  "quotient_encoding": {
+    "status": "passed",
+    "exhaustive_examples": 72,
+    "orders": [
+      "source",
+      "clique"
+    ],
+    "sat_model_checks": true,
+    "unsat_boundary_checks": true
+  },
   "neighborhood": {
     "status": "passed",
     "neighbors": {

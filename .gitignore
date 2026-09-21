@@ -4,6 +4,28 @@ upstream/
 results/search-*.jsonl
 results/simulate
 
+# Local diagnostic output, including logs without a .log suffix.
+.logs/
+logs/
+*.log
+*.log.*
+*.solver.txt
+*.jsonl
+*.ndjson
+*.out
+*.err
+*.stdout
+*.stderr
+*.stdout.*
+*.stderr.*
+stdout.txt
+stderr.txt
+*.console.txt
+*.trace
+machine/execution.txt
+formal/register-leaves.txt
+cache-tests.txt
+
 # Generated release bundles duplicate the versioned source artifacts.
 riemann-*.zip
 riemann-*.zip.sha256

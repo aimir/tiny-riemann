@@ -1,7 +1,7 @@
 # Construction and correctness of the 295-state machine
 
 This guide explains the arithmetic, compilation, and reductions behind the
-current [295-state transition table](machine/riemann295.tm). The complete
+current verified [295-state transition table](machine/riemann295.tm). The complete
 [Lean verification](formal/README.md) proves:
 
 ```lean
@@ -18,6 +18,11 @@ The current construction has 381 compiled states, 342 after short-path
 replacements, and 295 after the exact quotient. The earlier 299- and 297-state
 machines use a different physical register allocation; their proofs remain
 available. All counts exclude the separate halting state.
+
+The latest [experimental machines have 278 states](results/clique-target278/README.md).
+Their independent checks pass, but the full-machine Lean refinements are still
+outstanding. Sections 1–9 describe the verified 295-state construction; the
+later experiments and their proof limits are summarized at the end.
 
 ## 1. The predicate computed by the original program
 
@@ -330,3 +335,7 @@ The 24-parent and local-neighborhood runs were stopped after the supplemental
 reductions from unfinished generation selection. They are not presented as
 completed three-generation runs. Earlier beam counts and artifacts remain
 unchanged by the supplemental solver results.
+
+Raw execution and solver logs are local diagnostics and are not distributed.
+The retained tables, certificates, SMT inputs and structured summaries are
+listed in the [artifact policy](README.md#repository-artifacts-and-local-logs).

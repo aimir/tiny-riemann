@@ -1,5 +1,9 @@
 # Program-counter and dispatch experiment: 291 states
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 The first PC-layout experiment produced a **291-state, two-symbol candidate
 with a 10-bit program counter**, four states smaller than the verified
 295-state machine. The candidate has passed the independent Python checks
@@ -163,3 +167,7 @@ The saved finite checks provide inputs for those proof obligations. The
 acceptance pins remain unchanged. Register-liveness allocation and specialized arithmetic lowering are investigated
 in the [following experiment](../register-lowering/README.md). Stronger phase
 invariants with larger fragment replacement are still a separate direction.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

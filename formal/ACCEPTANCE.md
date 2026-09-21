@@ -105,3 +105,7 @@ ACCEPTED: the 295-state headline and original 299-state target are proved with o
 ```
 
 See the [verification guide](README.md) for prerequisites and proof structure.
+
+Raw verification and solver logs remain local. The accepted theorem, frozen
+pins and durable verification report are preserved under the
+[repository artifact policy](../README.md#repository-artifacts-and-local-logs).

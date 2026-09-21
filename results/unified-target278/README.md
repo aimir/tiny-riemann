@@ -35,3 +35,7 @@ To audit the saved checkpoint:
 
 The full-machine Lean theorem remains outstanding. The verified headline is
 still `machine295_correct`.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

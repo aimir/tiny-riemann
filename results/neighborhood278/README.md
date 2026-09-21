@@ -35,3 +35,7 @@ certificates. This does not change the verified 295-state Lean headline.
 
 The search command plans the full sweep rather than reproducing the manual
 early stopping time. Add `--exact-order clique` to use the improved ordering.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

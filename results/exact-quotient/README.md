@@ -1,5 +1,9 @@
 # Historical 297-state quotient and final-count search experiment
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 This earlier machine has **297 nonhalting states**, two symbols, and a separate
 HALT state. Lean verifies the same arithmetic specification as the frozen
 299-state machine:
@@ -64,8 +68,8 @@ executable available:
 .venv/bin/python tools/solve_quotient.py --target 297 --minimum 296 --timeout 120
 ```
 
-Each query saves its SMT input, solver output, and, when satisfiable, a checked
-transition table and certificate. `report.json` pins the input table and
+Each query saves its SMT input and, when satisfiable, a checked transition table
+and certificate. Raw solver output is a local, ignored diagnostic. `report.json` pins the input table and
 certificate and records the solver version. Different Z3 versions can choose
 different valid mappings or take different amounts of time.
 
@@ -137,3 +141,7 @@ The subsequent [combined search](../combined-beam/README.md) used a broader
 diverse beam and exact solving of finalists. It found 295 states by changing
 register placement. The UNSAT result here applies only to this earlier fixed
 table, read masks, and quotient construction.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

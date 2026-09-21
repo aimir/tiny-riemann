@@ -3,11 +3,13 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 import json
+import hashlib
 import tempfile
 
 from compile import ROOT
 from search_final import Evaluator, compile_candidate
 from tm_reduce import load
+from solve_quotient import quotient_problem, encode, check_mapping
 from verify import run_register
 
 
@@ -34,6 +36,17 @@ def main():
                     'key': name, 'final_states': 299}
 
         hit = candidate('cached-sat')
+        # Build the transient cache fixture from a checked partition. A fresh
+        # checkout must not depend on archived solver-console transcripts.
+        cert=json.loads(original)
+        saved=json.loads((ROOT/'results/exact-quotient/quotient-297.certificate.json').read_text())
+        assert len(check_mapping(hit['rows'],cert['possible'],saved['mapping']))==297
+        problem=quotient_problem(hit['rows'],cert['possible'])
+        names,pairs,*_=problem
+        model='sat\n('+' '.join(f'(e{i}_{j} {str(saved["mapping"][names[i]]==saved["mapping"][names[j]]).lower()})' for i,j in pairs)+')\n'
+        key=hashlib.sha256(encode(problem,297,1000).split('\n',1)[1].encode()).hexdigest()
+        evaluator.exact_cache.clear()
+        evaluator.exact_cache[key]=(model,'test fixture: checked 297-state mapping')
         with patch('search_final.subprocess.run', side_effect=AssertionError('Cache hit started Z3')):
             evaluator.exact(hit, 297, 1)
         assert hit['final_states'] == 297 and hit['exact']['reused_from']

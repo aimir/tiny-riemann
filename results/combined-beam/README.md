@@ -1,5 +1,9 @@
 # Combined layout search and exact quotient solving
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 This experiment produced the **295-state machine**, now the default
 [Lean headline](../../formal/RiemannMachineVerification/Headline.lean).
 The [literal table](../../machine/riemann295.tm) is formally proved to halt
@@ -15,7 +19,8 @@ The search keeps a diverse beam, cheaply screens mutations, then evaluates
 promising candidates through all eleven reachability passes and eight greedy
 merge seeds. Three finalists per generation receive exact quotient queries
 **before** beam selection. Decisive solver results are reused only when the
-entire SMT query agrees apart from the timeout. Unknown results are not cached.
+entire SMT query agrees apart from the timeout and a local solver transcript
+is available. Raw transcripts are not distributed. Unknown results are not cached.
 
 Two generations screened 80 mutations and saved 80 distinct candidate
 artifacts. Fourteen candidates received complete reductions, and six finalist
@@ -35,7 +40,7 @@ in about 12 seconds. The query for 294 timed out after 90 seconds; it remains
 unresolved. Neither that timeout nor the earlier UNSAT result for a different
 table establishes a lower bound for this machine.
 
-The raw [beam report](report.json) records its own 296-state result. The later
+The structured [beam report](report.json) records its own 296-state result. The later
 295-state table and certificate are saved separately in
 [`combined-296-exact`](../combined-296-exact), preserving the experiment history.
 
@@ -87,3 +92,7 @@ register order and intermediate state-name normalization. The generator
 [`formal/generate_reallocated.py`](../../formal/generate_reallocated.py)
 produces the new proof modules from the saved candidate and mapping; checking
 the committed Lean proof requires no regeneration.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

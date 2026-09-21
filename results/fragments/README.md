@@ -1,5 +1,9 @@
 # Register invariants and whole fragments: 282-state candidate
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 The third experiment reduces the preceding 285-state candidate to **282
 nonhalting states**. It combines the earlier 10-bit PC layout, five destructive
 reads and register placement with three whole-call replacements justified by
@@ -121,3 +125,7 @@ register-language invariant, actual new backend, fragment replacements, macros
 and quotient against the unchanged arithmetic specification. The new generic
 component lemmas do not supply that composition. See the
 [formal acceptance contract](../../formal/ACCEPTANCE.md).
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

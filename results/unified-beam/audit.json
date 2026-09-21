@@ -19,6 +19,8 @@
     6,
     6
   ],
+  "pending_generation": null,
+  "solver_status_scope": "Recorded metadata; query hashes and quotient witnesses checked, solver statuses not rerun.",
   "best_states": 282,
   "scope": "Artifact and search audit; not a whole-machine Lean proof."
 }

@@ -130,9 +130,10 @@ The earlier construction's arithmetic and compiler tests remain available:
 Those commands check the preserved **299-state baseline**. Its
 [validation report](machine/validation.json) covers all 253 removed cutoff
 cases, harmonic sums, squaring, comparisons, compiler lowering, and two complete
-register-machine iterations. Its [concrete execution log](machine/execution.txt)
-is supplementary evidence for that earlier table, not a finite-run proof of
-correctness for the new table.
+register-machine iterations. Concrete execution traces are local diagnostics;
+the unbounded correctness claim comes from the proof and certificates.
+
+## Repository artifacts and local logs
 
 The former ZIP downloads are replaced by files in this repository. Nothing
 requires downloading an archive:
@@ -144,11 +145,21 @@ requires downloading an archive:
 | Python compiler, reducers, search, and independent checkers | [tools/](tools) and [requirements.txt](requirements.txt) |
 | Original compiler and its license | [vendor/nql/](vendor/nql) |
 | Original 744-state source, table, and license | [reference/](reference) |
-| Saved search candidates, queries, and solver output | [results/](results) and [candidates/](candidates) |
-| Earlier 299-state release, checks, and hashes | [machine/manifest.json](machine/manifest.json), [validation report](machine/validation.json), and [execution log](machine/execution.txt) |
+| Saved search candidates, queries, certificates, and structured reports | [results/](results) and [candidates/](candidates) |
+| Earlier 299-state release, checks, and hashes | [machine/manifest.json](machine/manifest.json) and [validation report](machine/validation.json) |
 | Earlier verified 297-state release | [results/exact-quotient/](results/exact-quotient) |
 
-Generated ZIPs and Lean build binaries are ignored by Git. After verification,
+Raw solver transcripts (`*.solver.txt`), execution traces, console/test output,
+and log streams (`*.log`, `*.jsonl`, and similar files) stay local and are
+excluded from Git and release bundles. This applies regardless of the log's
+extension. Verification uses machine tables, certificates and structured
+reports; it does not require archived logs. The checked-in artifact audit
+validates query hashes and quotient witnesses. Historical UNSAT/UNKNOWN
+statuses are recorded metadata, not solver results re-established by that audit.
+
+Generated ZIPs and Lean build binaries are also ignored by Git. Packaging
+includes only versioned artifacts, even when local log files are present.
+After verification,
 an optional local bundle can be produced with:
 
 ```sh
@@ -160,8 +171,8 @@ python3 formal/package_verified.py
 The search screens source and register-layout mutations cheaply, evaluates
 promoted candidates through the complete reduction pipeline, and selects a
 diverse beam using the resulting counts. Exact quotient solving is applied
-before survivor selection. Identical constraint problems reuse decisive solver
-results; timeouts remain unresolved and are not cached as impossibility claims.
+before survivor selection. Identical constraint problems can reuse decisive solver
+results from the local cache; timeouts remain unresolved and are not cached as impossibility claims.
 
 Two generations found a register allocation whose greedy reduction still had
 299 states, but exact solving produced 296 and then **295**. The 294-state query
@@ -175,7 +186,7 @@ trades away execution speed.
 
 ## Program-counter and dispatch experiment
 
-The [new compiler-layout search](results/pc-layout/README.md) evaluates block
+The [first compiler-layout search](results/pc-layout/README.md) evaluates block
 placement, call-site inlining, and individual jump implementations. Expanding
 both `square()` calls before address assignment fits the unchanged arithmetic
 program into a 10-bit counter. A hybrid jump policy and exact quotient solving
@@ -231,6 +242,23 @@ solving, confirming the value of scoring the final reduction. The new
 [artifact audit](results/unified-beam/audit.json) and
 [candidate verification](results/unified-beam/fb92e7de11dc705e/verification.json)
 pass; the Lean headline remains the verified 295-state machine.
+
+## Wider search and the 278-state result
+
+The [16-parent run](results/unified-wide/README.md) examined 331 configurations
+and reached 280 states. A subsequent [24-parent run](results/unified-target278/README.md)
+and [systematic local search](results/neighborhood278/README.md) supplied further
+layouts. Reordering the SMT variables to put mutually incompatible states first
+made previously difficult quotient queries tractable.
+
+The [two delivered candidates](results/clique-target278/README.md) each have
+**278 states**, a **62.63% reduction** from 744. Both compile to 389 states,
+simplify to 339, and reduce to 283 with the best greedy seed before SMT reaches
+278. They passed the independent arithmetic, backend, control, invariant,
+macro and quotient checks. The searches were stopped after the 278-state
+results passed; their checkpoints identify unfinished selection stages.
+The full-machine Lean proof remains outstanding, and the default headline
+continues to select the proved 295-state machine.
 
 ## Provenance
 

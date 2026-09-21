@@ -1,5 +1,9 @@
 # Joint multigeneration optimization search
 
+This page records an earlier experiment. The latest independently checked
+result is [278 states](../clique-target278/README.md); the
+[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+
 This search combines all three compiler experiments: program-counter layout,
 register liveness/arithmetic lowering, and invariant-guided fragment replacement.
 It also mutates source padding, expression order and procedure boundaries.
@@ -13,9 +17,9 @@ reductions** and reused seven earlier reductions after checking exact table
 identity and their quotient mappings. It issued 31 SMT queries: 19 SAT, 11
 UNKNOWN and one UNSAT. Each generation drew from all six beam parents.
 
-The best count remains **282 states**. The joint search found additional
+The best count in this six-parent run was **282 states**. The joint search found additional
 282-state constructions but did not improve the count from phase 3. The
-281-state attempts remain unresolved; no minimality claim is made.
+281-state attempts in this run remained unresolved; no minimality claim is made.
 
 | Configuration | Compiled | Macro | Best greedy | Saved quotient |
 |---|---:|---:|---:|---:|
@@ -144,3 +148,7 @@ checks a promising jump-threshold variant outside the per-generation SMT
 shortlist. It returned UNKNOWN after 60 seconds; no quotient bound is inferred.
 Its [provenance](../unified-challengers/a8827bf4535cea54/provenance.json) identifies
 the exact candidate and reason for the follow-up.
+
+Raw solver, execution and console logs stay local. Versioned tables,
+certificates, configurations, SMT inputs and structured reports follow the
+[repository artifact policy](../../README.md#repository-artifacts-and-local-logs).

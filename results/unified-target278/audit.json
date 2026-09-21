@@ -42,6 +42,7 @@
     ],
     "fully_reduced": 36
   },
+  "solver_status_scope": "Recorded metadata; query hashes and quotient witnesses checked, solver statuses not rerun.",
   "best_states": 280,
   "scope": "Artifact and search audit; not a whole-machine Lean proof."
 }
