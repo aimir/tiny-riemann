@@ -60,9 +60,9 @@
     ]
   ],
   "sha256": {
-    "CONSTRUCTION.md": "a631d6c3c2180bbdeb0ad8ca3802a180dfdec037794446afde9eba45adc4491a",
+    "CONSTRUCTION.md": "c11afdaa3d10eca116fd82550233109e7de7446d23a98e1507f0a168a71c6874",
     "PROOF.md": "5f699f42c59b6f510b3c846bb6e93fb6925dc267e6838eb790e857d21d7e9c9d",
-    "README.md": "49c4b2dc6c505fc05068e59371f49fef8af7872722c68ba9b09eb61405f99a34",
+    "README.md": "2d52e568030f240cc836efcc7cfecfb1fb7f975a362dfae74c2d9a930db14231",
     "machine/algorithm.nql": "bc60a926e190ed69883d843fb9990d2a5a6ce299a7f1c782b05937d1cc7486ec",
     "machine/execution.txt": "745aaf0f2d59c89ccdbaf8de43dea47032e1eee84f3476b576dd7922a547360b",
     "machine/macro_lengths.tsv": "1b11bc9ed83efb579fd027dfd5e5dd74b481008108bfe0469ffb6f0072f54095",

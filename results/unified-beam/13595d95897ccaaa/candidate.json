@@ -1,0 +1,115 @@
+{
+  "key": "13595d95897ccaaab1a283ad60792240dd1351ba740595ca5376ed39aead6acb",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "relative",
+    "threshold": 1,
+    "seed": 554288
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 367,
+  "macro_states": 330,
+  "graph": "6cf81f379f27b2bc532262cd92c50e604fc6e588479e5a01aee20eaafe84eae3",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "pc:jumps"
+  ],
+  "proxy": 297.4,
+  "screen_states": 300,
+  "screen_seconds": 0.19184495799709111,
+  "register_steps_two_iterations": 16774,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+  "generation": 2,
+  "niche": "ordinary",
+  "final_states": 290,
+  "merge_counts": [
+    [
+      0,
+      290
+    ],
+    [
+      1,
+      294
+    ],
+    [
+      2,
+      292
+    ],
+    [
+      3,
+      293
+    ],
+    [
+      248,
+      293
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      291
+    ],
+    [
+      1235,
+      292
+    ]
+  ],
+  "full_seconds": 10.811081416031811,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "unknown",
+      "seconds": 25.03304599999683,
+      "problem_sha256": "a0b7e04b3478b19e24e9e2c55cc3ed8f615d2476dc15dbb7d44e5202dde1a97d",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 284,
+    "status": "unknown",
+    "seconds": 25.03304599999683,
+    "problem_sha256": "a0b7e04b3478b19e24e9e2c55cc3ed8f615d2476dc15dbb7d44e5202dde1a97d",
+    "reused_from": null
+  }
+}

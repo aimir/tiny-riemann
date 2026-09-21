@@ -1,0 +1,143 @@
+{
+  "key": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "seed": 645765
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1"
+    ]
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 366,
+  "macro_states": 327,
+  "graph": "a29c17ecd06ae9eadaa87dc7b78c04c1ad8dea2823a29d797b802e3480132850",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 3
+  },
+  "family": "unified",
+  "mutation": [
+    "pc:threshold"
+  ],
+  "proxy": 294.4,
+  "screen_states": 297,
+  "screen_seconds": 0.260362625005655,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "c74e36d8be5aafc3319dbd56f0decb645d0c0d91482f0ef2c65c9970dc1cb9da",
+  "generation": 1,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 282,
+  "merge_counts": [
+    [
+      0,
+      287
+    ],
+    [
+      1,
+      289
+    ],
+    [
+      2,
+      290
+    ],
+    [
+      3,
+      289
+    ],
+    [
+      248,
+      291
+    ],
+    [
+      715,
+      291
+    ],
+    [
+      1181,
+      289
+    ],
+    [
+      1235,
+      289
+    ]
+  ],
+  "full_seconds": 10.555819750006776,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "sat",
+      "seconds": 0.0002595839905552566,
+      "problem_sha256": "cc0d487f808e27ffba174c273b504c22121fc85515ef002bbe1a795c41943f38",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/fragments-zero/62270d5f1787322a/quotient-284.smt2"
+    },
+    {
+      "target": 283,
+      "status": "sat",
+      "seconds": 0.00015545799396932125,
+      "problem_sha256": "b8278d1fb6363f30fabf211b7a71677651e2de1a8f22fe26f462daa3b9c1a7df",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/fragments-zero/24d3d7667ba1fe4f/lower/quotient-283.smt2"
+    },
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 0.00015112501569092274,
+      "problem_sha256": "7d936c51b59aacf6e9c07c333902a5e23999eb77c14826cfc36b129f0f987dc1",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/fragments-zero/24d3d7667ba1fe4f/lower/quotient-282.smt2"
+    },
+    {
+      "target": 281,
+      "status": "unknown",
+      "seconds": 25.30151645798469,
+      "problem_sha256": "e1a2066ad205ff8d9e7926941ca3b30e2d6b15eac60065f4783996fcc72b805e",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 281,
+    "status": "unknown",
+    "seconds": 25.30151645798469,
+    "problem_sha256": "e1a2066ad205ff8d9e7926941ca3b30e2d6b15eac60065f4783996fcc72b805e",
+    "reused_from": null
+  }
+}

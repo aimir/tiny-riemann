@@ -1,0 +1,119 @@
+{
+  "key": "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "harmonic": "consume",
+    "borrow": "zero",
+    "borrow_depth": 2,
+    "borrow_zero": true,
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ],
+    "propagate_consumed": true,
+    "zero": true,
+    "positive": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc"
+  ],
+  "compiled_states": 389,
+  "macro_states": 347,
+  "graph": "a92efaef862363acb696571b5480d85bf063e8edc4a136f6b136686687e9ed52",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:positive"
+  ],
+  "proxy": 305.9,
+  "screen_states": 309,
+  "screen_seconds": 0.20093158399686217,
+  "register_steps_two_iterations": 16248,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "ee0e71234843b105a94fdac45e807f0806041ddb850dd6197f64ab2a6c890eba",
+  "generation": 1,
+  "niche": "harmonic:consume",
+  "final_states": 292,
+  "merge_counts": [
+    [
+      0,
+      293
+    ],
+    [
+      1,
+      296
+    ],
+    [
+      2,
+      292
+    ],
+    [
+      3,
+      297
+    ],
+    [
+      248,
+      298
+    ],
+    [
+      715,
+      296
+    ],
+    [
+      1181,
+      297
+    ],
+    [
+      1235,
+      295
+    ]
+  ],
+  "full_seconds": 9.894274582969956,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "unsat",
+      "seconds": 1.751243415987119,
+      "problem_sha256": "dfcf51dba0e616820e2690af1aa2413091893d80072654eed4ab5f51f38a4a0c",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 284,
+    "status": "unsat",
+    "seconds": 1.751243415987119,
+    "problem_sha256": "dfcf51dba0e616820e2690af1aa2413091893d80072654eed4ab5f51f38a4a0c",
+    "reused_from": null
+  }
+}

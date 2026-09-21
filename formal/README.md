@@ -29,6 +29,9 @@ clear and test cores for unbounded register contents. Run them with
 `lake env lean experiments/NativeFragments.lean` from this directory. The
 full new-machine refinement is still outstanding; component proofs and Python
 bisimulation/certificate checks do not change the 295-state headline.
+The later [joint multigeneration search](../results/unified-beam/README.md)
+finds further 282-state candidates with independent checks, without reducing
+the state count or closing that full-machine proof gap.
 
 The [verification contract](ACCEPTANCE.md) records both the current result and
 the preserved original approval. The original `machine299_correct` and the

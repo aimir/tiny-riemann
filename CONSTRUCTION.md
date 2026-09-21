@@ -290,3 +290,13 @@ proofs for native clear/test cores. Native-kernel variants were larger; the
 zero-call replacements produced the improvement. The 281-state fixed quotient
 query timed out after 90 seconds. The whole new machine still lacks the Lean
 refinement theorem and does not replace the verified 295-state headline.
+
+The subsequent [joint multigeneration search](results/unified-beam/README.md)
+combines all three compiler experiments and source mutations, ranking survivors
+by completed reductions and applying SMT before selection. Three generations
+screened 127 configurations and produced or reused 43 reductions. Additional
+282-state layouts were found, including a 339-state macro table that reduced
+to 282. The count did not improve beyond phase 3. Saved ancestry and quotient
+mappings pass an independent artifact audit; the new harmonic-inlining
+candidate also passes the backend, register-control and reduction checks.
+The full new-machine Lean theorem remains outstanding.

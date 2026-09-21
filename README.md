@@ -46,7 +46,9 @@ proved in Lean and is not the default headline.
   replacements, stronger register invariants, and native component proofs.
 - [Earlier experimental 285-state result](results/register-lowering/README.md): selective
   destructive reads, register placement, arithmetic experiments, and proof limits.
-- [Combined search results](results/combined-beam/README.md): search settings,
+- [Joint search across all three experiments](results/unified-beam/README.md):
+  multiple generations, retained alternatives, and selection by final counts.
+- [Earlier combined search results](results/combined-beam/README.md): search settings,
   candidate provenance, exact solving, and verification details.
 
 The original [299-state table](machine/riemann.tm), its
@@ -207,6 +209,24 @@ as generic Lean components, but their tested layouts were larger. All 512
 subsets of nine eligible zero-call replacements were screened. The winning
 replacement has an independent register-level bisimulation check; the complete
 machine's Lean theorem remains outstanding.
+
+## Joint search across the three experiments
+
+The [multigeneration search](results/unified-beam/README.md) combines source
+mutations, PC layout and jump policies, register allocation and arithmetic
+lowering, and invariant-guided fragments. It keeps a diverse beam of six
+candidates, promotes offspring through the complete reduction pipeline, and
+applies exact quotient solving before survivor selection. Previously rejected
+arithmetic kernels are included in the initial pool. Each candidate carries
+its own source, configuration, ancestry and checked feasible state count.
+
+Three generations screened 127 configurations and produced or reused 43
+complete reductions. They found several distinct 282-state candidates without
+beating phase 3. A larger 339-state macro table also reached 282 after exact
+solving, confirming the value of scoring the final reduction. The new
+[artifact audit](results/unified-beam/audit.json) and
+[candidate verification](results/unified-beam/fb92e7de11dc705e/verification.json)
+pass; the Lean headline remains the verified 295-state machine.
 
 ## Provenance
 

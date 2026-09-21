@@ -1,0 +1,143 @@
+{
+  "key": "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "seed": 645765
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1"
+    ]
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gi"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gi"
+  ],
+  "compiled_states": 366,
+  "macro_states": 327,
+  "graph": "7f3ff2d0baee1c003cfcc72ba88c59eac9c06fa59b39e6afb0a424de9e5e6c92",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 3
+  },
+  "family": "unified",
+  "mutation": [
+    "registers"
+  ],
+  "proxy": 294.4,
+  "screen_states": 297,
+  "screen_seconds": 0.25225474999751896,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6",
+  "generation": 2,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 282,
+  "merge_counts": [
+    [
+      0,
+      287
+    ],
+    [
+      1,
+      289
+    ],
+    [
+      2,
+      291
+    ],
+    [
+      3,
+      287
+    ],
+    [
+      248,
+      291
+    ],
+    [
+      715,
+      289
+    ],
+    [
+      1181,
+      288
+    ],
+    [
+      1235,
+      288
+    ]
+  ],
+  "full_seconds": 10.791297167015728,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "sat",
+      "seconds": 4.758358250022866,
+      "problem_sha256": "2528dd55f6a83d2fc1fb8392c0218dbaf3d5124c34ace33339d0cb420ae5aa08",
+      "reused_from": null
+    },
+    {
+      "target": 283,
+      "status": "sat",
+      "seconds": 5.848644416953903,
+      "problem_sha256": "d123f5250736a68f92f76bd80e21de0c5cfcb85dba039df2d8f55820f6ec592a",
+      "reused_from": null
+    },
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 11.519729042018298,
+      "problem_sha256": "1f64efcabf8bdd97b1426931d99ce730f55241bea4b9ff176e2d18ad38c4a2df",
+      "reused_from": null
+    },
+    {
+      "target": 281,
+      "status": "unknown",
+      "seconds": 25.033208540990017,
+      "problem_sha256": "cae3bd6f1666c9560c381fc975ec23ece78a0c4ddb58d057ed9f308840ae64bf",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 281,
+    "status": "unknown",
+    "seconds": 25.033208540990017,
+    "problem_sha256": "cae3bd6f1666c9560c381fc975ec23ece78a0c4ddb58d057ed9f308840ae64bf",
+    "reused_from": null
+  }
+}

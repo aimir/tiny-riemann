@@ -1,0 +1,6 @@
+{
+  "source_candidate": "results/unified-beam/a8827bf4535cea54",
+  "reason": "Another 287-state greedy layout that was outside the per-generation SMT shortlist. Query a strict improvement directly.",
+  "target": 281,
+  "timeout_seconds": 60
+}

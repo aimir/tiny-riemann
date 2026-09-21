@@ -1,0 +1,136 @@
+{
+  "key": "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ]
+  },
+  "register_order": [
+    "_Gc",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Glcm"
+  ],
+  "registers": [
+    "_Gc",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Glcm"
+  ],
+  "compiled_states": 367,
+  "macro_states": 328,
+  "graph": "f38eb6246d0dc8add8e65226d3fd9b87438f82dec09d8b50d501047dfe16bfd1",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "registers"
+  ],
+  "proxy": 295.4,
+  "screen_states": 298,
+  "screen_seconds": 0.25422716699540615,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "32800ea13fd7596bd400f35d51e84b5a0e7ee35bc7cf69be5630374e2614b4a5",
+  "generation": 1,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 283,
+  "merge_counts": [
+    [
+      0,
+      288
+    ],
+    [
+      1,
+      288
+    ],
+    [
+      2,
+      293
+    ],
+    [
+      3,
+      289
+    ],
+    [
+      248,
+      293
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      291
+    ],
+    [
+      1235,
+      291
+    ]
+  ],
+  "full_seconds": 10.545932708017062,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "sat",
+      "seconds": 5.780740500020329,
+      "problem_sha256": "b15285b19fd0347ea39a9cf6e85f6e7af479c9dfaea9bf42e5559d5ff795d3ac",
+      "reused_from": null
+    },
+    {
+      "target": 283,
+      "status": "sat",
+      "seconds": 11.49163454194786,
+      "problem_sha256": "bf266a5ccb7434a545057505d31021a4ce2ec80bc4ea25eb73b295eb5663fbfb",
+      "reused_from": null
+    },
+    {
+      "target": 282,
+      "status": "unknown",
+      "seconds": 25.022039042029064,
+      "problem_sha256": "a0c183daf57c45659937465a65ce3e9660b12a2af87fe05dc221366b145aeb5e",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 282,
+    "status": "unknown",
+    "seconds": 25.022039042029064,
+    "problem_sha256": "a0c183daf57c45659937465a65ce3e9660b12a2af87fe05dc221366b145aeb5e",
+    "reused_from": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "generation": 1,
+  "attempts": 45,
+  "screened": 40,
+  "promoted": 12,
+  "parents": [
+    "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+    "32800ea13fd7596bd400f35d51e84b5a0e7ee35bc7cf69be5630374e2614b4a5",
+    "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+    "72ff552fb3ca37eacb537bab1a9e10aa05bced94cb540e63a65e1251932d922b",
+    "c74e36d8be5aafc3319dbd56f0decb645d0c0d91482f0ef2c65c9970dc1cb9da",
+    "ee0e71234843b105a94fdac45e807f0806041ddb850dd6197f64ab2a6c890eba"
+  ],
+  "survivors": [
+    {
+      "key": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6",
+      "states": 282,
+      "niche": "zero-fragments",
+      "parent": "c74e36d8be5aafc3319dbd56f0decb645d0c0d91482f0ef2c65c9970dc1cb9da"
+    },
+    {
+      "key": "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+      "states": 283,
+      "niche": "zero-fragments",
+      "parent": "32800ea13fd7596bd400f35d51e84b5a0e7ee35bc7cf69be5630374e2614b4a5"
+    },
+    {
+      "key": "32800ea13fd7596bd400f35d51e84b5a0e7ee35bc7cf69be5630374e2614b4a5",
+      "states": 284,
+      "niche": "zero-fragments",
+      "parent": null
+    },
+    {
+      "key": "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+      "states": 285,
+      "niche": "facts",
+      "parent": null
+    },
+    {
+      "key": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+      "states": 285,
+      "niche": "ordinary",
+      "parent": null
+    },
+    {
+      "key": "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+      "states": 292,
+      "niche": "harmonic:consume",
+      "parent": "ee0e71234843b105a94fdac45e807f0806041ddb850dd6197f64ab2a6c890eba"
+    }
+  ]
+}

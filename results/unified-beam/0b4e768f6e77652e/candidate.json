@@ -1,0 +1,132 @@
+{
+  "key": "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "seed": 645765
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ],
+    "borrow": "zero",
+    "borrow_depth": 3,
+    "borrow_zero": true,
+    "borrow_globals": [
+      "i"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1"
+    ]
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 366,
+  "macro_states": 327,
+  "graph": "db573ad5b2d17627efeb27f71c325edbc08f700b9ebe3306dc5a934ddfbec90b",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 3
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:borrow"
+  ],
+  "proxy": 294.4,
+  "screen_states": 297,
+  "screen_seconds": 0.26049449999118224,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6",
+  "generation": 3,
+  "niche": "borrow",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 284,
+  "merge_counts": [
+    [
+      0,
+      290
+    ],
+    [
+      1,
+      291
+    ],
+    [
+      2,
+      292
+    ],
+    [
+      3,
+      291
+    ],
+    [
+      248,
+      292
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      291
+    ],
+    [
+      1235,
+      291
+    ]
+  ],
+  "full_seconds": 11.430425375001505,
+  "exact_history": [
+    {
+      "target": 284,
+      "status": "sat",
+      "seconds": 6.5836506250198,
+      "problem_sha256": "f9fff08d2f5a1be2ac52a5584adc8324711821af1188959eab94d84b8f94e1a7",
+      "reused_from": null
+    },
+    {
+      "target": 283,
+      "status": "unknown",
+      "seconds": 25.025491416978184,
+      "problem_sha256": "d89f845b4691e36174f6b8583d335a21e02faeaa64df1cd8244d6e54b79b824b",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 283,
+    "status": "unknown",
+    "seconds": 25.025491416978184,
+    "problem_sha256": "d89f845b4691e36174f6b8583d335a21e02faeaa64df1cd8244d6e54b79b824b",
+    "reused_from": null
+  }
+}

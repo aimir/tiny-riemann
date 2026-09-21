@@ -1,0 +1,15 @@
+{
+  "canonical_consumption_byte_identical": true,
+  "checked_282_inherited": true,
+  "final_count_overrides_macro_score": true,
+  "duplicate_preserves_ancestry": true,
+  "failed_certificate_removed_from_cache": true,
+  "mutations_exercised": {
+    "source": 8,
+    "registers": 8,
+    "pc": 8,
+    "lowering": 8,
+    "fragments": 8
+  },
+  "rejected_mutations": 0
+}
