@@ -1,0 +1,1233 @@
+{
+  "key": "9f682380a81104c5425376b5662b0a8ddc523a90135ac6718086c0454db89d24",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 3,
+    "jump_orders": {
+      "transfer(_Gdenom):1": "relative"
+    }
+  },
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 382,
+  "macro_states": 339,
+  "graph": "671d87395b07813b89338128b5ced47473d3990ceeb06da6c70e7de085012096",
+  "pc_bits": 10,
+  "layout_stats": {
+    "transfer(_Glcm)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gi)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gx,_Gi,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Gx)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gnum)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Glcm,_Gnum,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Glcm)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gi,_Gdenom,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Gi)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Glcm,_Gi,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gi,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gi)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gnum,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gnum)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_2)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_2,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_scratch_1,_Gnum)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_scratch_1,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "harmonic()": {
+      "order": 7,
+      "occupied": 115,
+      "raw_slots": 97
+    },
+    "transfer(_Gc)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gdenom,_Gc,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gdenom,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gx,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gx)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gnum,_Glcm,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gnum,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "square()": {
+      "order": 7,
+      "occupied": 80,
+      "raw_slots": 70
+    },
+    "transfer(_Gc,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gc)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Glcm,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Glcm)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "main()": {
+      "order": 10,
+      "occupied": 920,
+      "raw_slots": 737
+    }
+  },
+  "jump_sites": {
+    "transfer(_Glcm):1": {
+      "target": 3,
+      "choices": [
+        "relative",
+        1,
+        2
+      ],
+      "chosen": 1
+    },
+    "transfer(_Glcm):2": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gi):1": {
+      "target": 3,
+      "choices": [
+        "relative",
+        1,
+        2
+      ],
+      "chosen": 1
+    },
+    "transfer(_Gi):2": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gx,_Gi,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gx,_Gi,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_1,_Gx):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gx):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom):1": {
+      "target": 3,
+      "choices": [
+        "relative",
+        1,
+        2
+      ],
+      "chosen": "relative"
+    },
+    "transfer(_Gdenom):2": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum):1": {
+      "target": 3,
+      "choices": [
+        "relative",
+        1,
+        2
+      ],
+      "chosen": 1
+    },
+    "transfer(_Gnum):2": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_Gnum,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_Gnum,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_1,_Glcm):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Glcm):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gi,_Gdenom,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gi,_Gdenom,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_1,_Gi):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gi):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_Gi,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_Gi,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_Gi,_scratch_2,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gi,_scratch_2,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Gi):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Gi):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum,_scratch_1,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum,_scratch_1,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Gnum):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Gnum):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_2):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_2):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_2,_Gdenom):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_2,_Gdenom):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gnum):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gnum):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Gdenom):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Gdenom):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gdenom):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_1,_Gdenom):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "harmonic():13": {
+      "target": 115,
+      "choices": [
+        "relative",
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "harmonic():29": {
+      "target": 45,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "harmonic():44": {
+      "target": 28,
+      "choices": [
+        "relative",
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "harmonic():85": {
+      "target": 101,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "harmonic():100": {
+      "target": 84,
+      "choices": [
+        "relative",
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "harmonic():114": {
+      "target": 12,
+      "choices": [
+        "relative",
+        7
+      ],
+      "chosen": "relative"
+    },
+    "transfer(_Gc):1": {
+      "target": 3,
+      "choices": [
+        "relative",
+        1,
+        2
+      ],
+      "chosen": 1
+    },
+    "transfer(_Gc):2": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_Gc,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_Gc,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_Gdenom,_scratch_2,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gdenom,_scratch_2,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_Gx,_scratch_1,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gx,_scratch_1,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Gx):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Gx):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum,_Glcm,_scratch_1):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum,_Glcm,_scratch_1):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_Gnum,_scratch_2,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gnum,_scratch_2,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "square():13": {
+      "target": 29,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "square():28": {
+      "target": 12,
+      "choices": [
+        "relative",
+        5,
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "square():53": {
+      "target": 69,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7
+      ],
+      "chosen": "relative"
+    },
+    "square():68": {
+      "target": 52,
+      "choices": [
+        "relative",
+        7
+      ],
+      "chosen": "relative"
+    },
+    "transfer(_Gc,_scratch_2,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Gc,_scratch_2,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Gc):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Gc):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_scratch_2,_scratch_3):1": {
+      "target": 5,
+      "choices": [
+        "relative",
+        2,
+        3
+      ],
+      "chosen": 2
+    },
+    "transfer(_Glcm,_scratch_2,_scratch_3):4": {
+      "target": 0,
+      "choices": [
+        "relative",
+        3
+      ],
+      "chosen": 3
+    },
+    "transfer(_scratch_3,_Glcm):1": {
+      "target": 4,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "transfer(_scratch_3,_Glcm):3": {
+      "target": 0,
+      "choices": [
+        "relative",
+        2
+      ],
+      "chosen": 2
+    },
+    "main():45": {
+      "target": 147,
+      "choices": [
+        "relative",
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():85": {
+      "target": 111,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():87": {
+      "target": 90,
+      "choices": [
+        "relative",
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": 2
+    },
+    "main():89": {
+      "target": 108,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():110": {
+      "target": 84,
+      "choices": [
+        "relative",
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():112": {
+      "target": 134,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():133": {
+      "target": 44,
+      "choices": [
+        "relative",
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():146": {
+      "target": 44,
+      "choices": [
+        "relative",
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():437": {
+      "target": 453,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():452": {
+      "target": 436,
+      "choices": [
+        "relative",
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():454": {
+      "target": 458,
+      "choices": [
+        "relative",
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": 2
+    },
+    "main():457": {
+      "target": 453,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():653": {
+      "target": 669,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():668": {
+      "target": 652,
+      "choices": [
+        "relative",
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():693": {
+      "target": 709,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():708": {
+      "target": 692,
+      "choices": [
+        "relative",
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():733": {
+      "target": 749,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():748": {
+      "target": 732,
+      "choices": [
+        "relative",
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():773": {
+      "target": 789,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():788": {
+      "target": 772,
+      "choices": [
+        "relative",
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():813": {
+      "target": 829,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():828": {
+      "target": 812,
+      "choices": [
+        "relative",
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():853": {
+      "target": 869,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():868": {
+      "target": 852,
+      "choices": [
+        "relative",
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():893": {
+      "target": 909,
+      "choices": [
+        "relative",
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():908": {
+      "target": 892,
+      "choices": [
+        "relative",
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():910": {
+      "target": 914,
+      "choices": [
+        "relative",
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": 2
+    },
+    "main():913": {
+      "target": 909,
+      "choices": [
+        "relative",
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": "relative"
+    },
+    "main():915": {
+      "target": 917,
+      "choices": [
+        "relative",
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "chosen": 1
+    }
+  },
+  "family": "pc-layout",
+  "mutation": "hybrid",
+  "proxy": 303.6,
+  "screen_states": 308,
+  "screen_seconds": 0.24252724996767938,
+  "checks": {
+    "relation_pairs": 268,
+    "control_equivalence": "passed",
+    "scope": "All reachable primitive control paths, with arbitrary decrement outcomes; Python check, not Lean proof.",
+    "pc_prefixes_checked": 1024,
+    "maximum_dispatch_steps": 22,
+    "dispatch_check": "passed"
+  }
+}

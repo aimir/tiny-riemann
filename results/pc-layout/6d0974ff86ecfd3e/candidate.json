@@ -1,0 +1,217 @@
+{
+  "key": "6d0974ff86ecfd3efe70d9d1f253a504735e49cc046c34134dd6ee1125d8da01",
+  "layout": {
+    "inline": [],
+    "pack": [
+      "main()",
+      "harmonic()",
+      "square()"
+    ],
+    "placement": "source"
+  },
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 405,
+  "macro_states": 360,
+  "graph": "df6c8962b9969288e1eb72eb58c1502c3e710728c2e965e96881f336b2436a20",
+  "pc_bits": 11,
+  "layout_stats": {
+    "transfer(_Glcm)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gi)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gx,_Gi,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Gx)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gnum)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Glcm,_Gnum,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Glcm)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gi,_Gdenom,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_1,_Gi)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Glcm,_Gi,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gi,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gi)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gnum,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gnum)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_2)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_2,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_scratch_1,_Gnum)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gdenom,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_scratch_1,_Gdenom)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "harmonic()": {
+      "order": 7,
+      "occupied": 115,
+      "raw_slots": 97
+    },
+    "transfer(_Gc)": {
+      "order": 2,
+      "occupied": 3,
+      "raw_slots": 3
+    },
+    "transfer(_Gdenom,_Gc,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gdenom,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gx,_scratch_1,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gx)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Gnum,_Glcm,_scratch_1)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_Gnum,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "square()": {
+      "order": 7,
+      "occupied": 80,
+      "raw_slots": 70
+    },
+    "transfer(_Gc,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Gc)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "transfer(_Glcm,_scratch_2,_scratch_3)": {
+      "order": 3,
+      "occupied": 5,
+      "raw_slots": 5
+    },
+    "transfer(_scratch_3,_Glcm)": {
+      "order": 2,
+      "occupied": 4,
+      "raw_slots": 4
+    },
+    "main()": {
+      "order": 11,
+      "occupied": 1061,
+      "raw_slots": 823
+    }
+  },
+  "family": "pc-layout",
+  "mutation": "relative",
+  "proxy": 319.8,
+  "screen_states": 321,
+  "screen_seconds": 0.24122749996604398,
+  "checks": {
+    "relation_pairs": 268,
+    "control_equivalence": "passed",
+    "scope": "All reachable primitive control paths, with arbitrary decrement outcomes; Python check, not Lean proof.",
+    "pc_prefixes_checked": 2048,
+    "maximum_dispatch_steps": 24,
+    "dispatch_check": "passed"
+  }
+}

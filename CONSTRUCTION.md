@@ -268,3 +268,9 @@ The query for a 294-state quotient timed out, so that target remains unresolved.
 The earlier UNSAT result for 296 applies only to the older table, read masks,
 and quotient construction. See the [combined search report](results/combined-beam/README.md)
 for saved queries and reproduction commands.
+
+A subsequent [program-counter experiment](results/pc-layout/README.md) found
+a 291-state candidate by fitting the program into a 10-bit counter. That
+candidate has independent Python checks but is not yet part of the Lean proof
+described here. The timeouts and quotient bounds above concern the earlier
+295-state construction, not all later layouts.

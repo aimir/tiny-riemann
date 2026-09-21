@@ -1,4 +1,0 @@
-checkpoint 0 original_step 0 registers
-checkpoint 1 original_step 33848 registers 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0
-checkpoint 2 original_step 12169824 registers 0 2 0 0 0 324 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-PASS: 12169826 original steps match 12118618 reduced steps; checkpoints=3

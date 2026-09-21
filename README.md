@@ -7,7 +7,10 @@ if the approved arithmetic counterexample predicate has a witness. The
 The machine has **295 nonhalting states and two symbols**, down from the
 original **744**: **449 fewer states (60.3%)**. It starts on a blank zero tape
 in state `!ENTRY`. The separate `HALT` state is excluded from both counts.
-This is the smallest candidate found here; global minimality is not claimed.
+This is the smallest Lean-verified machine here; global minimality is not claimed.
+The [program-counter experiment](results/pc-layout/README.md) has since found
+a **291-state candidate with a 10-bit counter**. It passes independent Python
+checks but has not yet been proved in Lean, so it is not the default headline.
 
 | Construction | Nonhalting states |
 |---|---:|
@@ -156,6 +159,19 @@ The [search guide](results/combined-beam/README.md) gives reproduction commands.
 Layout candidates and arithmetic variants remain in `candidates/` and `results/`.
 Runtime and tape usage grow extremely quickly; minimizing states deliberately
 trades away execution speed.
+
+## Program-counter and dispatch experiment
+
+The [new compiler-layout search](results/pc-layout/README.md) evaluates block
+placement, call-site inlining, and individual jump implementations. Expanding
+both `square()` calls before address assignment fits the unchanged arithmetic
+program into a 10-bit counter. A hybrid jump policy and exact quotient solving
+produce the independently checked **291-state candidate**.
+
+The experiment screened 246 configurations and completely reduced 32. Its
+report includes the literal table, certificates, reproduction commands, and
+remaining Lean proof obligations. The approved specification is unchanged;
+formal verification still selects the 295-state machine.
 
 ## Provenance
 

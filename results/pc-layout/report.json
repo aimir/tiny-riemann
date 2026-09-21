@@ -1,0 +1,10 @@
+{
+  "screened": 92,
+  "unique_graphs": 81,
+  "fully_reduced": 12,
+  "exact_queries": 3,
+  "best_candidate": "7efbaa9d505034b3f528940cdfb8acb046f41c8bf329d84f7e6e7a09a9c03391",
+  "best_states": 294,
+  "best_pc_bits": 10,
+  "scope": "Experimental candidates; control and dispatch checked in Python, not formally proved in Lean."
+}

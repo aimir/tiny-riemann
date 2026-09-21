@@ -34,12 +34,15 @@ def package():
     paths.update((ROOT / 'machine').glob('riemann295.*'))
     paths.add(FORMAL / 'experiments/Quotient297.lean')
     for name in ('solve_quotient.py', 'test_solve_quotient.py', 'search_final.py',
-                 'search_layout.py', 'check_reallocated.py', 'test_search_final.py'):
+                 'search_layout.py', 'check_reallocated.py', 'test_search_final.py',
+                 'pc_layout.py', 'search_pc.py', 'test_pc_layout.py', 'check_pc.py'):
         paths.add(ROOT / 'tools' / name)
     for name in ('macro-layout-best.nql', 'macro-layout-second.nql', 'xfirst-1101-halt.nql'):
         paths.add(ROOT / 'candidates' / name)
     for directory in ('results/exact-quotient', 'results/final-beam',
-                      'results/combined-beam', 'results/combined-296-exact'):
+                      'results/combined-beam', 'results/combined-296-exact',
+                      'results/pc-layout', 'results/pc-focused', 'results/pc-local',
+                      'results/pc-exact', 'results/pc-long-exact'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
 
     target = ROOT / 'riemann-295-verified.zip'

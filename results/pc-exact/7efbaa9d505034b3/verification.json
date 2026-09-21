@@ -1,0 +1,43 @@
+{
+  "status": "independently checked; not Lean-verified",
+  "machine_states": 291,
+  "pc_bits": 10,
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "checks": {
+    "relation_pairs": 268,
+    "control_equivalence": "passed",
+    "scope": "All reachable primitive control paths, with arbitrary decrement outcomes; Python check, not Lean proof.",
+    "pc_prefixes_checked": 1024,
+    "maximum_dispatch_steps": 22,
+    "dispatch_check": "passed",
+    "backend_relation_pairs": 42,
+    "counter_cases_checked": 2048,
+    "backend_check": "passed",
+    "macros": {
+      "macro_rewrites": 80,
+      "exhaustive_tape_windows": 1280,
+      "states": 336,
+      "certificate": "valid"
+    },
+    "quotient": {
+      "compiled_states": 336,
+      "reduced_states": 291,
+      "certificate": "valid"
+    }
+  },
+  "reference_compilation": "byte-for-byte match with verified riemann295.compiled.tm",
+  "candidate_reproduction": "compiled and macro tables match byte for byte",
+  "sha256": {
+    "results/pc-exact/7efbaa9d505034b3/quotient-291.tm": "e5c4375b41608febc7dd0cb44a4880bd4777db5a7972c170b4540fc5a5aca0af",
+    "results/pc-exact/7efbaa9d505034b3/quotient-291.certificate.json": "1a7ec570c9922478057a870fc9ab3ef67360c23eac71bce473bad9182cf54937",
+    "results/pc-layout/7efbaa9d505034b3/compiled.tm": "3e07b4e14755ebf1895f8fc86d550f3429975f8a01236ed9da6a9f2e8058a158",
+    "results/pc-layout/7efbaa9d505034b3/macro.tm": "b04892d8179ad125f30f8fa6d6f9964428fcec87fb78c41a4d3aad891e30a1d8"
+  },
+  "formal_status": "The default Lean headline remains machine295_correct. No theorem for this candidate is asserted."
+}

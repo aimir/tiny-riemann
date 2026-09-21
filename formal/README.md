@@ -13,6 +13,10 @@ entry point: `headlineMachine` is `machine295`, and `headline_correct` proves
 its specification. The default build and the main `RiemannMachineVerification`
 import include this result.
 
+The later [291-state PC-layout candidate](../results/pc-layout/README.md) has
+independent Python checks but is not yet proved in Lean. Its changed addresses
+and 10-bit counter need additional proofs before it can replace this headline.
+
 The [verification contract](ACCEPTANCE.md) records both the current result and
 the preserved original approval. The original `machine299_correct` and the
 later `machine297_correct` remain available. The original machine, semantics,
