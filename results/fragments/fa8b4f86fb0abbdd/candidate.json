@@ -1,0 +1,112 @@
+{
+  "key": "fa8b4f86fb0abbdd93e7d45758c398e1711ed1753e81ccf649e295e192373a76",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "consume": true,
+    "consume_lines": [
+      60,
+      65,
+      68,
+      69,
+      71
+    ]
+  },
+  "fragments": {
+    "clear": false,
+    "test": false,
+    "prune": true,
+    "roles": false
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 369,
+  "macro_states": 331,
+  "graph": "b403a33b245aaea005b510c01dc2cc99e141f45ddc7f6b7774f671668cd8dff7",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0
+  },
+  "family": "fragments",
+  "mutation": {
+    "clear": false,
+    "test": false,
+    "prune": true,
+    "roles": false
+  },
+  "proxy": 298.4,
+  "screen_states": 301,
+  "screen_seconds": 0.18411429197294638,
+  "register_steps_two_iterations": 16774,
+  "phase_rewrites": 2,
+  "role_rewrites": 0,
+  "final_states": 290,
+  "merge_counts": [
+    [
+      0,
+      291
+    ],
+    [
+      1,
+      290
+    ],
+    [
+      2,
+      294
+    ],
+    [
+      3,
+      293
+    ],
+    [
+      248,
+      291
+    ],
+    [
+      715,
+      293
+    ],
+    [
+      1181,
+      293
+    ],
+    [
+      1235,
+      293
+    ]
+  ],
+  "full_seconds": 10.79230154195102,
+  "exact": {
+    "target": 284,
+    "status": "unsat",
+    "seconds": 0.0002387920394539833,
+    "problem_sha256": "0af68078e59fcca96f44b33f9403eb34ccd46fdf6a53805f196b4be73f7a30e5",
+    "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/fragments/b60d810a3acca39a/quotient-284.smt2"
+  }
+}

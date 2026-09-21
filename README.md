@@ -8,11 +8,12 @@ The machine has **295 nonhalting states and two symbols**, down from the
 original **744**: **449 fewer states (60.3%)**. It starts on a blank zero tape
 in state `!ENTRY`. The separate `HALT` state is excluded from both counts.
 This is the smallest Lean-verified machine here; global minimality is not claimed.
-The later [register-liveness experiment](results/register-lowering/README.md)
-produced a **285-state candidate**, improving on the
-[291-state PC-layout result](results/pc-layout/README.md). It passes arithmetic
-regression and backend/reduction checks but has not been proved in Lean, so
-it is not the default headline.
+The later [register-invariant and fragment experiment](results/fragments/README.md)
+produced a **282-state candidate**, improving on the
+[285-state register-liveness result](results/register-lowering/README.md).
+It has independent register-control, backend and reduction checks, plus Lean
+proofs for generic native fragment cores. The whole candidate has not been
+proved in Lean and is not the default headline.
 
 | Construction | Nonhalting states |
 |---|---:|
@@ -41,7 +42,9 @@ it is not the default headline.
   [shortened table](machine/riemann295.macro.tm),
   [short-path certificate](machine/riemann295.macros.json), and
   [quotient certificate](machine/riemann295.reduction.json).
-- [Experimental 285-state result](results/register-lowering/README.md): selective
+- [Experimental 282-state result](results/fragments/README.md): whole-call
+  replacements, stronger register invariants, and native component proofs.
+- [Earlier experimental 285-state result](results/register-lowering/README.md): selective
   destructive reads, register placement, arithmetic experiments, and proof limits.
 - [Combined search results](results/combined-beam/README.md): search settings,
   candidate provenance, exact solving, and verification details.
@@ -191,6 +194,19 @@ Its arithmetic regression suite has 528 cases, and its backend and reduction
 certificates pass independent checks. An unbounded source-to-register proof
 and the new Lean machine proof remain outstanding; the default theorem stays
 `machine295_correct`.
+
+## Register invariants and whole-fragment experiment
+
+The [third experiment](results/fragments/README.md) tracks register zeros and
+initialized capacity at each program counter, beyond bounded tape windows.
+Replacing three complete calls whose source register is always zero produces
+**282 states** after exact quotient solving. The 281-state query timed out.
+
+Native clear and nondestructive-test kernels were also implemented and proved
+as generic Lean components, but their tested layouts were larger. All 512
+subsets of nine eligible zero-call replacements were screened. The winning
+replacement has an independent register-level bisimulation check; the complete
+machine's Lean theorem remains outstanding.
 
 ## Provenance
 

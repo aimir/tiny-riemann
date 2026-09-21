@@ -282,3 +282,11 @@ clears, eight-register variants, and coordinated harmonic arithmetic. Its
 arithmetic lowering has differential tests, with independent checks of the
 backend and reductions, but no unbounded source-to-register theorem. The
 285-state candidate therefore does not replace the formally verified result.
+
+The third [register-invariant and fragment experiment](results/fragments/README.md)
+reached 282 states by replacing three entire calls proved to have zero inputs.
+It adds an independent register-level bisimulation check and generic Lean
+proofs for native clear/test cores. Native-kernel variants were larger; the
+zero-call replacements produced the improvement. The 281-state fixed quotient
+query timed out after 90 seconds. The whole new machine still lacks the Lean
+refinement theorem and does not replace the verified 295-state headline.

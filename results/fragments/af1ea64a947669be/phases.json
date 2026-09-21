@@ -1,0 +1,17 @@
+{
+  "phase": null,
+  "roles": [
+    {
+      "state": "init.f1",
+      "read": 0
+    },
+    {
+      "state": "init.f2",
+      "read": 0
+    },
+    {
+      "state": "dec.scan_done",
+      "read": 0
+    }
+  ]
+}

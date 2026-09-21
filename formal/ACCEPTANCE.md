@@ -23,9 +23,10 @@ The default Lean build includes it. The literal table is
 d79512cf945e8828ff587662990ee595e596871928f402fa6fef470b144d7079
 ```
 
-The later [285-state experimental machine](../results/register-lowering/README.md)
-is outside this accepted result. Its arithmetic lowering is not yet proved in
-Lean; it does not change the headline or the frozen approval below.
+The later [282-state experimental machine](../results/fragments/README.md)
+is outside this accepted result. Generic native fragment cores have Lean
+proofs, but its arithmetic lowering and full-machine refinement are not yet
+proved in Lean. It does not change the headline or the frozen approval below.
 
 ## Preserved original approval
 

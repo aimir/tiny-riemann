@@ -1,0 +1,9 @@
+{
+  "screened": 512,
+  "unique_graphs": 512,
+  "fully_reduced": 16,
+  "best_states": 282,
+  "best_candidate": "24d3d7667ba1fe4fb075bfa4182752e4ca1331a826173c89655d262f33c8ea4a",
+  "scope": "Experimental whole machine; native component lemmas and finite certificates do not prove the full headline.",
+  "lower_search": "24d3d7667ba1fe4f/lower/report.json"
+}

@@ -33,11 +33,13 @@ def package():
     paths.update((FORMAL / 'RiemannMachineVerification').rglob('*.lean'))
     paths.update((ROOT / 'machine').glob('riemann295.*'))
     paths.add(FORMAL / 'experiments/Quotient297.lean')
+    paths.add(FORMAL / 'experiments/NativeFragments.lean')
     for name in ('solve_quotient.py', 'test_solve_quotient.py', 'search_final.py',
                  'search_layout.py', 'check_reallocated.py', 'test_search_final.py',
                  'pc_layout.py', 'search_pc.py', 'test_pc_layout.py', 'check_pc.py',
                  'register_lowering.py', 'search_arithmetic.py', 'test_register_lowering.py',
-                 'check_arithmetic.py'):
+                 'check_arithmetic.py', 'fragments.py', 'search_fragments.py',
+                 'test_fragments.py', 'check_fragments.py'):
         paths.add(ROOT / 'tools' / name)
     for name in ('macro-layout-best.nql', 'macro-layout-second.nql', 'xfirst-1101-halt.nql'):
         paths.add(ROOT / 'candidates' / name)
@@ -49,7 +51,7 @@ def package():
                       'results/register-local', 'results/register-local2',
                       'results/register-allocation', 'results/register-facts',
                       'results/register-exact', 'results/register-exact-long',
-                      'results/register-kernels'):
+                      'results/register-kernels', 'results/fragments', 'results/fragments-zero'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
 
     target = ROOT / 'riemann-295-verified.zip'

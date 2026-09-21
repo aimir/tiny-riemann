@@ -19,8 +19,16 @@ and 10-bit counter need additional proofs before it can replace this headline.
 The subsequent [285-state register-liveness candidate](../results/register-lowering/README.md)
 also changes the register operations by consuming dead values. Its arithmetic
 regressions and independent backend/reduction checks pass, but its unbounded
-source-to-register refinement has not been proved. Neither experimental result
-is selected by the default Lean build.
+source-to-register refinement has not been proved. These experimental results
+are not selected by the default Lean build.
+
+The [282-state fragment candidate](../results/fragments/README.md) adds
+register-zero invariants and whole-call replacements. Its optional
+[NativeFragments.lean](experiments/NativeFragments.lean) proves generic native
+clear and test cores for unbounded register contents. Run them with
+`lake env lean experiments/NativeFragments.lean` from this directory. The
+full new-machine refinement is still outstanding; component proofs and Python
+bisimulation/certificate checks do not change the 295-state headline.
 
 The [verification contract](ACCEPTANCE.md) records both the current result and
 the preserved original approval. The original `machine299_correct` and the

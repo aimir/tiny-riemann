@@ -1,0 +1,8 @@
+{
+  "screened": 50,
+  "unique_graphs": 46,
+  "fully_reduced": 13,
+  "best_states": 290,
+  "best_candidate": "af1ea64a947669be1fe03176175978594abcf442e1b57b706260691eaec53cb9",
+  "scope": "Experimental whole machine; native component lemmas and finite certificates do not prove the full headline."
+}
