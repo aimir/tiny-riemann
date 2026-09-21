@@ -4,7 +4,9 @@ The first PC-layout experiment produced a **291-state, two-symbol candidate
 with a 10-bit program counter**, four states smaller than the verified
 295-state machine. The candidate has passed the independent Python checks
 below. **It has not been proved in Lean.** The default theorem and smallest
-Lean-verified result remain `machine295_correct`.
+Lean-verified result remain `machine295_correct`. The later
+[register-liveness experiment](../register-lowering/README.md) improves the
+experimental count to 285; this page records the preceding PC-only phase.
 
 ## Delivered candidate
 
@@ -158,6 +160,6 @@ Promotion requires:
 
 The saved finite checks provide inputs for those proof obligations. The
 [verification contract](../../formal/ACCEPTANCE.md), current theorem, and
-acceptance pins remain unchanged. Register-liveness allocation and specialized
-arithmetic lowering, and stronger phase invariants with larger fragment
-replacement, have not been investigated in this experiment.
+acceptance pins remain unchanged. Register-liveness allocation and specialized arithmetic lowering are investigated
+in the [following experiment](../register-lowering/README.md). Stronger phase
+invariants with larger fragment replacement are still a separate direction.

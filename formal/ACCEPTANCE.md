@@ -23,6 +23,10 @@ The default Lean build includes it. The literal table is
 d79512cf945e8828ff587662990ee595e596871928f402fa6fef470b144d7079
 ```
 
+The later [285-state experimental machine](../results/register-lowering/README.md)
+is outside this accepted result. Its arithmetic lowering is not yet proved in
+Lean; it does not change the headline or the frozen approval below.
+
 ## Preserved original approval
 
 The user approved the following statement and its definitions after reviewing

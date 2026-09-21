@@ -274,3 +274,11 @@ a 291-state candidate by fitting the program into a 10-bit counter. That
 candidate has independent Python checks but is not yet part of the Lean proof
 described here. The timeouts and quotient bounds above concern the earlier
 295-state construction, not all later layouts.
+
+The following [register-liveness and arithmetic experiment](results/register-lowering/README.md)
+reached 285 states using five destructive reads of dead values and another
+physical register placement. It also tested borrowing dead globals, known-zero
+clears, eight-register variants, and coordinated harmonic arithmetic. Its
+arithmetic lowering has differential tests, with independent checks of the
+backend and reductions, but no unbounded source-to-register theorem. The
+285-state candidate therefore does not replace the formally verified result.

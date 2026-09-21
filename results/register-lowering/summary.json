@@ -1,0 +1,78 @@
+{
+  "screening_evaluations": 424,
+  "complete_reductions": 69,
+  "best_states": 285,
+  "candidate_directory": "results/register-local/d01c9264a0344463",
+  "formal_status": "Not Lean verified; headline remains machine295_correct.",
+  "sweeps": [
+    {
+      "directory": "results/register-lowering",
+      "screened": 108,
+      "unique_graphs": 63,
+      "fully_reduced": 15,
+      "exact_queries": 4,
+      "best_candidate": "3144b3a2c3b0fd61afc6ae14e37875ec1afb9eb0ae2cfd32fc15ac0a2c5bf119",
+      "best_states": 294,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-focused",
+      "screened": 79,
+      "unique_graphs": 79,
+      "fully_reduced": 16,
+      "exact_queries": 5,
+      "best_candidate": "14ad147b1b9dc63d11bb91b17b52894f70f7f50390c16bc946839ce907094eeb",
+      "best_states": 290,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-local",
+      "screened": 59,
+      "unique_graphs": 57,
+      "fully_reduced": 10,
+      "exact_queries": 4,
+      "best_candidate": "d01c9264a0344463d370dd18f71714152d863f996673ed0b6122f7597595151e",
+      "best_states": 285,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-allocation",
+      "screened": 48,
+      "unique_graphs": 24,
+      "fully_reduced": 8,
+      "exact_queries": 2,
+      "best_candidate": "2ebade6762dfbca3d04ca9af7994fd0e899d35fad3abd11c05beffb47e488a64",
+      "best_states": 308,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-facts",
+      "screened": 70,
+      "unique_graphs": 70,
+      "fully_reduced": 9,
+      "exact_queries": 3,
+      "best_candidate": "2eddb0cc492fb8ffa38fcfef79a647539374946f89a29da414593be990ec80ee",
+      "best_states": 285,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-local2",
+      "screened": 59,
+      "unique_graphs": 57,
+      "fully_reduced": 10,
+      "exact_queries": 4,
+      "best_candidate": "282e987ccbb2c58d334d2d9fd1a73f1ba16be9bf7030dd898b6ce6bb83a45ca4",
+      "best_states": 290,
+      "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+    },
+    {
+      "directory": "results/register-kernels",
+      "screened": 1,
+      "fully_reduced": 1,
+      "best_candidate": "73a001ca8bf2cf7bcfc58561d6c4e3a745492d32cd1caf73d99cc3091b9d826a",
+      "best_states": 324,
+      "purpose": "Full reduction of the best screened shared-i harmonic kernel."
+    }
+  ],
+  "target_284": "Unresolved; the winner's fixed quotient problem timed out at 60 and 180 seconds."
+}

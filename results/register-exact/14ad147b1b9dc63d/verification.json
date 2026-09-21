@@ -1,0 +1,929 @@
+{
+  "status": "experimental; differential arithmetic tests and independent backend/reduction checks passed; not Lean verified",
+  "machine_states": 286,
+  "machine_file": "results/register-exact/14ad147b1b9dc63d/quotient-286.tm",
+  "certificate_file": "results/register-exact/14ad147b1b9dc63d/quotient-286.certificate.json",
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "pc_bits": 10,
+  "lowering": {
+    "consume": true,
+    "consume_lines": [
+      60,
+      65,
+      68,
+      69,
+      71
+    ]
+  },
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "checks": {
+    "arithmetic_regressions": {
+      "differential_cases": 528,
+      "disabled_lowering_byte_identical": true,
+      "unsupported_inputs_rejected": 2
+    },
+    "pc_prefixes_checked": 1024,
+    "maximum_dispatch_steps": 22,
+    "dispatch_check": "passed",
+    "backend_relation_pairs": 42,
+    "counter_cases_checked": 2048,
+    "backend_check": "passed",
+    "candidate_main_iterations": 2,
+    "macros": {
+      "macro_rewrites": 81,
+      "exhaustive_tape_windows": 1296,
+      "states": 331,
+      "certificate": "valid"
+    },
+    "quotient": {
+      "compiled_states": 331,
+      "reduced_states": 286,
+      "certificate": "valid"
+    }
+  },
+  "source_analysis": [
+    {
+      "node": "Assign",
+      "line": 26,
+      "live_before": [
+        "c",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 27,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "x"
+      ]
+    },
+    {
+      "node": "Greater",
+      "line": 28,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 29,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 30,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 31,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 36,
+      "live_before": [
+        "x"
+      ],
+      "live_after": [
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "i"
+      ],
+      "positive_before": []
+    },
+    {
+      "node": "Assign",
+      "line": 37,
+      "live_before": [
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "i"
+      ],
+      "positive_before": [
+        "lcm"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 38,
+      "live_before": [
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "i"
+      ],
+      "positive_before": [
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Greater",
+      "line": 39,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Call",
+      "line": 40,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Call",
+      "line": 41,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 42,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 43,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "denom"
+      ],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Greater",
+      "line": 44,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Equal",
+      "line": 45,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 46,
+      "live_before": [
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "denom"
+      ],
+      "positive_before": [
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 48,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 49,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "i",
+        "lcm",
+        "num",
+        "x"
+      ]
+    },
+    {
+      "node": "Greater",
+      "line": 51,
+      "live_before": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "num"
+      ],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 52,
+      "live_before": [
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "num"
+      ],
+      "positive_before": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 53,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "num"
+      ],
+      "positive_before": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Call",
+      "line": 55,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "num"
+      ],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 56,
+      "live_before": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "num"
+      ],
+      "positive_before": [
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Call",
+      "line": 59,
+      "live_before": [
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "lcm",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 60,
+      "live_before": [
+        "lcm",
+        "x"
+      ],
+      "live_after": [
+        "i",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 62,
+      "live_before": [
+        "denom",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "i",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "denom",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 63,
+      "live_before": [
+        "denom",
+        "i",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "i",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 64,
+      "live_before": [
+        "c",
+        "denom",
+        "i",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "i",
+        "num",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 65,
+      "live_before": [
+        "c",
+        "i",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "i",
+        "lcm",
+        "x"
+      ],
+      "zero_before": [],
+      "positive_before": [
+        "c",
+        "denom",
+        "i",
+        "lcm",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 68,
+      "live_before": [
+        "c",
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "denom",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 69,
+      "live_before": [
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "denom",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 71,
+      "live_before": [
+        "denom",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "denom",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "x"
+      ]
+    },
+    {
+      "node": "Greater",
+      "line": 72,
+      "live_before": [
+        "denom",
+        "x"
+      ],
+      "live_after": [
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "x"
+      ]
+    },
+    {
+      "node": "Return",
+      "line": 73,
+      "live_before": [],
+      "live_after": [],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "denom",
+        "x"
+      ]
+    },
+    {
+      "node": "Call",
+      "line": 75,
+      "live_before": [
+        "x"
+      ],
+      "live_after": [
+        "x"
+      ],
+      "zero_before": [
+        "denom",
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 80,
+      "live_before": [
+        "c",
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "x"
+      ]
+    },
+    {
+      "node": "Assign",
+      "line": 81,
+      "live_before": [
+        "c",
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "live_after": [
+        "c",
+        "denom",
+        "lcm",
+        "num",
+        "x"
+      ],
+      "zero_before": [
+        "i"
+      ],
+      "positive_before": [
+        "c",
+        "x"
+      ]
+    }
+  ],
+  "reference_compilation": "byte-for-byte match with verified riemann295.compiled.tm",
+  "candidate_reproduction": "compiled and macro tables match byte for byte",
+  "sha256": {
+    "results/register-exact/14ad147b1b9dc63d/quotient-286.tm": "fc6e1fb9817bed8f9ac233438a1d58613dab471d6666a02495981f3a5e7e4c54",
+    "results/register-exact/14ad147b1b9dc63d/quotient-286.certificate.json": "13d5ffc34e4be4f12ee6b1faa5c20f3a1daa8b4310c88de313bb974a6e0e5d0a",
+    "results/register-focused/source.nql": "5d66249eca6785a9a480d5e4d61473626d510bf624b2a258c08f7eb7a6a11bd2",
+    "results/register-focused/14ad147b1b9dc63d/compiled.tm": "18adfe07fa6ac08d4c814d86958bb2311ce13ceecf52242505fea7a49b0779ad",
+    "results/register-focused/14ad147b1b9dc63d/macro.tm": "bd767c1320477daa2c5d217f540dfb769b164531780f43ec12ec53ce78d6c5f7",
+    "results/register-focused/14ad147b1b9dc63d/macros.json": "5d879ba5a490a877907780d38edbbb5f3d022a4e3afd1dc23de47808c0251457",
+    "results/register-focused/14ad147b1b9dc63d/candidate.json": "21b3b138c770e6f0c732fd7f1110cb17002de51bcff6fc43d9295f0fe3cc68ef"
+  },
+  "formal_status": "Source-to-register refinement is not proved. The default Lean headline remains machine295_correct."
+}

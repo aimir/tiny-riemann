@@ -8,9 +8,11 @@ The machine has **295 nonhalting states and two symbols**, down from the
 original **744**: **449 fewer states (60.3%)**. It starts on a blank zero tape
 in state `!ENTRY`. The separate `HALT` state is excluded from both counts.
 This is the smallest Lean-verified machine here; global minimality is not claimed.
-The [program-counter experiment](results/pc-layout/README.md) has since found
-a **291-state candidate with a 10-bit counter**. It passes independent Python
-checks but has not yet been proved in Lean, so it is not the default headline.
+The later [register-liveness experiment](results/register-lowering/README.md)
+produced a **285-state candidate**, improving on the
+[291-state PC-layout result](results/pc-layout/README.md). It passes arithmetic
+regression and backend/reduction checks but has not been proved in Lean, so
+it is not the default headline.
 
 | Construction | Nonhalting states |
 |---|---:|
@@ -39,6 +41,8 @@ checks but has not yet been proved in Lean, so it is not the default headline.
   [shortened table](machine/riemann295.macro.tm),
   [short-path certificate](machine/riemann295.macros.json), and
   [quotient certificate](machine/riemann295.reduction.json).
+- [Experimental 285-state result](results/register-lowering/README.md): selective
+  destructive reads, register placement, arithmetic experiments, and proof limits.
 - [Combined search results](results/combined-beam/README.md): search settings,
   candidate provenance, exact solving, and verification details.
 
@@ -172,6 +176,21 @@ The experiment screened 246 configurations and completely reduced 32. Its
 report includes the literal table, certificates, reproduction commands, and
 remaining Lean proof obligations. The approved specification is unchanged;
 formal verification still selects the 295-state machine.
+
+## Register liveness and specialized arithmetic experiment
+
+The [next experiment](results/register-lowering/README.md) implements liveness
+across calls and loop backedges, dead-global scratch borrowing, zero/positive
+facts, and specialized multiplication, squaring, subtraction, and harmonic
+updates. Selectively consuming five dead values, then changing register
+placement, produces a **285-state candidate**. Eight-register machines were
+also obtained, but they did not improve the best state count.
+
+The 285-state table and all search settings and certificates are included.
+Its arithmetic regression suite has 528 cases, and its backend and reduction
+certificates pass independent checks. An unbounded source-to-register proof
+and the new Lean machine proof remain outstanding; the default theorem stays
+`machine295_correct`.
 
 ## Provenance
 

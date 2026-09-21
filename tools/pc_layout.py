@@ -346,11 +346,13 @@ def check_dispatch(machine):
             'dispatch_check': 'passed'}
 
 
-def check_backend(original, candidate):
+def check_backend(original, candidate, register_pairs=None):
     """Compare register routines to the reference, stopping at PC-update entries.
 
     The bisimulation covers both reads at every paired state, so it applies to
     unbounded register storage. PC-update routines are exhausted separately.
+    register_pairs optionally matches different logical names at the same physical
+    positions. This does not assert equivalence of their source-level values.
     This is an independent Python certificate check, not a Lean theorem.
     """
     def all_states(machine):
@@ -386,8 +388,10 @@ def check_backend(original, candidate):
     registers = sorted({name[9:-1] for name, _ in primitive_graph(original).values()
                         if name.startswith(('reg_incr(', 'reg_decr('))})
     pending = [(original.builder.reg_init().entry, candidate.builder.reg_init().entry)]
-    for name in registers:
-        a, b = original.builder.register(name), candidate.builder.register(name)
+    if register_pairs is None:
+        register_pairs = [(name, name) for name in registers]
+    for original_name, candidate_name in register_pairs:
+        a, b = original.builder.register(original_name), candidate.builder.register(candidate_name)
         pending.extend(((a.inc.entry, b.inc.entry), (a.dec.entry, b.dec.entry)))
     seen = set()
     while pending:

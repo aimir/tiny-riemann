@@ -1,0 +1,9 @@
+{
+  "screened": 59,
+  "unique_graphs": 57,
+  "fully_reduced": 10,
+  "exact_queries": 4,
+  "best_candidate": "d01c9264a0344463d370dd18f71714152d863f996673ed0b6122f7597595151e",
+  "best_states": 285,
+  "scope": "Experimental arithmetic lowering; differential tests and finite backend/reduction checks, not Lean verified."
+}

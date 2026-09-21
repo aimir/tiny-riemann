@@ -16,6 +16,11 @@ import include this result.
 The later [291-state PC-layout candidate](../results/pc-layout/README.md) has
 independent Python checks but is not yet proved in Lean. Its changed addresses
 and 10-bit counter need additional proofs before it can replace this headline.
+The subsequent [285-state register-liveness candidate](../results/register-lowering/README.md)
+also changes the register operations by consuming dead values. Its arithmetic
+regressions and independent backend/reduction checks pass, but its unbounded
+source-to-register refinement has not been proved. Neither experimental result
+is selected by the default Lean build.
 
 The [verification contract](ACCEPTANCE.md) records both the current result and
 the preserved original approval. The original `machine299_correct` and the
