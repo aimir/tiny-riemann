@@ -1,112 +1,78 @@
-# Verification contract and accepted results
+# Verification contract
 
-The **current 278-state machine is formally verified**. The original
-299-state theorem approved on 2026-09-17 is also proved and remains a frozen
-acceptance target. The smaller machine satisfies the same arithmetic
-specification; neither the predicate nor the execution semantics has changed.
-
-## Current result
-
-[`Correctness278.lean`](RiemannMachineVerification/Correctness278.lean) proves:
+The unconditional headline is proved in
+[RiemannMachineVerification.lean](RiemannMachineVerification.lean):
 
 ```lean
 theorem machine278_correct :
     HaltsBlank machine278 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-[`Headline.lean`](RiemannMachineVerification/Headline.lean) defines
-`headlineMachine` as `machine278` and exposes this result as `headline_correct`.
-The default Lean build includes it. The literal table is
-[primary 278-state table](../results/clique-target278/fefaa549f250fd12/quotient-278.tm), with SHA-256:
+`headlineMachine` is definitionally `machine278`; `headline_correct` exposes the
+same statement. The exact [278-state input](../results/clique-target278/fefaa549f250fd12/quotient-278.tm)
+has SHA-256 `268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306`.
+The checker compares every literal transition. Only this primary table is
+covered by the headline theorem.
 
-```text
-268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306
-```
+## Fixed meaning
 
-This result covers the primary `fefaa549f250fd12` candidate. The proof checks
-the changed register program, ten-bit backend, macro rewrites and quotient,
-then reuses the existing arithmetic theorem. The second 278-state candidate
-has independent checks but is not covered by this theorem. The earlier
-[295-state theorem](RiemannMachineVerification/Correctness295.lean) remains
-available, as do the original approval and its pins below.
-
-## Preserved original approval
-
-The user approved the following statement and its definitions after reviewing
-them thoroughly. It must not be weakened or replaced by a claim about another
-machine:
-
-```lean
-theorem machine299_correct :
-    HaltsBlank machine299 ↔ ∃ n : ℕ, Counterexample n
-```
-
-The proof is complete in
-[`Correctness.lean`](RiemannMachineVerification/Correctness.lean).
-[`Target.lean`](RiemannMachineVerification/Target.lean) retains `ApprovedTarget`
-as the definition of the approved proposition; it is no longer an unfinished
-proof obligation.
-
-`machine299` is the exact table in [`machine/riemann.tm`](../machine/riemann.tm),
-whose SHA-256 remains:
-
-```text
-00402eabd3bcc448d97042458ea0186598d0f7c066673d9584262eed87c9840a
-```
-
-[`check_acceptance.py`](check_acceptance.py) preserves the original four pins
-for `Semantics.lean`, `Arithmetic.lean`, `Machine299.lean`, and `Target.lean`,
-and checks this literal table and theorem. The later 297-state theorem also
-remains available in [`Quotient297.lean`](RiemannMachineVerification/Quotient297.lean).
-
-## Shared specification and proof requirements
-
-[`Counterexample n`](RiemannMachineVerification/Arithmetic.lean) means `254 ≤ n` and
+[Arithmetic.lean](RiemannMachineVerification/Specification/Arithmetic.lean)
+defines `Counterexample n` as `254 ≤ n` and
 
 ```text
 (max (harmonic (lcmUpto n) - (n : ℚ)) 0)^2 > (n : ℚ) * (harmonic n)^4
 ```
 
-`harmonic 0 = 0` and `harmonic (n+1) = harmonic n + 1/(n+1)` in exact rationals.
-`lcmUpto 0 = 1` and `lcmUpto (n+1) = Nat.lcm (lcmUpto n) (n+1)`.
+`harmonic 0 = 0`, with successor recurrence adding `1 / ((n : ℚ) + 1)`.
+`lcmUpto 0 = 1`, with successor recurrence `Nat.lcm (lcmUpto n) (n+1)`.
+[MachineSemantics.lean](RiemannMachineVerification/Specification/MachineSemantics.lean)
+defines the infinite two-sided, initially zero binary tape; head position zero;
+entry state `!ENTRY`; one-cell left/right moves after writing; and existential
+finite-time halting at the separate halted state. State counts exclude that
+halting state. These are the authoritative definitions, also displayed as
+checked excerpts immediately below the headline theorem.
 
-Both machines use the same [`HaltsBlank` semantics](RiemannMachineVerification/Semantics.lean).
-The initial state is `!ENTRY`, the head starts at integer position zero, and
-the tape is all zeros. There is one tape indexed by all integers, two symbols,
-and each transition writes the current cell then moves left or right by
-exactly one cell. Halting means entering the separate halting state after
-finitely many steps. Counts of 278 and 299 exclude that halting state.
+The theorem has no extra hypotheses, `sorry`, additional unproved axioms,
+assumed compiler correctness, or axiom trusting native evaluation. Only
+`propext`, `Classical.choice`, and `Quot.sound` are permitted dependencies.
+Its scope is the literal table and unbounded execution. Equivalence of the
+arithmetic predicate to RH, direct equivalence to the original 744-state table,
+and global minimality are outside this contract.
 
-Both theorems have no additional hypotheses, no `sorry`, no additional unproved
-axioms, no assumed compiler correctness, and no axiom trusting native computation.
-The only permitted axiom dependencies are `propext`, `Classical.choice`, and
-`Quot.sound`. The theorems concern the literal final tables and unbounded
-execution, rather than only sources, intermediate machines, or finite runs.
+## Immutable acceptance pins
 
-The mathematical equivalence of this arithmetic characterization to RH is
-outside the proof. Literal equivalence to the original 744-state table remains
-an optional additional result. No global minimality claim is part of acceptance.
+The independently retained acceptance proposition is
+`HaltsBlank machine299 ↔ ∃ n, Counterexample n`, named `ApprovedTarget` in
+[Target.lean](Validation/AcceptanceTargets/Target.lean) and proved by
+`machine299_correct` in [Correctness299.lean](Validation/AcceptanceTargets/Correctness299.lean).
+The [299-state input](../machine/riemann.tm) retains SHA-256
+`00402eabd3bcc448d97042458ea0186598d0f7c066673d9584262eed87c9840a`.
 
-## Recheck both results
+The following four files retain their exact approved bytes. Relocation changes
+neither their content hashes nor what the acceptance gate requires:
 
-From `formal/`, with the pinned Lean dependencies installed:
+| Canonical file | SHA-256 |
+| --- | --- |
+| [MachineSemantics.lean](RiemannMachineVerification/Specification/MachineSemantics.lean) | `bf17d57e37bdce44be15c0ebc61cfb3a86db671adcd494173e86fb86f6d7424a` |
+| [Arithmetic.lean](RiemannMachineVerification/Specification/Arithmetic.lean) | `a4fc7ad44a5a5118e55236f849fa5cbc3c91b75b54477564744bb4115e87a24b` |
+| [Machine299.lean](Validation/AcceptanceTargets/Machine299.lean) | `9f1e38b4be64f69654e1dbb30d1d81af93d19af505a143131cf862a6d681d06f` |
+| [Target.lean](Validation/AcceptanceTargets/Target.lean) | `922f30edb4cb4c419efd6b57f26152e9be55dae9f271645e232f525eaf94731c` |
+
+Three import-only compatibility modules preserve the imports inside those
+pinned files. The default headline imports the canonical specification directly.
+The 299-, 298-, 297-, and 295-state theorems are available through `import Validation`.
+
+## Acceptance command
+
+From `formal/`, run:
 
 ```sh
-python3 check_current.py
-lake env lean Audit.lean
+python3 tools/check_current.py
 ```
 
-The current checker runs the original acceptance gate, checks all ten literal
-table imports, and verifies the 278-state headline's identity, exact theorem
-type, and axiom dependencies. A successful run updates
-[`verification.json`](verification.json) and ends with:
-
-```text
-ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
-```
-
-See the [verification guide](README.md) for prerequisites and proof structure.
-
-Raw verification and solver logs remain local. The accepted theorem, frozen
-pins and durable verification report are preserved under the
-[repository artifact policy](../README.md#repository-artifacts-and-local-logs).
+The checker builds the headline and supplementary library; checks the four pins,
+all eleven literal imports, exact result types and allowed axiom dependencies; and
+checks documentation and layout. It writes [verification.json](verification.json)
+only after all checks pass. `tools/check_acceptance.py` retains the immutable
+299-state gate as part of this process. Raw logs remain local and ignored.
+See [README.md](README.md) for prerequisites, the proof map, and regeneration.

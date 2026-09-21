@@ -80,7 +80,7 @@ and complete artifacts for promoted candidates.
 
 ## Checks and component proofs
 
-[`NativeFragments.lean`](../../formal/experiments/NativeFragments.lean) proves
+[NativeRegisterFragments.lean](../../formal/Validation/NativeRegisterFragments.lean) proves
 `clear_core` for every natural register value, arbitrary finite register suffix
 and arbitrary left tape background. It also proves `test_core` with the complete
 tape preserved. The proofs depend only on `propext` and `Quot.sound` (the test
@@ -103,7 +103,7 @@ From the repository root:
 .venv/bin/python tools/check_fragments.py \
   --candidate results/fragments-zero/24d3d7667ba1fe4f
 cd formal
-lake env lean experiments/NativeFragments.lean
+lake env lean --memory=16384 --threads=2 Validation/NativeRegisterFragments.lean
 cd ..
 ```
 

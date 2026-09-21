@@ -1,6 +1,8 @@
 name = "riemann_verification"
 version = "0.1.0"
 defaultTargets = ["RiemannMachineVerification"]
+# Resource limits do not alter proof terms or invalidate completed proof caches.
+weakLeanArgs = ["--memory=16384", "--threads=2"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +11,6 @@ rev = "905b95818eb32af7874a58b427f50c1711a5e96c"
 
 [[lean_lib]]
 name = "RiemannMachineVerification"
+
+[[lean_lib]]
+name = "Validation"

@@ -34,7 +34,7 @@ To audit the saved checkpoint:
 ```
 
 The primary supplemental 278-state result now has its
-[complete Lean theorem](../../formal/RiemannMachineVerification/Correctness278.lean)
+[complete Lean theorem](../../formal/RiemannMachineVerification.lean)
 and is the default headline. The second candidate has independent checks
 without a full-machine theorem.
 

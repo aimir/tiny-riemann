@@ -183,15 +183,15 @@ def main():
     final=args.machine or d/'final.tm';certificate=args.certificate or d/'reduction.json'
     checks['quotient']=reduction_certificate(d/'macro.tm',final,certificate)
     lake=Path.home()/'.elan/bin/lake'
-    result=subprocess.run([str(lake),'env','lean','experiments/NativeFragments.lean'],cwd=ROOT/'formal',capture_output=True,text=True)
+    result=subprocess.run([str(lake),'env','lean','Validation/NativeRegisterFragments.lean'],cwd=ROOT/'formal',capture_output=True,text=True)
     assert result.returncode==0,result.stdout+result.stderr
     assert 'sorryAx' not in result.stdout and 'axioms: [propext, Quot.sound]' in result.stdout and 'axioms: [propext]' in result.stdout
     checks['lean_component_axioms']=result.stdout.strip().splitlines()
-    paths=[final,certificate,d/'candidate.json',d/'compiled.tm',d/'macro.tm',d/'macros.json',d/'phases.json',ROOT/'formal/experiments/NativeFragments.lean']
-    report={'states':len(load(final)),'status':'Independent checks and generic Lean component proofs passed; whole machine not Lean verified.',
+    paths=[final,certificate,d/'candidate.json',d/'compiled.tm',d/'macro.tm',d/'macros.json',d/'phases.json',ROOT/'formal/Validation/NativeRegisterFragments.lean']
+    report={'states':len(load(final)),'status':'Independent construction checks and generic Lean component proofs passed.',
             'checks':checks,'sha256':{str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths},
             'implementation_sha256':{str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT/'tools').glob('*.py'))},
-            'formal_scope':'The new full-machine source/backend/refinement theorem is not proved. The headline remains machine295_correct.'}
+            'formal_scope':'This checker verifies construction certificates and generic native components. Full-machine status is recorded separately in formal/verification.json.'}
     output=json.dumps(report,indent=2)+'\n'
     if args.output:args.output.write_text(output)
     print(output,end='')

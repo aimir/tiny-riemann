@@ -1,7 +1,7 @@
 # Construction and correctness of the 278-state machine
 
 The current verified [278-state table](results/clique-target278/fefaa549f250fd12/quotient-278.tm)
-has the complete [Lean theorem](formal/RiemannMachineVerification/Correctness278.lean):
+has the complete [Lean theorem](formal/RiemannMachineVerification.lean):
 
 ```lean
 theorem machine278_correct :
@@ -69,7 +69,7 @@ All 253 inequalities hold using rational arithmetic. Monotonicity of
 `max(t-x,0)^2` proves that none of these extra inputs can cause a halt.
 
 The Lean proof does not assume that Python result.
-[`Cutoff.lean`](formal/RiemannMachineVerification/Cutoff.lean) checks the cases
+[Cutoff.lean](formal/RiemannMachineVerification/Arithmetic/Cutoff.lean) checks the cases
 below 16 directly and uses kernel-checked LCM bounds for 16 through 253:
 `L(x) <= 2^(x + floor(x/2) + 1)`. Together with `H(x) >= H(16) >= 3`, these
 bounds prove `no_counterexample_below_cutoff`. The theorem `cutoff_removal`
@@ -92,7 +92,7 @@ The first candidate passing all tests is exactly `L(x)`. The search terminates
 for each `x`, since `x!` is a candidate that passes. This saves program states
 at a substantial runtime cost, which is intentional for this task.
 
-[`LcmSearch.lean`](formal/RiemannMachineVerification/LcmSearch.lean) proves this
+[Lcm.lean](formal/RiemannMachineVerification/Arithmetic/Lcm.lean) proves this
 using `lcmSearch_initialized`.
 
 ## 4. One harmonic-sum routine
@@ -111,7 +111,7 @@ of summation differs from the original routine, but the final denominator is
 the same factorial and the rational sum is identical, so the integer
 numerator is also identical. Each call terminates.
 
-[`HarmonicLoop.lean`](formal/RiemannMachineVerification/HarmonicLoop.lean)
+[Harmonic.lean](formal/RiemannMachineVerification/Arithmetic/Harmonic.lean)
 proves `harmonicLoop_initialized` and connects the final integer comparison
 to the rational inequality through `arithmeticTail_positive_iff`.
 
@@ -135,7 +135,7 @@ division, approximation, or sign assumption.
 
 Each outer iteration is finite. The compiled program repeats `main` when it
 reaches the end; an explicit `return` from `main` halts. The theorem
-`compiled_cycle`, followed by `macro_correct`, proves that the literal logical
+`compiled_cycle`, followed by `arithmetic_program_correct`, proves that the literal logical
 register program searches successive positive integers and halts precisely
 when the approved predicate has a witness. The argument above also explains
 agreement with the original source program; the formal theorem does not
@@ -182,7 +182,7 @@ and 2,048 macro instructions are unchanged. The nine register positions on
 tape change, which changes dispatch transitions and creates better merging
 opportunities later.
 
-The [`Reallocated` proof modules](formal/RiemannMachineVerification/Reallocated)
+The [`Reallocated` proof modules](formal/Validation/Table295/README.md)
 check the new 381-state backend, including all dispatch cases, binary counter
 updates, register operations, and growth of tape storage. The resulting
 `Reallocated.machine381_iff_primitive` connects this literal tape machine to
@@ -210,7 +210,7 @@ transition bisimulation can merge further states.
 
 For this construction, 85 replacements reduce 381 states to 342. The
 independent checker tests 1,360 tape windows. The Lean theorem
-[`Reallocated.machine381_iff_machine342`](formal/RiemannMachineVerification/Reallocated/MacroCorrectness.lean)
+[`Reallocated.machine381_iff_machine342`](formal/Validation/Table295/MacroCorrectness.lean)
 separately checks the finite local equations and proves the unbounded halting
 equivalence.
 
@@ -255,12 +255,12 @@ reducer's. Concrete lockstep simulation is an additional regression check,
 not the justification for the unbounded conclusion.
 
 For the 295-state table, four Lean invariant stages establish the read masks.
-[`Reallocated.machine342_iff_machine295`](formal/RiemannMachineVerification/Reallocated/Quotient295.lean)
+[`Reallocated.machine342_iff_machine295`](formal/Validation/Table295/Quotient295.lean)
 checks the quotient equations and proves halting equivalence. Z3's answer
 is not an assumption. Composing this with the macro, backend, register, and
 arithmetic results gives
-[`machine295_correct`](formal/RiemannMachineVerification/Correctness295.lean),
-retained alongside the current [headline theorem](formal/RiemannMachineVerification/Headline.lean).
+[`machine295_correct`](formal/Validation/AcceptanceTargets/Correctness295.lean),
+retained alongside the current [headline theorem](formal/RiemannMachineVerification.lean).
 
 ## Limits and subsequent search history
 
@@ -340,12 +340,12 @@ listed in the [artifact policy](README.md#repository-artifacts-and-local-logs).
 
 ## Complete proof for the primary 278-state machine
 
-[`machine278_correct`](formal/RiemannMachineVerification/Correctness278.lean)
+[`machine278_correct`](formal/RiemannMachineVerification.lean)
 connects the exact primary table to the unchanged approved predicate. The new
 register program is different from the older program, so its arithmetic
 correctness is transferred through an explicit equivalence proof.
 
-[`macro_iff_original`](formal/RiemannMachineVerification/Optimized278/RegisterRefinement.lean)
+[`implementation_iff_arithmetic`](formal/RiemannMachineVerification/Registers/Refinement.lean)
 relates 55 pairs of control-flow boundaries. Each boundary specifies shared
 register values and known zeros. Dead values may differ. Each case executes
 a positive finite number of steps on both sides, establishes the corresponding
@@ -359,7 +359,7 @@ both counter updates at every value. Generic unary-register proofs account
 for arbitrary contents and growing storage. Short-path certificates connect
 the compiled 389-state table to the 339-state table. Three inductive tape-mask
 stages and all quotient transition equations connect that table to the final
-278-state machine. Composing these results with the original `macro_correct`
+278-state machine. Composing these results with the original `arithmetic_program_correct`
 arithmetic theorem proves the unconditional result.
 
 The theorem's only axiom dependencies are `propext`, `Classical.choice`, and

@@ -20,8 +20,8 @@ Files:
 
 - [297-state transition table](quotient-297.tm)
 - [Reachability and quotient certificate](quotient-297.certificate.json)
-- [Complete Lean proof](../../formal/RiemannMachineVerification/Quotient297.lean)
-- [Current headline theorem](../../formal/RiemannMachineVerification/Headline.lean)
+- [Complete Lean proof](../../formal/Validation/AcceptanceTargets/Machine297.lean)
+- [Current headline theorem](../../formal/RiemannMachineVerification.lean)
 - [Verification results and hashes](verification.json)
 - [Solver queries and results](report.json)
 
@@ -80,12 +80,8 @@ Z3 is unnecessary for checking the saved result:
 
 ```sh
 cd formal
-python3 check_current.py
-python3 generate_candidate_quotient.py \
-  ../results/exact-quotient/quotient-297.tm \
-  ../results/exact-quotient/quotient-297.certificate.json \
-  --output RiemannMachineVerification/Quotient297.lean --check
-lake env lean Audit.lean
+python3 tools/check_current.py
+lake env lean --memory=16384 --threads=2 Validation/Audit.lean
 ```
 
 The audit must succeed and include:

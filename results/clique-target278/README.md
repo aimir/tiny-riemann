@@ -48,7 +48,7 @@ supplement the complete unbounded Lean proof described below.
 
 ## Full Lean verification of the primary result
 
-[`machine278_correct`](../../formal/RiemannMachineVerification/Correctness278.lean)
+[`machine278_correct`](../../formal/RiemannMachineVerification.lean)
 proves that the literal primary table halts exactly when the unchanged approved
 `Counterexample` predicate has a witness. A progressing bisimulation at 55
 paired control boundaries justifies destructive reads and omitted zero clears.
@@ -57,7 +57,7 @@ rewrites, three inductive tape-invariant stages and the final quotient.
 
 The theorem uses only `propext`, `Classical.choice`, and `Quot.sound`, with no
 compiler assumption, `sorry` or native-computation axiom. From `formal/`, run
-`python3 check_current.py` and `lake env lean Audit.lean`. The
+`python3 tools/check_current.py` and `lake env lean --memory=16384 --threads=2 Validation/Audit.lean`. The
 [verification report](../../formal/verification.json) pins the table and proof
 sources. Mathematical equivalence of the approved predicate to RH is outside
 the proof's scope. The historical Python reports below remain unchanged.

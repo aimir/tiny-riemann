@@ -14,9 +14,9 @@ Lean headline. Global minimality is not claimed.
 
 - [Current transition table](results/clique-target278/fefaa549f250fd12/quotient-278.tm):
   the formally verified primary 278-state machine.
-- [Headline theorem](formal/RiemannMachineVerification/Headline.lean):
-  `headline_correct` selects `machine278_correct`, proved in
-  [Correctness278.lean](formal/RiemannMachineVerification/Correctness278.lean).
+- [Headline theorem](formal/RiemannMachineVerification.lean):
+  `machine278_correct` and its exact definitions in one theorem-first entry file;
+  `headline_correct` exposes the same result.
 - [Verification report](formal/verification.json): theorem, permitted axioms,
   machine identity and hashes of all proof sources.
 - [Compilation input](results/unified-target278/fefaa549f250fd12/source.nql) and
@@ -58,15 +58,16 @@ original `254 ≤ n` bound. Its mathematical equivalence to RH remains outside
 the formal proof's scope.
 
 The proof covers **unbounded execution**. A progressing bisimulation at 55
-paired control-flow boundaries relates the new register program to the
-previously verified one, allowing dead registers to differ. Lean checks all
+paired control-flow boundaries relates the implementation register program to the
+arithmetic register program, allowing dead registers to differ. Lean checks all
 86 transfer sites, all 1,024 dispatch cases, both counter updates at every
 counter value, unary register operations, short-path rewrites, three stages
-of tape invariants, and the final quotient. The original arithmetic theorem
-then applies. Neither the compiler nor Z3 is trusted.
+of tape invariants, and the final quotient. The arithmetic correctness theorem
+then applies. Each proof directory has a reading guide; generated certificates
+are separated from the conceptual proof stages. Neither the compiler nor Z3 is trusted.
 
 The original `machine299_correct` theorem, execution semantics, predicate and
-four acceptance pins remain unchanged. The 295- and 297-state theorems are
+four acceptance pins remain unchanged. The 295-, 297-, and 298-state theorems are
 also retained.
 
 Install `elan` so that `lean` and `lake` are on your path, and use Python 3.
@@ -75,13 +76,13 @@ downloads require network access. From the repository root:
 
 ```sh
 cd formal
-lake exe cache get          # Optional: fetch the pinned mathlib build cache.
-python3 check_current.py    # Build and check current and original targets.
-lake env lean Audit.lean    # Audit the principal theorems' axiom dependencies.
+lake exe cache get          # Fetch pinned dependencies on a fresh checkout.
+python3 tools/check_current.py    # Build and check current and original targets.
+lake env lean --memory=16384 --threads=2 Validation/Audit.lean    # Audit the principal theorems' axiom dependencies.
 cd ..
 ```
 
-The check verifies exact theorem types, all ten literal table imports, hashes,
+The check verifies exact theorem types, all eleven literal table imports, hashes,
 and axiom dependencies. Only `propext`, `Classical.choice`, and `Quot.sound`
 are permitted; no `sorry` or additional axiom is accepted. Successful output
 ends with:
@@ -89,6 +90,9 @@ ends with:
 ```text
 ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
 ```
+
+Proof compilation runs serially with two Lean workers and a 16 GiB allocation
+limit per compiler, reusing completed build files after an interruption.
 
 See [formal/README.md](formal/README.md) for the proof chain, generator commands,
 artifact identity, preserved results and detailed verification instructions.
@@ -175,7 +179,7 @@ Generated ZIPs and Lean build binaries are also ignored by Git.
 After verification, a local archive can be generated with:
 
 ```sh
-python3 formal/package_verified.py
+python3 formal/tools/package_verified.py
 ```
 
 Packaging checks the accepted verification report and artifact hashes, includes

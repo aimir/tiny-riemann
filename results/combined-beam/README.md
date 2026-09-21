@@ -5,7 +5,7 @@ This page records an earlier experiment. The current
 [fully Lean-verified headline](../../formal/README.md).
 
 This experiment produced the **295-state machine**, preserved with its
-[complete Lean theorem](../../formal/RiemannMachineVerification/Correctness295.lean).
+[complete Lean theorem](../../formal/Validation/AcceptanceTargets/Correctness295.lean).
 The [literal table](../../machine/riemann295.tm) is formally proved to halt
 exactly when the unchanged arithmetic counterexample predicate has a witness.
 See the [formal guide](../../formal/README.md) for checking the proof.
@@ -72,8 +72,8 @@ Saved mappings can be checked without rerunning the search or installing Z3.
 .venv/bin/python tools/test_search_final.py
 .venv/bin/python tools/test_solve_quotient.py
 cd formal
-python3 check_current.py
-lake env lean Audit.lean
+python3 tools/check_current.py
+lake env lean --memory=16384 --threads=2 Validation/Audit.lean
 ```
 
 The independent construction checker reproduces all three tables byte for
@@ -89,7 +89,7 @@ checks and solver answers are not assumptions of that theorem.
 
 The [proof inputs](../../machine/riemann295.proof-inputs.json) record the
 register order and intermediate state-name normalization. The generator
-[`formal/generate_reallocated.py`](../../formal/generate_reallocated.py)
+[`formal/tools/generators/generate_reallocated.py`](../../formal/tools/generators/generate_reallocated.py)
 produces the new proof modules from the saved candidate and mapping; checking
 the committed Lean proof requires no regeneration.
 

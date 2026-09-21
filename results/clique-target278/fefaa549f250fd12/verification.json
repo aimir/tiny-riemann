@@ -1,6 +1,6 @@
 {
   "states": 278,
-  "status": "Independent checks and generic Lean component proofs passed; whole machine not Lean verified.",
+  "status": "Independent construction checks and generic Lean component proofs passed.",
   "checks": {
     "regressions": {
       "literal_native_tape_cases": 180,
@@ -47,14 +47,14 @@
     "results/unified-target278/fefaa549f250fd12/macro.tm": "a4b05818e0f5bfc3141c6c48c9149042a7f7c33094ec706b53bb9315c3ca53d0",
     "results/unified-target278/fefaa549f250fd12/macros.json": "a5dc903bd7d92c5b4940f7663c8fd0c2185ab875487c44dbc6ea3c768bbc2186",
     "results/unified-target278/fefaa549f250fd12/phases.json": "6556dcd5672742427937fd745df71371a13cc9cada4f200671c2153bde6f338a",
-    "/Users/amirsarid/Documents/ChatGPT/riemann/formal/experiments/NativeFragments.lean": "969385a7e9e693cc6d563f722683939b6b95c52300929d3aa0dd33de22c01499"
+    "/Users/amirsarid/Documents/ChatGPT/riemann/formal/Validation/NativeRegisterFragments.lean": "b6e1688fbfbac67e2efb58fdd16c1be30432e6dbc6b262df3cc4fdbbc3df17c7"
   },
   "implementation_sha256": {
     "tools/audit_unified.py": "42dc292d17918a0785f25016b2df4f6a39bb9825dd5b27e0a42b0ce3fec11bf4",
     "tools/build.py": "cba956b26faaf5a03ded4a5030f76675b537e83579553cdce76ecf9c4d2eca97",
     "tools/check.py": "048e6a767f00de30c2f2a04369bb8bdd2e38efbe648a66fe96780efe48be8da3",
     "tools/check_arithmetic.py": "17b3c3b974c2ffa4a08b4c7533a0b2532aba6cb5925953553254d6a06084262b",
-    "tools/check_fragments.py": "3a8f870b072e3f2e81bb48e249a8d1d610634af539af43ce0b0f02a8bf34d9f3",
+    "tools/check_fragments.py": "b837bfc421fe470e6e23adaf7234ce25c83f4093d2c60960747b72c5bc2a7b51",
     "tools/check_pc.py": "25f32d1bb21c34faf79787ff341b3602e8b911fa2f421ef6c7615a89c752259f",
     "tools/check_reallocated.py": "3651fdcad9c26d79a5c92d7805eaa39c877dee821af7f97e3864ed4d12f3a8f3",
     "tools/compile.py": "abdae5b7eea93815b9f60381f30a241294fba36fccff04e891ca16e8b785217c",
@@ -89,5 +89,5 @@
     "tools/verify.py": "bbb37656c8a5198264423544d45e897ee773952e418e32f7e5e01675f52b9739",
     "tools/verify_macros.py": "dea7a5b75f93981e778d52a73d0d85602f018b521bdcd271188642ff5a84cfe4"
   },
-  "formal_scope": "The new full-machine source/backend/refinement theorem is not proved. The headline remains machine295_correct."
+  "formal_scope": "This checker verifies construction certificates and generic native components. Full-machine status is recorded separately in formal/verification.json."
 }
