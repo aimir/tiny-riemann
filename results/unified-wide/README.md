@@ -1,15 +1,15 @@
 # Wider joint search: 16 retained candidates
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 This follow-up expands the [six-candidate search](../unified-beam/README.md)
 to a beam of **16 distinct machine graphs**. It retains all three optimization
 families and source mutations, scores survivors after complete reduction, and
-applies SMT before selection. The verified Lean headline remains
-`machine295_correct`; these compiler experiments do not supply a new
-whole-machine proof.
+applies SMT before selection. The current Lean headline is the later primary 278-state result. The
+280-state table in this report has independent checks, without its own
+whole-machine theorem.
 
 ## Result: 280 states
 

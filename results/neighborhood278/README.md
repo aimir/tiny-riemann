@@ -22,7 +22,8 @@ candidates are documented in the [main 278-state report](../clique-target278/REA
 Search stopped after the main 278-state results passed their independent
 checks. The planned SMT finalist sweep was not completed; interrupted queries
 are listed in the checkpoint. Historical candidate counts exclude supplemental
-certificates. This does not change the verified 295-state Lean headline.
+certificates. The current Lean headline covers the primary table in the main 278-state
+report, not this separate neighborhood candidate.
 
 ```sh
 .venv/bin/python tools/test_search_neighborhood.py

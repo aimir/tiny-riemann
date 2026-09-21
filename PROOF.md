@@ -6,6 +6,8 @@ for checking it are documented in [formal/README.md](formal/README.md).
 
 This pointer preserves links from the frozen source and saved search inputs.
 
-The verified headline remains 295 states. The later
-[278-state candidates](results/clique-target278/README.md) have independent
-checks but still need their full-machine Lean proofs.
+The verified headline is the primary
+[278-state machine](results/clique-target278/README.md). Its full theorem is
+[`machine278_correct`](formal/RiemannMachineVerification/Correctness278.lean),
+selected by the default Lean build. The original approved predicate and
+execution semantics are unchanged.

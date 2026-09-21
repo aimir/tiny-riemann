@@ -1,12 +1,14 @@
-# Two independently checked 278-state machines
+# A formally verified 278-state machine and a second checked candidate
 
 The requested **278 nonhalting states** have been reached: **466 fewer than
 744, a 62.63% reduction**. (279 states would be exactly 62.5%.) Both machines
 use two symbols, a blank zero tape, initial state `!ENTRY`, and a separate
 `HALT` state excluded from the count.
 
-These are experimental machines with independent checks. Their full-machine
-Lean theorem is outstanding; the verified default remains `machine295_correct`.
+The **primary machine is now formally verified in Lean** and selected by the
+default `headline_correct` theorem. The second candidate retains independent
+checks but has no full-machine Lean theorem. The approved arithmetic predicate
+and execution semantics are unchanged; see the [formal guide](../../formal/README.md).
 
 ## Primary result
 
@@ -42,7 +44,23 @@ updates, checks the register invariant, and validates 80 macro rewrites against
 1,280 exhaustive tape windows. It separately recomputes reachability and checks
 every permitted quotient transition. The packing checker relates 240 primitive
 control pairs with arbitrary decrement outcomes. Arithmetic regression tests
-do not replace an unbounded source-to-register proof in Lean.
+supplement the complete unbounded Lean proof described below.
+
+## Full Lean verification of the primary result
+
+[`machine278_correct`](../../formal/RiemannMachineVerification/Correctness278.lean)
+proves that the literal primary table halts exactly when the unchanged approved
+`Counterexample` predicate has a witness. A progressing bisimulation at 55
+paired control boundaries justifies destructive reads and omitted zero clears.
+The proof checks the new ten-bit backend, 86 transfer sites, short-path
+rewrites, three inductive tape-invariant stages and the final quotient.
+
+The theorem uses only `propext`, `Classical.choice`, and `Quot.sound`, with no
+compiler assumption, `sorry` or native-computation axiom. From `formal/`, run
+`python3 check_current.py` and `lake env lean Audit.lean`. The
+[verification report](../../formal/verification.json) pins the table and proof
+sources. Mathematical equivalence of the approved predicate to RH is outside
+the proof's scope. The historical Python reports below remain unchanged.
 
 ## Second result
 

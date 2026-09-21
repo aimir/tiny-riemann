@@ -1,8 +1,8 @@
 # Historical 297-state quotient and final-count search experiment
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 This earlier machine has **297 nonhalting states**, two symbols, and a separate
 HALT state. Lean verifies the same arithmetic specification as the frozen
@@ -27,8 +27,8 @@ Files:
 
 The original 299-state theorem and its acceptance pins remain intact. The
 297-state proof remains part of the default Lean build. The current headline
-selects the [295-state result from the combined search](../combined-beam/README.md),
-which uses a different physical register allocation.
+selects the [primary 278-state result](../clique-target278/README.md),
+with a new register program, allocation and ten-bit counter.
 
 ## What the exact solver established
 

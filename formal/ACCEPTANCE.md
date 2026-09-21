@@ -1,33 +1,34 @@
 # Verification contract and accepted results
 
-The **current 295-state machine is formally verified**. The original
+The **current 278-state machine is formally verified**. The original
 299-state theorem approved on 2026-09-17 is also proved and remains a frozen
 acceptance target. The smaller machine satisfies the same arithmetic
 specification; neither the predicate nor the execution semantics has changed.
 
 ## Current result
 
-[`Correctness295.lean`](RiemannMachineVerification/Correctness295.lean) proves:
+[`Correctness278.lean`](RiemannMachineVerification/Correctness278.lean) proves:
 
 ```lean
-theorem machine295_correct :
-    HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n
+theorem machine278_correct :
+    HaltsBlank machine278 ↔ ∃ n : ℕ, Counterexample n
 ```
 
 [`Headline.lean`](RiemannMachineVerification/Headline.lean) defines
-`headlineMachine` as `machine295` and exposes this result as `headline_correct`.
+`headlineMachine` as `machine278` and exposes this result as `headline_correct`.
 The default Lean build includes it. The literal table is
-[`machine/riemann295.tm`](../machine/riemann295.tm), with SHA-256:
+[primary 278-state table](../results/clique-target278/fefaa549f250fd12/quotient-278.tm), with SHA-256:
 
 ```text
-d79512cf945e8828ff587662990ee595e596871928f402fa6fef470b144d7079
+268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306
 ```
 
-The later [278-state experimental machines](../results/clique-target278/README.md)
-are outside this accepted result. Their independent checks pass; their arithmetic
-lowering and full-machine refinement are not yet proved in Lean. Generic native
-fragment cores have separate Lean proofs. These experiments do not change the
-headline or the frozen approval below.
+This result covers the primary `fefaa549f250fd12` candidate. The proof checks
+the changed register program, ten-bit backend, macro rewrites and quotient,
+then reuses the existing arithmetic theorem. The second 278-state candidate
+has independent checks but is not covered by this theorem. The earlier
+[295-state theorem](RiemannMachineVerification/Correctness295.lean) remains
+available, as do the original approval and its pins below.
 
 ## Preserved original approval
 
@@ -74,7 +75,7 @@ The initial state is `!ENTRY`, the head starts at integer position zero, and
 the tape is all zeros. There is one tape indexed by all integers, two symbols,
 and each transition writes the current cell then moves left or right by
 exactly one cell. Halting means entering the separate halting state after
-finitely many steps. Counts of 295 and 299 exclude that halting state.
+finitely many steps. Counts of 278 and 299 exclude that halting state.
 
 Both theorems have no additional hypotheses, no `sorry`, no additional unproved
 axioms, no assumed compiler correctness, and no axiom trusting native computation.
@@ -95,13 +96,13 @@ python3 check_current.py
 lake env lean Audit.lean
 ```
 
-The current checker runs the original acceptance gate, checks the seven literal
-table imports, and verifies the 295-state headline's identity, exact theorem
+The current checker runs the original acceptance gate, checks all ten literal
+table imports, and verifies the 278-state headline's identity, exact theorem
 type, and axiom dependencies. A successful run updates
 [`verification.json`](verification.json) and ends with:
 
 ```text
-ACCEPTED: the 295-state headline and original 299-state target are proved with only permitted axioms.
+ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
 ```
 
 See the [verification guide](README.md) for prerequisites and proof structure.

@@ -3,7 +3,7 @@
 The pinned files define the approved semantics, predicate and literal table.
 Only the final unconditional theorem, with the permitted foundational axioms,
 can pass this gate. Successful intermediate builds do not count as acceptance.
-check_current.py retains this gate and additionally checks the 295-state headline.
+check_current.py retains this gate and additionally checks the 278-state headline.
 """
 from pathlib import Path
 import hashlib

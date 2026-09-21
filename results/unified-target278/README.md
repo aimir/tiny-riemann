@@ -33,8 +33,10 @@ To audit the saved checkpoint:
 .venv/bin/python tools/audit_unified.py results/unified-target278
 ```
 
-The full-machine Lean theorem remains outstanding. The verified headline is
-still `machine295_correct`.
+The primary supplemental 278-state result now has its
+[complete Lean theorem](../../formal/RiemannMachineVerification/Correctness278.lean)
+and is the default headline. The second candidate has independent checks
+without a full-machine theorem.
 
 Raw solver, execution and console logs stay local. Versioned tables,
 certificates, configurations, SMT inputs and structured reports follow the

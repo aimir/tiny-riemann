@@ -5,7 +5,7 @@
   "reduction_percent": 62.634408602150536,
   "pc_bits": 10,
   "registers": 9,
-  "formal_status": "Independent checks passed; full-machine Lean theorem outstanding; verified headline remains machine295_correct.",
+  "formal_status": "Primary fefaa549f250fd12 table fully proved by machine278_correct and selected by headline_correct; second candidate independently checked only.",
   "machines": [
     {
       "candidate": "d859aef2158f0ec58d3266506038475dcf4ac15f50b9bf5586460b78c7aed782",
@@ -41,5 +41,6 @@
         "results/clique-target278/fefaa549f250fd12/packing-check.json": "f59cfa6378bf4beb189ad4c5b7dc7ef1b331b48354ded057ea43ec29daa7fc9c"
       }
     }
-  ]
+  ],
+  "formal_verification_report": "formal/verification.json"
 }

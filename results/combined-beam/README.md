@@ -1,11 +1,11 @@
 # Combined layout search and exact quotient solving
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
-This experiment produced the **295-state machine**, now the default
-[Lean headline](../../formal/RiemannMachineVerification/Headline.lean).
+This experiment produced the **295-state machine**, preserved with its
+[complete Lean theorem](../../formal/RiemannMachineVerification/Correctness295.lean).
 The [literal table](../../machine/riemann295.tm) is formally proved to halt
 exactly when the unchanged arithmetic counterexample predicate has a witness.
 See the [formal guide](../../formal/README.md) for checking the proof.

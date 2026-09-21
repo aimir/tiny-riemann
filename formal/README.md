@@ -1,159 +1,148 @@
-# Formally verified 295-state Riemann machine
+# Formally verified 278-state Riemann machine
 
-The current theorem is proved in
-[Correctness295.lean](RiemannMachineVerification/Correctness295.lean):
+[Correctness278.lean](RiemannMachineVerification/Correctness278.lean) proves:
 
 ```lean
-theorem machine295_correct :
-    HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n
+theorem machine278_correct :
+    HaltsBlank machine278 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-[Headline.lean](RiemannMachineVerification/Headline.lean) provides the stable
-entry point: `headlineMachine` is `machine295`, and `headline_correct` proves
-its specification. The default build and the main `RiemannMachineVerification`
-import include this result.
+[Headline.lean](RiemannMachineVerification/Headline.lean) selects `machine278` as
+`headlineMachine` and exposes this theorem as `headline_correct`. The default
+build and main `RiemannMachineVerification` import include the complete proof.
+The earlier 295-, 297- and 299-state theorems remain available.
 
-The later [291-state PC-layout candidate](../results/pc-layout/README.md) has
-independent Python checks but is not yet proved in Lean. Its changed addresses
-and 10-bit counter need additional proofs before it can replace this headline.
-The subsequent [285-state register-liveness candidate](../results/register-lowering/README.md)
-also changes the register operations by consuming dead values. Its arithmetic
-regressions and independent backend/reduction checks pass, but its unbounded
-source-to-register refinement has not been proved. These experimental results
-are not selected by the default Lean build.
+The machine is the **primary `fefaa549f250fd12` result** from the
+[278-state search](../results/clique-target278/README.md). Its
+[literal table](../results/clique-target278/fefaa549f250fd12/quotient-278.tm)
+is imported by [Machine278.lean](RiemannMachineVerification/Machine278.lean),
+with SHA-256:
 
-The [282-state fragment candidate](../results/fragments/README.md) adds
-register-zero invariants and whole-call replacements. Its optional
-[NativeFragments.lean](experiments/NativeFragments.lean) proves generic native
-clear and test cores for unbounded register contents. Run them with
-`lake env lean experiments/NativeFragments.lean` from this directory. The
-full new-machine refinement is still outstanding; component proofs and Python
-bisimulation/certificate checks do not change the 295-state headline.
-The later [joint multigeneration search](../results/unified-beam/README.md)
-finds further 282-state candidates with independent checks, without reducing
-the state count or closing that full-machine proof gap.
-The [wider 16-candidate search](../results/unified-wide/README.md) then reaches
-280 states. The subsequent [24-parent search and clique-first quotient
-refinement](../results/clique-target278/README.md) produce two **278-state
-candidates**. Their arithmetic regressions, backend, register-control, macro
-and quotient checks pass. They still need the unbounded source-to-register
-and full-machine Lean refinements. The verified headline and approved
-predicate remain unchanged.
+```text
+268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306
+```
 
-The [verification contract](ACCEPTANCE.md) records both the current result and
-the preserved original approval. The original `machine299_correct` and the
-later `machine297_correct` remain available. The original machine, semantics,
-predicate, and four acceptance pins are unchanged. The new machine uses the
-same logical register program with a different physical register allocation.
-Its tape backend and state reductions are checked separately in the
-[`Reallocated` proof modules](RiemannMachineVerification/Reallocated).
+There are 278 ordinary states and a separate halting state. The tape is
+binary, two-sided and initially zero; the head starts at zero in `!ENTRY`.
+The second 278-state candidate and other experimental tables have independent
+checks, but are not covered by this machine theorem.
 
-The theorem depends only on `propext`, `Classical.choice`, and `Quot.sound`.
-There is no `sorry`, additional axiom, assumed compiler correctness, or axiom
-trusting native computation. `Counterexample n` is the approved rational
-inequality with `254 ≤ n`. Its equivalence to RH remains outside the formal
-proof's scope. Literal equivalence to the original 744-state table and global
-minimality are not claimed.
+## What is proved
+
+`HaltsBlank` uses the unchanged approved Turing-machine semantics.
+`Counterexample n` is the unchanged exact rational inequality with `254 ≤ n`:
+
+```text
+(max (harmonic (lcmUpto n) - (n : ℚ)) 0)^2 > (n : ℚ) * (harmonic n)^4
+```
+
+The equivalence holds for unbounded execution and arbitrary tape usage. It
+has no compiler-correctness assumption, no `sorry`, no additional axiom, and
+no axiom trusting native computation. Its only axiom dependencies are
+`propext`, `Classical.choice`, and `Quot.sound`.
+
+The mathematical equivalence of this predicate to RH remains outside this
+proof's scope. Neither literal equivalence to the original 744-state table
+nor global minimality is claimed. The [verification contract](ACCEPTANCE.md)
+preserves the original approved theorem, predicate, semantics and four pins.
 
 ## Recheck
 
-Use `elan`, Python 3, and the pinned Lake dependencies. From this directory:
+Use `elan`, Python 3 and the pinned Lake dependencies. From this directory:
 
 ```sh
 lake exe cache get          # Optional: fetch the pinned mathlib build cache.
-python3 check_current.py    # Build and check the current and original targets.
-lake env lean Audit.lean    # Audit the main results.
+python3 check_current.py    # Build and check current and original targets.
+lake env lean Audit.lean    # Audit the principal theorems' axiom dependencies.
 ```
 
-The current checker retains the original acceptance check and its four pins.
-It checks all seven literal table imports: the original 381/342/299 tables,
-the earlier 297-state table, and the new 381/342/295 tables. It verifies the
-headline's identity and exact theorem type, checks permitted axiom dependencies,
-and then refreshes [verification.json](verification.json), including hashes of
-all proof modules in the `Reallocated` subdirectory.
+`check_current.py` checks the headline's identity and exact theorem type,
+permitted axiom dependencies, and all ten literal table imports: the original
+381/342/299 tables, the 297-state table, the reallocated 381/342/295 tables,
+and the new 389/339/278 tables. It retains the original acceptance gate and
+its four pins. Only after these checks pass does it refresh
+[verification.json](verification.json), including hashes of all proof modules.
 
 Successful output ends with:
 
 ```text
-'RiemannMachineVerification.machine295_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiemannMachineVerification.machine278_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RiemannMachineVerification.headline_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
-ACCEPTED: the 295-state headline and original 299-state target are proved with only permitted axioms.
+ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
 ```
 
 Lean is pinned to `leanprover/lean4:v4.32.2`; mathlib is pinned to
-`905b95818eb32af7874a58b427f50c1711a5e96c`. Checking the committed proof sources
-requires neither Z3 nor regeneration. The generator
-[`generate_reallocated.py`](generate_reallocated.py) records how the new
-backend and reduction certificates were produced; it is not trusted by Lean.
+`905b95818eb32af7874a58b427f50c1711a5e96c`. Checking committed proofs requires
+neither Z3 nor regeneration. A fresh build checks many concrete cases and can
+take substantially longer than an incremental build.
 
 ## Proof structure
 
-The [construction guide](../CONSTRUCTION.md) explains the arithmetic and
-optimizations in plain language. The checked proof composes these results:
+The new compilation uses a 10-bit program counter, packed main blocks,
+inlined squaring, a different register allocation, destructive reads of dead
+values, and omission of clears whose inputs are known zero. Its logical
+register program therefore differs from the old one. The
+[`Optimized278` modules](RiemannMachineVerification/Optimized278) prove the
+following chain:
 
-1. `Reallocated.machine342_iff_machine295` checks the exact quotient of the new
-   shortened table. Four generated tape-invariant stages justify the read masks
-   for unbounded execution. Every relevant transition equation is checked.
-2. `Reallocated.machine381_iff_machine342` verifies the short-path replacements
-   between the new literal compiled and shortened tables.
-3. `Reallocated.machine381_iff_primitive` checks the new tape backend: all 2,048
-   dispatch cases, both binary counter updates, unary register operations,
-   the changed physical allocation, and growth of register storage. The physical
-   mapping exchanges `denom` and `_scratch_2`; the logical register instructions
-   are the same as in the previous proof.
-4. The original `primitive_iff_macro` contracts all 102 transfer loops for
-   arbitrary natural register values.
-5. The existing `compiled_cycle` proves positive finite execution of each
-   arithmetic search iteration: LCM, multiplication, truncated subtraction,
-   and harmonic computations. `macro_correct` connects repeated iterations
-   to the approved predicate, including exclusion of values 1 through 253.
-6. `machine295_correct` composes these results. `headline_correct` selects it
-   as the current result.
+1. [RegisterRefinement.lean](RiemannMachineVerification/Optimized278/RegisterRefinement.lean)
+   proves `macro_iff_original`. A relation at 55 paired control-flow boundaries
+   records equal values and known zeros, while allowing dead registers to
+   differ. Each boundary proof checks finite executions and corresponding
+   branch outcomes for arbitrary natural register values satisfying the relation.
+   Both execution clocks advance positively, so the relation preserves
+   nontermination as well as halting. The generic argument is in
+   [ProgressingBisimulation.lean](RiemannMachineVerification/ProgressingBisimulation.lean).
+2. [MacroRegisterCorrectness.lean](RiemannMachineVerification/Optimized278/MacroRegisterCorrectness.lean)
+   proves `primitive_iff_macro`. All 86 transfer sites are checked against the
+   primitive register program, with induction on the source value for
+   arbitrary-length transfer loops.
+3. [BackendCorrectness.lean](RiemannMachineVerification/Optimized278/BackendCorrectness.lean)
+   proves `machine389_iff_primitive`. It verifies all 1,024 dispatch cases,
+   both counter updates for every value, unary register operations, the
+   physical register allocation, and growing storage on the infinite tape.
+4. [MacroCorrectness.lean](RiemannMachineVerification/Optimized278/MacroCorrectness.lean)
+   proves `machine389_iff_machine339` by checking the short-path replacements
+   on every relevant finite tape window and lifting them to the infinite tape.
+5. [Quotient278.lean](RiemannMachineVerification/Optimized278/Quotient278.lean)
+   proves `machine339_iff_machine278`. Three inductive tape-invariant stages
+   establish the read masks; every permitted quotient transition is checked.
+6. `machine278_correct` composes these equivalences with the existing
+   `macro_correct` arithmetic theorem, including exclusion of values below
+   254. That arithmetic proof and the original accepted definitions are unchanged.
 
-The original `machine299_correct` proof is retained without modification.
-There is also an independently checked structured-source result:
-`source_correct` proves its arithmetic specification, and `macro_iff_source`
-connects it to the logical register program.
+The previous [295-state proof](RiemannMachineVerification/Correctness295.lean)
+and [`Reallocated` backend](RiemannMachineVerification/Reallocated) remain
+intact. The original `source_correct`, `compiled_cycle`, `macro_iff_source`,
+and `machine299_correct` results also remain available.
 
-## Artifact identity
+## Proof generation and artifacts
 
-The current table is [`../machine/riemann295.tm`](../machine/riemann295.tm),
-with SHA-256:
+Python proposes proof data; Lean checks the resulting definitions and proofs.
+To reproduce the new proof sources from the saved candidate, from the repository root:
 
-```text
-d79512cf945e8828ff587662990ee595e596871928f402fa6fef470b144d7079
+```sh
+.venv/bin/python formal/generate_optimized278.py
+.venv/bin/python formal/generate_refinement278.py
+.venv/bin/python formal/generate_backend278.py
+.venv/bin/python formal/generate_reduction278.py
 ```
 
-It has 295 ordinary states and a separate halting state. The tape is two-sided,
-binary, and initially zero; the head starts at zero in state `!ENTRY`. Each
-transition writes, moves by one cell, and enters an ordinary state or HALT.
+These generators check the saved compiler output and emit the literal register
+programs, boundary proofs, backend certificates, tape invariants and quotient.
+They do not establish acceptance by themselves; rerun `check_current.py` afterward.
+The [search report](../results/clique-target278/README.md) links the source,
+configuration, machine tables, certificates and independent reproduction commands.
 
-The historical `../machine/riemann.tm` still contains the frozen 299-state
-machine. The earlier 297-state table remains in `../results/exact-quotient/`.
-State names in the new intermediate tables are normalized by the explicit
-bijection in [proof-inputs.json](../machine/riemann295.proof-inputs.json).
-The final table is imported literally by
-[Machine295.lean](RiemannMachineVerification/Machine295.lean).
+[NativeFragments.lean](experiments/NativeFragments.lean) contains separate
+generic clear/test proofs for other experiments. Run it with
+`lake env lean experiments/NativeFragments.lean`. The primary 278-state
+candidate does not use native fragments or whole zero-call replacements.
 
-The [combined search report](../results/combined-beam/README.md) documents how
-295 states were found. The query for 294 timed out; no corresponding lower
-bound is claimed. Z3 and Python propose artifacts; the Lean kernel checks the
-complete correctness proof.
-
-All former archive contents are available directly in the repository; see the
+All artifacts are available directly in the repository; see the
 [artifact directory](../README.md#repository-artifacts-and-local-logs).
-This folder contains the Lean sources, pinned dependencies, generators, checks,
-and report. Machine tables and certificates are in [machine/](../machine),
-and saved optimization runs are in [results/](../results).
-
-Release ZIPs are generated locally, not committed. After checking the proof,
-`python3 package_verified.py` packages the current result, all proof sources,
-certificates, and the preserved baseline artifacts.
-
-
-Verification commands may create ignored local logs under `.logs/`. These
-console transcripts, solver outputs and execution traces are neither committed
-nor packaged. The durable verification report, accepted proof-source hashes,
-machine tables and certificates remain versioned. The packaging script checks
-those artifacts and includes only versioned files; it does not require a saved
-acceptance-console log. See the [artifact policy](../README.md#repository-artifacts-and-local-logs).
+After verification, `python3 package_verified.py` creates a local release ZIP
+from versioned inputs, including the proof and preserved baseline artifacts.
+ZIPs, build binaries and raw logs are not committed. Verification logs under
+`.logs/` are optional local diagnostics; the durable report, source hashes,
+tables and certificates are the versioned acceptance evidence.

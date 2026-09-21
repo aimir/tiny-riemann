@@ -8,9 +8,14 @@ import RiemannMachineVerification.SourceCorrectness
 import RiemannMachineVerification.RegisterReduction
 import RiemannMachineVerification.Correctness
 import RiemannMachineVerification.Headline
+import RiemannMachineVerification.Correctness295
 import RiemannMachineVerification.Quotient297
 
 #print axioms RiemannMachineVerification.headline_correct
+#print axioms RiemannMachineVerification.machine278_correct
+#print axioms RiemannMachineVerification.Optimized278.macro_iff_original
+#print axioms RiemannMachineVerification.Optimized278.machine389_iff_primitive
+#print axioms RiemannMachineVerification.Optimized278.machine339_iff_machine278
 #print axioms RiemannMachineVerification.machine295_correct
 #print axioms RiemannMachineVerification.Reallocated.machine381_iff_primitive
 #print axioms RiemannMachineVerification.Reallocated.machine342_iff_machine295

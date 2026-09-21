@@ -1,14 +1,14 @@
 # Register invariants and whole fragments: 282-state candidate
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 The third experiment reduces the preceding 285-state candidate to **282
 nonhalting states**. It combines the earlier 10-bit PC layout, five destructive
 reads and register placement with three whole-call replacements justified by
 register-zero invariants. **The whole machine is not Lean verified.** The
-verified headline remains `machine295_correct` with the same approved predicate.
+verified headline is `machine278_correct` with the same approved predicate.
 
 ## Result
 

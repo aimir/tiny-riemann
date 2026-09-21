@@ -1,28 +1,26 @@
-# Construction and correctness of the 295-state machine
+# Construction and correctness of the 278-state machine
 
-This guide explains the arithmetic, compilation, and reductions behind the
-current verified [295-state transition table](machine/riemann295.tm). The complete
-[Lean verification](formal/README.md) proves:
+The current verified [278-state table](results/clique-target278/fefaa549f250fd12/quotient-278.tm)
+has the complete [Lean theorem](formal/RiemannMachineVerification/Correctness278.lean):
 
 ```lean
-theorem machine295_correct :
-    HaltsBlank machine295 ↔ ∃ n : ℕ, Counterexample n
+theorem machine278_correct :
+    HaltsBlank machine278 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-The proof checks the literal table, tape backend, and reduction certificates
-without trusting the compiler or solver. The [verification contract](formal/ACCEPTANCE.md)
-defines the exact predicate and execution semantics. Its mathematical
-equivalence to RH remains outside the formal proof's scope.
+The construction is **389 compiled → 339 macro → 278 quotient states**,
+using a ten-bit counter and nine registers. All counts exclude the separate
+halting state. The proof checks the literal machine without trusting the
+compiler or solver. The [verification contract](formal/ACCEPTANCE.md) preserves
+the original arithmetic predicate and execution semantics. The predicate's
+mathematical equivalence to RH remains outside the formal proof's scope.
 
-The current construction has 381 compiled states, 342 after short-path
-replacements, and 295 after the exact quotient. The earlier 299- and 297-state
-machines use a different physical register allocation; their proofs remain
-available. All counts exclude the separate halting state.
-
-The latest [experimental machines have 278 states](results/clique-target278/README.md).
-Their independent checks pass, but the full-machine Lean refinements are still
-outstanding. Sections 1–9 describe the verified 295-state construction; the
-later experiments and their proof limits are summarized at the end.
+Sections 1–9 retain the arithmetic explanation and the earlier verified
+295-state construction (381 compiled → 342 macro → 295 quotient). The
+arithmetic argument also applies to the new machine. The search history
+below explains subsequent experiments; the final section explains the
+complete 278-state refinement proof. Earlier 299-, 297- and 295-state
+machine theorems remain available.
 
 ## 1. The predicate computed by the original program
 
@@ -256,15 +254,15 @@ The verifier's implementation of abstract reachability is separate from the
 reducer's. Concrete lockstep simulation is an additional regression check,
 not the justification for the unbounded conclusion.
 
-For the current table, four Lean invariant stages establish the read masks.
+For the 295-state table, four Lean invariant stages establish the read masks.
 [`Reallocated.machine342_iff_machine295`](formal/RiemannMachineVerification/Reallocated/Quotient295.lean)
 checks the quotient equations and proves halting equivalence. Z3's answer
 is not an assumption. Composing this with the macro, backend, register, and
 arithmetic results gives
 [`machine295_correct`](formal/RiemannMachineVerification/Correctness295.lean),
-selected by the default [headline theorem](formal/RiemannMachineVerification/Headline.lean).
+retained alongside the current [headline theorem](formal/RiemannMachineVerification/Headline.lean).
 
-## Limit of the result
+## Limits and subsequent search history
 
 This construction establishes a smaller upper bound. It does not prove the
 state count globally minimal, nor decide whether the machine eventually
@@ -293,8 +291,8 @@ reached 282 states by replacing three entire calls proved to have zero inputs.
 It adds an independent register-level bisimulation check and generic Lean
 proofs for native clear/test cores. Native-kernel variants were larger; the
 zero-call replacements produced the improvement. The 281-state fixed quotient
-query timed out after 90 seconds. The whole new machine still lacks the Lean
-refinement theorem and does not replace the verified 295-state headline.
+query timed out after 90 seconds. This particular 282-state machine still lacks the Lean
+refinement theorem and does not replace the verified headline.
 
 The subsequent [joint multigeneration search](results/unified-beam/README.md)
 combines all three compiler experiments and source mutations, ranking survivors
@@ -304,7 +302,7 @@ screened 127 configurations and produced or reused 43 reductions. Additional
 to 282. The count did not improve beyond phase 3. Saved ancestry and quotient
 mappings pass an independent artifact audit; the new harmonic-inlining
 candidate also passes the backend, register-control and reduction checks.
-The full new-machine Lean theorem remains outstanding.
+This particular 282-state layout still lacks a full Lean theorem.
 
 
 The [wider joint search](results/unified-wide/README.md) retains 16 parents,
@@ -313,7 +311,7 @@ examines 331 configurations over three generations, and produces or reuses
 a 10-bit program counter, all eligible destructive reads and a new physical
 register order. Complete-reduction scoring and exact solving precede survivor
 selection. Independent backend, invariant, macro and quotient checks pass;
-the verified Lean headline remains the 295-state machine. Longer exact
+this particular 280-state table has no complete Lean theorem. Longer exact
 queries, larger tape windows and longer transition contractions are recorded
 with the search artifacts and do not establish a lower bound.
 
@@ -326,9 +324,9 @@ incompatible states first, making more representative-count terms constant.
 It only reorders variables; it does not add assumptions or exclude partitions.
 Both resulting mappings pass the independent unbounded reduction checker.
 The primary source is identical to the accepted arithmetic source after
-removing padding and formatting. Destructive lowering, packed control and
-changed dispatch still need full Lean refinements before this machine can
-replace the verified headline.
+removing padding and formatting. The primary machine now has its complete Lean refinement theorem, described
+below, and is selected by the default headline. The second candidate remains
+independently checked without a full Lean theorem.
 
 The 24-parent and local-neighborhood runs were stopped after the supplemental
 278-state results passed their checks. Their checkpoints distinguish completed
@@ -339,3 +337,32 @@ unchanged by the supplemental solver results.
 Raw execution and solver logs are local diagnostics and are not distributed.
 The retained tables, certificates, SMT inputs and structured summaries are
 listed in the [artifact policy](README.md#repository-artifacts-and-local-logs).
+
+## Complete proof for the primary 278-state machine
+
+[`machine278_correct`](formal/RiemannMachineVerification/Correctness278.lean)
+connects the exact primary table to the unchanged approved predicate. The new
+register program is different from the older program, so its arithmetic
+correctness is transferred through an explicit equivalence proof.
+
+[`macro_iff_original`](formal/RiemannMachineVerification/Optimized278/RegisterRefinement.lean)
+relates 55 pairs of control-flow boundaries. Each boundary specifies shared
+register values and known zeros. Dead values may differ. Each case executes
+a positive finite number of steps on both sides, establishes the corresponding
+branch outcome, and proves the next boundary relation. Positive progress on
+both sides rules out hiding an infinite run in a finite simulation prefix.
+The generated proofs quantify over arbitrary natural register values; they
+are not bounded execution tests.
+
+The new backend proof checks 86 transfer sites, all 1,024 dispatch cases and
+both counter updates at every value. Generic unary-register proofs account
+for arbitrary contents and growing storage. Short-path certificates connect
+the compiled 389-state table to the 339-state table. Three inductive tape-mask
+stages and all quotient transition equations connect that table to the final
+278-state machine. Composing these results with the original `macro_correct`
+arithmetic theorem proves the unconditional result.
+
+The theorem's only axiom dependencies are `propext`, `Classical.choice`, and
+`Quot.sound`. The original four acceptance pins remain unchanged. See the
+[formal verification guide](formal/README.md) for rechecking commands, proof
+modules, the pinned table hash and generator instructions.

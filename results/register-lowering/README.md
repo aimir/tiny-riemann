@@ -1,13 +1,13 @@
 # Register liveness and arithmetic lowering: 285-state candidate
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 This experiment produced a **285-state, two-symbol candidate**, six states
 smaller than the previous 291-state PC-layout result. It retains nine
 registers and a 10-bit program counter. **It is not formally verified in
-Lean.** The verified headline remains `machine295_correct` and its approved
+Lean.** The verified headline is `machine278_correct` and its approved
 arithmetic predicate is unchanged.
 
 The candidate passes differential arithmetic tests and independent backend,
@@ -177,8 +177,10 @@ and destructive-read obligations. It must connect to the same approved
 arithmetic specification. The changed control graph, 10-bit backend, macro
 replacements, reachability facts, and final quotient must then be checked and
 composed in Lean. Regression tests and Python certificate checks do not supply
-that theorem. The [formal acceptance contract](../../formal/ACCEPTANCE.md),
-headline theorem, and proof-source pins remain unchanged.
+that theorem for this 285-state table. The later primary 278-state machine
+now has exactly such a complete refinement proof; see the
+[formal guide](../../formal/README.md). The approved predicate and original
+acceptance pins remain unchanged.
 
 Raw solver, execution and console logs stay local. Versioned tables,
 certificates, configurations, SMT inputs and structured reports follow the

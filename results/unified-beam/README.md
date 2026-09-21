@@ -1,13 +1,14 @@
 # Joint multigeneration optimization search
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 This search combines all three compiler experiments: program-counter layout,
 register liveness/arithmetic lowering, and invariant-guided fragment replacement.
 It also mutates source padding, expression order and procedure boundaries.
-The approved arithmetic specification and the Lean headline are unchanged.
+The approved arithmetic specification is unchanged. The current Lean headline
+is the later primary 278-state machine; this report concerns the 282-state search.
 
 ## Results
 
@@ -139,7 +140,7 @@ Saved-candidate checking does not require Z3:
 The tests exercise all five mutation families, certificate inheritance,
 deduplication without changing ancestry, selection by final rather than macro
 count, and retaining previous bounds across unknown solver answers.
-The current formal theorem remains `machine295_correct`. Generic native
+The current formal theorem is `machine278_correct`. Generic native
 fragment proofs and Python certificates do not supply the full new-machine
 source/backend/refinement theorem; see [formal/README.md](../../formal/README.md).
 

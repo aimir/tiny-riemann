@@ -1,4 +1,4 @@
-"""Package the current 295-state result, its proof, and the preserved baseline."""
+"""Package the current 278-state result, its proof, and the preserved baseline."""
 from pathlib import Path
 import hashlib
 import json
@@ -57,8 +57,8 @@ def package():
     # Verification reports and proof hashes are the durable inputs; console
     # logs are intentionally optional and never included in the archive.
     report = json.loads((FORMAL / 'verification.json').read_text())
-    assert report['status'] == 'accepted' and report['machine_states'] == 295
-    assert report['theorem'] == 'RiemannMachineVerification.machine295_correct'
+    assert report['status'] == 'accepted' and report['machine_states'] == 278
+    assert report['theorem'] == 'RiemannMachineVerification.machine278_correct'
     assert report['headline'] == 'RiemannMachineVerification.headline_correct'
     assert digest(ROOT / report['machine_file']) == report['machine_sha256']
     for name, expected in report['proof_source_sha256'].items():
@@ -68,8 +68,8 @@ def package():
         assert digest(ROOT / name) == expected, name
     paths = package_paths(manifest)
 
-    target = ROOT / 'riemann-295-verified.zip'
-    prefix = 'riemann-295/'
+    target = ROOT / 'riemann-278-verified.zip'
+    prefix = 'riemann-278/'
     with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as result:
         for path in sorted(paths):
             name = prefix + path.relative_to(ROOT).as_posix()

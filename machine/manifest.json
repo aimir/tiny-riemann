@@ -60,9 +60,9 @@
     ]
   ],
   "sha256": {
-    "CONSTRUCTION.md": "4391d08d9ab28126ce579674fbac714b6bed1f600e550978832b3a6608b4a70a",
-    "PROOF.md": "0524ae2782c43a41c56c0c369d7854061c58bd1f71087a1912a1494f1730f45b",
-    "README.md": "0f9d5d108ab5562ecbd82f1138a0eccdc4b25d5da213ed037964d01e9d0ea833",
+    "CONSTRUCTION.md": "235d518236c93392ceb8c0c2745322f0fdb5c31e56e8daaa64789a358a2a364d",
+    "PROOF.md": "63f67f3d5567ef0942c6ab56c1cb8207a7532a4227885748716be0cdd4f1c3fa",
+    "README.md": "18b464e39f880fcb6648e68d75167ee39f0ac9de2428b31626601cffee91d5f6",
     "machine/algorithm.nql": "bc60a926e190ed69883d843fb9990d2a5a6ce299a7f1c782b05937d1cc7486ec",
     "machine/macro_lengths.tsv": "1b11bc9ed83efb579fd027dfd5e5dd74b481008108bfe0469ffb6f0072f54095",
     "machine/macros.json": "c6f00941b44aa2f4b701d8d044b54c20cf623bbfcf739bce2e9e753580e0007d",

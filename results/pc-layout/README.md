@@ -1,14 +1,14 @@
 # Program-counter and dispatch experiment: 291 states
 
-This page records an earlier experiment. The latest independently checked
-result is [278 states](../clique-target278/README.md); the
-[fully Lean-verified headline](../../formal/README.md) remains 295 states.
+This page records an earlier experiment. The current
+[278-state primary result](../clique-target278/README.md) is the
+[fully Lean-verified headline](../../formal/README.md).
 
 The first PC-layout experiment produced a **291-state, two-symbol candidate
 with a 10-bit program counter**, four states smaller than the verified
 295-state machine. The candidate has passed the independent Python checks
 below. **It has not been proved in Lean.** The default theorem and smallest
-Lean-verified result remain `machine295_correct`. The later
+Lean-verified result are `machine278_correct`. The later
 [register-liveness experiment](../register-lowering/README.md) improves the
 experimental count to 285; this page records the preceding PC-only phase.
 
