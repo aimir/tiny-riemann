@@ -3,7 +3,7 @@ import random
 import shutil
 import subprocess
 
-from solve_quotient import quotient_problem, encode, decode_model
+from solve_quotient import quotient_problem, encode, decode_model, clique_first
 
 
 def partitions(size):
@@ -50,19 +50,22 @@ def main():
             if cases % 2:
                 rows['dead'] = ((0, -1, 'dead'), (1, 1, 'dead'))
                 possible['dead'] = 0
-            problem = quotient_problem(rows, possible)
             optimum = exhaustive_minimum(rows, possible)
-            for target in (optimum, optimum - 1):
-                result = subprocess.run([solver, '-in'], input=encode(problem, target, 5000),
-                                        text=True, capture_output=True, timeout=10)
-                status = result.stdout.splitlines()[0]
-                expected = 'sat' if target == optimum else 'unsat'
-                assert status == expected, (rows, possible, optimum, target, result.stdout)
-                if status == 'sat':
-                    reduced, _ = decode_model(rows, possible, problem, result.stdout)
-                    assert len(reduced) == optimum
+            ordered, _ = clique_first(rows, possible, trials=20)
+            assert ordered == rows
+            for order in (rows, ordered):
+                problem = quotient_problem(order, possible)
+                for target in (optimum, optimum - 1):
+                    result = subprocess.run([solver, '-in'], input=encode(problem, target, 5000),
+                                            text=True, capture_output=True, timeout=10)
+                    status = result.stdout.splitlines()[0]
+                    expected = 'sat' if target == optimum else 'unsat'
+                    assert status == expected, (rows, possible, optimum, target, result.stdout)
+                    if status == 'sat':
+                        reduced, _ = decode_model(rows, possible, problem, result.stdout)
+                        assert len(reduced) == optimum
             cases += 1
-    print(f'PASS: {cases} exhaustive comparisons, SAT model checks and UNSAT boundary checks.')
+    print(f'PASS: {cases} exhaustive comparisons in both orders, SAT model checks and UNSAT boundary checks.')
 
 
 if __name__ == '__main__':

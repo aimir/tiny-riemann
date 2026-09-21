@@ -32,6 +32,13 @@ bisimulation/certificate checks do not change the 295-state headline.
 The later [joint multigeneration search](../results/unified-beam/README.md)
 finds further 282-state candidates with independent checks, without reducing
 the state count or closing that full-machine proof gap.
+The [wider 16-candidate search](../results/unified-wide/README.md) then reaches
+280 states. The subsequent [24-parent search and clique-first quotient
+refinement](../results/clique-target278/README.md) produce two **278-state
+candidates**. Their arithmetic regressions, backend, register-control, macro
+and quotient checks pass. They still need the unbounded source-to-register
+and full-machine Lean refinements. The verified headline and approved
+predicate remain unchanged.
 
 The [verification contract](ACCEPTANCE.md) records both the current result and
 the preserved original approval. The original `machine299_correct` and the

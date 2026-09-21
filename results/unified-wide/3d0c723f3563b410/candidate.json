@@ -1,0 +1,115 @@
+{
+  "key": "3d0c723f3563b410df6cd73e9fd9d693feadd1a2d91278b8747b2b52c8ff100e",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "harmonic": "consume",
+    "borrow": "zero",
+    "borrow_depth": 2,
+    "borrow_zero": true,
+    "consume": true,
+    "propagate_consumed": true,
+    "zero": true,
+    "positive": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 391,
+  "macro_states": 345,
+  "graph": "e335ce08f50a6f9fddfa4b05b1c6c81f3d94bb6b1fcc88eeab5ed61e180388d0",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:consume"
+  ],
+  "proxy": 301.8,
+  "screen_states": 302,
+  "screen_seconds": 0.204321917030029,
+  "register_steps_two_iterations": 16217,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "362ef4e3ec8593837787460e4c97c19f5f4fc166caff225cbf2f5e0df74edf44",
+  "generation": 3,
+  "niche": "harmonic:consume",
+  "final_states": 287,
+  "merge_counts": [
+    [
+      0,
+      287
+    ],
+    [
+      1,
+      289
+    ],
+    [
+      2,
+      291
+    ],
+    [
+      3,
+      292
+    ],
+    [
+      248,
+      293
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      292
+    ],
+    [
+      1235,
+      291
+    ]
+  ],
+  "full_seconds": 10.622834916983265,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "unknown",
+      "seconds": 30.041133541963063,
+      "problem_sha256": "aa26e2a26d7592db99652839072097218f41d382453dc7979a5892cc13f8d2f1",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 282,
+    "status": "unknown",
+    "seconds": 30.041133541963063,
+    "problem_sha256": "aa26e2a26d7592db99652839072097218f41d382453dc7979a5892cc13f8d2f1",
+    "reused_from": null
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "status": "stopped_after_supplemental_target",
+  "reason": "Two 278-state machines from the supplemental clique-first refinement passed independent checks; further search stopped.",
+  "settings": {
+    "output": "results/unified-target278",
+    "seed_pool": [
+      "results/unified-wide"
+    ],
+    "generations": 3,
+    "beam": 24,
+    "offspring": 144,
+    "promote": 36,
+    "exact_finalists": 12,
+    "exact_seconds": 45,
+    "workers": 3,
+    "seed": 278024
+  },
+  "generations": [],
+  "pending_generation": {
+    "generation": 1,
+    "screened": 144,
+    "parents": [
+      "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+      "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27",
+      "0ceace346f51bc9e44f45a8eb5a9207e2c2f102c7f5f751d2f07e9284544edd2",
+      "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+      "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+      "1391d326a5f668f44c49a886a4f9cdf863dee7d9f240489d66eb9cb591839fc6",
+      "267f9796dd28c1abcbff851ff13ec5c290b5060bce9584aa3ff1bf1df8320158",
+      "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+      "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+      "333a2409bf1175ade97adde0763768fbb66606093b1c9e1644714495b054a3b5",
+      "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+      "3d0c723f3563b410df6cd73e9fd9d693feadd1a2d91278b8747b2b52c8ff100e",
+      "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4",
+      "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+      "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+      "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+      "65e7628ca1edfcdd97eab46436c3c241e09cfef384550b0cd927484dec0579ad",
+      "6b2ce9d6d96aaedc32bdc7d0562c6efb849cdd57a618f8eca3e6b0566e65864a",
+      "75a34af02ea44da7ab380a39b1d1915646fb90b600287ba89b94ff1dfa103297",
+      "c0f101114e6ac46fea730305ee3d28d11034c6576c98a4eda7d9e9a2072435a7",
+      "ddc2467e8aa4f179326f9a81fd99a12e1959cbffb96cc33394aa25dd3fe87755",
+      "e9eb7dc42a482e2372a150d6443e4332e4d511c489b6e2034757a0d98b037b3f",
+      "ea8ceacc08cb49c892b23fd3da444d0ddba5d65d70f04402ece1589ca8087be9",
+      "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53"
+    ],
+    "fully_reduced": 36
+  },
+  "screened": 259,
+  "fully_reduced": 151,
+  "best_states": 280,
+  "best_candidate": "2005ff4e8c51e4b17bb1301a80a32670bbbb73c5e5eefe1f858e5da83959373a",
+  "supplemental_result": "../clique-target278/report.json",
+  "interrupted_queries": [
+    "5e45cff7066adbbb/quotient-279.smt2"
+  ],
+  "scope": "Partial run: the pending generation did not finish SMT selection. Historical counts exclude supplemental refinements."
+}

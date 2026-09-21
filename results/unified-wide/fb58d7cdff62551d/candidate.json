@@ -1,0 +1,107 @@
+{
+  "key": "fb58d7cdff62551dde7c9005f9f5075ed8f7acb75f6e3497c6f10d802e1dc93a",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ]
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gc",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gx"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gc",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gx"
+  ],
+  "compiled_states": 368,
+  "macro_states": 329,
+  "graph": "87e7eea56b751203e8266d8a5723f8c8e0bffda4e08b6f127d5e49d80312afab",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "seed"
+  ],
+  "proxy": 296.4,
+  "screen_states": 299,
+  "screen_seconds": 0.26266795804258436,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": null,
+  "generation": 0,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 288,
+  "inherited_from": "results/unified-beam/fb58d7cdff62551d",
+  "inherited_table_sha256": "1f14169d8e1c18b0c13992747428394eac070abcd9430bf7fef4f168b824c70d",
+  "merge_counts": [
+    [
+      0,
+      290
+    ],
+    [
+      1,
+      288
+    ],
+    [
+      2,
+      294
+    ],
+    [
+      3,
+      293
+    ],
+    [
+      248,
+      294
+    ],
+    [
+      715,
+      294
+    ],
+    [
+      1181,
+      292
+    ],
+    [
+      1235,
+      292
+    ]
+  ]
+}

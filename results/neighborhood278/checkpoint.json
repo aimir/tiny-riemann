@@ -1,0 +1,35 @@
+{
+  "status": "stopped_after_supplemental_target",
+  "reason": "Two 278-state machines from the supplemental clique-first refinement passed independent checks; further search stopped.",
+  "settings": {
+    "output": "results/neighborhood278",
+    "bases": [
+      "results/unified-wide/fe4def10034af93f",
+      "results/unified-wide/46067991bb65ded1"
+    ],
+    "promote": 40,
+    "exact_finalists": 20,
+    "exact_seconds": 60,
+    "workers": 2,
+    "target": 278
+  },
+  "generations": [],
+  "pending_generation": {
+    "generation": 1,
+    "screened": 175,
+    "parents": [
+      "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0",
+      "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53"
+    ],
+    "fully_reduced": 40
+  },
+  "screened": 177,
+  "fully_reduced": 42,
+  "best_states": 279,
+  "best_candidate": "96c0836bb295b72a56b8f33e511c6cb331b9a9241f3ada5428ba7c9eb3ab756d",
+  "supplemental_result": "../clique-target278/report.json",
+  "interrupted_queries": [
+    "278efbe11dddae6d/quotient-279.smt2"
+  ],
+  "scope": "Partial run: the pending generation did not finish SMT selection. Historical counts exclude supplemental refinements."
+}

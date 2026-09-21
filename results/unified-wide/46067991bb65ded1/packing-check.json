@@ -1,0 +1,6 @@
+{
+  "relation_pairs": 240,
+  "control_equivalence": "passed",
+  "scope": "All reachable primitive control paths, with arbitrary decrement outcomes; Python check, not Lean proof.",
+  "source_sha256": "5d66249eca6785a9a480d5e4d61473626d510bf624b2a258c08f7eb7a6a11bd2"
+}

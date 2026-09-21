@@ -1,0 +1,138 @@
+{
+  "key": "7f3836fa9eff334db87bf1981fc641b33b84579684423f5eb0f8a8eb8badb447",
+  "layout": {
+    "inline": [],
+    "jump": "hybrid",
+    "threshold": 1,
+    "inline_calls": {
+      "harmonic()": [
+        0,
+        1
+      ]
+    },
+    "seed": 415677,
+    "jump_orders": {
+      "transfer(_scratch_1,_Gnum):3": 2
+    }
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ],
+    "roles": false
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 370,
+  "macro_states": 329,
+  "graph": "ebc7e8a339878684fd689d1740fb5f01618c177b4b1dc74d590e7d44f701e330",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "pc:one-jump"
+  ],
+  "proxy": 295.7,
+  "screen_states": 297,
+  "screen_seconds": 0.2762803750229068,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "ea8ceacc08cb49c892b23fd3da444d0ddba5d65d70f04402ece1589ca8087be9",
+  "generation": 1,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 282,
+  "merge_counts": [
+    [
+      0,
+      285
+    ],
+    [
+      1,
+      291
+    ],
+    [
+      2,
+      290
+    ],
+    [
+      3,
+      288
+    ],
+    [
+      248,
+      290
+    ],
+    [
+      715,
+      287
+    ],
+    [
+      1181,
+      284
+    ],
+    [
+      1235,
+      286
+    ]
+  ],
+  "full_seconds": 12.494864333013538,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 40.69894304202171,
+      "problem_sha256": "e95d62ec655b1d24f5b806a7f7c9c78454700fa725ed97a56131238f2357666e",
+      "reused_from": null
+    },
+    {
+      "target": 281,
+      "status": "unknown",
+      "seconds": 45.027380124956835,
+      "problem_sha256": "b081d36644e05afd8d78eb4660efc4fd9eb3b1e727bd37e2f41b22beacf3936c",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 281,
+    "status": "unknown",
+    "seconds": 45.027380124956835,
+    "problem_sha256": "b081d36644e05afd8d78eb4660efc4fd9eb3b1e727bd37e2f41b22beacf3936c",
+    "reused_from": null
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "key": "a2372a750a586a5ca50ec395a1f7b21bb1bd93eccf6fa966f21890491e5c582b",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1
+  },
+  "lowering": {
+    "consume": true,
+    "consume_lines": [
+      60,
+      65,
+      68,
+      69
+    ],
+    "propagate_consumed": true,
+    "zero": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 362,
+  "macro_states": 325,
+  "graph": "1e717bc9eeed16c26e475ddaf326aa1469340106491dc6aec28be24561297fcd",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "registers"
+  ],
+  "proxy": 298.8,
+  "screen_states": 301,
+  "screen_seconds": 0.19590704201254994,
+  "register_steps_two_iterations": 18048,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+  "generation": 1,
+  "niche": "facts",
+  "final_states": 289,
+  "merge_counts": [
+    [
+      0,
+      289
+    ],
+    [
+      1,
+      291
+    ],
+    [
+      2,
+      293
+    ],
+    [
+      3,
+      291
+    ],
+    [
+      248,
+      293
+    ],
+    [
+      715,
+      293
+    ],
+    [
+      1181,
+      293
+    ],
+    [
+      1235,
+      292
+    ]
+  ],
+  "full_seconds": 11.513827459013555,
+  "exact_history": [
+    {
+      "target": 283,
+      "status": "unknown",
+      "seconds": 30.025554209016263,
+      "problem_sha256": "c8fbc466dffab9b8f9cbbfb09acf39aff0902029dc6a08ef58023a544ad509dd",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 283,
+    "status": "unknown",
+    "seconds": 30.025554209016263,
+    "problem_sha256": "c8fbc466dffab9b8f9cbbfb09acf39aff0902029dc6a08ef58023a544ad509dd",
+    "reused_from": null
+  }
+}

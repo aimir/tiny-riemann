@@ -1,0 +1,137 @@
+{
+  "key": "4c4f04c5cb2b2da8ac0d4ff6a9b11987a705ed1dcb5ee8c6d7c5663b595b4d7d",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "pack": [
+      "main()"
+    ],
+    "placement": "source",
+    "seed": 142977
+  },
+  "lowering": {
+    "consume": true,
+    "propagate_consumed": true,
+    "zero": true,
+    "harmonic": false,
+    "positive": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 388,
+  "macro_states": 338,
+  "graph": "63f6dafeb9db48578fc681742c265b9f53f5c368a75b87b466e75451d05a8b23",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:positive"
+  ],
+  "proxy": 298.4,
+  "screen_states": 296,
+  "screen_seconds": 0.19513429200742394,
+  "register_steps_two_iterations": 15999,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53",
+  "generation": 1,
+  "niche": "packed",
+  "final_states": 280,
+  "merge_counts": [
+    [
+      0,
+      284
+    ],
+    [
+      1,
+      287
+    ],
+    [
+      2,
+      288
+    ],
+    [
+      3,
+      289
+    ],
+    [
+      248,
+      290
+    ],
+    [
+      715,
+      289
+    ],
+    [
+      1181,
+      289
+    ],
+    [
+      1235,
+      284
+    ]
+  ],
+  "full_seconds": 12.42855358304223,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 0.00020658300491049886,
+      "problem_sha256": "80e7833f4594a0dfa6bd21ca466449d1eb765bab82058f976643d5cf13523581",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/unified-wide/fe4def10034af93f/quotient-282.smt2"
+    },
+    {
+      "target": 281,
+      "status": "sat",
+      "seconds": 0.0001817920128814876,
+      "problem_sha256": "0db20aa977380ca5099ad0761f8bfc14c7044edbcaf79ce021ea9b5bb41f1b7d",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/unified-wide/fe4def10034af93f/quotient-281.smt2"
+    },
+    {
+      "target": 280,
+      "status": "sat",
+      "seconds": 0.0001800000318326056,
+      "problem_sha256": "2f2620d2a372d1ff3179c19fd013830dc443afccc5bbaabeb0af10a44bf48b18",
+      "reused_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/unified-wide/fe4def10034af93f/quotient-280.smt2"
+    },
+    {
+      "target": 279,
+      "status": "unknown",
+      "seconds": 45.06077500001993,
+      "problem_sha256": "23eb4751692d8b5edb1a1103229c22f17db4df5993ec290110ef8c80c340381e",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 279,
+    "status": "unknown",
+    "seconds": 45.06077500001993,
+    "problem_sha256": "23eb4751692d8b5edb1a1103229c22f17db4df5993ec290110ef8c80c340381e",
+    "reused_from": null
+  }
+}

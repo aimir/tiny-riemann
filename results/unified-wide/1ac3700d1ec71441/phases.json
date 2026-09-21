@@ -1,0 +1,27 @@
+{
+  "phase": null,
+  "roles": [],
+  "zero": {
+    "main():transfer(_Gi):2": {
+      "source": "_Gi",
+      "entries": [
+        152
+      ],
+      "valid": true
+    },
+    "main():transfer(_Gc):0": {
+      "source": "_Gc",
+      "entries": [
+        404
+      ],
+      "valid": true
+    },
+    "main():transfer(_Glcm):1": {
+      "source": "_Glcm",
+      "entries": [
+        452
+      ],
+      "valid": true
+    }
+  }
+}

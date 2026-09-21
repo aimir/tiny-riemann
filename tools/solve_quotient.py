@@ -9,6 +9,7 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
+import random
 import re
 import shutil
 import subprocess
@@ -81,6 +82,40 @@ def quotient_problem(rows, possible):
     return names, pairs, core, lines, representatives
 
 
+def clique_first(rows, possible, seed=278, trials=1500):
+    """Reorder variables without adding constraints or restricting partitions.
+
+    Mutually incompatible states must be distinct representatives if placed
+    first. Exposing these constants simplifies the cardinality constraint.
+    The greedy clique is only an ordering heuristic; maximality is not assumed.
+    """
+    names, pairs, core, *_ = quotient_problem(rows, possible)
+    incompatible = {i: set(core) - {i} for i in core}
+    for a, b in pairs:
+        incompatible[a].discard(b)
+        incompatible[b].discard(a)
+    rng = random.Random(seed)
+    best = []
+    for _ in range(trials):
+        remaining = set(core)
+        clique = []
+        while remaining:
+            weights = {i: len(incompatible[i] & remaining) + rng.random() * 10
+                       for i in remaining}
+            vertex = max(remaining, key=weights.get)
+            clique.append(vertex)
+            remaining &= incompatible[vertex]
+        if len(clique) > len(best):
+            best = clique
+    assert all(b in incompatible[a] for i, a in enumerate(best) for b in best[i+1:])
+    first = [names[i] for i in best]
+    rest = [q for q in rows if q not in first]
+    random.Random(seed).shuffle(rest)
+    ordered = {q: rows[q] for q in first + rest}
+    assert ordered == rows
+    return ordered, first
+
+
 def encode(problem, target, timeout_ms):
     names, pairs, core, lines, representatives = problem
     available = target - (len(names) - len(core))
@@ -147,6 +182,8 @@ def main():
     parser.add_argument('--timeout', type=float, default=60)
     parser.add_argument('--output', type=Path, default=Path('results/exact-quotient'))
     parser.add_argument('--solver', default=shutil.which('z3'))
+    parser.add_argument('--order', choices=('source', 'clique'), default='source')
+    parser.add_argument('--order-seed', type=int, default=278)
     args = parser.parse_args()
     assert args.solver, 'Install Z3 or pass --solver.'
     assert 1 <= args.minimum <= args.target and args.timeout > 0
@@ -158,7 +195,8 @@ def main():
         for b in (0, 1):
             t = rows[q][b][2]
             assert not (possible[q] & (1 << b)) or t == 'HALT' or possible[t]
-    problem = quotient_problem(rows, possible)
+    ordered, clique = clique_first(rows, possible, args.order_seed) if args.order == 'clique' else (rows, [])
+    problem = quotient_problem(ordered, possible)
     names, pairs, core, *_ = problem
     args.output.mkdir(parents=True, exist_ok=True)
     report = {
@@ -166,6 +204,7 @@ def main():
         'certificate_sha256': hashlib.sha256(args.certificate.read_bytes()).hexdigest(),
         'solver': subprocess.check_output([args.solver, '-version'], text=True).strip(),
         'live_states': len(names), 'core_states': len(core), 'potential_pairs': len(pairs),
+        'order': args.order, 'order_seed': args.order_seed, 'incompatible_clique': clique,
         'source_names': names, 'queries': [],
         'scope': 'Fixed transition table and read masks; UNSAT is not a Lean lower-bound proof.'}
     print({k: report[k] for k in ('live_states', 'core_states', 'potential_pairs')}, flush=True)

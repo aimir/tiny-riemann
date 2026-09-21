@@ -8,12 +8,11 @@ The machine has **295 nonhalting states and two symbols**, down from the
 original **744**: **449 fewer states (60.3%)**. It starts on a blank zero tape
 in state `!ENTRY`. The separate `HALT` state is excluded from both counts.
 This is the smallest Lean-verified machine here; global minimality is not claimed.
-The later [register-invariant and fragment experiment](results/fragments/README.md)
-produced a **282-state candidate**, improving on the
-[285-state register-liveness result](results/register-lowering/README.md).
-It has independent register-control, backend and reduction checks, plus Lean
-proofs for generic native fragment cores. The whole candidate has not been
-proved in Lean and is not the default headline.
+The later [wider search and reordered SMT solving](results/clique-target278/README.md)
+produced **278-state candidates**: **466 fewer states (62.63%)** than the original.
+They pass independent arithmetic, register-control, backend and reduction checks.
+Their full-machine Lean proof is still outstanding, so they do not replace the
+verified 295-state headline.
 
 | Construction | Nonhalting states |
 |---|---:|
@@ -42,7 +41,12 @@ proved in Lean and is not the default headline.
   [shortened table](machine/riemann295.macro.tm),
   [short-path certificate](machine/riemann295.macros.json), and
   [quotient certificate](machine/riemann295.reduction.json).
-- [Experimental 282-state result](results/fragments/README.md): whole-call
+- [Experimental 278-state result](results/clique-target278/README.md): two checked
+  candidates from wider search and clique-first SMT ordering, with complete
+  tables, certificates and reproduction commands.
+- [Earlier 16-parent search](results/unified-wide/README.md): 331 configurations,
+  115 complete or reused reductions, and a 280-state result before refinement.
+- [Earlier experimental 282-state result](results/fragments/README.md): whole-call
   replacements, stronger register invariants, and native component proofs.
 - [Earlier experimental 285-state result](results/register-lowering/README.md): selective
   destructive reads, register placement, arithmetic experiments, and proof limits.

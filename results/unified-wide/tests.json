@@ -1,0 +1,18 @@
+{
+  "canonical_consumption_byte_identical": true,
+  "checked_282_inherited": true,
+  "final_count_overrides_macro_score": true,
+  "duplicate_preserves_ancestry": true,
+  "failed_certificate_removed_from_cache": true,
+  "duplicate_seed_preserves_best": true,
+  "parallel_reduction_byte_identical": true,
+  "every_parent_gets_all_mutation_families": true,
+  "mutations_exercised": {
+    "source": 8,
+    "registers": 8,
+    "pc": 8,
+    "lowering": 8,
+    "fragments": 8
+  },
+  "rejected_mutations": 0
+}

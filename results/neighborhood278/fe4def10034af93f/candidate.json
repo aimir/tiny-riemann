@@ -1,0 +1,100 @@
+{
+  "key": "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "pack": [
+      "main()"
+    ],
+    "placement": "source",
+    "seed": 142977
+  },
+  "lowering": {
+    "consume": true,
+    "propagate_consumed": true,
+    "zero": true,
+    "harmonic": false
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gnum",
+    "_Gdenom",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 388,
+  "macro_states": 338,
+  "graph": "63f6dafeb9db48578fc681742c265b9f53f5c368a75b87b466e75451d05a8b23",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "seed"
+  ],
+  "proxy": 298.4,
+  "screen_states": 296,
+  "screen_seconds": 0.43663604103494436,
+  "register_steps_two_iterations": 15999,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": null,
+  "generation": 0,
+  "niche": "packed",
+  "final_states": 280,
+  "inherited_from": "/Users/amirsarid/Documents/ChatGPT/riemann/results/unified-wide/fe4def10034af93f",
+  "inherited_table_sha256": "289b3c0426763383cd21ebba97ab1819f72b4ccee527fd26a3b6d841e5755703",
+  "merge_counts": [
+    [
+      0,
+      284
+    ],
+    [
+      1,
+      287
+    ],
+    [
+      2,
+      288
+    ],
+    [
+      3,
+      289
+    ],
+    [
+      248,
+      290
+    ],
+    [
+      715,
+      289
+    ],
+    [
+      1181,
+      289
+    ],
+    [
+      1235,
+      284
+    ]
+  ]
+}

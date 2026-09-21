@@ -1,0 +1,10 @@
+{
+  "quotient_encoding": "PASS: 72 exhaustive comparisons in both orders, SAT model checks and UNSAT boundary checks.",
+  "neighborhood": {
+    "status": "passed",
+    "neighbors": {
+      "fe4def10034af93f": 99,
+      "46067991bb65ded1": 80
+    }
+  }
+}

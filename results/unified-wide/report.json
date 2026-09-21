@@ -1,0 +1,391 @@
+{
+  "settings": {
+    "output": "results/unified-wide",
+    "generations": 3,
+    "beam": 16,
+    "offspring": 96,
+    "promote": 24,
+    "exact_finalists": 8,
+    "exact_seconds": 30,
+    "seed": 282016,
+    "seed_pool": [
+      "results/unified-beam"
+    ],
+    "workers": 3
+  },
+  "generations": [
+    {
+      "generation": 1,
+      "attempts": 101,
+      "screened": 96,
+      "promoted": 24,
+      "parents": [
+        "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+        "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27",
+        "1ac3700d1ec71441fe0afab391cbcc74939c9f9604d1a6deb1bd3de2363b6e1a",
+        "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6",
+        "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+        "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+        "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+        "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+        "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+        "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+        "75a34af02ea44da7ab380a39b1d1915646fb90b600287ba89b94ff1dfa103297",
+        "a8827bf4535cea546be5432b70f82e6155415193ea470d2e59408f4d7b9c7a08",
+        "abd83bd470fa5e0a75a2d4d6d57eba639b6bd72976f7c700e9e0c2c73717b140",
+        "bf490ceca27eee87466edd915090d097a0f4feba0205a2811fc9ff6247cc50ab",
+        "eec8766e05c4ed9d79eef8bf9ffc31fa0f2f3cd080eb510609f090e1477dd9e0",
+        "fb92e7de11dc705e9e0360a64252b6db206b03a12cf7bad436db5a4b039e5af4"
+      ],
+      "survivors": [
+        {
+          "key": "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0",
+          "states": 281,
+          "niche": "packed",
+          "parent": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5"
+        },
+        {
+          "key": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "fb92e7de11dc705e9e0360a64252b6db206b03a12cf7bad436db5a4b039e5af4"
+        },
+        {
+          "key": "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6"
+        },
+        {
+          "key": "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "7bd8f6a7973518042f965f9d8bb62f2d27855ec58e502cbaf5125d3b82579e3a",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "fb92e7de11dc705e9e0360a64252b6db206b03a12cf7bad436db5a4b039e5af4"
+        },
+        {
+          "key": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+          "states": 282,
+          "niche": "packed",
+          "parent": null
+        },
+        {
+          "key": "ead524526e86683d9c0fc299a01c1c0208df41de6a9428cdf8997b06f70655cc",
+          "states": 283,
+          "niche": "borrow",
+          "parent": "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27"
+        },
+        {
+          "key": "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+          "states": 283,
+          "niche": "native",
+          "parent": "a8827bf4535cea546be5432b70f82e6155415193ea470d2e59408f4d7b9c7a08"
+        },
+        {
+          "key": "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+          "states": 285,
+          "niche": "facts",
+          "parent": null
+        },
+        {
+          "key": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+          "states": 285,
+          "niche": "ordinary",
+          "parent": null
+        },
+        {
+          "key": "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+          "states": 292,
+          "niche": "harmonic:consume",
+          "parent": null
+        },
+        {
+          "key": "0dd94ec6cfc2ae6aa348fe409d838c65a9ee52da182235ae49b1898b34d8ae30",
+          "states": 295,
+          "niche": "specialized",
+          "parent": "1ac3700d1ec71441fe0afab391cbcc74939c9f9604d1a6deb1bd3de2363b6e1a"
+        },
+        {
+          "key": "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+          "states": 283,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27",
+          "states": 284,
+          "niche": "borrow",
+          "parent": null
+        },
+        {
+          "key": "75a34af02ea44da7ab380a39b1d1915646fb90b600287ba89b94ff1dfa103297",
+          "states": 284,
+          "niche": "native",
+          "parent": null
+        }
+      ]
+    },
+    {
+      "generation": 2,
+      "attempts": 104,
+      "screened": 96,
+      "promoted": 24,
+      "parents": [
+        "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+        "0b4e768f6e77652ef55ec274a8e434f3809a7e9463bcbb6897719f133f96eb27",
+        "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+        "0dd94ec6cfc2ae6aa348fe409d838c65a9ee52da182235ae49b1898b34d8ae30",
+        "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+        "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+        "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+        "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+        "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+        "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0",
+        "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+        "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+        "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+        "75a34af02ea44da7ab380a39b1d1915646fb90b600287ba89b94ff1dfa103297",
+        "7bd8f6a7973518042f965f9d8bb62f2d27855ec58e502cbaf5125d3b82579e3a",
+        "ead524526e86683d9c0fc299a01c1c0208df41de6a9428cdf8997b06f70655cc"
+      ],
+      "survivors": [
+        {
+          "key": "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4",
+          "states": 281,
+          "niche": "packed",
+          "parent": "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0"
+        },
+        {
+          "key": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "fb92e7de11dc705e9e0360a64252b6db206b03a12cf7bad436db5a4b039e5af4"
+        },
+        {
+          "key": "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6"
+        },
+        {
+          "key": "267f9796dd28c1abcbff851ff13ec5c290b5060bce9584aa3ff1bf1df8320158",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47"
+        },
+        {
+          "key": "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "65e7628ca1edfcdd97eab46436c3c241e09cfef384550b0cd927484dec0579ad",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47"
+        },
+        {
+          "key": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+          "states": 282,
+          "niche": "packed",
+          "parent": null
+        },
+        {
+          "key": "1391d326a5f668f44c49a886a4f9cdf863dee7d9f240489d66eb9cb591839fc6",
+          "states": 283,
+          "niche": "borrow",
+          "parent": "ead524526e86683d9c0fc299a01c1c0208df41de6a9428cdf8997b06f70655cc"
+        },
+        {
+          "key": "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+          "states": 283,
+          "niche": "native",
+          "parent": "a8827bf4535cea546be5432b70f82e6155415193ea470d2e59408f4d7b9c7a08"
+        },
+        {
+          "key": "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+          "states": 285,
+          "niche": "facts",
+          "parent": null
+        },
+        {
+          "key": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+          "states": 285,
+          "niche": "ordinary",
+          "parent": null
+        },
+        {
+          "key": "362ef4e3ec8593837787460e4c97c19f5f4fc166caff225cbf2f5e0df74edf44",
+          "states": 292,
+          "niche": "harmonic:consume",
+          "parent": "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1"
+        },
+        {
+          "key": "0dd94ec6cfc2ae6aa348fe409d838c65a9ee52da182235ae49b1898b34d8ae30",
+          "states": 295,
+          "niche": "specialized",
+          "parent": "1ac3700d1ec71441fe0afab391cbcc74939c9f9604d1a6deb1bd3de2363b6e1a"
+        },
+        {
+          "key": "519ca7e09a7faa082eb39a35459471297e2a386558f5ab13510b57f982153a5f",
+          "states": 304,
+          "niche": "harmonic:paired",
+          "parent": "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0"
+        },
+        {
+          "key": "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+          "states": 283,
+          "niche": "zero-fragments",
+          "parent": null
+        }
+      ]
+    },
+    {
+      "generation": 3,
+      "attempts": 101,
+      "screened": 96,
+      "promoted": 24,
+      "parents": [
+        "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+        "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+        "0dd94ec6cfc2ae6aa348fe409d838c65a9ee52da182235ae49b1898b34d8ae30",
+        "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+        "1391d326a5f668f44c49a886a4f9cdf863dee7d9f240489d66eb9cb591839fc6",
+        "267f9796dd28c1abcbff851ff13ec5c290b5060bce9584aa3ff1bf1df8320158",
+        "2d059ced296a7e0bde6cbc076763caa987b71d4df4debf16db58bfa7c3035d09",
+        "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+        "362ef4e3ec8593837787460e4c97c19f5f4fc166caff225cbf2f5e0df74edf44",
+        "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+        "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4",
+        "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+        "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+        "519ca7e09a7faa082eb39a35459471297e2a386558f5ab13510b57f982153a5f",
+        "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+        "65e7628ca1edfcdd97eab46436c3c241e09cfef384550b0cd927484dec0579ad"
+      ],
+      "survivors": [
+        {
+          "key": "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53",
+          "states": 280,
+          "niche": "packed",
+          "parent": "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4"
+        },
+        {
+          "key": "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4",
+          "states": 281,
+          "niche": "packed",
+          "parent": "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0"
+        },
+        {
+          "key": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "fb92e7de11dc705e9e0360a64252b6db206b03a12cf7bad436db5a4b039e5af4"
+        },
+        {
+          "key": "13854a5b9228f7ae9cc82095b1de5387fc3e852645dc13ded5034b7977138f7d",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "1c6789b9abf59a81aefc9808c5ab9bbabac74aa5709e3a6acf6bfb14f2211ac6"
+        },
+        {
+          "key": "267f9796dd28c1abcbff851ff13ec5c290b5060bce9584aa3ff1bf1df8320158",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47"
+        },
+        {
+          "key": "4ae1d87a93d561971bbbafe3947d4b5d1f9d6d366a6c4923067718770f1ce9ce",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": null
+        },
+        {
+          "key": "65e7628ca1edfcdd97eab46436c3c241e09cfef384550b0cd927484dec0579ad",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47"
+        },
+        {
+          "key": "e9eb7dc42a482e2372a150d6443e4332e4d511c489b6e2034757a0d98b037b3f",
+          "states": 282,
+          "niche": "specialized",
+          "parent": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5"
+        },
+        {
+          "key": "1391d326a5f668f44c49a886a4f9cdf863dee7d9f240489d66eb9cb591839fc6",
+          "states": 283,
+          "niche": "borrow",
+          "parent": "ead524526e86683d9c0fc299a01c1c0208df41de6a9428cdf8997b06f70655cc"
+        },
+        {
+          "key": "32cc8939edf663090792d18706e6710bec4beefee2398fef3087575de1167fdd",
+          "states": 283,
+          "niche": "native",
+          "parent": "a8827bf4535cea546be5432b70f82e6155415193ea470d2e59408f4d7b9c7a08"
+        },
+        {
+          "key": "022f50c343cc40cd222496e3bbe13c5b2ca7dbf36751e3a89f7375f179b0bed3",
+          "states": 285,
+          "niche": "facts",
+          "parent": null
+        },
+        {
+          "key": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+          "states": 285,
+          "niche": "ordinary",
+          "parent": null
+        },
+        {
+          "key": "3d0c723f3563b410df6cd73e9fd9d693feadd1a2d91278b8747b2b52c8ff100e",
+          "states": 287,
+          "niche": "harmonic:consume",
+          "parent": "362ef4e3ec8593837787460e4c97c19f5f4fc166caff225cbf2f5e0df74edf44"
+        },
+        {
+          "key": "0ceace346f51bc9e44f45a8eb5a9207e2c2f102c7f5f751d2f07e9284544edd2",
+          "states": 304,
+          "niche": "harmonic:paired",
+          "parent": "519ca7e09a7faa082eb39a35459471297e2a386558f5ab13510b57f982153a5f"
+        },
+        {
+          "key": "6b2ce9d6d96aaedc32bdc7d0562c6efb849cdd57a618f8eca3e6b0566e65864a",
+          "states": 282,
+          "niche": "zero-fragments",
+          "parent": "5e96606d02a0c224244b31824a8e30f57c2bbfe3ba34d6e8989fb6093d4a9f91"
+        }
+      ]
+    }
+  ],
+  "screened": 331,
+  "fully_reduced": 115,
+  "rejected": 1,
+  "best_states": 280,
+  "best_candidate": "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53",
+  "ranking": "Every survivor has a complete reduction; SMT updates precede selection. Counts are feasible upper bounds.",
+  "formal_scope": "Experimental full machine; verified headline remains machine295_correct."
+}

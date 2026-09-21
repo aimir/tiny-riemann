@@ -1,0 +1,120 @@
+{
+  "key": "588af261fa35a0b1df00fd63f1389e85dc2e88cfa76b0e6506c0a73ff2eb0fa4",
+  "layout": {
+    "inline": [],
+    "jump": "hybrid",
+    "threshold": 1,
+    "inline_calls": {
+      "harmonic()": [
+        0,
+        1
+      ]
+    },
+    "seed": 615483
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ],
+    "borrow": false,
+    "borrow_depth": 3,
+    "borrow_zero": true,
+    "borrow_globals": [
+      "lcm",
+      "x",
+      "i",
+      "denom",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ],
+    "roles": true
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 366,
+  "macro_states": 327,
+  "graph": "395cbb405957333a2af44c3ff4b307d4178e779641f110535b3b0b26789edca2",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:borrow"
+  ],
+  "proxy": 294.4,
+  "screen_states": 297,
+  "screen_seconds": 0.2808570839697495,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 3,
+  "parent": "0cf05f02f14a895069e584ea5eb875fac9e3af14a88e1a6c0dc2c9c02766de47",
+  "generation": 1,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 288,
+  "merge_counts": [
+    [
+      0,
+      288
+    ],
+    [
+      1,
+      292
+    ],
+    [
+      2,
+      288
+    ],
+    [
+      3,
+      290
+    ],
+    [
+      248,
+      290
+    ],
+    [
+      715,
+      288
+    ],
+    [
+      1181,
+      289
+    ],
+    [
+      1235,
+      288
+    ]
+  ],
+  "full_seconds": 12.110670875001233
+}

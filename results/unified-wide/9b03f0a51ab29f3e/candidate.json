@@ -1,0 +1,118 @@
+{
+  "key": "9b03f0a51ab29f3e1adcd8f9bea33d9bc9ba5989caddc9342f6d8be6a5fa870e",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "seed": 680722,
+    "pack": [],
+    "placement": "size"
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "compiled_states": 368,
+  "macro_states": 330,
+  "graph": "6cf81f379f27b2bc532262cd92c50e604fc6e588479e5a01aee20eaafe84eae3",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "pc:one-jump",
+    "pc:pack"
+  ],
+  "proxy": 297.4,
+  "screen_states": 300,
+  "screen_seconds": 0.1781817080336623,
+  "register_steps_two_iterations": 16774,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "3c8f71422172574a98bb3363b59bf20572c25a99f543040de2cf96bd7d6d90b8",
+  "generation": 2,
+  "niche": "ordinary",
+  "final_states": 290,
+  "merge_counts": [
+    [
+      0,
+      290
+    ],
+    [
+      1,
+      294
+    ],
+    [
+      2,
+      292
+    ],
+    [
+      3,
+      293
+    ],
+    [
+      248,
+      293
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      291
+    ],
+    [
+      1235,
+      292
+    ]
+  ],
+  "full_seconds": 11.524443125003017,
+  "exact_history": [
+    {
+      "target": 283,
+      "status": "unsat",
+      "seconds": 0.00011366599937900901,
+      "problem_sha256": "15d7c5a3c5539cef9446e822f7a8ea8ab57424fda08ed04f1cea490d1798fc0c",
+      "reused_from": "results/unified-wide/51d9036b7a04b0c3/quotient-283.smt2"
+    }
+  ],
+  "exact": {
+    "target": 283,
+    "status": "unsat",
+    "seconds": 0.00011366599937900901,
+    "problem_sha256": "15d7c5a3c5539cef9446e822f7a8ea8ab57424fda08ed04f1cea490d1798fc0c",
+    "reused_from": "results/unified-wide/51d9036b7a04b0c3/quotient-283.smt2"
+  }
+}

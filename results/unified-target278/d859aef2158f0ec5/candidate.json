@@ -1,0 +1,131 @@
+{
+  "key": "d859aef2158f0ec58d3266506038475dcf4ac15f50b9bf5586460b78c7aed782",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "pack": [
+      "main()"
+    ],
+    "placement": "source",
+    "seed": 695465
+  },
+  "lowering": {
+    "consume": true,
+    "propagate_consumed": true,
+    "zero": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 389,
+  "macro_states": 339,
+  "graph": "39f970c415cba91fbc0fcb48eeeb6c7cb482a923fbd04650386a3e70232439a2",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "source:assignments"
+  ],
+  "proxy": 299.4,
+  "screen_states": 297,
+  "screen_seconds": 0.25020875001791865,
+  "register_steps_two_iterations": 15999,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+  "generation": 1,
+  "niche": "packed",
+  "final_states": 281,
+  "merge_counts": [
+    [
+      0,
+      283
+    ],
+    [
+      1,
+      286
+    ],
+    [
+      2,
+      289
+    ],
+    [
+      3,
+      292
+    ],
+    [
+      248,
+      284
+    ],
+    [
+      715,
+      287
+    ],
+    [
+      1181,
+      286
+    ],
+    [
+      1235,
+      287
+    ]
+  ],
+  "full_seconds": 12.426835917052813,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 0.3529018340050243,
+      "problem_sha256": "de36fd79f47c76d9a9828987ec2a6cb7fc7ee14cef534caa22c921cc1502d036",
+      "reused_from": null
+    },
+    {
+      "target": 281,
+      "status": "sat",
+      "seconds": 35.02268366597127,
+      "problem_sha256": "11721d7c161c95927375dd28652379971d0976de5cb72f7732317255c23e1789",
+      "reused_from": null
+    },
+    {
+      "target": 280,
+      "status": "unknown",
+      "seconds": 45.08086012501735,
+      "problem_sha256": "f3b8f22a3c8cbd88c74b81ddfb6c7103c7dbaec27175cd6c20dcc8f11877afd6",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 280,
+    "status": "unknown",
+    "seconds": 45.08086012501735,
+    "problem_sha256": "f3b8f22a3c8cbd88c74b81ddfb6c7103c7dbaec27175cd6c20dcc8f11877afd6",
+    "reused_from": null
+  }
+}

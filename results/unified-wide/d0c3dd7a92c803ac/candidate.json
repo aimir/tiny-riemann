@@ -1,0 +1,74 @@
+{
+  "key": "d0c3dd7a92c803ac7190e5b13c4305461bd745ae53f89f01eb9d8d76eba86196",
+  "layout": {
+    "inline": [],
+    "jump": "hybrid",
+    "threshold": 1,
+    "inline_calls": {
+      "harmonic()": [
+        0,
+        1
+      ]
+    },
+    "seed": 615483
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ],
+    "harmonic": "consume"
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ],
+    "roles": false
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 395,
+  "macro_states": 350,
+  "graph": "fa83a18bfca39e363edaa6d3b6df0b32e4d84020bd871d513e66707484c23f4d",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:harmonic"
+  ],
+  "proxy": 309.2,
+  "screen_states": 311,
+  "screen_seconds": 0.2605018750182353,
+  "register_steps_two_iterations": 16338,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "267f9796dd28c1abcbff851ff13ec5c290b5060bce9584aa3ff1bf1df8320158",
+  "generation": 3,
+  "niche": "harmonic:consume",
+  "zero_bisimulation_pairs": 211
+}

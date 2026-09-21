@@ -1,0 +1,123 @@
+{
+  "key": "608f5860ff08127cbb369b99a78bc93d0077a5336b70d41ebcfc8a81b39cd6e8",
+  "layout": {
+    "inline": [],
+    "jump": "hybrid",
+    "threshold": 1,
+    "inline_calls": {
+      "harmonic()": [
+        0,
+        1
+      ]
+    },
+    "seed": 591390,
+    "procedure_jumps": {
+      "transfer": "relative"
+    }
+  },
+  "lowering": {
+    "consume": [
+      "lcm",
+      "num",
+      "c"
+    ],
+    "borrow": false,
+    "borrow_depth": 3,
+    "borrow_zero": true,
+    "borrow_globals": [
+      "lcm",
+      "x",
+      "i",
+      "denom",
+      "num",
+      "c"
+    ]
+  },
+  "fragments": {
+    "zero_skip": [
+      "main():transfer(_Gc):0",
+      "main():transfer(_Gi):2",
+      "main():transfer(_Glcm):1",
+      "main():transfer(_Gnum):0"
+    ]
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_Gdenom",
+    "_Gnum",
+    "_Gc",
+    "_scratch_1",
+    "_scratch_2",
+    "_scratch_3"
+  ],
+  "compiled_states": 368,
+  "macro_states": 327,
+  "graph": "56a3548e1795d9f95e46cbc751741c12793154a9585996ad56ac2bd7e1fe75ae",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 4
+  },
+  "family": "unified",
+  "mutation": [
+    "seed"
+  ],
+  "proxy": 294.4,
+  "screen_states": 297,
+  "screen_seconds": 0.26889170898357406,
+  "register_steps_two_iterations": 16768,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": null,
+  "generation": 0,
+  "niche": "zero-fragments",
+  "zero_bisimulation_pairs": 243,
+  "final_states": 287,
+  "inherited_from": "results/unified-wide/608f5860ff08127c",
+  "inherited_table_sha256": "a046a7ae799235dfa4c87a1cc143d8c588e2eaa67ef9b389007797a4f981c1fd",
+  "merge_counts": [
+    [
+      0,
+      288
+    ],
+    [
+      1,
+      287
+    ],
+    [
+      2,
+      290
+    ],
+    [
+      3,
+      290
+    ],
+    [
+      248,
+      290
+    ],
+    [
+      715,
+      292
+    ],
+    [
+      1181,
+      290
+    ],
+    [
+      1235,
+      291
+    ]
+  ]
+}

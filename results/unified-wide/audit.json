@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "candidates": 331,
+  "checked_quotient_mappings": 115,
+  "source_variants": 36,
+  "configuration_variants": {
+    "layout": 87,
+    "lowering": 55,
+    "fragments": 63,
+    "register_order": 74
+  },
+  "best_per_generation": [
+    281,
+    281,
+    280
+  ],
+  "parents_per_generation": [
+    16,
+    16,
+    16
+  ],
+  "pending_generation": null,
+  "best_states": 280,
+  "scope": "Artifact and search audit; not a whole-machine Lean proof."
+}

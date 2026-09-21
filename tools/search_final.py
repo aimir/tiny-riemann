@@ -18,7 +18,7 @@ from compile import ROOT, AstMachine, Machine, grammar, table
 from search_layout import show, walk
 from macro_reduce import simplify
 from tm_reduce import load, abstract_reachable, fast_merge, dump
-from solve_quotient import check_mapping, quotient_problem, encode, decode_model
+from solve_quotient import check_mapping, quotient_problem, encode, decode_model, clique_first
 from framework import Register
 import nqlast as n
 
@@ -211,7 +211,9 @@ class Evaluator:
 
     def exact(self, candidate, target, seconds):
         cert = json.loads((candidate['directory'] / 'reduction.json').read_text())
-        problem = quotient_problem(candidate['rows'], cert['possible'])
+        order = getattr(self, 'exact_order', 'source')
+        rows = clique_first(candidate['rows'], cert['possible'])[0] if order == 'clique' else candidate['rows']
+        problem = quotient_problem(rows, cert['possible'])
         query = encode(problem, target, int(seconds * 1000))
         key = hashlib.sha256(query.split('\n', 1)[1].encode()).hexdigest()
         prefix = candidate['directory'] / f'quotient-{target}'
@@ -230,6 +232,7 @@ class Evaluator:
         prefix.with_suffix('.solver.txt').write_text(text)
         status = text.splitlines()[0] if text else 'error'
         candidate['exact'] = {'target': target, 'status': status,
+                              'order': order,
                               'seconds': time.monotonic() - start,
                               'problem_sha256': key, 'reused_from': reused}
         if status == 'sat':

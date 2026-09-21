@@ -1,0 +1,131 @@
+{
+  "key": "e9eb7dc42a482e2372a150d6443e4332e4d511c489b6e2034757a0d98b037b3f",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "pack": [
+      "main()"
+    ],
+    "placement": "source",
+    "seed": 695465
+  },
+  "lowering": {
+    "consume": true,
+    "consume_lines": [
+      60,
+      65,
+      68,
+      69
+    ],
+    "propagate_consumed": true,
+    "zero": true,
+    "monus_product": true
+  },
+  "fragments": {},
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_scratch_2",
+    "_Gnum",
+    "_Gdenom",
+    "_scratch_3",
+    "_Gc"
+  ],
+  "compiled_states": 395,
+  "macro_states": 342,
+  "graph": "460385f2c5ddb138979dc6bf1859d64736f467999951a4c2c833a14087fb9151",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "lowering:monus_product"
+  ],
+  "proxy": 302.7,
+  "screen_states": 303,
+  "screen_seconds": 0.21645741700194776,
+  "register_steps_two_iterations": 14414,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "4d6764b4229bed0e05c1cfa9ea8e091bae9d7fae5e848e5655517d0a1ee2fae5",
+  "generation": 3,
+  "niche": "specialized",
+  "final_states": 282,
+  "merge_counts": [
+    [
+      0,
+      286
+    ],
+    [
+      1,
+      288
+    ],
+    [
+      2,
+      290
+    ],
+    [
+      3,
+      290
+    ],
+    [
+      248,
+      292
+    ],
+    [
+      715,
+      291
+    ],
+    [
+      1181,
+      289
+    ],
+    [
+      1235,
+      292
+    ]
+  ],
+  "full_seconds": 11.408888624981046,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 30.003828416985925,
+      "problem_sha256": "2cf8b9804e61ec19964c2736ab57b5ab53d20cca00f476965f3d12e477440604",
+      "reused_from": null
+    },
+    {
+      "target": 281,
+      "status": "unknown",
+      "seconds": 30.07053404202452,
+      "problem_sha256": "d305e71b0f4790373d5686a625222c593db362a17710d845152629dd7292e5fa",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 281,
+    "status": "unknown",
+    "seconds": 30.07053404202452,
+    "problem_sha256": "d305e71b0f4790373d5686a625222c593db362a17710d845152629dd7292e5fa",
+    "reused_from": null
+  }
+}

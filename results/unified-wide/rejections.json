@@ -1,0 +1,8 @@
+[
+  {
+    "generation": 1,
+    "parent": "3f8ccf4a401c2da543cc7d822247e54ea2e18142a33b08e246a74542f5ed7aa1",
+    "kind": "lowering",
+    "error": "Coordinated step already handles both products"
+  }
+]

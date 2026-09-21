@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "candidates": 177,
+  "checked_quotient_mappings": 42,
+  "source_variants": 43,
+  "configuration_variants": {
+    "layout": 16,
+    "lowering": 24,
+    "fragments": 6,
+    "register_order": 89
+  },
+  "best_per_generation": [],
+  "parents_per_generation": [],
+  "pending_generation": {
+    "generation": 1,
+    "screened": 175,
+    "parents": [
+      "46067991bb65ded13a799228295cea24d6b82f90b0e9b01bc78da4899828afa0",
+      "fe4def10034af93f7094dec08ccde5629a0ceb1412f0cf42ed9dba049fe71c53"
+    ],
+    "fully_reduced": 40
+  },
+  "best_states": 279,
+  "scope": "Artifact and search audit; not a whole-machine Lean proof."
+}

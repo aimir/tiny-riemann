@@ -1,0 +1,79 @@
+[
+  {
+    "left": 3,
+    "right": 3,
+    "changed": [],
+    "contexts": 11071,
+    "seconds": 0.004771250009071082
+  },
+  {
+    "left": 14,
+    "right": 2,
+    "changed": [],
+    "contexts": 4463687,
+    "seconds": 2.2286898749880493
+  },
+  {
+    "left": 2,
+    "right": 14,
+    "changed": [],
+    "contexts": 4395049,
+    "seconds": 2.4015529999742284
+  },
+  {
+    "left": 10,
+    "right": 6,
+    "changed": [],
+    "contexts": 4224833,
+    "seconds": 2.2219997090287507
+  },
+  {
+    "left": 6,
+    "right": 10,
+    "changed": [],
+    "contexts": 4161542,
+    "seconds": 2.324782125011552
+  },
+  {
+    "left": 8,
+    "right": 8,
+    "changed": [],
+    "contexts": 4509691,
+    "seconds": 2.48406383395195
+  },
+  {
+    "left": 15,
+    "right": 3,
+    "changed": [],
+    "contexts": 16199401,
+    "seconds": 8.928327374975197
+  },
+  {
+    "left": 3,
+    "right": 15,
+    "changed": [],
+    "contexts": 15114735,
+    "seconds": 9.253891208965797
+  },
+  {
+    "left": 9,
+    "right": 9,
+    "changed": [],
+    "contexts": 16329350,
+    "seconds": 9.519712709006853
+  },
+  {
+    "left": 12,
+    "right": 6,
+    "changed": [],
+    "contexts": 15890305,
+    "seconds": 8.933960290974937
+  },
+  {
+    "left": 6,
+    "right": 12,
+    "changed": [],
+    "contexts": 11514264,
+    "seconds": 7.061897000006866
+  }
+]

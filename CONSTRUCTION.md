@@ -300,3 +300,33 @@ to 282. The count did not improve beyond phase 3. Saved ancestry and quotient
 mappings pass an independent artifact audit; the new harmonic-inlining
 candidate also passes the backend, register-control and reduction checks.
 The full new-machine Lean theorem remains outstanding.
+
+
+The [wider joint search](results/unified-wide/README.md) retains 16 parents,
+examines 331 configurations over three generations, and produces or reuses
+115 complete reductions. It reaches **280 states** using packed main blocks,
+a 10-bit program counter, all eligible destructive reads and a new physical
+register order. Complete-reduction scoring and exact solving precede survivor
+selection. Independent backend, invariant, macro and quotient checks pass;
+the verified Lean headline remains the 295-state machine. Longer exact
+queries, larger tape windows and longer transition contractions are recorded
+with the search artifacts and do not establish a lower bound.
+
+
+A further [24-parent search and clique-first refinement](results/clique-target278/README.md)
+reach **278 states**, 466 fewer than the original 744 (62.63%). Both selected
+candidates compile to 389 states, simplify to 339, and have a best greedy count
+of 283 before the 278-state SMT quotient. The key solver change places mutually
+incompatible states first, making more representative-count terms constant.
+It only reorders variables; it does not add assumptions or exclude partitions.
+Both resulting mappings pass the independent unbounded reduction checker.
+The primary source is identical to the accepted arithmetic source after
+removing padding and formatting. Destructive lowering, packed control and
+changed dispatch still need full Lean refinements before this machine can
+replace the verified headline.
+
+The 24-parent and local-neighborhood runs were stopped after the supplemental
+278-state results passed their checks. Their checkpoints distinguish completed
+reductions from unfinished generation selection. They are not presented as
+completed three-generation runs. Earlier beam counts and artifacts remain
+unchanged by the supplemental solver results.

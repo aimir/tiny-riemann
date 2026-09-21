@@ -1,0 +1,47 @@
+{
+  "baseline_states": 744,
+  "states": 278,
+  "states_removed": 466,
+  "reduction_percent": 62.634408602150536,
+  "pc_bits": 10,
+  "registers": 9,
+  "formal_status": "Independent checks passed; full-machine Lean theorem outstanding; verified headline remains machine295_correct.",
+  "machines": [
+    {
+      "candidate": "d859aef2158f0ec58d3266506038475dcf4ac15f50b9bf5586460b78c7aed782",
+      "states": 278,
+      "primary": false,
+      "sha256": {
+        "results/unified-target278/d859aef2158f0ec5/source.nql": "522e12eb82eb5651ab33f5fe3022e1fa45755566f0d5f00b6b1fa10b051ce7a1",
+        "results/unified-target278/d859aef2158f0ec5/candidate.json": "063a276e1d508f318adf12c678dd8ea2c66ba15d6833ee74255f73deeed02140",
+        "results/unified-target278/d859aef2158f0ec5/compiled.tm": "e3d0a363cda9b6c704ac8dfe44165ac48db674f3f00eebebaf7da344030e02ed",
+        "results/unified-target278/d859aef2158f0ec5/macro.tm": "fa4993d79a7c22b689d2d29a7b9fd62186a8251bc6eb7ec7cd04252428443e66",
+        "results/unified-target278/d859aef2158f0ec5/macros.json": "93e8f3154c0121101dac28bb2c5b82fc63f291a2146f7c7414c68587575444c7",
+        "results/unified-target278/d859aef2158f0ec5/phases.json": "6556dcd5672742427937fd745df71371a13cc9cada4f200671c2153bde6f338a",
+        "results/clique-target278/d859aef2158f0ec5/quotient-278.tm": "942e6e7709f90f8b3743c48d5cea83cf9adcea1880be3678a8e69b51faf736f1",
+        "results/clique-target278/d859aef2158f0ec5/quotient-278.certificate.json": "5124f95ca98247bfe47eb601399f1a2f4d4aa0c1fd73cf72c74613a6081c8825",
+        "results/clique-target278/d859aef2158f0ec5/quotient-278.smt2": "55443a46868784f3cbb6641458a08d3baa556986557b28e19a2164328208a298",
+        "results/clique-target278/d859aef2158f0ec5/quotient-278.solver.txt": "8568555c8bad573f2ed31db2c769450e8cef41d136b2494925a02014ab5138d9",
+        "results/clique-target278/d859aef2158f0ec5/packing-check.json": "f59cfa6378bf4beb189ad4c5b7dc7ef1b331b48354ded057ea43ec29daa7fc9c"
+      }
+    },
+    {
+      "candidate": "fefaa549f250fd12284868a93b95793b0b17e62036cc26afc7545602583b5da5",
+      "states": 278,
+      "primary": true,
+      "sha256": {
+        "results/unified-target278/fefaa549f250fd12/source.nql": "124e1a0d6d918b3631734832e35bac57885564a33e1a1c358cf122d8e5500e52",
+        "results/unified-target278/fefaa549f250fd12/candidate.json": "b122d4c06dc00a0c8c9a71b87d063eab5658d7faefa1953a0888fde2c0410f0d",
+        "results/unified-target278/fefaa549f250fd12/compiled.tm": "3a9714caefc43c5bd36c0e44bffe1c95254ccddfbca2b7fbeecab16a6d8d59eb",
+        "results/unified-target278/fefaa549f250fd12/macro.tm": "a4b05818e0f5bfc3141c6c48c9149042a7f7c33094ec706b53bb9315c3ca53d0",
+        "results/unified-target278/fefaa549f250fd12/macros.json": "a5dc903bd7d92c5b4940f7663c8fd0c2185ab875487c44dbc6ea3c768bbc2186",
+        "results/unified-target278/fefaa549f250fd12/phases.json": "6556dcd5672742427937fd745df71371a13cc9cada4f200671c2153bde6f338a",
+        "results/clique-target278/fefaa549f250fd12/quotient-278.tm": "268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306",
+        "results/clique-target278/fefaa549f250fd12/quotient-278.certificate.json": "663d0f0760d3e7a39d61d4afc4d78f5384870254aacda60fc4208000ac6c0ffa",
+        "results/clique-target278/fefaa549f250fd12/quotient-278.smt2": "4d35cb7c5c0217ff9099de2079fe69038cc0f123d805b8c6bc7948e73e56adca",
+        "results/clique-target278/fefaa549f250fd12/quotient-278.solver.txt": "3a484ba4c1b8db6cd6a2d08e6679d4762ecaa75a60977a4260f1070d1b6556b3",
+        "results/clique-target278/fefaa549f250fd12/packing-check.json": "f59cfa6378bf4beb189ad4c5b7dc7ef1b331b48354ded057ea43ec29daa7fc9c"
+      }
+    }
+  ]
+}

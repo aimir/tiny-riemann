@@ -1,0 +1,81 @@
+option consume;
+
+option canonical_temps;
+
+option fused_decrement;
+
+option halt_on_positive;
+
+option relative_jumps;
+
+option inplace;
+
+global x;
+
+global lcm;
+
+global num;
+
+global denom;
+
+global i;
+
+global c;
+
+proc harmonic() {
+    denom = 1;
+    num = 0;
+    while ((i > 0)) {
+        num = ((i * num) + denom);
+        denom = (i * denom);
+        i = (i - 1);
+    }
+}
+
+proc main() {
+    lcm = 1;
+    x = (x + 1);
+    i = x;
+    while ((i > 0)) {
+        noop_3();
+        denom = 0;
+        num = lcm;
+        while ((num > 0)) {
+            if ((denom == 0)) {
+                denom = i;
+            }
+            denom = (denom - 1);
+            num = (num - 1);
+        }
+        if ((denom > 0)) {
+            i = x;
+            lcm = (lcm + 1);
+        } else {
+            noop_3();
+            i = (i - 1);
+        }
+    }
+    noop_2();
+    i = lcm;
+    harmonic();
+    i = x;
+    c = denom;
+    num = (num - (denom * x));
+    lcm = num;
+    harmonic();
+    square();
+    num = (c * num);
+    denom = (lcm * denom);
+    square();
+    denom = (denom - (num * x));
+    if ((denom > 0)) {
+        return;
+    } else {
+        noop_1();
+    }
+}
+
+proc square() {
+    num = (num * num);
+    denom = (denom * denom);
+}

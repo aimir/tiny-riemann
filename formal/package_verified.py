@@ -40,7 +40,8 @@ def package():
                  'register_lowering.py', 'search_arithmetic.py', 'test_register_lowering.py',
                  'check_arithmetic.py', 'fragments.py', 'search_fragments.py',
                  'test_fragments.py', 'check_fragments.py', 'search_unified.py',
-                 'test_search_unified.py', 'audit_unified.py'):
+                 'test_search_unified.py', 'audit_unified.py', 'search_neighborhood.py',
+                 'test_search_neighborhood.py', 'refine_quotients.py'):
         paths.add(ROOT / 'tools' / name)
     for name in ('macro-layout-best.nql', 'macro-layout-second.nql', 'xfirst-1101-halt.nql'):
         paths.add(ROOT / 'candidates' / name)
@@ -53,7 +54,9 @@ def package():
                       'results/register-allocation', 'results/register-facts',
                       'results/register-exact', 'results/register-exact-long',
                       'results/register-kernels', 'results/fragments', 'results/fragments-zero',
-                      'results/unified-beam', 'results/unified-challengers'):
+                      'results/unified-beam', 'results/unified-challengers', 'results/unified-wide',
+                      'results/unified-target278', 'results/neighborhood278',
+                      'results/clique-target278'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
 
     target = ROOT / 'riemann-295-verified.zip'

@@ -1,0 +1,40 @@
+{
+  "phase": null,
+  "roles": [
+    {
+      "state": "init.f1",
+      "read": 0
+    },
+    {
+      "state": "init.f2",
+      "read": 0
+    },
+    {
+      "state": "dec.scan_done",
+      "read": 0
+    }
+  ],
+  "zero": {
+    "main():transfer(_Gi):2": {
+      "source": "_Gi",
+      "entries": [
+        152
+      ],
+      "valid": true
+    },
+    "main():transfer(_Gc):0": {
+      "source": "_Gc",
+      "entries": [
+        404
+      ],
+      "valid": true
+    },
+    "main():transfer(_Glcm):1": {
+      "source": "_Glcm",
+      "entries": [
+        460
+      ],
+      "valid": true
+    }
+  }
+}

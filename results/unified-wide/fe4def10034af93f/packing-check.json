@@ -1,0 +1,8 @@
+{
+  "pairs": {
+    "relation_pairs": 240,
+    "control_equivalence": "passed",
+    "scope": "All reachable primitive control paths, with arbitrary decrement outcomes; Python check, not Lean proof."
+  },
+  "scope": "Unbounded primitive control relation with arbitrary decrement outcomes; Python check, not a full Lean theorem."
+}

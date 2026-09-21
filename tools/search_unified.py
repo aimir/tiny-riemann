@@ -11,10 +11,12 @@ import hashlib
 import json
 import random
 import shutil
+import multiprocessing
+from concurrent.futures import ProcessPoolExecutor,as_completed
 from compile import ROOT,table
 from fragments import compile_fragments,zero_fragments
 from search_fragments import FragmentEvaluator
-from search_final import mutate as mutate_source
+from search_final import Evaluator,mutate as mutate_source
 from solve_quotient import check_mapping
 from check_fragments import zero_equivalence
 from tm_reduce import load
@@ -96,9 +98,11 @@ class UnifiedEvaluator(FragmentEvaluator):
         cert=json.loads(certificate.read_text())
         mapped=check_mapping(c['rows'],cert['possible'],cert['mapping'])
         assert {q:tuple(edges) for q,edges in mapped.items()}==load(final)
+        if c.get('final_states',float('inf'))<=len(mapped):return True
         shutil.copyfile(final,c['directory']/'final.tm');shutil.copyfile(certificate,c['directory']/'reduction.json')
         previous=json.loads((old/'candidate.json').read_text())
-        c.update(final_states=len(load(final)),inherited_from=str(old.relative_to(ROOT)),
+        inherited=str(old.relative_to(ROOT)) if old.is_relative_to(ROOT) else str(old.resolve())
+        c.update(final_states=len(load(final)),inherited_from=inherited,
                  inherited_table_sha256=hashlib.sha256(final.read_bytes()).hexdigest(),
                  merge_counts=previous.get('merge_counts',[]))
         self.save(c);return True
@@ -109,6 +113,31 @@ class UnifiedEvaluator(FragmentEvaluator):
         self.exact(c,target,seconds)
         history.append(dict(c['exact']));self.save(c)
         return c['exact']['status']
+
+
+def full_worker(candidate,seeds,windows):
+    # Full reduction needs no compiler or SMT cache. Each process writes only
+    # its own already-screened candidate directory.
+    evaluator=object.__new__(Evaluator)
+    evaluator.seeds=seeds;evaluator.windows=windows
+    return evaluator.full(candidate)
+
+
+def full_batch(evaluator,candidates,workers):
+    pending=[c for c in candidates if 'final_states' not in c]
+    if workers==1:
+        for c in pending:evaluator.full(c)
+        return
+    with ProcessPoolExecutor(max_workers=workers,mp_context=multiprocessing.get_context('spawn')) as pool:
+        jobs={pool.submit(full_worker,c,evaluator.seeds,evaluator.windows):c for c in pending}
+        for job in as_completed(jobs):jobs[job].update(job.result())
+
+
+def mutation_slot(attempt,width):
+    # Rotate families on each pass even when the beam width is a multiple of
+    # five; otherwise each parent would be locked to one mutation family.
+    index=attempt%width
+    return index,['source','registers','pc','lowering','fragments'][(index+attempt//width)%5]
 
 
 def repair_zero_sites(spec):
@@ -209,18 +238,26 @@ def main():
     p.add_argument('--promote',type=int,default=12)
     p.add_argument('--exact-finalists',type=int,default=4)
     p.add_argument('--exact-seconds',type=int,default=25)
+    p.add_argument('--exact-order',choices=('source','clique'),default='source')
     p.add_argument('--seed',type=int,default=282003)
+    p.add_argument('--seed-pool',type=Path,nargs='*',default=[],help='Earlier search directories whose fully reduced candidates seed this run')
+    p.add_argument('--workers',type=int,default=1,help='Independent full-reduction processes; screening and SMT remain sequential')
     args=p.parse_args()
     assert min(args.generations,args.beam,args.offspring,args.promote,args.exact_seconds)>0
     assert 0<=args.exact_finalists<=args.promote
+    assert args.workers>0
     assert not (args.output/'report.json').exists(),'Choose a fresh output directory'
     rng=random.Random(args.seed);ev=UnifiedEvaluator(args.output,source_at(BASE))
+    ev.exact_order=args.exact_order
     seeds=[BASE,ROOT/'results/register-local/d01c9264a0344463',
            ROOT/'results/register-facts/2eddb0cc492fb8ff',
            ROOT/'results/register-facts/23f0a3d9185b9e4c',
            ROOT/'results/fragments-zero/32d3f6d2eecb105a',
            ROOT/'results/pc-layout/7efbaa9d505034b3',
            ROOT/'results/register-kernels/73a001ca8bf2cf7b']
+    for directory in args.seed_pool:
+        for path in sorted(directory.glob('*/candidate.json')):
+            if 'final_states' in json.loads(path.read_text()):seeds.append(path.parent.resolve())
     initial=[];rejections=[];history=[]
     for old in seeds:
         c=json.loads((old/'candidate.json').read_text())
@@ -237,10 +274,11 @@ def main():
         else:ev.inherit(result,old)
         ev.full(result);initial.append(result)
     beam=select(initial,args.beam,'final_states')
+    (args.output/'initial-beam.json').write_text(json.dumps([dict(key=c['key'],states=c['final_states'],niche=niche(c)) for c in beam],indent=2)+'\n')
     for generation in range(1,args.generations+1):
         children=[];attempts=0;oldkeys=set(ev.cache)
         while len(children)<args.offspring and attempts<args.offspring*12:
-            parent=beam[attempts%len(beam)];kind=['source','registers','pc','lowering','fragments'][attempts%5];attempts+=1
+            index,kind=mutation_slot(attempts,len(beam));parent=beam[index];attempts+=1
             try:
                 spec=mutate(parent,rng,kind)
                 if spec is None:continue
@@ -252,7 +290,7 @@ def main():
             if c['key'] in oldkeys or any(x['key']==c['key'] for x in children):continue
             children.append(c)
         promoted=select(children,args.promote,'screen_states')
-        for c in promoted:ev.full(c)
+        full_batch(ev,promoted,args.workers)
         pool=beam+promoted
         incumbent=min(c['final_states'] for c in pool)
         # Exact solving happens before selection, including diverse candidates
@@ -273,7 +311,8 @@ def main():
         (args.output/'rejections.json').write_text(json.dumps(rejections,indent=2)+'\n')
         print('generation',json.dumps(record),flush=True)
     best=min(ev.cache.values(),key=lambda c:c.get('final_states',float('inf')))
-    report=dict(settings={k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()},
+    settings={k:[str(p) for p in v] if k=='seed_pool' else str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
+    report=dict(settings=settings,
                 generations=history,screened=len(ev.cache),fully_reduced=sum('final_states' in c for c in ev.cache.values()),
                 rejected=len(rejections),best_states=best['final_states'],best_candidate=best['key'],
                 ranking='Every survivor has a complete reduction; SMT updates precede selection. Counts are feasible upper bounds.',

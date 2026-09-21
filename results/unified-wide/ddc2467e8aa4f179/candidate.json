@@ -1,0 +1,127 @@
+{
+  "key": "ddc2467e8aa4f179326f9a81fd99a12e1959cbffb96cc33394aa25dd3fe87755",
+  "layout": {
+    "inline": [
+      "square()"
+    ],
+    "jump": "hybrid",
+    "threshold": 1,
+    "pack": [
+      "main()"
+    ],
+    "placement": "source",
+    "seed": 695465
+  },
+  "lowering": {
+    "consume": true,
+    "propagate_consumed": true,
+    "zero": true
+  },
+  "fragments": {
+    "zero_skip": []
+  },
+  "register_order": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gnum",
+    "_scratch_2",
+    "_Gdenom",
+    "_Gc",
+    "_scratch_3"
+  ],
+  "registers": [
+    "_Glcm",
+    "_Gx",
+    "_Gi",
+    "_scratch_1",
+    "_Gnum",
+    "_scratch_2",
+    "_Gdenom",
+    "_Gc",
+    "_scratch_3"
+  ],
+  "compiled_states": 390,
+  "macro_states": 340,
+  "graph": "ec0388ad88750c74960d6d4b7274e8b0d31e2a04db6ae7613f9a8ca3b6806921",
+  "pc_bits": 10,
+  "fragment_counts": {
+    "native_clears": 0,
+    "native_tests": 0,
+    "zero_fragments": 0
+  },
+  "family": "unified",
+  "mutation": [
+    "registers",
+    "fragments:zero_skip"
+  ],
+  "proxy": 300.4,
+  "screen_states": 298,
+  "screen_seconds": 0.20918554201489314,
+  "register_steps_two_iterations": 15999,
+  "phase_rewrites": 0,
+  "role_rewrites": 0,
+  "parent": "42750dfa98c77927727bd138b87d5abfa6bf7a654de447f8d382646a918fdaf4",
+  "generation": 3,
+  "niche": "packed",
+  "final_states": 282,
+  "merge_counts": [
+    [
+      0,
+      284
+    ],
+    [
+      1,
+      286
+    ],
+    [
+      2,
+      285
+    ],
+    [
+      3,
+      292
+    ],
+    [
+      248,
+      288
+    ],
+    [
+      715,
+      288
+    ],
+    [
+      1181,
+      287
+    ],
+    [
+      1235,
+      288
+    ]
+  ],
+  "full_seconds": 11.365062208031304,
+  "exact_history": [
+    {
+      "target": 282,
+      "status": "sat",
+      "seconds": 1.587903917010408,
+      "problem_sha256": "852c9cdfd307e223e77e4d2a13fdbd17de9b652f6c7ae5f3e7f53a1a3c10f1ae",
+      "reused_from": null
+    },
+    {
+      "target": 281,
+      "status": "unknown",
+      "seconds": 30.05994920799276,
+      "problem_sha256": "d7e7a33241bb668176d6670c59562969e954f14bc7d9e3f135d7633eb2503ef4",
+      "reused_from": null
+    }
+  ],
+  "exact": {
+    "target": 281,
+    "status": "unknown",
+    "seconds": 30.05994920799276,
+    "problem_sha256": "d7e7a33241bb668176d6670c59562969e954f14bc7d9e3f135d7633eb2503ef4",
+    "reused_from": null
+  }
+}

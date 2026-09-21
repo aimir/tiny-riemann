@@ -1,0 +1,93 @@
+{
+  "states": 278,
+  "status": "Independent checks and generic Lean component proofs passed; whole machine not Lean verified.",
+  "checks": {
+    "regressions": {
+      "literal_native_tape_cases": 180,
+      "two_iteration_variants": 10,
+      "disabled_byte_identical": true,
+      "invalid_invariants_rejected": 9,
+      "zero_bisimulation_pairs": 486,
+      "unsafe_inputs_rejected": 3
+    },
+    "native_transition_premises": 0,
+    "dispatch_prefixes": 585,
+    "arithmetic_regressions": {
+      "differential_cases": 528,
+      "disabled_lowering_byte_identical": true,
+      "unsupported_inputs_rejected": 2
+    },
+    "backend_before_role_restriction": {
+      "backend_relation_pairs": 42,
+      "counter_cases_checked": 2048,
+      "backend_check": "passed"
+    },
+    "inductive_edges": 1022,
+    "macros": {
+      "macro_rewrites": 80,
+      "exhaustive_tape_windows": 1280,
+      "states": 339,
+      "certificate": "valid"
+    },
+    "quotient": {
+      "compiled_states": 339,
+      "reduced_states": 278,
+      "certificate": "valid"
+    },
+    "lean_component_axioms": [
+      "'RiemannMachineVerification.NativeFragments.clear_core' depends on axioms: [propext, Quot.sound]",
+      "'RiemannMachineVerification.NativeFragments.test_core' depends on axioms: [propext]"
+    ]
+  },
+  "sha256": {
+    "results/clique-target278/d859aef2158f0ec5/quotient-278.tm": "942e6e7709f90f8b3743c48d5cea83cf9adcea1880be3678a8e69b51faf736f1",
+    "results/clique-target278/d859aef2158f0ec5/quotient-278.certificate.json": "5124f95ca98247bfe47eb601399f1a2f4d4aa0c1fd73cf72c74613a6081c8825",
+    "results/unified-target278/d859aef2158f0ec5/candidate.json": "063a276e1d508f318adf12c678dd8ea2c66ba15d6833ee74255f73deeed02140",
+    "results/unified-target278/d859aef2158f0ec5/compiled.tm": "e3d0a363cda9b6c704ac8dfe44165ac48db674f3f00eebebaf7da344030e02ed",
+    "results/unified-target278/d859aef2158f0ec5/macro.tm": "fa4993d79a7c22b689d2d29a7b9fd62186a8251bc6eb7ec7cd04252428443e66",
+    "results/unified-target278/d859aef2158f0ec5/macros.json": "93e8f3154c0121101dac28bb2c5b82fc63f291a2146f7c7414c68587575444c7",
+    "results/unified-target278/d859aef2158f0ec5/phases.json": "6556dcd5672742427937fd745df71371a13cc9cada4f200671c2153bde6f338a",
+    "/Users/amirsarid/Documents/ChatGPT/riemann/formal/experiments/NativeFragments.lean": "969385a7e9e693cc6d563f722683939b6b95c52300929d3aa0dd33de22c01499"
+  },
+  "implementation_sha256": {
+    "tools/audit_unified.py": "d87d5caa8319f008833dc0b48585e5e8a203a6c534a12e4a7132b9f9f32c412a",
+    "tools/build.py": "cba956b26faaf5a03ded4a5030f76675b537e83579553cdce76ecf9c4d2eca97",
+    "tools/check.py": "048e6a767f00de30c2f2a04369bb8bdd2e38efbe648a66fe96780efe48be8da3",
+    "tools/check_arithmetic.py": "17b3c3b974c2ffa4a08b4c7533a0b2532aba6cb5925953553254d6a06084262b",
+    "tools/check_fragments.py": "3a8f870b072e3f2e81bb48e249a8d1d610634af539af43ce0b0f02a8bf34d9f3",
+    "tools/check_pc.py": "25f32d1bb21c34faf79787ff341b3602e8b911fa2f421ef6c7615a89c752259f",
+    "tools/check_reallocated.py": "3651fdcad9c26d79a5c92d7805eaa39c877dee821af7f97e3864ed4d12f3a8f3",
+    "tools/compile.py": "abdae5b7eea93815b9f60381f30a241294fba36fccff04e891ca16e8b785217c",
+    "tools/context_reduce.py": "eef0a2225a595f239215e086d64f7828b4e9a20378e918165d5017b6a6e5f951",
+    "tools/execution_inputs.py": "825a37c78dc452c8c63c82b80164990bb3504bbc20af32ca4602c130d2f6900d",
+    "tools/fragments.py": "6c8c109d1658be7fbc006c92b18350a9fe278cc191bbefef682d8220cfeabc5d",
+    "tools/macro_reduce.py": "3ab41f43ff7b8a8f727814b5ac5971c31029053f6a65154f125aabd545a22449",
+    "tools/optimized.py": "96e9bf958d5e2231fd2ef0f27f9a17ab05ddd1a9c12eb1fffa5e039c7823e3d8",
+    "tools/pc_layout.py": "181a6ee033489381cfaaa9b25e565a949e8ec4d03a805f7bccfb4871b4864882",
+    "tools/refine_quotients.py": "685c1f805444036f0cc522518eba1d73c3e525fcfe1d3dd2b244d1a4301295e4",
+    "tools/register_lowering.py": "a8523874f308db6d0180a98eb5bceccf3e6589ec8c72d2fd7212778c6193b0cb",
+    "tools/search_arithmetic.py": "633faa97d5386cd6f85457c14644ace949200295e445a388c282097370013a04",
+    "tools/search_final.py": "cd7808ec52fe6b8b05e8b5ff1923f4cc886cbd1459591249c4d87ced7a5a6f52",
+    "tools/search_fragments.py": "e3e59e8c536906f504e0471b1a1a590ad9f9e9728d4953a57ac0b4d64f28cd5a",
+    "tools/search_layout.py": "9322a0765c4d862a172c6159003a3cb86a9c66a6ac91d00cb1fd6d15ee5db16b",
+    "tools/search_lcm.py": "1b1fb07efe4856e2ae10575248907794ef64d04c77e70e3f75e96901546ef856",
+    "tools/search_neighborhood.py": "849970263a8ae5a12cd7956f6e775fc21d34b5fc2c83e891527d4c721f49b845",
+    "tools/search_pc.py": "a0543de912a36366d94880f3ef7129f2d3aec984bbe7b3704f6732af1d3d685e",
+    "tools/search_recompute.py": "b73f43fe28232b57316167b9ce14f14f4e8a765c0ebad43aaaae4f20b2a1e6ce",
+    "tools/search_registers.py": "81e741fa9bf6cb44d7167129d8ecb3e9b7e5da3339512db6615371cab899821f",
+    "tools/search_source.py": "5055c39afd4d3ad4e042c83919d6d06eb652a9d4d314b20c24d82473b462ff66",
+    "tools/search_unified.py": "901113ee6896a944a57861f16eb8f74a2db424a36b6a22b769ae6c3ef2c4edbc",
+    "tools/solve_quotient.py": "6f5e94477e9c1709ad85cc4ef9b8658dc7d748e154797d5806c3b77e5bdf872d",
+    "tools/test_fragments.py": "4ac14ead7472d20cdac42b5c62bc9c9a6cf391cdc79d8051d3ca19c2b6e1a0d5",
+    "tools/test_pc_layout.py": "901848c5f838ad03c99c5c98317002c31c34f8c191f7d65b546e0c10a9ba665c",
+    "tools/test_register_lowering.py": "7020dd057a8defd368e7c9822584d5b98bc873a370cf7c41859b6a278dfefc64",
+    "tools/test_search_final.py": "4180889fb5cff27752454d83a82f9418f490da291124a0375e55814b1201aedf",
+    "tools/test_search_neighborhood.py": "f22f15c8fd0d58a507abf60255ad9ede96e7120502dd4649f2567aba41bbce3e",
+    "tools/test_search_unified.py": "1607d579273908a2b55c5594ed7e351c336fe208a3746f8e298b7f55dfe32719",
+    "tools/test_solve_quotient.py": "aed630f2ae26a7f512260c0fe1bae52deff77508d77f634038037dc06873a74d",
+    "tools/tm_reduce.py": "f4417810e94b6916e180c88d2ab627b4b179620f09a19c4ae771b6d7d7daae51",
+    "tools/verify.py": "bbb37656c8a5198264423544d45e897ee773952e418e32f7e5e01675f52b9739",
+    "tools/verify_macros.py": "dea7a5b75f93981e778d52a73d0d85602f018b521bdcd271188642ff5a84cfe4"
+  },
+  "formal_scope": "The new full-machine source/backend/refinement theorem is not proved. The headline remains machine295_correct."
+}
