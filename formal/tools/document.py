@@ -6,7 +6,7 @@ of general lemmas are maintained in proof_summaries.py. No proof term changes.
 import argparse
 from pathlib import Path
 import re
-from layout import FORMAL, P, PINNED, MODULES, path, strip_annotations
+from layout import FORMAL, P, PINNED, MODULES, path, strip_annotations, proof_sources
 from proof_summaries import SUMMARIES
 
 DECL = re.compile(r'^(?:private )?(?:theorem|lemma) ([\w.]+)', re.M)
@@ -16,8 +16,6 @@ FROZEN = {path(MODULES[m]) for m in PINNED}
 
 def role(file):
     rel = file.relative_to(FORMAL).as_posix()
-    if rel.startswith('Validation/'):
-        return 'Supports the separate acceptance checks; this module is outside the 278-state headline dependency chain.'
     if '/Generated/Reachability/' in rel or '/BooleanCertificate.' in rel or '/WindowInvariant.' in rel:
         return 'Supplies the inductive read masks used to justify the 339-to-278-state quotient.'
     if '/Generated/RegisterRefinement/' in rel or rel.endswith('/Registers/Refinement.lean'):
@@ -182,8 +180,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    files = [FORMAL/(P+'.lean'), FORMAL/'Validation.lean']
-    files += sorted((FORMAL/P).rglob('*.lean')) + sorted((FORMAL/'Validation').rglob('*.lean'))
+    files = proof_sources()
     changed = []
     for file in files:
         original = file.read_text()

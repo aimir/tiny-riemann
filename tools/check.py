@@ -1,6 +1,6 @@
 """Check the historical 299-state construction and save its validation report.
 
-Use check_reallocated.py for the current 295-state tables and certificates.
+Use check_reallocated.py for the historical 295-state tables and certificates.
 """
 import json
 from compile import ROOT, compile_source, table

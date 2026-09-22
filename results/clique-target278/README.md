@@ -57,7 +57,7 @@ rewrites, three inductive tape-invariant stages and the final quotient.
 
 The theorem uses only `propext`, `Classical.choice`, and `Quot.sound`, with no
 compiler assumption, `sorry` or native-computation axiom. From `formal/`, run
-`python3 tools/check_current.py` and `lake env lean --memory=16384 --threads=2 Validation/Audit.lean`. The
+`python3 tools/check_current.py` and `lake env lean --memory=16384 --threads=2 Audit.lean`. The
 [verification report](../../formal/verification.json) pins the table and proof
 sources. Mathematical equivalence of the approved predicate to RH is outside
 the proof's scope. The historical Python reports below remain unchanged.

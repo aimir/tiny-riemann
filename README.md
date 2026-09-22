@@ -66,9 +66,10 @@ of tape invariants, and the final quotient. The arithmetic correctness theorem
 then applies. Each proof directory has a reading guide; generated certificates
 are separated from the conceptual proof stages. Neither the compiler nor Z3 is trusted.
 
-The original `machine299_correct` theorem, execution semantics, predicate and
-four acceptance pins remain unchanged. The 295-, 297-, and 298-state theorems are
-also retained.
+The execution semantics, arithmetic predicate and literal 278-state machine
+remain fixed. Acceptance checks only the current proof and its dependencies.
+The earlier machine proofs are preserved in Git; see the
+[archival instructions](formal/ACCEPTANCE.md#earlier-verified-results).
 
 Install `elan` so that `lean` and `lake` are on your path, and use Python 3.
 Lean is pinned to **4.32.2**, and mathlib to a specific commit. Initial dependency
@@ -77,25 +78,25 @@ downloads require network access. From the repository root:
 ```sh
 cd formal
 lake exe cache get          # Fetch pinned dependencies on a fresh checkout.
-python3 tools/check_current.py    # Build and check current and original targets.
-lake env lean --memory=16384 --threads=2 Validation/Audit.lean    # Audit the principal theorems' axiom dependencies.
+python3 tools/check_current.py    # Build and check the exact 278-state theorem.
+lake env lean --memory=16384 --threads=2 Audit.lean    # Audit the principal theorems' axiom dependencies.
 cd ..
 ```
 
-The check verifies exact theorem types, all eleven literal table imports, hashes,
+The check verifies exact theorem types, all three literal table imports, hashes,
 and axiom dependencies. Only `propext`, `Classical.choice`, and `Quot.sound`
 are permitted; no `sorry` or additional axiom is accepted. Successful output
 ends with:
 
 ```text
-ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
+ACCEPTED: the exact 278-state headline is proved with the fixed specification and only permitted axioms.
 ```
 
 Proof compilation runs serially with two Lean workers and a 16 GiB allocation
 limit per compiler, reusing completed build files after an interruption.
 
 See [formal/README.md](formal/README.md) for the proof chain, generator commands,
-artifact identity, preserved results and detailed verification instructions.
+artifact identity and detailed verification instructions.
 
 ## Reproduce and independently check the construction
 
@@ -118,7 +119,7 @@ These independent checks supplement the complete Lean proof.
 The preserved constructions can still be checked separately:
 
 ```sh
-.venv/bin/python tools/check_reallocated.py  # Earlier verified 295-state result.
+.venv/bin/python tools/check_reallocated.py  # Reproduce the historical 295-state construction.
 .venv/bin/python tools/build.py --check      # Preserved 299-state baseline.
 .venv/bin/python tools/check.py
 ```
@@ -158,15 +159,17 @@ targets. The verification does not decide whether this machine halts.
 
 ## Repository artifacts and local logs
 
-Everything formerly distributed in ZIPs is available directly in the repository:
+Current deliverables and construction artifacts are available directly in the repository.
+Earlier machine proofs are preserved at the documented Git commit:
 
 | Contents | Repository location |
 |---|---|
 | Current machine, source, configuration and certificates | [Results and artifacts above](#results-and-artifacts), under [results/](results) |
-| Lean proofs, pinned dependencies, generators and verification report | [formal/](formal) |
+| Current Lean proof, pinned dependencies, generators and verification report | [formal/](formal) |
+| Earlier verified machine proofs | [Git recovery instructions](formal/ACCEPTANCE.md#earlier-verified-results) |
 | Python compiler, reductions, search and independent checks | [tools/](tools) and [requirements.txt](requirements.txt) |
 | Preserved 299- and 295-state tables and certificates | [machine/](machine) |
-| Earlier verified 297-state result | [results/exact-quotient/](results/exact-quotient) |
+| Historical 297-state table and certificates | [results/exact-quotient/](results/exact-quotient) |
 | Search inputs, checkpoints, SMT queries and structured reports | [candidates/](candidates) and [results/](results) |
 | Vendored upstream compiler and original machine | [vendor/](vendor) |
 

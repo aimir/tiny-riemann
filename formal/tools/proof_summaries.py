@@ -49,7 +49,6 @@ macroCheck_one|A one-step expansion satisfies the local certificate when its lit
 initial_mask_trivial|The starting read mask permits every symbol at every ordinary state.
 read_mask0_verified|The first certified read mask holds at every time of the shortened-machine run.
 read_mask1_verified|The second certified read mask holds at every time of the shortened-machine run.
-read_mask2_verified|The third certified read mask holds at every time of the shortened-machine run.
 read_mask_verified|The final certified read mask holds at every time of the shortened-machine run.
 quotient_transitions|Every transition permitted by the invariant agrees with its image in the quotient table.
 harmonicLoop_correct|The harmonic loop produces its exact natural numerator and denominator for an arbitrary iteration count.
@@ -141,8 +140,6 @@ arithmetic_subtract_first|The first subtraction block computes truncated subtrac
 arithmetic_subtract_last|The final subtraction block computes the positive part of the integer-test difference.
 compiled_arithmetic_tail|The register arithmetic tail computes the integer counterexample test.
 compiled_main_pretest|The register main body reaches the test with the computed arithmetic values.
-'''.strip().splitlines())
-SUMMARIES.update(dict(line.split('|', 1) for line in '''
 TapeWord.carried_append|Carrying through an appended tape word equals appending its carried pieces.
 TapeWord.append_bits|Encoding an appended tape word concatenates its bit encodings.
 TapeWord.reverseCarried_bits|The reverse-carried word has the specified reversed bit encoding.
@@ -183,8 +180,6 @@ return_after_write|After the specified write, the return routine reaches its enc
 return_after_separator|After crossing a separator, the return routine reaches its encoded return position.
 select_registers|The selector traverses the preceding unary registers to reach the requested register.
 select_fenced|The selector reaches the requested register in the fenced encoding.
-'''.strip().splitlines()))
-SUMMARIES.update(dict(line.split('|', 1) for line in '''
 after_harmonic_first|The first harmonic block reaches the displayed exact numerator and denominator values.
 after_lcm|The LCM block reaches the displayed least-common-multiple value.
 after_scaled_products|The product blocks reach the displayed scaled integer-test terms.
@@ -193,13 +188,5 @@ after_square_second|The second square block reaches the displayed squared term.
 after_sub_first|The first subtraction block reaches the displayed truncated difference.
 all_macro_checks|Every shortened state satisfies its local expansion certificate for both symbols.
 lcmUpto_small_bound|The finite initial segment satisfies the stated LCM bound used to exclude small counterexamples.
-machine295_correct|The literal 295-state machine halts from the blank tape exactly when the approved predicate has a witness.
-machine297_correct|The literal 297-state machine halts from the blank tape exactly when the approved predicate has a witness.
-machine299_iff_macro|The literal 299-state machine and the arithmetic register program have equivalent initial halting behavior.
-quotient297_transitions|Every invariant-permitted transition agrees with its image in the 297-state quotient.
 window5_eta|A five-cell window is determined by its five displayed Boolean coordinates.
-'''.strip().splitlines()))
-SUMMARIES.update({
-    'machine298_correct': 'The literal 298-state machine halts from the blank tape exactly when the approved predicate has a witness.',
-    'quotient298_transitions': 'Every invariant-permitted transition agrees with its image in the 298-state quotient.',
-})
+'''.strip().splitlines())

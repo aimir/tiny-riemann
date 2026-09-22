@@ -1,7 +1,7 @@
 """Proof data for the literal 278-state candidate; generated claims require Lean.
 
 No compiler or Python checker is part of the logical trust boundary. Preserve
-all approved original definitions and put the new compilation in its own namespace.
+the approved mathematical definitions and the implementation namespace.
 """
 from pathlib import Path
 import json
@@ -72,19 +72,12 @@ def write(name, content):
     (DEST / (name+'.lean')).write_text(content+'\nend '+PREFIX+'\n')
 
 
+def current_template(name):
+    """Reuse a checked current proof, with component-local imports for generation."""
+    return (DEST / (name + '.lean')).read_text().replace(PREFIX, 'RiemannMachineVerification')
+
+
 def base(machine):
-    selected = {'ProgramCounterParts','MacroRegisterCorrectness'}
-    for name in selected:
-        text = (ROOT/'RiemannMachineVerification'/f'{name}.lean').read_text()
-        text = re.sub(r'^import RiemannMachineVerification\.(\w+)$',
-            lambda m: 'import '+PREFIX+'.'+m[1] if m[1] in selected|{'RegisterProgram','MacroSites','RegisterMachine','RegisterExecution','TransferSite'} else m[0], text, flags=re.M)
-        text = text.replace('namespace RiemannMachineVerification', 'namespace '+PREFIX).replace(
-            'end RiemannMachineVerification','end '+PREFIX)
-        if name == 'ProgramCounterParts':
-            text = text.replace('2048','1024')
-        if name == 'ProgramCounterParts': text = text.replace('Fin 32','Fin 16')
-        DEST.mkdir(exist_ok=True)
-        (DEST/f'{name}.lean').write_text(text)
     out = header(PREFIX+'.RegisterMachine')
     for name, macro in [('primitiveProgram',False),('macroProgram',True)]:
         g = graph(machine,macro)

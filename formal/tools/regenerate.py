@@ -17,7 +17,7 @@ STAGES = ('optimized278', 'refinement278', 'backend278', 'reduction278')
 
 
 def generate(suite="headline"):
-    stages = STAGES if suite == "headline" else (("register_program", "arithmetic_paths", "lcm_bounds") if suite == "arithmetic" else ("reallocated",))
+    stages = STAGES if suite == "headline" else ("register_program", "arithmetic_paths", "lcm_bounds")
     with tempfile.TemporaryDirectory(prefix='riemann-proof-') as directory:
         root = Path(directory)
         formal = root / 'formal'
@@ -44,18 +44,13 @@ def generate(suite="headline"):
         elif suite == 'arithmetic':
             owned = {old for old in MODULES if old.startswith(P + '.ArithmeticPath')}
             owned |= {P + '.RegisterProgram', P + '.LcmBounds'}
-        else:
-            owned = {old for old in MODULES if '.Reallocated.' in old}
-            owned |= {P + '.Machine295', P + '.Correctness295'}
-            for artifact in (root / 'machine').glob('riemann295.*'):
-                assert artifact.read_bytes() == (REPO / 'machine' / artifact.name).read_bytes(), artifact.name
         items = {old: path(old, formal).read_text() for old in owned - MODELS - ENTRY}
         return group_outputs(items)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--suite', choices=('headline', 'arithmetic', 'table295'), default='headline')
+    parser.add_argument('--suite', choices=('headline', 'arithmetic'), default='headline')
     parser.add_argument('--write', action='store_true')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()

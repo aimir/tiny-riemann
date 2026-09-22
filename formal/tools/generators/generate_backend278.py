@@ -1,44 +1,29 @@
-"""Specialize the existing register backend proof to the ten-bit candidate.
+"""Reproduce the ten-bit backend using its checked current proof templates.
 
 All transition equations, counter cases and instruction dispatches remain Lean
-obligations. State matching below only proposes names for those equations.
+obligations. Python reproduces certificates; Lean checks each proposed claim.
 """
 from functools import cache
 import hashlib
-import shutil
 import tempfile
 from generate_optimized278 import *
 from generate_tables import generate as literal_table
 
 
-def state_mapping(old,new):
-    rows=[[l.split() for l in table(m).splitlines()] for m in (old,new)]
-    ids=[{r[0]:i for i,r in enumerate(rr)} for rr in rows]
-    c2=ids[1][rows[1][ids[1]['return2.0']][4]]
-    mapping={0:0,9:ids[1]['dispatch.0.carry'],176:c2}
-    todo=[(199,ids[1]['reg_incr.8']),(192,ids[1]['reg_decr.8']),(61,ids[1]['init.f1'])]
-    while todo:
-        a,b=todo.pop()
-        if a in mapping:
-            assert mapping[a]==b,(a,b,mapping[a]);continue
-        mapping[a]=b
-        for k in (2,5):
-            assert rows[0][a][k:k+2]==rows[1][b][k:k+2],(a,b)
-            todo.append((ids[0][rows[0][a][k+2]],ids[1][rows[1][b][k+2]]))
-    return mapping
-
-
 def generate():
-    old,new=machines();mapping=state_mapping(old,new)
-    originals=ROOT/'RiemannMachineVerification'
-    modules={p.stem:p.read_text() for p in originals.glob('*.lean')}
+    _,new=machines()
+    rows=[line.split() for line in table(new).splitlines()]
+    ids={row[0]:i for i,row in enumerate(rows)}
+    return2=ids[rows[ids['return2.0']][4]]
+    modules={p.stem:current_template(p.stem) for p in DEST.glob('*.lean')}
     @cache
     def dependencies(name):
         result={name}
-        for dep in re.findall(r'^import RiemannMachineVerification\.(\w+)$',modules[name],re.M):result |= dependencies(dep)
+        for dep in re.findall(r'^import RiemannMachineVerification\.(\w+)$',modules[name],re.M):
+            if dep in modules:result |= dependencies(dep)
         return result
     selected={name for name in dependencies('BackendCorrectness')
-        if dependencies(name)&{'Machine381','RegisterMachine'}}
+        if dependencies(name)&{'Machine389','RegisterMachine'}}
     for name in list(selected):
         m=re.fullmatch(r'(CounterChecks|DispatcherChecks)(\d+)',name)
         if m and int(m[2])>=16:selected.remove(name)
@@ -50,14 +35,7 @@ def generate():
         (temp/'machine/riemann.compiled.tm').write_text(table(new))
         for name in selected:
             if name not in modules:continue
-            text=modules[name]
-            if name.startswith('Backend') or name=='CounterCorrectness':
-                text=re.sub(r'⟨(\d+), by decide⟩',lambda m:f'⟨STATE{mapping[int(m[1])]}STATE, by decide⟩',text)
-                text=re.sub(r'\b(11|12|13|14)\b',lambda m:str(int(m[1])-1),text)
-                text=re.sub(r'STATE(\d+)STATE',r'\1',text)
-            text=text.replace('Machine381','Machine389').replace('machine381','machine389')
-            text=re.sub(r'\b381\b','389',text)
-            (target/f'{name.replace("Machine381","Machine389")}.lean').write_text(text)
+            (target/f'{name}.lean').write_text(modules[name])
         def script(name, changes=(), additions=None):
             code=(ROOT/name).read_text()
             for a,b in changes:code=code.replace(a,b)
@@ -77,7 +55,7 @@ def generate():
         # Executable finite proof generators: adapt only their fixed dimensions.
         code=(ROOT/'generate_counter_proofs.py').read_text().replace('from generate_grouped_checks import aggregate','')
         code=re.sub(r'\b(11|12|13|14)\b',lambda m:str(int(m[1])-1),code)
-        code=code.replace('381','389').replace('2048','1024').replace('range(32)','range(16)').replace('176',str(mapping[176])).replace('4096 counter-update','2048 counter-update')
+        code=code.replace('381','389').replace('2048','1024').replace('range(32)','range(16)').replace('176',str(return2)).replace('4096 counter-update','2048 counter-update')
         exec(compile(code,'counter278','exec'),{'__file__':str(temp/'formal/generate_counter_proofs.py'),'aggregate':agg})
         ns=script('generate_program_shape.py',[('range(32)','range(16)')])
         (target/'PrimitiveShape.lean').write_text(ns['generate']())

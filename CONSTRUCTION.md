@@ -19,8 +19,9 @@ Sections 1–9 retain the arithmetic explanation and the earlier verified
 295-state construction (381 compiled → 342 macro → 295 quotient). The
 arithmetic argument also applies to the new machine. The search history
 below explains subsequent experiments; the final section explains the
-complete 278-state refinement proof. Earlier 299-, 297- and 295-state
-machine theorems remain available.
+complete 278-state refinement proof. Earlier machine theorems are preserved in Git at commit `b5a869e`;
+see [archival verification](formal/ACCEPTANCE.md#earlier-verified-results).
+Only the current proof is built in this checkout.
 
 ## 1. The predicate computed by the original program
 
@@ -182,7 +183,7 @@ and 2,048 macro instructions are unchanged. The nine register positions on
 tape change, which changes dispatch transitions and creates better merging
 opportunities later.
 
-The [`Reallocated` proof modules](formal/Validation/Table295/README.md)
+The archived [`Reallocated` proof modules](formal/ACCEPTANCE.md#earlier-verified-results)
 check the new 381-state backend, including all dispatch cases, binary counter
 updates, register operations, and growth of tape storage. The resulting
 `Reallocated.machine381_iff_primitive` connects this literal tape machine to
@@ -210,7 +211,7 @@ transition bisimulation can merge further states.
 
 For this construction, 85 replacements reduce 381 states to 342. The
 independent checker tests 1,360 tape windows. The Lean theorem
-[`Reallocated.machine381_iff_machine342`](formal/Validation/Table295/MacroCorrectness.lean)
+[`Reallocated.machine381_iff_machine342`](formal/ACCEPTANCE.md#earlier-verified-results)
 separately checks the finite local equations and proves the unbounded halting
 equivalence.
 
@@ -255,12 +256,13 @@ reducer's. Concrete lockstep simulation is an additional regression check,
 not the justification for the unbounded conclusion.
 
 For the 295-state table, four Lean invariant stages establish the read masks.
-[`Reallocated.machine342_iff_machine295`](formal/Validation/Table295/Quotient295.lean)
+[`Reallocated.machine342_iff_machine295`](formal/ACCEPTANCE.md#earlier-verified-results)
 checks the quotient equations and proves halting equivalence. Z3's answer
 is not an assumption. Composing this with the macro, backend, register, and
 arithmetic results gives
-[`machine295_correct`](formal/Validation/AcceptanceTargets/Correctness295.lean),
-retained alongside the current [headline theorem](formal/RiemannMachineVerification.lean).
+[`machine295_correct`](formal/ACCEPTANCE.md#earlier-verified-results),
+preserved in the archived checkout. The active proof establishes the current
+[headline theorem](formal/RiemannMachineVerification.lean).
 
 ## Limits and subsequent search history
 
@@ -363,6 +365,7 @@ stages and all quotient transition equations connect that table to the final
 arithmetic theorem proves the unconditional result.
 
 The theorem's only axiom dependencies are `propext`, `Classical.choice`, and
-`Quot.sound`. The original four acceptance pins remain unchanged. See the
+`Quot.sound`. The original arithmetic and execution specification hashes remain unchanged;
+acceptance pins the exact 278-state machine. See the
 [formal verification guide](formal/README.md) for rechecking commands, proof
 modules, the pinned table hash and generator instructions.

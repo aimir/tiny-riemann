@@ -1,9 +1,8 @@
-"""Check fragment candidates; component Lean proofs are not a full TM theorem."""
+"""Independently check construction certificates and finite fragment regressions."""
 from pathlib import Path
 import argparse
 import hashlib
 import json
-import subprocess
 import tempfile
 from compile import ROOT,table
 from fragments import compile_fragments,graph,analyze_pc,zero_fragments
@@ -54,7 +53,7 @@ def invariant_check(program,facts,registers):
 
 
 def native_obligations(machine):
-    """Check the literal transition premises of NativeFragments.lean."""
+    """Check the native clear/test routines against their explicit transition patterns."""
     states={q.name:q for q in machine.reachable()};count=0
     def edge(name,bit,write,move,target):
         nonlocal count
@@ -182,16 +181,11 @@ def main():
     checks['macros']=verify(d/'compiled.tm',d/'macro.tm',d/'macros.json')
     final=args.machine or d/'final.tm';certificate=args.certificate or d/'reduction.json'
     checks['quotient']=reduction_certificate(d/'macro.tm',final,certificate)
-    lake=Path.home()/'.elan/bin/lake'
-    result=subprocess.run([str(lake),'env','lean','Validation/NativeRegisterFragments.lean'],cwd=ROOT/'formal',capture_output=True,text=True)
-    assert result.returncode==0,result.stdout+result.stderr
-    assert 'sorryAx' not in result.stdout and 'axioms: [propext, Quot.sound]' in result.stdout and 'axioms: [propext]' in result.stdout
-    checks['lean_component_axioms']=result.stdout.strip().splitlines()
-    paths=[final,certificate,d/'candidate.json',d/'compiled.tm',d/'macro.tm',d/'macros.json',d/'phases.json',ROOT/'formal/Validation/NativeRegisterFragments.lean']
-    report={'states':len(load(final)),'status':'Independent construction checks and generic Lean component proofs passed.',
+    paths=[final,certificate,d/'candidate.json',d/'compiled.tm',d/'macro.tm',d/'macros.json',d/'phases.json']
+    report={'states':len(load(final)),'status':'Independent construction checks passed.',
             'checks':checks,'sha256':{str(path):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths},
             'implementation_sha256':{str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT/'tools').glob('*.py'))},
-            'formal_scope':'This checker verifies construction certificates and generic native components. Full-machine status is recorded separately in formal/verification.json.'}
+            'formal_scope':'This Python checker verifies construction certificates and finite regression cases. Full-machine Lean status is recorded separately in formal/verification.json.'}
     output=json.dumps(report,indent=2)+'\n'
     if args.output:args.output.write_text(output)
     print(output,end='')

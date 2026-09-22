@@ -11,6 +11,3 @@ rev = "905b95818eb32af7874a58b427f50c1711a5e96c"
 
 [[lean_lib]]
 name = "RiemannMachineVerification"
-
-[[lean_lib]]
-name = "Validation"

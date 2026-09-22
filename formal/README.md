@@ -51,8 +51,7 @@ contains the generic execution and simulation arguments.
 [Generated](RiemannMachineVerification/Generated/README.md) separates literal
 arrays and finite certificates from the conceptual proofs. Its READMEs explain
 case ranges, generators, and the bounded chunks retained for Lean elaboration.
-Every supporting theorem has an explanatory local guide; the one immutable
-`table299_size` lemma is documented in its directory README.
+Every supporting theorem has an explanatory local guide.
 
 The register semantics and transfer theory use a single counter-size-parameterized
 model. The arithmetic and implementation specializations choose 2048 and 1024
@@ -68,20 +67,22 @@ On macOS or Linux, use Python 3 and `elan`; the toolchain is pinned to Lean 4.32
 lake exe cache get                  # Fetch external dependencies on a fresh checkout.
 python3 tools/build.py               # Serial, memory-limited headline build.
 python3 tools/check_current.py       # Full acceptance, literal tables and axiom checks.
-lake env lean --memory=16384 --threads=2 Validation/Audit.lean  # Print the principal axiom dependencies.
+lake env lean --memory=16384 --threads=2 Audit.lean  # Print the principal axiom dependencies.
 ```
 
-The full checker also builds [Validation](Validation/README.md), the separate
-library containing the 299-, 298-, 297-, and 295-state acceptance results. It preserves
-the [four byte-pinned definitions](ACCEPTANCE.md), compares all eleven literal
-machine imports, checks exact theorem types and allowed axioms, and checks
-proof navigation and definition excerpts. Only after success does it refresh
-[verification.json](verification.json), with hashes of every proof source.
+The checker builds only the headline and its dependencies. It preserves the
+[two byte-pinned specification files and the exact machine identity](ACCEPTANCE.md),
+compares all three literal machine imports (389, 339 and 278 states), checks
+exact theorem types and permitted axioms, and checks proof navigation and
+definition excerpts. It also runs [Audit.lean](Audit.lean), which prints and
+checks the principal proof stages' axiom dependencies. Only after success does
+it refresh [verification.json](verification.json), with hashes of all 154 Lean
+source files: the 153 headline modules and the separate audit.
 
 Successful output ends with:
 
 ```text
-ACCEPTED: the 278-state headline and original 299-state target are proved with only permitted axioms.
+ACCEPTED: the exact 278-state headline is proved with the fixed specification and only permitted axioms.
 ```
 
 The verification commands use `tools/build.py`: one project compiler at a time,
@@ -118,3 +119,12 @@ After acceptance, `python3 tools/package_verified.py` creates a local release
 ZIP from versioned inputs. ZIPs, binaries and raw logs are not committed.
 Ignored `.logs/` files are optional local diagnostics; the theorem, source
 hashes, tables and certificates are the durable verification evidence.
+
+## Earlier verified results
+
+The active proof tree contains only the current headline and its dependencies.
+The complete proofs for the 299-, 298-, 297- and 295-state machines are preserved
+in Git at commit `b5a869e`. They are not built by current acceptance.
+[The contract](ACCEPTANCE.md#earlier-verified-results) explains how to recover
+and recheck them and records why removing those targets leaves the mathematical
+specification unchanged.

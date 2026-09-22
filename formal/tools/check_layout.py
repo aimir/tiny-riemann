@@ -1,16 +1,14 @@
 """Check public proof navigation, theorem documentation and local doc links."""
 import re
 import subprocess
-from pathlib import Path
 from urllib.parse import unquote
-from layout import FORMAL, REPO, P, path
-from document import DECL, FROZEN
+from layout import FORMAL, REPO, P, proof_sources
+from document import DECL
 
 
 def main():
-    roots = [FORMAL/P, FORMAL/'Validation', FORMAL/'tools']
-    sources = [FORMAL/(P+'.lean'), FORMAL/'Validation.lean']
-    sources += sorted((FORMAL/P).rglob('*.lean')) + sorted((FORMAL/'Validation').rglob('*.lean'))
+    roots = [FORMAL/P, FORMAL/'tools']
+    sources = proof_sources()
     files = {'.'.join(p.relative_to(FORMAL).with_suffix('').parts): p for p in sources}
     errors, imports, count = [], {}, 0
     directories = {FORMAL}
@@ -30,11 +28,7 @@ def main():
                 errors.append(f'{module}: unresolved local import {dep}')
         for match in DECL.finditer(text):
             count += 1
-            if file in FROZEN:
-                # The unchanged table lemma is documented in the directory README.
-                assert match[1] == 'table299_size'
-                assert 'table299_size' in (file.parent/'README.md').read_text()
-            elif not text[max(0,match.start()-2048):match.start()].rstrip().endswith('-/'):
+            if not text[max(0,match.start()-2048):match.start()].rstrip().endswith('-/'):
                 errors.append(f'{module}: undocumented theorem {match[1]}')
     seen, todo = set(), [P]
     while todo:
@@ -43,7 +37,7 @@ def main():
             continue
         seen.add(module)
         todo.extend(dep for dep in imports.get(module, []) if dep in files)
-    assert not any(m.startswith('Validation') for m in seen), 'Default headline imports supplementary targets.'
+    assert set(files) - seen == {'Audit'}, 'Proof tree contains modules outside the headline dependencies.'
     docs = {REPO/p for p in subprocess.check_output(['git','ls-files','-z','*.md'],cwd=REPO).decode().split('\0') if p}
     docs.update(d/'README.md' for d in directories)
     for file in sorted(docs):

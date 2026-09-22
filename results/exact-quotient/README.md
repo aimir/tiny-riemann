@@ -5,7 +5,7 @@ This page records an earlier experiment. The current
 [fully Lean-verified headline](../../formal/README.md).
 
 This earlier machine has **297 nonhalting states**, two symbols, and a separate
-HALT state. Lean verifies the same arithmetic specification as the frozen
+HALT state. The archived Lean proof verifies the same arithmetic specification as the frozen
 299-state machine:
 
 ```lean
@@ -20,15 +20,15 @@ Files:
 
 - [297-state transition table](quotient-297.tm)
 - [Reachability and quotient certificate](quotient-297.certificate.json)
-- [Complete Lean proof](../../formal/Validation/AcceptanceTargets/Machine297.lean)
+- [Complete Lean proof in Git](../../formal/ACCEPTANCE.md#earlier-verified-results)
 - [Current headline theorem](../../formal/RiemannMachineVerification.lean)
 - [Verification results and hashes](verification.json)
 - [Solver queries and results](report.json)
 
-The original 299-state theorem and its acceptance pins remain intact. The
-297-state proof remains part of the default Lean build. The current headline
-selects the [primary 278-state result](../clique-target278/README.md),
-with a new register program, allocation and ten-bit counter.
+The 297- and 299-state proofs are preserved in Git at commit `b5a869e`.
+They are outside the current build. The current headline selects the
+[primary 278-state result](../clique-target278/README.md), with a different
+register program, allocation and ten-bit counter.
 
 ## What the exact solver established
 
@@ -75,14 +75,15 @@ different valid mappings or take different amounts of time.
 
 ## Verify the 297-state result in Lean
 
-Use the prerequisites in the [formal verification guide](../../formal/README.md).
-Z3 is unnecessary for checking the saved result:
+Follow the [archival checkout instructions](../../formal/ACCEPTANCE.md#earlier-verified-results)
+to recover commit `b5a869e`. From that checkout's `formal/` directory:
 
 ```sh
-cd formal
 python3 tools/check_current.py
 lake env lean --memory=16384 --threads=2 Validation/Audit.lean
 ```
+
+Z3 is unnecessary for checking the saved proof.
 
 The audit must succeed and include:
 

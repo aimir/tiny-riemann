@@ -1,6 +1,6 @@
 """Rebuild the historical 299-state baseline and its certificate.
 
-Use check_reallocated.py to reproduce the current 295-state construction.
+Use check_reallocated.py to reproduce the historical 295-state construction.
 """
 from pathlib import Path
 import argparse

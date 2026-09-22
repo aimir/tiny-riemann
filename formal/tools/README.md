@@ -7,10 +7,9 @@ python3 tools/build.py           # Serial headline build, 16384 MiB per Lean com
 python3 tools/check_current.py   # Bounded builds, exact types, axioms and literal tables.
 python3 tools/regenerate.py --check  # Reproduce 92 current generated modules byte for byte.
 python3 tools/regenerate.py --suite arithmetic --check # Shared arithmetic certificates.
-python3 tools/regenerate.py --suite table295 --check   # Supplementary compiler instance.
 python3 tools/document.py --check   # Check supporting-lemma guides and exact definition excerpts.
 python3 tools/check_layout.py       # Check imports, directory guides and documentation links.
-lake env lean --memory=16384 --threads=2 Validation/Audit.lean # Print the principal axiom dependencies.
+lake env lean --memory=16384 --threads=2 Audit.lean # Print the principal axiom dependencies.
 ```
 
 `build.py` checks cached dependencies and submits one uncached project module
@@ -20,10 +19,11 @@ dependencies must be cached; use `lake exe cache get` on a fresh checkout.
 The script preserves Lake’s ordinary source/dependency checks and stops on
 any failed proof. Its output streams to ignored `.logs/serial-build/` files.
 
-`check_acceptance.py` enforces the four immutable acceptance-file hashes and
-checks the 299-state theorem. `check_current.py` retains that gate and audits
-the 278-state headline plus all supplementary results. Only a successful check
-refreshes `verification.json`; raw console logs stay in ignored `.logs/`.
+`check_current.py` enforces the two immutable specification-file hashes and
+the 278-state machine identity, compares the three literal tables, and audits
+the exact headline type and the principal proofs' axioms. It builds only the
+headline dependencies. Only a successful check refreshes `verification.json`;
+raw console logs stay in ignored `.logs/`.
 
 Regeneration also needs the project Python dependencies; use
 `../.venv/bin/python` when the environment is not active.
@@ -37,7 +37,7 @@ to public modules and groups the 55 register boundaries into semantic phases.
 `document.py` adds certificate-family explanations and the English statements
 maintained in `proof_summaries.py`. Existing handwritten docstrings are kept.
 The excerpt checker reads the canonical definitions, so the theorem-first
-view cannot silently drift from them. Four pinned files are never rewritten.
+view cannot silently drift from them. The two pinned specification files are never rewritten.
 
 After successful acceptance, `package_verified.py` creates a local ZIP using
 only versioned text inputs and checked hashes. It excludes logs, caches and

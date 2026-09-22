@@ -1,9 +1,11 @@
-"""Package the current 278-state result, its proof, and the preserved baseline."""
+"""Package the current 278-state result, its proof, and the construction artifacts."""
 from pathlib import Path
 import hashlib
 import json
 import subprocess
 import zipfile
+
+from layout import proof_sources
 
 ROOT = Path(__file__).resolve().parents[2]
 FORMAL = ROOT / 'formal'
@@ -64,12 +66,18 @@ def package():
     assert report['theorem'] == 'RiemannMachineVerification.machine278_correct'
     assert report['headline'] == 'RiemannMachineVerification.headline_correct'
     assert digest(ROOT / report['machine_file']) == report['machine_sha256']
+    assert set(report['proof_source_sha256']) == {str(p.relative_to(FORMAL)) for p in proof_sources()}
+    for name, expected in report['specification_sha256'].items():
+        assert digest(FORMAL / name) == expected, name
+    for name, expected in report['literal_input_sha256'].items():
+        assert digest(ROOT / name) == expected, name
     for name, expected in report['proof_source_sha256'].items():
         assert digest(FORMAL / name) == expected, name
     manifest = json.loads((ROOT / 'machine/manifest.json').read_text())
     for name, expected in manifest['sha256'].items():
         assert digest(ROOT / name) == expected, name
     paths = package_paths(manifest)
+    assert set(proof_sources()) <= paths, "Stage every proof source before packaging."
 
     target = ROOT / 'riemann-278-verified.zip'
     prefix = 'riemann-278/'

@@ -39,28 +39,19 @@ Its scope is the literal table and unbounded execution. Equivalence of the
 arithmetic predicate to RH, direct equivalence to the original 744-state table,
 and global minimality are outside this contract.
 
-## Immutable acceptance pins
+## Fixed specification and machine identity
 
-The independently retained acceptance proposition is
-`HaltsBlank machine299 ↔ ∃ n, Counterexample n`, named `ApprovedTarget` in
-[Target.lean](Validation/AcceptanceTargets/Target.lean) and proved by
-`machine299_correct` in [Correctness299.lean](Validation/AcceptanceTargets/Correctness299.lean).
-The [299-state input](../machine/riemann.tm) retains SHA-256
-`00402eabd3bcc448d97042458ea0186598d0f7c066673d9584262eed87c9840a`.
-
-The following four files retain their exact approved bytes. Relocation changes
-neither their content hashes nor what the acceptance gate requires:
+The following canonical files retain their exact approved bytes:
 
 | Canonical file | SHA-256 |
 | --- | --- |
 | [MachineSemantics.lean](RiemannMachineVerification/Specification/MachineSemantics.lean) | `bf17d57e37bdce44be15c0ebc61cfb3a86db671adcd494173e86fb86f6d7424a` |
 | [Arithmetic.lean](RiemannMachineVerification/Specification/Arithmetic.lean) | `a4fc7ad44a5a5118e55236f849fa5cbc3c91b75b54477564744bb4115e87a24b` |
-| [Machine299.lean](Validation/AcceptanceTargets/Machine299.lean) | `9f1e38b4be64f69654e1dbb30d1d81af93d19af505a143131cf862a6d681d06f` |
-| [Target.lean](Validation/AcceptanceTargets/Target.lean) | `922f30edb4cb4c419efd6b57f26152e9be55dae9f271645e232f525eaf94731c` |
 
-Three import-only compatibility modules preserve the imports inside those
-pinned files. The default headline imports the canonical specification directly.
-The 299-, 298-, 297-, and 295-state theorems are available through `import Validation`.
+The checker enforces both hashes, the 278-state input hash above, and the exact
+unconditional headline type. It compares every transition of the 389-, 339-
+and 278-state Lean tables with the corresponding construction inputs. The
+intermediate machines remain essential parts of the proof.
 
 ## Acceptance command
 
@@ -70,9 +61,40 @@ From `formal/`, run:
 python3 tools/check_current.py
 ```
 
-The checker builds the headline and supplementary library; checks the four pins,
-all eleven literal imports, exact result types and allowed axiom dependencies; and
-checks documentation and layout. It writes [verification.json](verification.json)
-only after all checks pass. `tools/check_acceptance.py` retains the immutable
-299-state gate as part of this process. Raw logs remain local and ignored.
-See [README.md](README.md) for prerequisites, the proof map, and regeneration.
+The checker builds the 153-module headline dependency tree, checks the fixed
+specification and all three literal imports, audits exact result types and
+allowed axiom dependencies, runs [Audit.lean](Audit.lean) for the principal
+proof stages, and checks documentation and layout. It writes
+[verification.json](verification.json) only after all checks pass. That report
+hashes all 154 Lean sources, including the separate audit. Raw logs remain
+local and ignored. See [README.md](README.md) for prerequisites and the proof map.
+
+## Earlier verified results
+
+Commit `b5a869e` preserves the complete, successfully checked 299-, 298-, 297-
+and 295-state proofs, their generators, and the former acceptance checker.
+These machine-specific proofs are absent from the active tree and are not
+requirements of current acceptance. Shared lemmas used by the 278-state proof
+remain in the current library.
+
+The former acceptance gate additionally pinned a literal 299-state machine
+and a proposition named `ApprovedTarget` about that machine. Those two archived
+files are no longer active acceptance inputs. The arithmetic predicate and
+execution semantics retain their original byte hashes above, and the exact
+278-state machine and theorem remain unchanged. This removes supplementary
+machine targets without changing the mathematical statement about the current
+machine or adding hypotheses.
+
+To inspect or rerun the earlier proofs in a separate checkout, from the
+repository root (choose an unused destination directory):
+
+```sh
+git worktree add --detach /tmp/riemann-proof-archive b5a869e
+cd /tmp/riemann-proof-archive/formal
+lake exe cache get
+python3 tools/check_current.py
+```
+
+That commit's `Validation/AcceptanceTargets/` contains the four earlier results;
+its `Validation/Audit.lean` audits them. Its build driver uses the same serial,
+two-thread, 16 GiB limits. Current acceptance does not need this checkout.

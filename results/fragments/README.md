@@ -80,13 +80,14 @@ and complete artifacts for promoted candidates.
 
 ## Checks and component proofs
 
-[NativeRegisterFragments.lean](../../formal/Validation/NativeRegisterFragments.lean) proves
-`clear_core` for every natural register value, arbitrary finite register suffix
-and arbitrary left tape background. It also proves `test_core` with the complete
-tape preserved. The proofs depend only on `propext` and `Quot.sound` (the test
-uses only `propext`). The checker checks their explicit transition premises
-against native fragment implementations. These lemmas are optional component
-proofs, not imports of the default headline.
+The archived `Validation/NativeRegisterFragments.lean` at commit `b5a869e`
+proved `clear_core` for arbitrary natural register values and `test_core` with
+the complete tape preserved. Those optional components are not selected by
+the primary 278-state machine. They are preserved with the
+[earlier proofs in Git](../../formal/ACCEPTANCE.md#earlier-verified-results),
+and are no longer built by the construction checker. The current checker
+still checks the native routines' explicit transition premises and runs
+finite tape regression cases. Full-machine Lean acceptance is a separate command.
 
 The candidate checker reproduces tables, checks reachable dispatch prefixes,
 compares the ordinary register backend and exhausts counter updates, runs 528
@@ -102,12 +103,9 @@ From the repository root:
 .venv/bin/python tools/test_fragments.py
 .venv/bin/python tools/check_fragments.py \
   --candidate results/fragments-zero/24d3d7667ba1fe4f
-cd formal
-lake env lean --memory=16384 --threads=2 Validation/NativeRegisterFragments.lean
-cd ..
 ```
 
-The saved-candidate check needs Lean and the existing Python requirements;
+The saved-candidate check needs the existing Python requirements;
 Z3 is needed only to search. Reproduce searches into new output directories:
 
 ```sh

@@ -60,9 +60,9 @@
     ]
   ],
   "sha256": {
-    "CONSTRUCTION.md": "48001c043213170f930e565d49b7a462e6841beba1f7edd5461fff9ecffd82dc",
+    "CONSTRUCTION.md": "1c15bf51f6d689e794cd1e7c563cd935d3f74e84915843b9c698be17cb016b26",
     "PROOF.md": "3d5713dec4f331cde16b1ffae8a623a09fa122efdf8a89d0b9a87a82a494a555",
-    "README.md": "b9b2aa4f606ca52ddfcb3233d9ecc605f0de2c8f80a09755be72aecc1e4623ed",
+    "README.md": "0fff51a15aed47f726a3d8befc15245a4663db580acf30ac81202e064b9cda91",
     "machine/algorithm.nql": "bc60a926e190ed69883d843fb9990d2a5a6ce299a7f1c782b05937d1cc7486ec",
     "machine/macro_lengths.tsv": "1b11bc9ed83efb579fd027dfd5e5dd74b481008108bfe0469ffb6f0072f54095",
     "machine/macros.json": "c6f00941b44aa2f4b701d8d044b54c20cf623bbfcf739bce2e9e753580e0007d",
@@ -77,8 +77,8 @@
     "reference/riemann-744.nql": "ab1e40a5fa4b336ef935eba31eba78a989219b4bf3d14ca3c3aa762a2f0cf1ec",
     "reference/riemann-744.tm": "de0084433909f2600a5052eeb0bb2acd9b0ac315078abd1b92d4f3595601dd31",
     "requirements.txt": "ea104e7679e2c69279fdefa9a4c87d77903f3a87e7d1664f924951e0e0cdf068",
-    "tools/build.py": "cba956b26faaf5a03ded4a5030f76675b537e83579553cdce76ecf9c4d2eca97",
-    "tools/check.py": "048e6a767f00de30c2f2a04369bb8bdd2e38efbe648a66fe96780efe48be8da3",
+    "tools/build.py": "c419b78de952ebdb03d6cbbcb0aa867659f8b0913086d504160d7793d5797014",
+    "tools/check.py": "60f631b7e045f0d035fb9cc594c6cdeaf1c1fd991daed776ab570ec16b886806",
     "tools/compile.py": "abdae5b7eea93815b9f60381f30a241294fba36fccff04e891ca16e8b785217c",
     "tools/context_reduce.py": "eef0a2225a595f239215e086d64f7828b4e9a20378e918165d5017b6a6e5f951",
     "tools/execution_inputs.py": "825a37c78dc452c8c63c82b80164990bb3504bbc20af32ca4602c130d2f6900d",

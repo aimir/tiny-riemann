@@ -16,16 +16,14 @@ The current generator pipeline is:
 The backend uses the counter, dispatcher, grouped-check, program-shape,
 macro-site and transfer-site helpers. The reduction uses the table, macro-data,
 macro-proof and invariant helpers. `generate_register_program.py` supplies
-instruction decoding. `generate_candidate_quotient.py` supplies the independently
-checked 297-state literal import used by the acceptance checker.
+instruction decoding. Backend and reduction templates are taken directly from
+the checked current-machine modules; no archived machine proof is needed.
 
 `generate_arithmetic_paths.py` and `generate_lcm_bounds.py` describe the shared
 arithmetic certificates, reproduced by `tools/regenerate.py --suite arithmetic --check`.
-`generate_reallocated.py` is reproduced with `--suite table295 --check`.
-`generate_quotient.py` and
-the general table/register generators support the supplementary acceptance
-instances. Their concrete output modules and component templates are recorded
-in `../module_map.json`.
+Concrete output modules and component templates are recorded in
+`../module_map.json`. The arithmetic program's source and compilation inputs
+remain under `machine/` because the current refinement proof uses that program.
 
 Generators propose ordinary Lean declarations and proof terms. Compilation
 assertions and Python checks are useful for reproduction but carry no logical

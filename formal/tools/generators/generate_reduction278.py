@@ -23,7 +23,7 @@ def generate():
         def sizes(text):
             return text.replace('381','389').replace('342','339').replace('341','338')
         for name in ('MacroProofSupport','MacroCorrectness'):
-            (target/f'{name}.lean').write_text(sizes((originals/f'{name}.lean').read_text()))
+            (target/f'{name}.lean').write_text(current_template(name))
         for script in ('generate_macro_data.py','generate_macro_proofs.py','generate_invariants.py'):
             code=sizes((ROOT/script).read_text())
             exec(compile(code,str(ROOT/script),'exec'),{'__file__':str(temp/'formal'/script),'__name__':'__main__'})

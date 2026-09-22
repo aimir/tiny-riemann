@@ -8,7 +8,7 @@ import argparse
 import re
 import subprocess
 
-from layout import FORMAL, P
+from layout import FORMAL, P, proof_sources
 
 MEMORY_MB = 16384
 THREADS = 2
@@ -19,8 +19,7 @@ def lean_command(file):
 
 
 def build(target=P):
-    sources = [FORMAL / (P + '.lean'), FORMAL / 'Validation.lean']
-    sources += sorted((FORMAL / P).rglob('*.lean')) + sorted((FORMAL / 'Validation').rglob('*.lean'))
+    sources = proof_sources()
     modules = {'.'.join(p.relative_to(FORMAL).with_suffix('').parts): p for p in sources}
     if target not in modules:
         raise SystemExit(f'Unknown local proof module: {target}')

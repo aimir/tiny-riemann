@@ -5,10 +5,10 @@ This page records an earlier experiment. The current
 [fully Lean-verified headline](../../formal/README.md).
 
 This experiment produced the **295-state machine**, preserved with its
-[complete Lean theorem](../../formal/Validation/AcceptanceTargets/Correctness295.lean).
+[complete Lean theorem in Git](../../formal/ACCEPTANCE.md#earlier-verified-results).
 The [literal table](../../machine/riemann295.tm) is formally proved to halt
 exactly when the unchanged arithmetic counterexample predicate has a witness.
-See the [formal guide](../../formal/README.md) for checking the proof.
+Use the archived checkout described at that link to recheck the 295-state proof.
 The [construction guide](../../CONSTRUCTION.md) explains the arithmetic and
 tape reductions, and the [verification contract](../../formal/ACCEPTANCE.md)
 states the unchanged specification.
@@ -71,9 +71,6 @@ Saved mappings can be checked without rerunning the search or installing Z3.
 .venv/bin/python tools/check_reallocated.py
 .venv/bin/python tools/test_search_final.py
 .venv/bin/python tools/test_solve_quotient.py
-cd formal
-python3 tools/check_current.py
-lake env lean --memory=16384 --threads=2 Validation/Audit.lean
 ```
 
 The independent construction checker reproduces all three tables byte for
@@ -82,16 +79,15 @@ checks the reachability and 342-to-295 quotient certificate. The solver test
 compares against every partition of 72 small examples. The search test covers
 explicit register placement, cached SAT-model replay, and unresolved queries.
 
-The Lean proof separately checks the changed backend, all dispatcher and
+The archived Lean proof separately checks the changed backend, all dispatcher and
 counter cases, short-path replacements, four reachability invariant stages,
 and quotient equations. It reuses the unchanged arithmetic proof. Python
 checks and solver answers are not assumptions of that theorem.
 
 The [proof inputs](../../machine/riemann295.proof-inputs.json) record the
-register order and intermediate state-name normalization. The generator
-[`formal/tools/generators/generate_reallocated.py`](../../formal/tools/generators/generate_reallocated.py)
-produces the new proof modules from the saved candidate and mapping; checking
-the committed Lean proof requires no regeneration.
+register order and intermediate state-name normalization. The archived `formal/tools/generators/generate_reallocated.py` reproduces that
+proof from the saved candidate and mapping. It is available in the same Git
+commit as the proof; checking it requires no regeneration.
 
 Raw solver, execution and console logs stay local. Versioned tables,
 certificates, configurations, SMT inputs and structured reports follow the

@@ -13,7 +13,7 @@ REPO = FORMAL.parent
 DATA = json.loads((Path(__file__).parent / 'module_map.json').read_text())
 MODULES = DATA['modules']
 P = 'RiemannMachineVerification'
-PINNED = {P + '.' + name for name in ('Arithmetic', 'Semantics', 'Machine299', 'Target')}
+PINNED = {P + '.' + name for name in ('Arithmetic', 'Semantics')}
 MODELS = {P + '.' + prefix + name for prefix in ('', 'Optimized278.')
           for name in ('RegisterMachine', 'RegisterExecution', 'TransferSite')}
 ENTRY = {P + '.Correctness278', P + '.Headline'}
@@ -79,3 +79,9 @@ def group_outputs(items):
         outputs[module] = ('\n'.join(sorted(imports)) + '\n\nnamespace ' + P + '.Implementation\n\n'
                            + '\n\n'.join(chunks) + '\n\nend ' + P + '.Implementation\n')
     return outputs
+
+
+def proof_sources():
+    """The headline dependency tree and the separate, read-only axiom audit."""
+    return [FORMAL / (P + '.lean'), FORMAL / 'Audit.lean',
+            *sorted((FORMAL / P).rglob('*.lean'))]

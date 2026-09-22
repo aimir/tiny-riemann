@@ -14,8 +14,7 @@ Read the proof in this order:
 [Generated](Generated/README.md) holds literal arrays and finite certificates;
 read the conceptual results before inspecting those cases.
 
-`Arithmetic.lean`, `Semantics.lean`, and `Machine299.lean` are three import-only
-compatibility modules. They preserve imports inside byte-pinned acceptance
-files, whose exact hashes are still checked. The headline imports the canonical
-specification directly. Other accepted tables live under
-[Validation](../Validation/README.md), outside the default dependency chain.
+Every Lean module in this directory is a dependency of the headline theorem.
+The separate [axiom audit](../Audit.lean) imports that theorem and prints its
+principal dependencies. [Acceptance](../ACCEPTANCE.md) pins the specification
+and current machine and explains where to find archived machine proofs.
