@@ -9,7 +9,7 @@
     "RiemannMachineVerification.Correctness278": "RiemannMachineVerification",
     "RiemannMachineVerification.SourceArithmetic": "RiemannMachineVerification.Registers.Arithmetic.Equations",
     "RiemannMachineVerification.CompiledHarmonic": "RiemannMachineVerification.Registers.Arithmetic.Harmonic",
-    "RiemannMachineVerification.Machine278": "RiemannMachineVerification.Specification.Machine278",
+    "RiemannMachineVerification.Machine278": "RiemannMachineVerification.Specification.Machine276",
     "RiemannMachineVerification.LcmBounds": "RiemannMachineVerification.Generated.Arithmetic.LcmBounds",
     "RiemannMachineVerification.ProgressingBisimulation": "RiemannMachineVerification.Common.ProgressingBisimulation",
     "RiemannMachineVerification.CompilerCorrectness": "RiemannMachineVerification.Registers.Arithmetic.Correctness",

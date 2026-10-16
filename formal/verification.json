@@ -1,16 +1,16 @@
 {
-  "verified_at_utc": "2026-09-22T08:47:30.261750+00:00",
+  "verified_at_utc": "2026-10-16T17:07:01.919224+00:00",
   "status": "accepted",
-  "theorem": "RiemannMachineVerification.machine278_correct",
+  "theorem": "RiemannMachineVerification.machine276_correct",
   "headline": "RiemannMachineVerification.headline_correct",
-  "statement": "HaltsBlank machine278 \u2194 \u2203 n : \u2115, Counterexample n",
+  "statement": "HaltsBlank machine276 \u2194 \u2203 n : \u2115, Counterexample n",
   "axioms": [
     "Classical.choice",
     "Quot.sound",
     "propext"
   ],
   "theorem_axioms": {
-    "machine278_correct": [
+    "machine276_correct": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -27,7 +27,7 @@
       "Quot.sound",
       "propext"
     ],
-    "RiemannMachineVerification.machine278_correct": [
+    "RiemannMachineVerification.machine276_correct": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -42,7 +42,7 @@
       "Quot.sound",
       "propext"
     ],
-    "RiemannMachineVerification.Implementation.machine339_iff_machine278": [
+    "RiemannMachineVerification.Implementation.machine339_iff_machine276": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -106,21 +106,45 @@
       "Classical.choice",
       "Quot.sound",
       "propext"
+    ],
+    "RiemannMachineVerification.forward_gap_core": [
+      "Quot.sound",
+      "propext"
+    ],
+    "RiemannMachineVerification.Implementation.backend_decrement_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "RiemannMachineVerification.Implementation.backend_decrement_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "RiemannMachineVerification.Implementation.encodedRegister_initial": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "RiemannMachineVerification.Implementation.backend_primitive_advance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
     ]
   },
   "lean_toolchain": "leanprover/lean4:v4.32.2",
   "mathlib_revision": "905b95818eb32af7874a58b427f50c1711a5e96c",
-  "machine_states": 278,
-  "machine_file": "results/clique-target278/fefaa549f250fd12/quotient-278.tm",
-  "machine_sha256": "268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306",
+  "machine_states": 276,
+  "machine_file": "results/forward-gap276/quotient-276.tm",
+  "machine_sha256": "46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695",
   "specification_sha256": {
     "RiemannMachineVerification/Specification/MachineSemantics.lean": "bf17d57e37bdce44be15c0ebc61cfb3a86db671adcd494173e86fb86f6d7424a",
     "RiemannMachineVerification/Specification/Arithmetic.lean": "a4fc7ad44a5a5118e55236f849fa5cbc3c91b75b54477564744bb4115e87a24b"
   },
   "literal_input_sha256": {
-    "results/clique-target278/fefaa549f250fd12/quotient-278.tm": "268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306",
-    "results/unified-target278/fefaa549f250fd12/compiled.tm": "3a9714caefc43c5bd36c0e44bffe1c95254ccddfbca2b7fbeecab16a6d8d59eb",
-    "results/unified-target278/fefaa549f250fd12/macro.tm": "a4b05818e0f5bfc3141c6c48c9149042a7f7c33094ec706b53bb9315c3ca53d0"
+    "results/forward-gap276/quotient-276.tm": "46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695",
+    "results/forward-gap276/compiled.tm": "9a1f2338dc5e9f6d3e2fe0d33bae3bf898c0295d87c27137075c5b043bd7308d",
+    "results/forward-gap276/macro.tm": "6f1bce0fff9cb869198dda8621d8d1a387f2c9413aaefd566ffac2005df0feb1"
   },
   "checks": {
     "fixed_specification": "passed",
@@ -128,11 +152,15 @@
     "principal_axioms": "passed",
     "all_three_literal_tables": "passed",
     "literal_imports": "byte-for-byte match",
-    "documentation_and_layout": "passed"
+    "documentation_and_layout": "passed",
+    "unbounded_decrement_and_exact_capacity": "passed",
+    "caller_compatibility_and_positive_progress": "passed",
+    "literal_blank_bootstrap": "passed",
+    "unchanged_mathematical_scope": "passed"
   },
   "proof_source_sha256": {
-    "RiemannMachineVerification.lean": "cdc6f924cb031dbb83473471d4918247160f0a596bf11a39008be6cf3f47a5d7",
-    "Audit.lean": "c14398bc3e4ae67750ea7b3421ed5b66ca85237d53982969f77daa15d8b5f7b0",
+    "RiemannMachineVerification.lean": "d91eb71db06212ea216e0264350b7a2e7c964295082bc3a7e04f16b3f4324def",
+    "Audit.lean": "676108c6cf35d9a06e37e2d712728c32cc2fc889774b93a0df0d31df570bc2d0",
     "RiemannMachineVerification/Arithmetic/Cutoff.lean": "05033a0535e53a86774d12e9f4a5a941712935c402316f6525598b02d83963bb",
     "RiemannMachineVerification/Arithmetic/Divisibility.lean": "8cc752afe6edf28a7ee44322947ff7256a6dde98bf8f9f22372172421691b1ce",
     "RiemannMachineVerification/Arithmetic/Harmonic.lean": "b35ee35795a917fea554ada91b7e04635ea73e2a6a4bc6db5f97fe698eab96ad",
@@ -140,14 +168,14 @@
     "RiemannMachineVerification/Arithmetic/Lcm.lean": "d10d7b49c9d65c4490a1bacef92e83648b26c7720dd3ddb4599c8e5c0d48493a",
     "RiemannMachineVerification/Arithmetic/RationalFacts.lean": "1c20bfc43447d567ca5bf0b42275c5940a8fb5b49adad275f6c4801283cacbb5",
     "RiemannMachineVerification/Arithmetic/Search.lean": "9a637abef6f41479bf2ff6bdd8fccee45fd9b2ddf64c15382eeee4b2996440cb",
-    "RiemannMachineVerification/Common/BooleanCertificate.lean": "5d65a87aa8e7cff71f5ff8c5d0ab1f78d921f88072db14118bf1c625f0fa61dc",
+    "RiemannMachineVerification/Common/BooleanCertificate.lean": "12206d4ce9229e567e7a7c6279a92949bc5d5cc7a5b75db05acadb934060e572",
     "RiemannMachineVerification/Common/Execution.lean": "5ed1dcad3f99aaa5d6c1469f3c29fe7a44e19cb0585fbff08dc85f25e591a25e",
     "RiemannMachineVerification/Common/Expansion.lean": "f157a66a58d318e3a598821d39917432e46b1512b1aaeaff8b84b344ed09e269",
     "RiemannMachineVerification/Common/FiniteWindow.lean": "8c0ef722eb6ce78dd8aba4249ecb23171c9c36877da4bbf1ab312f6371f491ca",
     "RiemannMachineVerification/Common/LocalWindow.lean": "faef81ab86f059165edfb28b6d3cd236c5f8c492fe37d7a1603224d432598e7f",
     "RiemannMachineVerification/Common/ProgressingBisimulation.lean": "823b65b2bab039bef573f31988227f2ca1d030e5e8c27992763991348f98e8ee",
     "RiemannMachineVerification/Common/Simulation.lean": "27a966ea476a48f6a3198c1ee833f7415ce60e05c17bf6a0886c3fb39e46372b",
-    "RiemannMachineVerification/Common/WindowInvariant.lean": "789ede37a4394510586a5330305cef3c3ccbaea8d2975f890b9cc8d3b4a0b21b",
+    "RiemannMachineVerification/Common/WindowInvariant.lean": "5288add662b91b1a930062b741ac1a46a9cbb0caf6e955277283e013f11a8897",
     "RiemannMachineVerification/Generated/Arithmetic/Instructions.lean": "de56765f71027277ee7716a1ca08b6c90b87b5c51cf4d391189a160db311fd5f",
     "RiemannMachineVerification/Generated/Arithmetic/LcmBounds.lean": "3d57df6b01e7b83ac51db7a16354515e538761a75548f9bdac5e732a9f857fa4",
     "RiemannMachineVerification/Generated/Arithmetic/Paths.lean": "3649bdc2f9969ed3764ddbf479ad5579072587edbbdbdad9eb7ae56829b10379",
@@ -199,9 +227,9 @@
     "RiemannMachineVerification/Generated/Dispatch/Data.lean": "8f8efa8d5f31d99c2eebc3c6cd62d1ac28b2bbb5a43b14dee661c41ad3d915fd",
     "RiemannMachineVerification/Generated/Dispatch/InstructionShape.lean": "41e82bcb40ce2979c612dc901185508a31cd2927dbee7da3a343412bd8c621ae",
     "RiemannMachineVerification/Generated/Dispatch/Progress.lean": "56cf91cee616a7eb442c5d497fa53174cfee93016d613514001cd8a65fe20c1b",
-    "RiemannMachineVerification/Generated/Reachability/Stage0.lean": "582ce2d82b9f3a6ed39a2f598557c2c118a3a963589f95b6833cdc442db1f06b",
-    "RiemannMachineVerification/Generated/Reachability/Stage1.lean": "c7672e83cba8ead3d2312f8077a25241eb94f84965beac21808887f0fd2636cd",
-    "RiemannMachineVerification/Generated/Reachability/Stage2.lean": "7e0e51511f896be2c83c200c0cdab4187408bf47460b8497b596b68eef4a9684",
+    "RiemannMachineVerification/Generated/Reachability/Stage0.lean": "18a86d8f3cb63c3d71f35a2adf4490d56fa797ea6788ec959207e29fd541ac56",
+    "RiemannMachineVerification/Generated/Reachability/Stage1.lean": "c85a6b169e752c81bd6133965fd8c4e77ac0d16e3cec506401efd9c8b5b15b08",
+    "RiemannMachineVerification/Generated/Reachability/Stage2.lean": "2de1fe02e25e5d55651f54db3971f1afac640508875cf5124ca260165fdce0b4",
     "RiemannMachineVerification/Generated/RegisterRefinement/Boundaries.lean": "ddd833c66d6c56f5790cd898aa14cc580dfb672afcc4f63babb2986af0052a95",
     "RiemannMachineVerification/Generated/RegisterRefinement/Decision.lean": "55667da0fbbeb377b5791f8d41691292165ddfb536d3a7e89196632c6f44346c",
     "RiemannMachineVerification/Generated/RegisterRefinement/Harmonic.lean": "f7b07a86064c686e87448219b2ddab7dcf5c2be39654f5fb1f3eebea1e96e072",
@@ -230,10 +258,10 @@
     "RiemannMachineVerification/Generated/ShortPaths/Coverage.lean": "5e15b5de44ae3bfeb4edc242519b084a1b96ad67df85df0165a7b26ddf15cd4c",
     "RiemannMachineVerification/Generated/ShortPaths/Data.lean": "628fee3bb2a4cb819fb320aff08f88120a100482ba0a8ed07bdc11b39c8c4efa",
     "RiemannMachineVerification/Generated/Tables/ArithmeticProgram.lean": "f6b6a097257630d78f9bb37b6a3489c87efa248a58b4f444375676097e64c60e",
-    "RiemannMachineVerification/Generated/Tables/CompiledMachine.lean": "ade2f1df8b2f5fed267167381b69b29075fde64a0410c081b372e29ead7a8a81",
+    "RiemannMachineVerification/Generated/Tables/CompiledMachine.lean": "2b4146999f7baa46215cc3a89f644306bdd0494c343b4c65424a6138755662ee",
     "RiemannMachineVerification/Generated/Tables/ImplementationProgram.lean": "d1f38da7c287199a7989bb37af9a7b82956e53c0d0bf231c282201e7e0b0a13d",
-    "RiemannMachineVerification/Generated/Tables/ShortenedMachine.lean": "ecc9d4140e1bd7574e039744e6219c3d0339a1c965224d5d22e9a289831509e9",
-    "RiemannMachineVerification/Reduction/Quotient.lean": "8fe107bed1bcb210f77a2585b94272952f90663118a42ba412a65f135192d887",
+    "RiemannMachineVerification/Generated/Tables/ShortenedMachine.lean": "61ee7b9b0a38879de79cffed4321378cd9fe3f049416c48f6471b169bb1708ed",
+    "RiemannMachineVerification/Reduction/Quotient.lean": "06f4b4ccab42dee8e05afb9fd5526cd119d9c7ec207469640d86510522c9929f",
     "RiemannMachineVerification/Reduction/Reachability.lean": "3d0a90ef34f394d4b4bdf8aa6535970e9bf0bb9465b3d7c7579f05a8b0ffc1ef",
     "RiemannMachineVerification/Reduction/ShortPathSupport.lean": "3421797e725864109294142931ead245c39af8fe4aea0c515344dd05072f95a7",
     "RiemannMachineVerification/Reduction/ShortPaths.lean": "1212e1920b293b96fcfec0d4520a28d9cf0e66cb471ed6bea17294aaf782f8ca",
@@ -257,11 +285,11 @@
     "RiemannMachineVerification/Registers/TransferExpansion.lean": "3bc58e95342a053f8cee76f70b82cd158eb77d6c5a86f4073d0b1a5b27915833",
     "RiemannMachineVerification/Registers/Transfers.lean": "260c8e2b17ebae4f4476d72770822c53b1a1c38c8a07023e0a7c626c41b44d61",
     "RiemannMachineVerification/Specification/Arithmetic.lean": "a4fc7ad44a5a5118e55236f849fa5cbc3c91b75b54477564744bb4115e87a24b",
-    "RiemannMachineVerification/Specification/Machine278.lean": "c23174ffc0cecf9c15bd19f5bce7bd0142284fabc35378d69a08466843d2706d",
+    "RiemannMachineVerification/Specification/Machine276.lean": "185960549246fb83660e9e0a069a6d2aa90db654b71fffc41c9bbd93cf6dca39",
     "RiemannMachineVerification/Specification/MachineSemantics.lean": "bf17d57e37bdce44be15c0ebc61cfb3a86db671adcd494173e86fb86f6d7424a",
     "RiemannMachineVerification/Tape/Allocation.lean": "2e55d051487295193e65b3f23cae66165c1a0b64bab19fe4540fda99c5d05502",
     "RiemannMachineVerification/Tape/Core/Carry.lean": "8b67389d00e144ffbc2edeebebfc8c6f48f346d018f092695a402fdc9b58e816",
-    "RiemannMachineVerification/Tape/Core/Deletion.lean": "adcc65474684fbdabc8475dc6573e0ce43dca1d166b3d48e3bda7cc752fe8e14",
+    "RiemannMachineVerification/Tape/Core/Deletion.lean": "95634d58191ab7351dac050d2ee61a7f3542e4fac9524d1db7b9ee2b6eed6507",
     "RiemannMachineVerification/Tape/Core/Execution.lean": "cb8b684f5a688e3d82c883dc8027ed0c038982afe9e9c0f20f893cd2b23fc9ab",
     "RiemannMachineVerification/Tape/Core/InsertReturn.lean": "19c7ccb327bcc770097085c8e8d0b70f85bd0b553557bba9f22efc3e69a8a6d7",
     "RiemannMachineVerification/Tape/Core/Insertion.lean": "981b44b4b76677e70bba82793c3e00bcf57c1170ba5516489c2b3b590bc381e4",
@@ -275,8 +303,8 @@
     "RiemannMachineVerification/Tape/Correctness.lean": "47157764938d241d87fde949d0a66e3e79d8b2dc5a314e5cb5d91be4ab811964",
     "RiemannMachineVerification/Tape/Counter.lean": "30311e766bcaee55086e3f8691e661d2c9b7cc813a4e80e108e4fb22e3baf642",
     "RiemannMachineVerification/Tape/CounterIndex.lean": "e297104341a460691d4570a53d35313236f570dc237bb4f40e84e024d8cff24c",
-    "RiemannMachineVerification/Tape/Decrement.lean": "565a1dc0a1d59fc85dd5eba2ae76590ab4cf07d1b05e4c8d940db7aea9bfee61",
-    "RiemannMachineVerification/Tape/Deletion.lean": "ff1b88f968dd819813b895ecaf699d10c2711ddaf4ca38000555ea24b183107e",
+    "RiemannMachineVerification/Tape/Decrement.lean": "131dc770f519bf03ce7eeb354ad5fd55f6bcb5b80298bbef5828dd1fc10efeed",
+    "RiemannMachineVerification/Tape/Deletion.lean": "ec67332d3971cecdaac85d7117860dd2ff0dc12d9ce1234d105e9c2c6134a42d",
     "RiemannMachineVerification/Tape/Dispatch.lean": "f85023c7a75b45ee0c586ba4a67b8b4344f5b8108cd7d74fd13a107240ae878a",
     "RiemannMachineVerification/Tape/Encoding.lean": "b34695cc1b771f5eaccb72cb897d67fa215c816c501603811116fcd39686a7b1",
     "RiemannMachineVerification/Tape/Increment.lean": "e35dd9f7570d4da9dcdfc557e97ad69352700be41774ddb6af72bc27a118d1da",

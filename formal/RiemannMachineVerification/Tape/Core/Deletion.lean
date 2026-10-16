@@ -42,4 +42,43 @@ theorem deletion_core {N} (M : Machine N) (one zero finish : Fin N)
     simpa only [zipperStep, mirrorZipper, streamCons, streamTail_cons, h00,
       Bool.false_eq_true, ↓reduceIte] using h
 
+
+/-- Move a single blank gap to the end of an arbitrary encoded word. The two
+working states exchange the gap with each mark or separator; the cleanup state
+is reached on a disposable mark past the final gap. -/
+theorem forward_gap_core {N} (M : Machine N) (gap swap cleanup : Fin N)
+    (h11 : M.transition gap true = ⟨true, false, some gap⟩)
+    (h10 : M.transition gap false = ⟨true, true, some swap⟩)
+    (h01 : M.transition swap true = ⟨false, true, some gap⟩)
+    (h00 : M.transition swap false = ⟨false, false, some cleanup⟩)
+    (w : TapeWord) (left : BitStream) :
+    ZExec M
+      ⟨some gap, streamCons false left,
+        streamPrefix w.bits (streamCons false zeros)⟩
+      ⟨some cleanup, streamCons false (streamPrefix w.bits.reverse left),
+        streamCons true zeros⟩ := by
+  induction w generalizing left with
+  | empty =>
+    apply ZExec.prepend (zipper_right gap swap false true h10 _ _)
+    apply ZExec.single
+    simpa only [TapeWord.bits, List.reverse_nil, streamPrefix_nil, streamCons_zero] using
+      zipper_left swap cleanup true false false h00 (streamCons false left) zeros
+  | one w ih =>
+    apply ZExec.prepend (zipper_left gap gap false true true h11 _ _)
+    apply ZExec.prepend (zipper_right gap swap false true h10 _ _)
+    apply ZExec.prepend (zipper_right swap gap true false h01 _ _)
+    convert ih (streamCons true left) using 1
+    congr 1
+    congr 1
+    simp only [TapeWord.bits, List.reverse_cons, streamPrefix_append,
+      streamPrefix_cons, streamPrefix_nil]
+  | zeroOne w ih =>
+    apply ZExec.prepend (zipper_right gap swap false true h10 _ _)
+    apply ZExec.prepend (zipper_right swap gap true false h01 _ _)
+    convert ih (streamCons true (streamCons false left)) using 1
+    congr 1
+    congr 1
+    simp only [TapeWord.bits, List.reverse_cons, streamPrefix_append,
+      streamPrefix_cons, streamPrefix_nil]
+
 end RiemannMachineVerification

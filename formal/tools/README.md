@@ -20,7 +20,7 @@ The script preserves Lake’s ordinary source/dependency checks and stops on
 any failed proof. Its output streams to ignored `.logs/serial-build/` files.
 
 `check_current.py` enforces the two immutable specification-file hashes and
-the 278-state machine identity, compares the three literal tables, and audits
+the 276-state machine identity, compares the three literal tables, and audits
 the exact headline type and the principal proofs' axioms. It builds only the
 headline dependencies. Only a successful check refreshes `verification.json`;
 raw console logs stay in ignored `.logs/`.

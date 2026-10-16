@@ -15,7 +15,11 @@ through initialization and subsequent execution.
 [Increment.lean](Increment.lean), [Decrement.lean](Decrement.lean),
 [Insertion.lean](Insertion.lean), and [Deletion.lean](Deletion.lean) implement
 unbounded unary operations. [RegisterOperations.lean](RegisterOperations.lean)
-lifts them to the complete encoding.
+lifts them to the complete encoding. Positive decrement uses the local
+`forward_gap_core` induction from [Core/Deletion.lean](Core/Deletion.lean).
+The complete proof restores the leading mark, shifts the gap, erases the final
+disposable mark, skips the blank suffix, and returns through every preceding
+register to update the counter. Register capacity is preserved exactly.
 
 [Core](Core/README.md) contains reusable tape arguments. Concrete counter and
 dispatch cases live in [Generated](../Generated/README.md); the finite case split

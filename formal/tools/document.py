@@ -17,7 +17,7 @@ FROZEN = {path(MODULES[m]) for m in PINNED}
 def role(file):
     rel = file.relative_to(FORMAL).as_posix()
     if '/Generated/Reachability/' in rel or '/BooleanCertificate.' in rel or '/WindowInvariant.' in rel:
-        return 'Supplies the inductive read masks used to justify the 339-to-278-state quotient.'
+        return 'Supplies the inductive read masks used to justify the 339-to-276-state quotient.'
     if '/Generated/RegisterRefinement/' in rel or rel.endswith('/Registers/Refinement.lean'):
         return 'Connects the implementation register program to the arithmetic program despite different temporary values.'
     if '/Generated/Counter/' in rel or '/Generated/Dispatch/' in rel:
@@ -138,12 +138,12 @@ def excerpts():
         return s.split('namespace ' + P + '\n', 1)[1].rsplit('end ' + P, 1)[0].strip()
     arithmetic = body(FORMAL/P/'Specification/Arithmetic.lean')
     semantics = body(FORMAL/P/'Specification/MachineSemantics.lean')
-    machine = (FORMAL/P/'Specification/Machine278.lean').read_text()
-    machine = machine[machine.index('def machine278'):machine.rindex('end ' + P)].strip()
+    machine = (FORMAL/P/'Specification/Machine276.lean').read_text()
+    machine = machine[machine.index('def machine276'):machine.rindex('end ' + P)].strip()
     return '''/-! BEGIN CHECKED SPECIFICATION
 ## Meaning of the headline
 
-The literal 278-state binary machine halts from its all-zero tape if and only if
+The literal 276-state binary machine halts from its all-zero tape if and only if
 some natural number at least 254 satisfies the exact rational inequality below.
 Halting is existential over all finite running times; the tape is indexed by
 all integers. The ordinary-state count excludes the separate halted state.
@@ -162,14 +162,14 @@ they are imported above the theorem and displayed here in reading order.
 ''' + semantics + '''
 ```
 
-### Exact machine (Specification/Machine278.lean)
+### Exact machine (Specification/Machine276.lean)
 ```lean
 ''' + machine + '''
 ```
 
-`table278` is the complete literal array in `Specification/Machine278.lean`.
-Its input is `results/clique-target278/fefaa549f250fd12/quotient-278.tm`, SHA-256
-`268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306`.
+`table276` is the complete literal array in `Specification/Machine276.lean`.
+Its input is `results/forward-gap276/quotient-276.tm`, SHA-256
+`46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695`.
 The checker compares every row and audits the theorem's axioms. See `README.md`
 for the proof map and verification commands. Equivalence of the arithmetic
 predicate to RH is outside this theorem's scope.

@@ -4,37 +4,6 @@ import RiemannMachineVerification.Tape.Core.Return
 import RiemannMachineVerification.Tape.Counter
 namespace RiemannMachineVerification.Implementation
 
-/-- [proof-guide] The decrement entry shifts to the required position in the encoded word.
-Proof: Combines `ZExec.prepend`, `ZExec.trans` with the displayed local equations.
-Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
-theorem decrement_shift (w : TapeWord) (background : BitStream) :
-    ZExec machine389
-      ⟨some ⟨2, by decide⟩, streamCons false background,
-        streamCons true (streamCons true (streamPrefix w.bits zeros))⟩
-      ⟨some ⟨202, by decide⟩, streamTail background,
-        streamCons (background 0) (streamCons false
-          (streamCons true (streamPrefix w.bits zeros)))⟩ := by
-  apply ZExec.prepend (zipper_right ⟨2, by decide⟩ ⟨1, by decide⟩ true false rfl _ _)
-  apply ZExec.prepend (zipper_right ⟨1, by decide⟩ ⟨5, by decide⟩ true true rfl _ _)
-  apply ZExec.trans (b := ⟨some ⟨6, by decide⟩,
-    streamCons true (streamPrefix w.reverseCarried.bits (streamCons false (streamCons false background))),
-    zeros⟩)
-  · simpa only [streamCons_zero, TapeWord.reverse_prefix] using
-      machine389_scan_end w (streamCons true (streamCons false (streamCons false background))) zeros
-  · have hstep : zipperStep machine389
-        ⟨some ⟨6, by decide⟩,
-          streamCons true (streamPrefix w.reverseCarried.bits (streamCons false (streamCons false background))),
-          zeros⟩ =
-        ⟨some ⟨7, by decide⟩,
-          streamPrefix w.reverseCarried.bits (streamCons false (streamCons false background)),
-          streamCons true zeros⟩ := by
-      simpa only [streamCons_zero] using
-        zipper_left ⟨6, by decide⟩ ⟨7, by decide⟩ true false false rfl
-          (streamPrefix w.reverseCarried.bits (streamCons false (streamCons false background))) zeros
-    apply ZExec.prepend hstep
-    simpa only [TapeWord.reverseCarried_carried] using
-      machine389_delete_at_end w.reverseCarried background
-
 /-- [proof-guide] The tape decrement routine takes the zero branch and preserves the encoded zero value.
 Proof: Combines `ZExec.trans`, `ZExec.prepend` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
@@ -73,7 +42,7 @@ theorem backend_decrement_zero (before after : List ℕ)
     counter_return pc false (before ++ 0 :: after)
 
 /-- [proof-guide] The tape decrement routine removes one unary mark and takes the positive branch.
-Proof: Combines `ZExec.trans` with the displayed local equations.
+Proof: Combines `ZExec.trans`, `ZExec.prepend` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem backend_decrement_positive (before after : List ℕ) (v : ℕ)
     (bound : before.length ≤ 8) (pc : ProgramCounter) :
@@ -86,23 +55,38 @@ theorem backend_decrement_positive (before after : List ℕ) (v : ℕ)
     before ((v + 1) :: after) bound (pcLeft pc))
   let behind := streamPrefix (registerTailWord before.reverse).bits
     (streamCons false (streamCons false (pcLeft pc)))
-  have hb : behind = streamCons false (streamTail behind) := by
-    cases h : before.reverse <;> simp [behind, h, registerTailWord, TapeWord.bits,
-      streamPrefix_cons, streamPrefix_nil, streamTail_cons]
   have hv : registerStream ((v + 1) :: after) =
       streamCons true (streamCons true
         (streamPrefix (TapeWord.ones v (registerTailWord after)).bits zeros)) := by
     simp only [registerStream, registerWord, TapeWord.ones, TapeWord.bits, streamPrefix_cons]
   rw [hv]
   change ZExec machine389 ⟨some ⟨2, by decide⟩, behind, _⟩ _
-  rw [hb]
-  apply ZExec.trans (decrement_shift (TapeWord.ones v (registerTailWord after)) (streamTail behind))
-  apply ZExec.trans (return_after_separator machine389 ⟨203, by decide⟩ ⟨202, by decide⟩
-    ⟨178, by decide⟩ rfl rfl rfl rfl before.reverse (pcLeft pc)
-    (streamCons true (streamPrefix (TapeWord.ones v (registerTailWord after)).bits zeros)))
+  apply ZExec.prepend (zipper_right ⟨2, by decide⟩ ⟨1, by decide⟩ true false rfl _ _)
+  apply ZExec.prepend (zipper_left ⟨1, by decide⟩ ⟨5, by decide⟩ false true true rfl _ _)
+  apply ZExec.prepend (zipper_right ⟨5, by decide⟩ ⟨4, by decide⟩ false true rfl _ _)
+  apply ZExec.prepend (zipper_right ⟨4, by decide⟩ ⟨5, by decide⟩ true false rfl _ _)
+  apply ZExec.trans (machine389_forward_gap (TapeWord.ones v (registerTailWord after))
+    (streamCons true behind))
+  apply ZExec.prepend (zipper_left ⟨6, by decide⟩ ⟨203, by decide⟩ false true false rfl _ _)
+  have hreverse := TapeWord.reverse_prefix (TapeWord.ones v (registerTailWord after)) behind
+  rw [hreverse]
+  simp only [streamCons_zero]
+  have skip := zipper_left (M := machine389) ⟨203, by decide⟩ ⟨202, by decide⟩
+    true false false rfl
+    (streamPrefix (TapeWord.ones v (registerTailWord after)).reverseCarried.bits behind) zeros
+  simp only [streamCons_zero] at skip
+  apply ZExec.prepend skip
+  have hreturn := return_core machine389 ⟨203, by decide⟩ ⟨202, by decide⟩
+    ⟨178, by decide⟩ rfl rfl rfl rfl
+    ((TapeWord.ones v (registerTailWord after)).reverseCarried.append
+      (registerTailWord before.reverse)) (pcLeft pc) zeros false
+  simp only [TapeWord.append_bits, streamPrefix_append] at hreturn
+  apply ZExec.trans hreturn
   have hv' : registerStream (v :: after) =
       streamCons true (streamPrefix (TapeWord.ones v (registerTailWord after)).bits zeros) := rfl
-  simpa only [registerTailWord_reverse_bits, registerStream_append, hv', ↓reduceIte] using
+  simpa only [TapeWord.append_bits, List.reverse_append, TapeWord.reverseCarried_bits,
+    List.reverse_reverse, streamPrefix_append, TapeWord.carried_prefix,
+    registerTailWord_reverse_bits, registerStream_append, hv', ↓reduceIte] using
     counter_return pc true (before ++ v :: after)
 
 end RiemannMachineVerification.Implementation

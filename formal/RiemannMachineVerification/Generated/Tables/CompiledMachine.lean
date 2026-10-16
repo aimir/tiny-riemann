@@ -3,15 +3,15 @@ set_option maxRecDepth 4096
 
 namespace RiemannMachineVerification.Implementation
 
--- Literal data from results/unified-target278/fefaa549f250fd12/compiled.tm; SHA-256: 3a9714caefc43c5bd36c0e44bffe1c95254ccddfbca2b7fbeecab16a6d8d59eb
+-- Literal data from results/forward-gap276/compiled.tm; SHA-256: 9a1f2338dc5e9f6d3e2fe0d33bae3bf898c0295d87c27137075c5b043bd7308d
 def table389 : Array (Instruction 389 × Instruction 389) := #[
   (⟨false, true, some ⟨176, by decide⟩⟩, ⟨true, true, some ⟨176, by decide⟩⟩), -- 0: !ENTRY
-  (⟨false, false, some ⟨3, by decide⟩⟩, ⟨true, true, some ⟨5, by decide⟩⟩), -- 1: dec.check
+  (⟨false, false, some ⟨3, by decide⟩⟩, ⟨true, false, some ⟨5, by decide⟩⟩), -- 1: dec.check
   (⟨false, true, some ⟨1, by decide⟩⟩, ⟨false, true, some ⟨1, by decide⟩⟩), -- 2: dec.init
   (⟨true, false, some ⟨201, by decide⟩⟩, ⟨true, false, some ⟨201, by decide⟩⟩), -- 3: dec.restore
-  (⟨false, false, some ⟨6, by decide⟩⟩, ⟨true, true, some ⟨5, by decide⟩⟩), -- 4: dec.scan_0
-  (⟨false, true, some ⟨4, by decide⟩⟩, ⟨true, true, some ⟨5, by decide⟩⟩), -- 5: dec.scan_1
-  (⟨false, false, some ⟨7, by decide⟩⟩, ⟨true, false, some ⟨7, by decide⟩⟩), -- 6: dec.scan_done
+  (⟨false, false, some ⟨6, by decide⟩⟩, ⟨false, true, some ⟨5, by decide⟩⟩), -- 4: dec.scan_0
+  (⟨true, true, some ⟨4, by decide⟩⟩, ⟨true, false, some ⟨5, by decide⟩⟩), -- 5: dec.scan_1
+  (⟨false, false, some ⟨7, by decide⟩⟩, ⟨false, false, some ⟨203, by decide⟩⟩), -- 6: dec.scan_done
   (⟨false, false, some ⟨202, by decide⟩⟩, ⟨false, false, some ⟨8, by decide⟩⟩), -- 7: dec.shift_0
   (⟨true, false, some ⟨7, by decide⟩⟩, ⟨true, false, some ⟨8, by decide⟩⟩), -- 8: dec.shift_1
   (⟨true, false, some ⟨10, by decide⟩⟩, ⟨false, false, some ⟨11, by decide⟩⟩), -- 9: dispatch.0.carry

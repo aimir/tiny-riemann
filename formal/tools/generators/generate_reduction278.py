@@ -1,4 +1,4 @@
-"""Kernel-checkable finite rewrites, reachability and quotient to 278 states."""
+"""Kernel-checkable finite rewrites, reachability and quotient to 276 states."""
 import hashlib
 import shutil
 import tempfile
@@ -6,8 +6,8 @@ from generate_optimized278 import *
 from generate_tables import generate as literal_table
 from tm_reduce import load
 
-FINAL = ROOT.parent/'results/clique-target278/fefaa549f250fd12/quotient-278.tm'
-DIGEST = '268a2315b01ecb07341c4da5f765b26c461ca6f435511a090f863d3a92761306'
+FINAL = ROOT.parent/'results/forward-gap276/quotient-276.tm'
+DIGEST = '46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695'
 
 
 def generate():
@@ -47,18 +47,18 @@ def generate():
     text=literal_table(339,str(path.relative_to(ROOT.parent)),hashlib.sha256(path.read_bytes()).hexdigest())
     text=text.replace('namespace RiemannMachineVerification','namespace '+PREFIX).replace('end RiemannMachineVerification','end '+PREFIX)
     (DEST/'Machine339.lean').write_text(text)
-    (originals/'Machine278.lean').write_text(literal_table(278,str(FINAL.relative_to(ROOT.parent)),DIGEST))
+    (originals/'Machine278.lean').write_text(literal_table(276,str(FINAL.relative_to(ROOT.parent)),DIGEST))
     sources=list(load(path));targets=list(load(FINAL))
     out=header(PREFIX+'.Invariants','RiemannMachineVerification.Machine278')
-    out+='def quotientMapTable : Array (Fin 278) := #[\n'
+    out+='def quotientMapTable : Array (Fin 276) := #[\n'
     out+=',\n'.join('  '+fin(targets.index(cert['mapping'][q] if cert['possible'][q] else '!ENTRY')) for q in sources)+'\n]\n\n'
-    out+='def quotientMap (q : Fin 339) : Fin 278 :=\n  quotientMapTable[q.val]\'(by simpa only [show quotientMapTable.size = 339 from rfl] using q.isLt)\n\n'
-    out+=f'theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),\n    inv{count-1}_after q b = true →\n    machine278.transition (quotientMap q) b =\n      renameInstruction quotientMap (machine339.transition q b) := by\n  intro q b h\n  fin_cases q <;> cases b\n'
+    out+='def quotientMap (q : Fin 339) : Fin 276 :=\n  quotientMapTable[q.val]\'(by simpa only [show quotientMapTable.size = 339 from rfl] using q.isLt)\n\n'
+    out+=f'theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),\n    inv{count-1}_after q b = true →\n    machine276.transition (quotientMap q) b =\n      renameInstruction quotientMap (machine339.transition q b) := by\n  intro q b h\n  fin_cases q <;> cases b\n'
     for q in sources:
         for b in (0,1):out+='  · rfl\n' if cert['possible'][q]&(1<<b) else '  · exact Bool.noConfusion (show false = true from h)\n'
     out+='''
-theorem machine339_iff_machine278 : HaltsBlank machine339 ↔ HaltsBlank machine278 := by
-  apply halts_iff_of_invariant_quotient machine339 machine278 quotientMap
+theorem machine339_iff_machine276 : HaltsBlank machine339 ↔ HaltsBlank machine276 := by
+  apply halts_iff_of_invariant_quotient machine339 machine276 quotientMap
     (fun c => ∃ t, run machine339 t = c)
   · exact ⟨0, rfl⟩
   · rintro c ⟨t, rfl⟩; exact ⟨t + 1, rfl⟩
@@ -68,6 +68,6 @@ theorem machine339_iff_machine278 : HaltsBlank machine339 ↔ HaltsBlank machine
 '''
     write('Quotient278',out)
     # The public composition theorem is maintained in the theorem-first entry module.
-    print('Generated the 278-state reduction certificates; acceptance still requires Lean.')
+    print('Generated the 276-state reduction certificates; acceptance still requires Lean.')
 
 if __name__=='__main__':generate()

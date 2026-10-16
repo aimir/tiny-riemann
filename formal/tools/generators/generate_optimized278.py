@@ -1,4 +1,4 @@
-"""Proof data for the literal 278-state candidate; generated claims require Lean.
+"""Proof data for the current arithmetic implementation; claims require Lean.
 
 No compiler or Python checker is part of the logical trust boundary. Preserve
 the approved mathematical definitions and the implementation namespace.
@@ -16,7 +16,7 @@ from generate_register_program import leaf, REGISTERS, fin
 
 PREFIX = 'RiemannMachineVerification.Optimized278'
 DEST = ROOT / 'RiemannMachineVerification/Optimized278'
-CANDIDATE = ROOT.parent / 'results/unified-target278/fefaa549f250fd12'
+CANDIDATE = ROOT.parent / 'results/forward-gap276'
 
 
 def machines():

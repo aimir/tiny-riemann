@@ -1,14 +1,14 @@
-# Construction and correctness of the 278-state machine
+# Construction and correctness of the 276-state machine
 
-The current verified [278-state table](results/clique-target278/fefaa549f250fd12/quotient-278.tm)
+The current verified [276-state table](results/forward-gap276/quotient-276.tm)
 has the complete [Lean theorem](formal/RiemannMachineVerification.lean):
 
 ```lean
-theorem machine278_correct :
-    HaltsBlank machine278 ↔ ∃ n : ℕ, Counterexample n
+theorem machine276_correct :
+    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-The construction is **389 compiled → 339 macro → 278 quotient states**,
+The construction is **389 compiled → 339 macro → 276 quotient states**,
 using a ten-bit counter and nine registers. All counts exclude the separate
 halting state. The proof checks the literal machine without trusting the
 compiler or solver. The [verification contract](formal/ACCEPTANCE.md) preserves
@@ -19,7 +19,7 @@ Sections 1–9 retain the arithmetic explanation and the earlier verified
 295-state construction (381 compiled → 342 macro → 295 quotient). The
 arithmetic argument also applies to the new machine. The search history
 below explains subsequent experiments; the final section explains the
-complete 278-state refinement proof. Earlier machine theorems are preserved in Git at commit `b5a869e`;
+complete 276-state refinement proof. Earlier machine theorems are preserved in Git at commit `b5a869e`;
 see [archival verification](formal/ACCEPTANCE.md#earlier-verified-results).
 Only the current proof is built in this checkout.
 
@@ -340,9 +340,21 @@ Raw execution and solver logs are local diagnostics and are not distributed.
 The retained tables, certificates, SMT inputs and structured summaries are
 listed in the [artifact policy](README.md#repository-artifacts-and-local-logs).
 
-## Complete proof for the primary 278-state machine
+## Forward-gap arithmetic backend
 
-[`machine278_correct`](formal/RiemannMachineVerification.lean)
+The [276-state result](results/forward-gap276/README.md) preserves that source,
+allocation and ten-bit layout. Positive decrement carries the erased cell
+forward through arbitrary encoded register contents, then cleans up the final
+mark and returns to the counter. The generic word induction and the complete
+caller proof preserve exact capacity, unbounded register values, and progress.
+The exact quotient reduces the final table by two states. A cleanup-sharing
+variant also reaches 276 and gives no further saving. Startup and initialization
+retain their exact blank-tape behavior; their redundant scan entries were
+already shared by the certified quotient.
+
+## Complete proof for the primary 276-state machine
+
+[`machine276_correct`](formal/RiemannMachineVerification.lean)
 connects the exact primary table to the unchanged approved predicate. The new
 register program is different from the older program, so its arithmetic
 correctness is transferred through an explicit equivalence proof.
@@ -361,11 +373,11 @@ both counter updates at every value. Generic unary-register proofs account
 for arbitrary contents and growing storage. Short-path certificates connect
 the compiled 389-state table to the 339-state table. Three inductive tape-mask
 stages and all quotient transition equations connect that table to the final
-278-state machine. Composing these results with the original `arithmetic_program_correct`
+276-state machine. Composing these results with the original `arithmetic_program_correct`
 arithmetic theorem proves the unconditional result.
 
 The theorem's only axiom dependencies are `propext`, `Classical.choice`, and
 `Quot.sound`. The original arithmetic and execution specification hashes remain unchanged;
-acceptance pins the exact 278-state machine. See the
+acceptance pins the exact 276-state machine. See the
 [formal verification guide](formal/README.md) for rechecking commands, proof
 modules, the pinned table hash and generator instructions.

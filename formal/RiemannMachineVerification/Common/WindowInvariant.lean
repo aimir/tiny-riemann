@@ -16,7 +16,7 @@ def WindowInvariant {N : ℕ} (predicate : Fin N → (ℤ → Bool) → Bool)
 
 /-- [proof-guide] The tape window after a machine step is the shifted, updated current window.
 Proof: Rewrites the defining equations and the cited arithmetic or execution facts.
-Role: Supplies the inductive read masks used to justify the 339-to-278-state quotient. -/
+Role: Supplies the inductive read masks used to justify the 339-to-276-state quotient. -/
 theorem currentWindow_step {N : ℕ} (M : Machine N) (c : Configuration N)
     (q : Fin N) (hq : c.state = some q) :
     currentWindow (step M c) =

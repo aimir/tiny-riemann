@@ -4,7 +4,7 @@
 `ImplementationProgram.lean` contains the 1024-address implementation, each at
 primitive and transfer-instruction granularity. `CompiledMachine.lean` and
 `ShortenedMachine.lean` contain the 389-state and 339-state transition arrays.
-The final array is [Machine278.lean](../../Specification/Machine278.lean).
+The final array is [Machine276.lean](../../Specification/Machine276.lean).
 
 Each machine array has a kernel-proved size lemma. The acceptance checker
 regenerates every literal machine import and compares every transition. The

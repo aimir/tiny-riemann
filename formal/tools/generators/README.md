@@ -6,7 +6,8 @@ isolated temporary workspace and maps their internal component names to the
 public directory structure. Do not run these internal scripts directly against
 the public source tree: their component paths are the generator interface.
 
-The current generator pipeline is:
+The generator filenames retain their original `278` interface names. They now
+reproduce the current 276-state endpoint. The pipeline is:
 
 1. `generate_optimized278.py`: exact primitive and transfer register programs.
 2. `generate_refinement278.py`: symbolic paired-boundary discovery, instruction equations, and positive-progress proofs.

@@ -303,4 +303,9 @@ def compile_fragments(source,registers,layout,lowering,fragments,compress=True,_
     machine.phase_certificate=prune_dispatch(machine,actual) if fragments.get('prune') else None
     machine.role_certificate=restrict_roles(machine) if fragments.get('roles') else []
     if compress: machine.compress()
+    backend = fragments.get('backend')
+    assert backend in (None, 'forward_gap'), 'Unknown arithmetic backend'
+    if backend == 'forward_gap':
+        from forward_decrement import apply_forward_decrement
+        apply_forward_decrement(machine)
     return machine,actual

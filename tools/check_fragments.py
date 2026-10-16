@@ -164,6 +164,15 @@ def main():
     backend=m
     if c['fragments'].get('roles'):
         backend,_=compile_fragments(source,c['register_order'],c['layout'],c['lowering'],dict(c['fragments'],roles=False))
+    if c['fragments'].get('backend') == 'forward_gap':
+        from test_forward_decrement import run_tests as forward_tests
+        checks['forward_gap_complete_calls'] = forward_tests(d)
+        # The existing all-input bisimulation checks the unchanged compiler
+        # backend. The forward replacement has a separate unbounded Lean proof.
+        settings = dict(c['fragments']); settings.pop('backend')
+        settings['roles'] = False
+        backend, _ = compile_fragments(source, c['register_order'], c['layout'],
+                                      c['lowering'], settings)
     checks['backend_before_role_restriction']=check_backend(reference,backend,list(zip(order,rs)))
     program,facts=analyze_pc(raw,rs);checks['inductive_edges']=invariant_check(program,facts,rs)
     saved=json.loads((d/'phases.json').read_text())

@@ -1,5 +1,5 @@
 import RiemannMachineVerification.Reduction.Reachability
-import RiemannMachineVerification.Specification.Machine278
+import RiemannMachineVerification.Specification.Machine276
 set_option maxRecDepth 8192
 set_option maxHeartbeats 0
 set_option linter.unusedSimpArgs false
@@ -7,15 +7,16 @@ set_option linter.unusedVariables false
 
 namespace RiemannMachineVerification.Implementation
 
-def quotientMapTable : Array (Fin 278) := #[
+def quotientMapTable : Array (Fin 276) := #[
   ⟨0, by decide⟩,
   ⟨1, by decide⟩,
   ⟨2, by decide⟩,
-  ⟨58, by decide⟩,
+  ⟨57, by decide⟩,
   ⟨3, by decide⟩,
   ⟨4, by decide⟩,
-  ⟨188, by decide⟩,
   ⟨5, by decide⟩,
+  ⟨0, by decide⟩,
+  ⟨0, by decide⟩,
   ⟨6, by decide⟩,
   ⟨7, by decide⟩,
   ⟨8, by decide⟩,
@@ -39,9 +40,9 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨26, by decide⟩,
   ⟨27, by decide⟩,
   ⟨28, by decide⟩,
+  ⟨108, by decide⟩,
   ⟨29, by decide⟩,
   ⟨30, by decide⟩,
-  ⟨109, by decide⟩,
   ⟨31, by decide⟩,
   ⟨32, by decide⟩,
   ⟨33, by decide⟩,
@@ -68,9 +69,9 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨54, by decide⟩,
   ⟨55, by decide⟩,
   ⟨56, by decide⟩,
+  ⟨5, by decide⟩,
+  ⟨58, by decide⟩,
   ⟨57, by decide⟩,
-  ⟨206, by decide⟩,
-  ⟨59, by decide⟩,
   ⟨58, by decide⟩,
   ⟨59, by decide⟩,
   ⟨60, by decide⟩,
@@ -95,10 +96,10 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨79, by decide⟩,
   ⟨80, by decide⟩,
   ⟨81, by decide⟩,
-  ⟨270, by decide⟩,
   ⟨82, by decide⟩,
   ⟨83, by decide⟩,
   ⟨84, by decide⟩,
+  ⟨175, by decide⟩,
   ⟨85, by decide⟩,
   ⟨86, by decide⟩,
   ⟨87, by decide⟩,
@@ -107,14 +108,14 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨90, by decide⟩,
   ⟨91, by decide⟩,
   ⟨92, by decide⟩,
+  ⟨198, by decide⟩,
   ⟨93, by decide⟩,
-  ⟨204, by decide⟩,
   ⟨94, by decide⟩,
   ⟨95, by decide⟩,
   ⟨96, by decide⟩,
+  ⟨253, by decide⟩,
+  ⟨254, by decide⟩,
   ⟨97, by decide⟩,
-  ⟨255, by decide⟩,
-  ⟨256, by decide⟩,
   ⟨98, by decide⟩,
   ⟨99, by decide⟩,
   ⟨100, by decide⟩,
@@ -126,7 +127,7 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨106, by decide⟩,
   ⟨107, by decide⟩,
   ⟨108, by decide⟩,
-  ⟨30, by decide⟩,
+  ⟨29, by decide⟩,
   ⟨109, by decide⟩,
   ⟨110, by decide⟩,
   ⟨111, by decide⟩,
@@ -194,21 +195,20 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨173, by decide⟩,
   ⟨174, by decide⟩,
   ⟨175, by decide⟩,
-  ⟨76, by decide⟩,
-  ⟨222, by decide⟩,
+  ⟨86, by decide⟩,
   ⟨176, by decide⟩,
   ⟨177, by decide⟩,
   ⟨178, by decide⟩,
   ⟨179, by decide⟩,
   ⟨180, by decide⟩,
   ⟨181, by decide⟩,
-  ⟨228, by decide⟩,
-  ⟨213, by decide⟩,
+  ⟨24, by decide⟩,
+  ⟨26, by decide⟩,
   ⟨182, by decide⟩,
   ⟨183, by decide⟩,
   ⟨184, by decide⟩,
   ⟨185, by decide⟩,
-  ⟨94, by decide⟩,
+  ⟨93, by decide⟩,
   ⟨0, by decide⟩,
   ⟨197, by decide⟩,
   ⟨197, by decide⟩,
@@ -216,20 +216,20 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨0, by decide⟩,
   ⟨189, by decide⟩,
   ⟨0, by decide⟩,
-  ⟨89, by decide⟩,
+  ⟨88, by decide⟩,
   ⟨186, by decide⟩,
   ⟨187, by decide⟩,
-  ⟨3, by decide⟩,
+  ⟨196, by decide⟩,
   ⟨188, by decide⟩,
   ⟨197, by decide⟩,
-  ⟨205, by decide⟩,
+  ⟨200, by decide⟩,
   ⟨0, by decide⟩,
   ⟨189, by decide⟩,
   ⟨0, by decide⟩,
-  ⟨198, by decide⟩,
+  ⟨204, by decide⟩,
   ⟨0, by decide⟩,
   ⟨190, by decide⟩,
-  ⟨203, by decide⟩,
+  ⟨190, by decide⟩,
   ⟨191, by decide⟩,
   ⟨192, by decide⟩,
   ⟨193, by decide⟩,
@@ -238,47 +238,49 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨196, by decide⟩,
   ⟨0, by decide⟩,
   ⟨197, by decide⟩,
-  ⟨205, by decide⟩,
+  ⟨200, by decide⟩,
   ⟨191, by decide⟩,
   ⟨189, by decide⟩,
   ⟨192, by decide⟩,
+  ⟨204, by decide⟩,
   ⟨198, by decide⟩,
-  ⟨198, by decide⟩,
-  ⟨200, by decide⟩,
+  ⟨205, by decide⟩,
   ⟨199, by decide⟩,
   ⟨200, by decide⟩,
   ⟨0, by decide⟩,
+  ⟨190, by decide⟩,
   ⟨203, by decide⟩,
-  ⟨207, by decide⟩,
   ⟨199, by decide⟩,
   ⟨0, by decide⟩,
   ⟨195, by decide⟩,
   ⟨196, by decide⟩,
   ⟨0, by decide⟩,
   ⟨0, by decide⟩,
-  ⟨190, by decide⟩,
-  ⟨190, by decide⟩,
+  ⟨206, by decide⟩,
+  ⟨206, by decide⟩,
   ⟨201, by decide⟩,
   ⟨201, by decide⟩,
   ⟨202, by decide⟩,
   ⟨186, by decide⟩,
-  ⟨116, by decide⟩,
   ⟨203, by decide⟩,
+  ⟨189, by decide⟩,
   ⟨0, by decide⟩,
   ⟨204, by decide⟩,
   ⟨0, by decide⟩,
   ⟨205, by decide⟩,
-  ⟨86, by decide⟩,
+  ⟨85, by decide⟩,
   ⟨197, by decide⟩,
   ⟨0, by decide⟩,
   ⟨189, by decide⟩,
   ⟨0, by decide⟩,
   ⟨199, by decide⟩,
   ⟨206, by decide⟩,
-  ⟨207, by decide⟩,
+  ⟨188, by decide⟩,
   ⟨0, by decide⟩,
+  ⟨207, by decide⟩,
   ⟨208, by decide⟩,
   ⟨209, by decide⟩,
+  ⟨253, by decide⟩,
   ⟨210, by decide⟩,
   ⟨211, by decide⟩,
   ⟨212, by decide⟩,
@@ -344,12 +346,10 @@ def quotientMapTable : Array (Fin 278) := #[
   ⟨272, by decide⟩,
   ⟨273, by decide⟩,
   ⟨274, by decide⟩,
-  ⟨275, by decide⟩,
-  ⟨276, by decide⟩,
-  ⟨277, by decide⟩
+  ⟨275, by decide⟩
 ]
 
-def quotientMap (q : Fin 339) : Fin 278 :=
+def quotientMap (q : Fin 339) : Fin 276 :=
   quotientMapTable[q.val]'(by simpa only [show quotientMapTable.size = 339 from rfl] using q.isLt)
 
 /-- [proof-guide] Every transition permitted by the invariant agrees with its image in the quotient table.
@@ -357,7 +357,7 @@ Proof: Combines `Bool.noConfusion` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
 theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),
     inv2_after q b = true →
-    machine278.transition (quotientMap q) b =
+    machine276.transition (quotientMap q) b =
       renameInstruction quotientMap (machine339.transition q b) := by
   intro q b h
   fin_cases q <;> cases b
@@ -373,12 +373,12 @@ theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),
   · rfl
   · rfl
   · rfl
-  · rfl
   · exact Bool.noConfusion (show false = true from h)
   · rfl
-  · rfl
-  · rfl
-  · rfl
+  · exact Bool.noConfusion (show false = true from h)
+  · exact Bool.noConfusion (show false = true from h)
+  · exact Bool.noConfusion (show false = true from h)
+  · exact Bool.noConfusion (show false = true from h)
   · rfl
   · rfl
   · rfl
@@ -1040,11 +1040,11 @@ theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),
   · rfl
   · rfl
 
-/-- [proof-guide] The literal 339-state and 278-state machines have equivalent blank-tape halting behavior.
+/-- [proof-guide] The literal 339-state and 276-state machines have equivalent blank-tape halting behavior.
 Proof: Combines `halts_iff_of_invariant_quotient`, `quotient_transitions` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem machine339_iff_machine278 : HaltsBlank machine339 ↔ HaltsBlank machine278 := by
-  apply halts_iff_of_invariant_quotient machine339 machine278 quotientMap
+theorem machine339_iff_machine276 : HaltsBlank machine339 ↔ HaltsBlank machine276 := by
+  apply halts_iff_of_invariant_quotient machine339 machine276 quotientMap
     (fun c => ∃ t, run machine339 t = c)
   · exact ⟨0, rfl⟩
   · rintro c ⟨t, rfl⟩; exact ⟨t + 1, rfl⟩
