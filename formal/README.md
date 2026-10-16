@@ -1,17 +1,17 @@
-# Formally verified 276-state Riemann machine
+# Formally verified 275-state Riemann machine
 
 **Start with [RiemannMachineVerification.lean](RiemannMachineVerification.lean):
 the headline theorem comes first, immediately followed by the exact definitions
 used in its statement.**
 
 ```lean
-theorem machine276_correct :
-    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n
+theorem machine275_correct :
+    HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-The machine is the [literal primary 276-state table](../results/forward-gap276/quotient-276.tm),
-SHA-256 `46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695`.
-It has 276 ordinary states and a separate halting state. Its binary tape is
+The machine is the [literal primary 275-state table](../results/forward-gap275/quotient-275.tm),
+SHA-256 `ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4`.
+It has 275 ordinary states and a separate halting state. Its binary tape is
 indexed by all integers, initially zero, with head position zero and state
 `!ENTRY`. The theorem covers unbounded execution and tape usage.
 
@@ -26,13 +26,13 @@ multiple of the initial segment. Their canonical definitions and machine
 semantics are in [Specification](RiemannMachineVerification/Specification/README.md).
 Lean imports definitions before a theorem can use them; the entry file then
 displays checked excerpts immediately after the theorem for reading order.
-The complete 276-row transition array is linked separately.
+The complete 275-row transition array is linked separately.
 
 The result has no extra hypotheses, `sorry`, assumed compiler correctness, or
 axiom trusting native computation. Its axiom dependencies are `propext`,
 `Classical.choice`, and `Quot.sound`. The mathematical equivalence of the
 predicate to RH, literal equivalence to the original 744-state table, and global
-minimality are outside this theorem. Other 276-state candidates are not covered.
+minimality are outside this theorem. Other 275-state candidates are not covered.
 
 ## Read the proof
 
@@ -42,9 +42,9 @@ minimality are outside this theorem. Other 276-state candidates are not covered.
 | Arithmetic register program | `arithmetic_program_correct` connects a complete register cycle and natural-number search to the predicate. | [Registers/Arithmetic](RiemannMachineVerification/Registers/Arithmetic/README.md) |
 | Register refinement | `implementation_iff_arithmetic` relates 55 paired boundaries, preserving live values and known zeros with positive progress on both sides. | [Registers](RiemannMachineVerification/Registers/README.md) |
 | Primitive lowering | `primitive_iff_macro` expands all 86 transfer sites by induction on arbitrary natural source values. | [TransferExpansion.lean](RiemannMachineVerification/Registers/TransferExpansion.lean) |
-| Binary tape | `machine389_iff_primitive` verifies dispatch, counter updates, allocation and unbounded unary storage. | [Tape](RiemannMachineVerification/Tape/README.md) |
-| Local paths | `machine389_iff_machine339` lifts finite path certificates to the infinite tape. | [Reduction](RiemannMachineVerification/Reduction/README.md) |
-| Quotient | `machine339_iff_machine276` checks the literal state map under three inductive read-mask stages. | [Quotient.lean](RiemannMachineVerification/Reduction/Quotient.lean) |
+| Binary tape | `machine388_iff_primitive` verifies dispatch, counter updates, allocation and unbounded unary storage. | [Tape](RiemannMachineVerification/Tape/README.md) |
+| Local paths | `machine388_iff_machine338` lifts finite path certificates to the infinite tape. | [Reduction](RiemannMachineVerification/Reduction/README.md) |
+| Quotient | `machine338_iff_machine275` checks the literal state map under three inductive read-mask stages. | [Quotient.lean](RiemannMachineVerification/Reduction/Quotient.lean) |
 
 The entry theorem composes those equivalences. [Common](RiemannMachineVerification/Common/README.md)
 contains the generic execution and simulation arguments.
@@ -72,7 +72,7 @@ lake env lean --memory=16384 --threads=2 Audit.lean  # Print the principal axiom
 
 The checker builds only the headline and its dependencies. It preserves the
 [two byte-pinned specification files and the exact machine identity](ACCEPTANCE.md),
-compares all three literal machine imports (389, 339 and 276 states), checks
+compares all three literal machine imports (388, 338 and 275 states), checks
 exact theorem types and permitted axioms, and checks proof navigation and
 definition excerpts. It also runs [Audit.lean](Audit.lean), which prints and
 checks the principal proof stages' axiom dependencies. Only after success does
@@ -82,7 +82,7 @@ source files: the 153 headline modules and the separate audit.
 Successful output ends with:
 
 ```text
-ACCEPTED: the exact 276-state headline is proved with the fixed specification and only permitted axioms.
+ACCEPTED: the exact 275-state headline is proved with the fixed specification and only permitted axioms.
 ```
 
 The verification commands use `tools/build.py`: one project compiler at a time,
@@ -90,7 +90,7 @@ two worker threads, and Lean’s 16384 MiB allocation limit per compiler. The La
 configuration applies those per-compiler limits without invalidating completed
 proof caches. The serial driver requires cached external dependencies; on a
 fresh checkout, fetch them with `lake exe cache get`. The default Lake target
-remains the 276-state headline. Plain `lake build` can schedule several compilers;
+remains the 275-state headline. Plain `lake build` can schedule several compilers;
 use the serial driver for a low-memory run. Build logs are written as the checks
 run, under ignored `.logs/serial-build/`.
 

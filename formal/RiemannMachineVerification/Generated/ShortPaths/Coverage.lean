@@ -20,7 +20,7 @@ namespace RiemannMachineVerification.Implementation
 /-- [proof-guide] Every shortened state satisfies its local expansion certificate for both symbols.
 Proof: Combines `macro_check_0`, `macro_check_1`, `macro_check_2` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem all_macro_checks : ∀ q : Fin 339, MacroCheckFor q := by
+theorem all_macro_checks : ∀ q : Fin 338, MacroCheckFor q := by
   intro q
   fin_cases q
   · exact macro_check_0
@@ -361,6 +361,5 @@ theorem all_macro_checks : ∀ q : Fin 339, MacroCheckFor q := by
   · exact macro_check_335
   · exact macro_check_336
   · exact macro_check_337
-  · exact macro_check_338
 
 end RiemannMachineVerification.Implementation

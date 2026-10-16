@@ -135,39 +135,31 @@ theorem macro_check_293 : MacroCheckFor ⟨293, by decide⟩ := by
   · intro b; cases b <;> rfl
 
 /-- [proof-guide] Shortened state 294: both read-symbol transitions satisfy the local expansion certificate.
-Proof: Combines `macroCheck_one` with the displayed local equations.
+Proof: Combines `localConfiguration_ext` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
 theorem macro_check_294 : MacroCheckFor ⟨294, by decide⟩ := by
-  apply macroCheck_one
-  · intro b; cases b <;> rfl
-  · intro b; cases b <;> rfl
+  unfold MacroCheckFor
+  intro a b c d e
+  cases a <;> cases b <;> cases c <;> cases d <;> cases e
+  all_goals
+    apply localConfiguration_ext
+    · rfl
+    · rfl
+    · funext p
+      fin_cases p <;> rfl
 
 /-- [proof-guide] Shortened state 295: both read-symbol transitions satisfy the local expansion certificate.
-Proof: Combines `localConfiguration_ext` with the displayed local equations.
-Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem macro_check_295 : MacroCheckFor ⟨295, by decide⟩ := by
-  unfold MacroCheckFor
-  intro a b c d e
-  cases a <;> cases b <;> cases c <;> cases d <;> cases e
-  all_goals
-    apply localConfiguration_ext
-    · rfl
-    · rfl
-    · funext p
-      fin_cases p <;> rfl
-
-/-- [proof-guide] Shortened state 296: both read-symbol transitions satisfy the local expansion certificate.
 Proof: Combines `macroCheck_one` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem macro_check_296 : MacroCheckFor ⟨296, by decide⟩ := by
+theorem macro_check_295 : MacroCheckFor ⟨295, by decide⟩ := by
   apply macroCheck_one
   · intro b; cases b <;> rfl
   · intro b; cases b <;> rfl
 
-/-- [proof-guide] Shortened state 297: both read-symbol transitions satisfy the local expansion certificate.
+/-- [proof-guide] Shortened state 296: both read-symbol transitions satisfy the local expansion certificate.
 Proof: Combines `localConfiguration_ext` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem macro_check_297 : MacroCheckFor ⟨297, by decide⟩ := by
+theorem macro_check_296 : MacroCheckFor ⟨296, by decide⟩ := by
   unfold MacroCheckFor
   intro a b c d e
   cases a <;> cases b <;> cases c <;> cases d <;> cases e
@@ -177,6 +169,14 @@ theorem macro_check_297 : MacroCheckFor ⟨297, by decide⟩ := by
     · rfl
     · funext p
       fin_cases p <;> rfl
+
+/-- [proof-guide] Shortened state 297: both read-symbol transitions satisfy the local expansion certificate.
+Proof: Combines `macroCheck_one` with the displayed local equations.
+Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
+theorem macro_check_297 : MacroCheckFor ⟨297, by decide⟩ := by
+  apply macroCheck_one
+  · intro b; cases b <;> rfl
+  · intro b; cases b <;> rfl
 
 /-- [proof-guide] Shortened state 298: both read-symbol transitions satisfy the local expansion certificate.
 Proof: Combines `macroCheck_one` with the displayed local equations.

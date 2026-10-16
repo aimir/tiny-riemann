@@ -9,7 +9,7 @@ from compile import ROOT, table
 from fragments import compile_fragments, graph
 from test_fragments import run_tape, tape_for
 
-BASE = ROOT / 'results/forward-gap276'
+BASE = ROOT / 'results/forward-gap275'
 
 
 def run_tests(directory=BASE):

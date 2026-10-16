@@ -8,7 +8,7 @@ their hypotheses with exact data:
 - [RegisterRefinement](RegisterRefinement/README.md): paired boundaries and transfer certificates.
 - [Dispatch](Dispatch/README.md): all 1024 instruction addresses.
 - [Counter](Counter/README.md): both updates for all 1024 counter values.
-- [ShortPaths](ShortPaths/README.md): all 339 shortened states and their local expansions.
+- [ShortPaths](ShortPaths/README.md): all 338 shortened states and their local expansions.
 - [Reachability](Reachability/README.md): three inductive read-mask stages.
 
 The numbered case files bound individual Lean elaboration jobs and allow

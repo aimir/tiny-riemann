@@ -2,7 +2,7 @@
 
 `Data.lean` defines the concrete certificate inputs. `CasesNN.lean` checks
 local transition expansion over consecutive blocks of 20 indices; `Coverage.lean` combines
-all 339 indices into one universally quantified theorem.
+all 338 indices into one universally quantified theorem.
 
 The files are intentionally bounded compilation units: each Lean process checks
 a manageable set of reductions, while the aggregate proof excludes omissions.

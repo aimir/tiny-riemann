@@ -9,15 +9,15 @@ Proof: Combines `ZExec.trans`, `ZExec.prepend` with the displayed local equation
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem backend_decrement_zero (before after : List ℕ)
     (bound : before.length ≤ 8) (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (decrementSelector (before.length + 2)))
         11 pc (before ++ 0 :: after)))
       (encodedRegisterZipper (counterNext pc false) (before ++ 0 :: after)) := by
   rw [backend_register_area]
-  apply ZExec.trans (select_fenced machine389 decrementSelector decrementSelector_transition
+  apply ZExec.trans (select_fenced machine388 decrementSelector decrementSelector_transition
     before (0 :: after) bound (pcLeft pc))
   rw [registerStream_cons]
-  change ZExec machine389
+  change ZExec machine388
     ⟨some ⟨2, by decide⟩,
       streamPrefix (registerTailWord before.reverse).bits (streamCons false (streamCons false (pcLeft pc))),
       streamCons true (streamCons false (registerStream after))⟩ _
@@ -25,7 +25,7 @@ theorem backend_decrement_zero (before after : List ℕ)
   apply ZExec.prepend (zipper_left ⟨1, by decide⟩ ⟨3, by decide⟩ false false false rfl _ _)
   let behind := streamPrefix (registerTailWord before.reverse).bits
     (streamCons false (streamCons false (pcLeft pc)))
-  have restore : zipperStep machine389
+  have restore : zipperStep machine388
       ⟨some ⟨3, by decide⟩, behind, streamCons false (streamCons false (registerStream after))⟩ =
       ⟨some ⟨201, by decide⟩, streamTail behind,
         streamCons (behind 0) (streamCons true (streamCons false (registerStream after)))⟩ := by
@@ -33,7 +33,7 @@ theorem backend_decrement_zero (before after : List ℕ)
       zipper_left ⟨3, by decide⟩ ⟨201, by decide⟩ (behind 0) false true rfl
         (streamTail behind) (streamCons false (registerStream after))
   apply ZExec.prepend restore
-  apply ZExec.trans (return_after_write machine389 ⟨201, by decide⟩ ⟨200, by decide⟩
+  apply ZExec.trans (return_after_write machine388 ⟨201, by decide⟩ ⟨200, by decide⟩
     ⟨9, by decide⟩ rfl rfl rfl rfl (registerTailWord before.reverse) (pcLeft pc)
     (streamCons false (registerStream after)))
   simpa only [registerTailWord_reverse_bits, registerStream_append, registerStream_cons,
@@ -46,12 +46,12 @@ Proof: Combines `ZExec.trans`, `ZExec.prepend` with the displayed local equation
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem backend_decrement_positive (before after : List ℕ) (v : ℕ)
     (bound : before.length ≤ 8) (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (decrementSelector (before.length + 2)))
         11 pc (before ++ (v + 1) :: after)))
       (encodedRegisterZipper (counterNext pc true) (before ++ v :: after)) := by
   rw [backend_register_area]
-  apply ZExec.trans (select_fenced machine389 decrementSelector decrementSelector_transition
+  apply ZExec.trans (select_fenced machine388 decrementSelector decrementSelector_transition
     before ((v + 1) :: after) bound (pcLeft pc))
   let behind := streamPrefix (registerTailWord before.reverse).bits
     (streamCons false (streamCons false (pcLeft pc)))
@@ -60,23 +60,23 @@ theorem backend_decrement_positive (before after : List ℕ) (v : ℕ)
         (streamPrefix (TapeWord.ones v (registerTailWord after)).bits zeros)) := by
     simp only [registerStream, registerWord, TapeWord.ones, TapeWord.bits, streamPrefix_cons]
   rw [hv]
-  change ZExec machine389 ⟨some ⟨2, by decide⟩, behind, _⟩ _
+  change ZExec machine388 ⟨some ⟨2, by decide⟩, behind, _⟩ _
   apply ZExec.prepend (zipper_right ⟨2, by decide⟩ ⟨1, by decide⟩ true false rfl _ _)
   apply ZExec.prepend (zipper_left ⟨1, by decide⟩ ⟨5, by decide⟩ false true true rfl _ _)
   apply ZExec.prepend (zipper_right ⟨5, by decide⟩ ⟨4, by decide⟩ false true rfl _ _)
   apply ZExec.prepend (zipper_right ⟨4, by decide⟩ ⟨5, by decide⟩ true false rfl _ _)
-  apply ZExec.trans (machine389_forward_gap (TapeWord.ones v (registerTailWord after))
+  apply ZExec.trans (machine388_forward_gap (TapeWord.ones v (registerTailWord after))
     (streamCons true behind))
   apply ZExec.prepend (zipper_left ⟨6, by decide⟩ ⟨203, by decide⟩ false true false rfl _ _)
   have hreverse := TapeWord.reverse_prefix (TapeWord.ones v (registerTailWord after)) behind
   rw [hreverse]
   simp only [streamCons_zero]
-  have skip := zipper_left (M := machine389) ⟨203, by decide⟩ ⟨202, by decide⟩
+  have skip := zipper_left (M := machine388) ⟨203, by decide⟩ ⟨202, by decide⟩
     true false false rfl
     (streamPrefix (TapeWord.ones v (registerTailWord after)).reverseCarried.bits behind) zeros
   simp only [streamCons_zero] at skip
   apply ZExec.prepend skip
-  have hreturn := return_core machine389 ⟨203, by decide⟩ ⟨202, by decide⟩
+  have hreturn := return_core machine388 ⟨203, by decide⟩ ⟨202, by decide⟩
     ⟨178, by decide⟩ rfl rfl rfl rfl
     ((TapeWord.ones v (registerTailWord after)).reverseCarried.append
       (registerTailWord before.reverse)) (pcLeft pc) zeros false

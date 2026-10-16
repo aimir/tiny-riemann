@@ -7,8 +7,8 @@ Read the proof in this order:
 
 1. [Arithmetic](Arithmetic/README.md): exact rational criterion, integer computation, and exclusion of indices below 254.
 2. [Registers](Registers/README.md): arithmetic program correctness, implementation refinement, and transfer-loop expansion.
-3. [Tape](Tape/README.md): the literal 389-state machine implements the primitive register program.
-4. [Reduction](Reduction/README.md): finite path replacements and a certified quotient connect 389 → 339 → 276 states.
+3. [Tape](Tape/README.md): the literal 388-state machine implements the primitive register program.
+4. [Reduction](Reduction/README.md): finite path replacements and a certified quotient connect 388 → 338 → 275 states.
 
 [Common](Common/README.md) supplies reusable simulation arguments.
 [Generated](Generated/README.md) holds literal arrays and finite certificates;

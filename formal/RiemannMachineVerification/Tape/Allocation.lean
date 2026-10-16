@@ -7,13 +7,13 @@ def registerSlot (r : RegisterIndex) : Fin 9 :=
   match r.val with
   | 0 => ⟨1, by decide⟩
   | 1 => ⟨0, by decide⟩
-  | 2 => ⟨5, by decide⟩
+  | 2 => ⟨8, by decide⟩
   | 3 => ⟨6, by decide⟩
   | 4 => ⟨2, by decide⟩
   | 5 => ⟨7, by decide⟩
   | 6 => ⟨3, by decide⟩
   | 7 => ⟨4, by decide⟩
-  | _ => ⟨8, by decide⟩
+  | _ => ⟨5, by decide⟩
 
 def slotRegister (r : Fin 9) : RegisterIndex :=
   match r.val with
@@ -22,10 +22,10 @@ def slotRegister (r : Fin 9) : RegisterIndex :=
   | 2 => ⟨4, by decide⟩
   | 3 => ⟨6, by decide⟩
   | 4 => ⟨7, by decide⟩
-  | 5 => ⟨2, by decide⟩
+  | 5 => ⟨8, by decide⟩
   | 6 => ⟨3, by decide⟩
   | 7 => ⟨5, by decide⟩
-  | _ => ⟨8, by decide⟩
+  | _ => ⟨2, by decide⟩
 
 /-- [proof-guide] Converting a logical register to a physical slot and back is the identity.
 Proof: Enumerates the stated finite cases and checks their reductions in Lean.

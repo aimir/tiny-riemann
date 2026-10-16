@@ -8,26 +8,26 @@ namespace RiemannMachineVerification.Implementation
 def pcPrefix (pc : ProgramCounter) (p : Fin 12) : Bool :=
   if p.val = 0 ∨ p.val = 11 then false else pc.val.testBit (10 - p.val)
 
-def initialPrefix (pc : ProgramCounter) : FiniteWindow.Config 389 12 :=
-  ⟨some machine389.entry, 0, pcPrefix pc⟩
+def initialPrefix (pc : ProgramCounter) : FiniteWindow.Config 388 12 :=
+  ⟨some machine388.entry, 0, pcPrefix pc⟩
 
-def backendIncrementEntries : Array (Fin 389) := #[
-  ⟨70, by decide⟩, ⟨193, by decide⟩, ⟨196, by decide⟩, ⟨197, by decide⟩, ⟨194, by decide⟩, ⟨198, by decide⟩, ⟨364, by decide⟩, ⟨195, by decide⟩, ⟨199, by decide⟩
+def backendIncrementEntries : Array (Fin 388) := #[
+  ⟨70, by decide⟩, ⟨193, by decide⟩, ⟨199, by decide⟩, ⟨197, by decide⟩, ⟨194, by decide⟩, ⟨198, by decide⟩, ⟨363, by decide⟩, ⟨195, by decide⟩, ⟨196, by decide⟩
 ]
 
-def backendIncrement (r : RegisterIndex) : Fin 389 :=
+def backendIncrement (r : RegisterIndex) : Fin 388 :=
   backendIncrementEntries[r.val]'(by simpa only [show backendIncrementEntries.size = 9 from rfl] using r.isLt)
 
-def backendDecrementEntries : Array (Fin 389) := #[
-  ⟨184, by decide⟩, ⟨183, by decide⟩, ⟨188, by decide⟩, ⟨189, by decide⟩, ⟨185, by decide⟩, ⟨190, by decide⟩, ⟨186, by decide⟩, ⟨187, by decide⟩, ⟨191, by decide⟩
+def backendDecrementEntries : Array (Fin 388) := #[
+  ⟨184, by decide⟩, ⟨183, by decide⟩, ⟨191, by decide⟩, ⟨189, by decide⟩, ⟨185, by decide⟩, ⟨190, by decide⟩, ⟨186, by decide⟩, ⟨187, by decide⟩, ⟨188, by decide⟩
 ]
 
-def backendDecrement (r : RegisterIndex) : Fin 389 :=
+def backendDecrement (r : RegisterIndex) : Fin 388 :=
   backendDecrementEntries[r.val]'(by simpa only [show backendDecrementEntries.size = 9 from rfl] using r.isLt)
 
-def backendInitialize : Fin 389 := ⟨62, by decide⟩
+def backendInitialize : Fin 388 := ⟨62, by decide⟩
 
-def dispatcherTarget (pc : ProgramCounter) : FiniteWindow.Config 389 12 :=
+def dispatcherTarget (pc : ProgramCounter) : FiniteWindow.Config 388 12 :=
   match primitiveProgram pc with
   | .increment r _ => ⟨some (backendIncrement r), 11, pcPrefix pc⟩
   | .decrement r _ _ => ⟨some (backendDecrement r), 11, pcPrefix pc⟩
@@ -120,7 +120,7 @@ def dispatcherLength (pc : ProgramCounter) : ℕ :=
   | _ => dispatcherLengthChunk15[pc.val % 64]'(by exact Nat.mod_lt _ (by decide))
 
 def DispatcherCheck (pc : ProgramCounter) : Prop :=
-  FiniteWindow.safe machine389 (initialPrefix pc) (dispatcherLength pc) = true ∧
-  FiniteWindow.execute machine389 (initialPrefix pc) (dispatcherLength pc) = dispatcherTarget pc
+  FiniteWindow.safe machine388 (initialPrefix pc) (dispatcherLength pc) = true ∧
+  FiniteWindow.execute machine388 (initialPrefix pc) (dispatcherLength pc) = dispatcherTarget pc
 
 end RiemannMachineVerification.Implementation

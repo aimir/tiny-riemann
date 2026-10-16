@@ -9,7 +9,7 @@
     "RiemannMachineVerification.Correctness278": "RiemannMachineVerification",
     "RiemannMachineVerification.SourceArithmetic": "RiemannMachineVerification.Registers.Arithmetic.Equations",
     "RiemannMachineVerification.CompiledHarmonic": "RiemannMachineVerification.Registers.Arithmetic.Harmonic",
-    "RiemannMachineVerification.Machine278": "RiemannMachineVerification.Specification.Machine276",
+    "RiemannMachineVerification.Machine278": "RiemannMachineVerification.Specification.Machine275",
     "RiemannMachineVerification.LcmBounds": "RiemannMachineVerification.Generated.Arithmetic.LcmBounds",
     "RiemannMachineVerification.ProgressingBisimulation": "RiemannMachineVerification.Common.ProgressingBisimulation",
     "RiemannMachineVerification.CompilerCorrectness": "RiemannMachineVerification.Registers.Arithmetic.Correctness",
@@ -72,7 +72,6 @@
     "RiemannMachineVerification.Optimized278.RefinementBlock16": "RiemannMachineVerification.Generated.RegisterRefinement.Products",
     "RiemannMachineVerification.Optimized278.CounterChecks": "RiemannMachineVerification.Generated.Counter.Coverage",
     "RiemannMachineVerification.Optimized278.Invariant2": "RiemannMachineVerification.Generated.Reachability.Stage2",
-    "RiemannMachineVerification.Optimized278.Machine389": "RiemannMachineVerification.Generated.Tables.CompiledMachine",
     "RiemannMachineVerification.Optimized278.BackendEncoding": "RiemannMachineVerification.Tape.Encoding",
     "RiemannMachineVerification.Optimized278.CounterChecks08": "RiemannMachineVerification.Generated.Counter.Cases08",
     "RiemannMachineVerification.Optimized278.DispatcherChecks08": "RiemannMachineVerification.Generated.Dispatch.Cases08",
@@ -128,7 +127,6 @@
     "RiemannMachineVerification.Optimized278.RefinementBlock31": "RiemannMachineVerification.Generated.RegisterRefinement.Harmonic",
     "RiemannMachineVerification.Optimized278.RefinementData": "RiemannMachineVerification.Generated.RegisterRefinement.Boundaries",
     "RiemannMachineVerification.Optimized278.DispatcherCorrectness": "RiemannMachineVerification.Tape.Dispatch",
-    "RiemannMachineVerification.Optimized278.Machine339": "RiemannMachineVerification.Generated.Tables.ShortenedMachine",
     "RiemannMachineVerification.Optimized278.RefinementBlock24": "RiemannMachineVerification.Generated.RegisterRefinement.Harmonic",
     "RiemannMachineVerification.Optimized278.RefinementBlock32": "RiemannMachineVerification.Generated.RegisterRefinement.Products",
     "RiemannMachineVerification.Optimized278.RefinementBlock49": "RiemannMachineVerification.Generated.RegisterRefinement.Products",
@@ -204,7 +202,9 @@
     "RiemannMachineVerification.Optimized278.RegisterMachine": "RiemannMachineVerification.Registers.ImplementationModel",
     "RiemannMachineVerification.Optimized278.CounterChecks07": "RiemannMachineVerification.Generated.Counter.Cases07",
     "RiemannMachineVerification.Optimized278.RefinementBlock39": "RiemannMachineVerification.Generated.RegisterRefinement.Products",
-    "RiemannMachineVerification.Optimized278.Invariant1": "RiemannMachineVerification.Generated.Reachability.Stage1"
+    "RiemannMachineVerification.Optimized278.Invariant1": "RiemannMachineVerification.Generated.Reachability.Stage1",
+    "RiemannMachineVerification.Optimized278.Machine388": "RiemannMachineVerification.Generated.Tables.CompiledMachine",
+    "RiemannMachineVerification.Optimized278.Machine338": "RiemannMachineVerification.Generated.Tables.ShortenedMachine"
   },
   "register_phases": {
     "0": "Initialization",

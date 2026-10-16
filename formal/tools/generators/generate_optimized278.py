@@ -16,7 +16,7 @@ from generate_register_program import leaf, REGISTERS, fin
 
 PREFIX = 'RiemannMachineVerification.Optimized278'
 DEST = ROOT / 'RiemannMachineVerification/Optimized278'
-CANDIDATE = ROOT.parent / 'results/forward-gap276'
+CANDIDATE = ROOT.parent / 'results/forward-gap275'
 
 
 def machines():

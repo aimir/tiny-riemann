@@ -1,55 +1,56 @@
-# A formally verified 276-state Riemann machine
+# A formally verified 275-state Riemann machine
 
 **Formally verified in Lean:** this literal machine halts on a blank tape if
 and only if the approved arithmetic counterexample predicate has a witness.
 The [verification guide](formal/README.md) includes the complete proof and
 rechecking instructions.
 
-The machine has **276 nonhalting states and two symbols**, down from the
-original **744**: **468 fewer states (62.90%)**. The separate `HALT` state is
-excluded from both counts. The primary 276-state result is now the default
+The machine has **275 nonhalting states and two symbols**, down from the
+original **744**: **469 fewer states (63.04%)**. The separate `HALT` state is
+excluded from both counts. The primary 275-state result is now the default
 Lean headline. Global minimality is not claimed.
 
 ## Results and artifacts
 
-- [Current transition table](results/forward-gap276/quotient-276.tm):
-  the formally verified primary 276-state machine.
+- [Current transition table](results/forward-gap275/quotient-275.tm):
+  the formally verified primary 275-state machine.
 - [Headline theorem](formal/RiemannMachineVerification.lean):
-  `machine276_correct` and its exact definitions in one theorem-first entry file;
+  `machine275_correct` and its exact definitions in one theorem-first entry file;
   `headline_correct` exposes the same result.
 - [Verification report](formal/verification.json): theorem, permitted axioms,
   machine identity and hashes of all proof sources.
-- [Compilation input](results/forward-gap276/source.nql) and
-  [configuration](results/forward-gap276/candidate.json):
+- [Compilation input](results/forward-gap275/source.nql) and
+  [configuration](results/forward-gap275/candidate.json):
   register order, block layout, lowering options and source padding.
-- [Compiled table](results/forward-gap276/compiled.tm),
-  [shortened table](results/forward-gap276/macro.tm),
-  [short-path certificate](results/forward-gap276/macros.json),
-  and [quotient certificate](results/forward-gap276/quotient-276.certificate.json).
-- [Construction report](results/forward-gap276/README.md): the arithmetic backend
+- [Compiled table](results/forward-gap275/compiled.tm),
+  [shortened table](results/forward-gap275/macro.tm),
+  [short-path certificate](results/forward-gap275/macros.json),
+  and [quotient certificate](results/forward-gap275/quotient-275.certificate.json).
+- [Construction report](results/forward-gap275/README.md): the arithmetic backend
   change, unbounded proof and reproduction commands.
 - [Readable algorithm](machine/algorithm.nql) and
   [construction and correctness guide](CONSTRUCTION.md).
 
-The current pipeline is **389 compiled → 339 macro → 276 exact quotient**.
+The current pipeline is **388 compiled → 338 macro → 275 exact quotient**.
 It uses nine registers and a 10-bit program counter, packed main blocks,
 inlined squaring, destructive reads of dead values, known-zero clear removal,
 source padding and register placement. The forward-gap decrement replaces the
 scan-to-end and backward shift with a local gap carry. Its complete return preserves the register encoding and capacity for
-arbitrary values. Native clear/test fragments and whole zero-call replacements
+arbitrary values. Register placement removes one private decoder state, and the
+complete quotient keeps that saving. Native clear/test fragments and whole zero-call replacements
 are not selected in this candidate.
 
 SHA-256 of the verified table:
 
 ```text
-46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695
+ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4
 ```
 
 ## Formal verification
 
 ```lean
-theorem machine276_correct :
-    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n
+theorem machine275_correct :
+    HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n
 ```
 
 `HaltsBlank` describes the literal machine on an initially zero, two-sided
@@ -67,7 +68,7 @@ of tape invariants, and the final quotient. The arithmetic correctness theorem
 then applies. Each proof directory has a reading guide; generated certificates
 are separated from the conceptual proof stages. Neither the compiler nor Z3 is trusted.
 
-The execution semantics, arithmetic predicate and literal 276-state machine
+The execution semantics, arithmetic predicate and literal 275-state machine
 remain fixed. Acceptance checks only the current proof and its dependencies.
 The earlier machine proofs are preserved in Git; see the
 [archival instructions](formal/ACCEPTANCE.md#earlier-verified-results).
@@ -79,7 +80,7 @@ downloads require network access. From the repository root:
 ```sh
 cd formal
 lake exe cache get          # Fetch pinned dependencies on a fresh checkout.
-python3 tools/check_current.py    # Build and check the exact 276-state theorem.
+python3 tools/check_current.py    # Build and check the exact 275-state theorem.
 lake env lean --memory=16384 --threads=2 Audit.lean    # Audit the principal theorems' axiom dependencies.
 cd ..
 ```
@@ -90,7 +91,7 @@ are permitted; no `sorry` or additional axiom is accepted. Successful output
 ends with:
 
 ```text
-ACCEPTED: the exact 276-state headline is proved with the fixed specification and only permitted axioms.
+ACCEPTED: the exact 275-state headline is proved with the fixed specification and only permitted axioms.
 ```
 
 Proof compilation runs serially with two Lean workers and a 16 GiB allocation
@@ -108,9 +109,9 @@ check the saved primary result without rerunning Z3:
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python tools/check_fragments.py \
-  --candidate results/forward-gap276 \
-  --machine results/forward-gap276/quotient-276.tm \
-  --certificate results/forward-gap276/quotient-276.certificate.json
+  --candidate results/forward-gap275 \
+  --machine results/forward-gap275/quotient-275.tm \
+  --certificate results/forward-gap275/quotient-275.certificate.json
 ```
 
 This reproduces the compiled and macro tables, runs arithmetic regressions,
@@ -143,7 +144,8 @@ stage. Their state counts continue to refer to the baseline.
 | Joint multigeneration search | 282 | [Joint search](results/unified-beam/README.md) |
 | Wider 16-parent search | 280 | [Wider search](results/unified-wide/README.md) |
 | 24-parent search and clique-first SMT, primary formally verified | 278 | [Delivered results](results/clique-target278/README.md) |
-| Forward-gap decrement, fully verified | **276** | [Backend result](results/forward-gap276/README.md) |
+| Forward-gap decrement, fully verified | 276 | [Backend result](results/forward-gap276/README.md) |
+| Forward-gap register placement, fully verified | **275** | [Layout result](results/forward-gap275/README.md) |
 
 The combined searches retain multiple candidates and rank survivors using
 complete reductions. The decisive final solver change places mutually

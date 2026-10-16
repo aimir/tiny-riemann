@@ -6,7 +6,7 @@ set_option maxHeartbeats 0
 
 namespace RiemannMachineVerification.Implementation
 
-def macroEmbeddingTable : Array (Fin 389) := #[
+def macroEmbeddingTable : Array (Fin 388) := #[
   ⟨0, by decide⟩,
   ⟨1, by decide⟩,
   ⟨2, by decide⟩,
@@ -344,12 +344,11 @@ def macroEmbeddingTable : Array (Fin 389) := #[
   ⟨384, by decide⟩,
   ⟨385, by decide⟩,
   ⟨386, by decide⟩,
-  ⟨387, by decide⟩,
-  ⟨388, by decide⟩
+  ⟨387, by decide⟩
 ]
 
-def macroEmbedding (q : Fin 339) : Fin 389 :=
-  macroEmbeddingTable[q.val]'(by simpa only [show macroEmbeddingTable.size = 339 from rfl] using q.isLt)
+def macroEmbedding (q : Fin 338) : Fin 388 :=
+  macroEmbeddingTable[q.val]'(by simpa only [show macroEmbeddingTable.size = 338 from rfl] using q.isLt)
 
 def macroLengthTable : Array (ℕ × ℕ) := #[
   (1, 1),
@@ -646,7 +645,6 @@ def macroLengthTable : Array (ℕ × ℕ) := #[
   (1, 1),
   (1, 1),
   (1, 1),
-  (1, 1),
   (1, 3),
   (1, 1),
   (1, 3),
@@ -693,10 +691,10 @@ def macroLengthTable : Array (ℕ × ℕ) := #[
   (1, 1)
 ]
 
-def macroLength : Option (Fin 339) → Bool → ℕ
+def macroLength : Option (Fin 338) → Bool → ℕ
   | none, _ => 1
   | some q, b =>
-      let row := macroLengthTable[q.val]'(by simpa only [show macroLengthTable.size = 339 from rfl] using q.isLt)
+      let row := macroLengthTable[q.val]'(by simpa only [show macroLengthTable.size = 338 from rfl] using q.isLt)
       if b then row.2 else row.1
 
 def window5 (a b c d e : Bool) : Fin 5 → Bool := ![a, b, c, d, e]
@@ -709,18 +707,18 @@ theorem window5_eta (tape : Fin 5 → Bool) :
   funext p
   fin_cases p <;> rfl
 
-def MacroCheckFor (q : Fin 339) : Prop :=
+def MacroCheckFor (q : Fin 338) : Prop :=
   ∀ a b c d e : Bool,
-    let c : LocalConfiguration 339 := ⟨some q, 2, window5 a b c d e⟩
-    localAdvance machine389 (renameLocal macroEmbedding c)
+    let c : LocalConfiguration 338 := ⟨some q, 2, window5 a b c d e⟩
+    localAdvance machine388 (renameLocal macroEmbedding c)
         (macroLength c.state (localRead c)) =
-      renameLocal macroEmbedding (localStep machine339 c)
+      renameLocal macroEmbedding (localStep machine338 c)
 
-instance (q : Fin 339) : Decidable (MacroCheckFor q) :=
+instance (q : Fin 338) : Decidable (MacroCheckFor q) :=
   inferInstanceAs (Decidable (∀ a b c d e : Bool,
-    let c : LocalConfiguration 339 := ⟨some q, 2, window5 a b c d e⟩
-    localAdvance machine389 (renameLocal macroEmbedding c)
+    let c : LocalConfiguration 338 := ⟨some q, 2, window5 a b c d e⟩
+    localAdvance machine388 (renameLocal macroEmbedding c)
         (macroLength c.state (localRead c)) =
-      renameLocal macroEmbedding (localStep machine339 c)))
+      renameLocal macroEmbedding (localStep machine338 c)))
 
 end RiemannMachineVerification.Implementation

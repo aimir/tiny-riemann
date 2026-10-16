@@ -6,11 +6,11 @@ namespace RiemannMachineVerification.Implementation
 Proof: Rewrites the defining equations and the cited arithmetic or execution facts.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem counter_execution (pc : ProgramCounter) (two : Bool) (values : List ℕ) :
-    trajectory (zipperStep machine389)
+    trajectory (zipperStep machine388)
       (zipperOf (backendConfig (some (if two then ⟨178, by decide⟩ else ⟨9, by decide⟩))
         10 pc values)) 10 = encodedRegisterZipper (counterNext pc two) values := by
   rw [← zipperOf_advance]
-  change zipperOf (advance machine389
+  change zipperOf (advance machine388
     (FiniteWindow.assemble 0 (registerBackground values) (counterStart pc two)) 10) = _
   rw [FiniteWindow.assemble_execute _ _ _ _ _ (counter_checks pc two).1,
     (counter_checks pc two).2]
@@ -20,7 +20,7 @@ theorem counter_execution (pc : ProgramCounter) (two : Bool) (values : List ℕ)
 Proof: Combines `counter_execution` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem counter_return (pc : ProgramCounter) (two : Bool) (values : List ℕ) :
-    ZExec machine389
+    ZExec machine388
       ⟨some (if two then ⟨178, by decide⟩ else ⟨9, by decide⟩), streamTail (pcLeft pc),
         streamCons (pcLeft pc 0) (streamCons false (streamCons false (registerStream values)))⟩
       (encodedRegisterZipper (counterNext pc two) values) := by

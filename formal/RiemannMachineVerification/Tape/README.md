@@ -1,6 +1,6 @@
 # The binary tape implements the register program
 
-[Correctness.lean](Correctness.lean) proves `machine389_iff_primitive` by a
+[Correctness.lean](Correctness.lean) proves `machine388_iff_primitive` by a
 simulation relation between tape configurations and primitive register states.
 The relation holds initially, identifies halting, and makes positive progress.
 

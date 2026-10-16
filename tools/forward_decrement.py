@@ -1,6 +1,6 @@
 """Opt-in local forward-gap decrement for the unary register backend.
 
-The canonical 389-slot specialization retains the original unused zero-input
+The canonical compiled specialization retains the original unused zero-input
 edge of dec.scan_done; the reachable cleanup input is one. Its unchanged state
 ordering lets the existing dispatcher and counter certificates remain valid.
 Lean's generic forward_gap_core and complete backend_decrement_positive prove

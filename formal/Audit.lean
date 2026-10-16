@@ -3,10 +3,10 @@ import RiemannMachineVerification
 /-! Print the foundational axiom dependencies of the headline and its principal proof stages. -/
 
 #print axioms RiemannMachineVerification.headline_correct
-#print axioms RiemannMachineVerification.machine276_correct
+#print axioms RiemannMachineVerification.machine275_correct
 #print axioms RiemannMachineVerification.Implementation.implementation_iff_arithmetic
-#print axioms RiemannMachineVerification.Implementation.machine389_iff_primitive
-#print axioms RiemannMachineVerification.Implementation.machine339_iff_machine276
+#print axioms RiemannMachineVerification.Implementation.machine388_iff_primitive
+#print axioms RiemannMachineVerification.Implementation.machine338_iff_machine275
 #print axioms RiemannMachineVerification.no_counterexample_below_cutoff
 #print axioms RiemannMachineVerification.cutoff_removal
 #print axioms RiemannMachineVerification.halts_iff_of_invariant_quotient
@@ -19,7 +19,7 @@ import RiemannMachineVerification
 #print axioms RiemannMachineVerification.compiled_cycle
 #print axioms RiemannMachineVerification.macro_iff_source
 #print axioms RiemannMachineVerification.Implementation.primitive_iff_macro
-#print axioms RiemannMachineVerification.Implementation.machine389_iff_machine339
+#print axioms RiemannMachineVerification.Implementation.machine388_iff_machine338
 #print axioms RiemannMachineVerification.forward_gap_core
 #print axioms RiemannMachineVerification.Implementation.backend_decrement_positive
 #print axioms RiemannMachineVerification.Implementation.backend_decrement_zero

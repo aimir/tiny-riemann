@@ -6,21 +6,21 @@ import RiemannMachineVerification.Reduction.Quotient
 import RiemannMachineVerification.Registers.Arithmetic.Correctness
 namespace RiemannMachineVerification
 
-/-- The 276-state machine halts from the blank tape exactly when the arithmetic
+/-- The 275-state machine halts from the blank tape exactly when the arithmetic
 predicate has a witness. Compose the quotient, short-path, tape, transfer and
 register-refinement equivalences with arithmetic correctness. This is the public result. -/
-theorem machine276_correct :
-    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n :=
-  Implementation.machine339_iff_machine276.symm.trans
-    (Implementation.machine389_iff_machine339.symm.trans
-      (Implementation.machine389_iff_primitive.trans
+theorem machine275_correct :
+    HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n :=
+  Implementation.machine338_iff_machine275.symm.trans
+    (Implementation.machine388_iff_machine338.symm.trans
+      (Implementation.machine388_iff_primitive.trans
         (Implementation.primitive_iff_macro.trans
           (Implementation.implementation_iff_arithmetic.trans arithmetic_program_correct))))
 
 /-! BEGIN CHECKED SPECIFICATION
 ## Meaning of the headline
 
-The literal 276-state binary machine halts from its all-zero tape if and only if
+The literal 275-state binary machine halts from its all-zero tape if and only if
 some natural number at least 254 satisfies the exact rational inequality below.
 Halting is existential over all finite running times; the tape is indexed by
 all integers. The ordinary-state count excludes the separate halted state.
@@ -88,28 +88,28 @@ def HaltsBlank {N : ℕ} (M : Machine N) : Prop :=
   ∃ t : ℕ, (run M t).state = none
 ```
 
-### Exact machine (Specification/Machine276.lean)
+### Exact machine (Specification/Machine275.lean)
 ```lean
-def machine276 : Machine 276 where
+def machine275 : Machine 275 where
   entry := ⟨0, by decide⟩
   transition q b :=
-    let row := table276[q.val]'(by simpa only [table276_size] using q.isLt)
+    let row := table275[q.val]'(by simpa only [table275_size] using q.isLt)
     if b then row.2 else row.1
 ```
 
-`table276` is the complete literal array in `Specification/Machine276.lean`.
-Its input is `results/forward-gap276/quotient-276.tm`, SHA-256
-`46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695`.
+`table275` is the complete literal array in `Specification/Machine275.lean`.
+Its input is `results/forward-gap275/quotient-275.tm`, SHA-256
+`ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4`.
 The checker compares every row and audits the theorem's axioms. See `README.md`
 for the proof map and verification commands. Equivalence of the arithmetic
 predicate to RH is outside this theorem's scope.
 END CHECKED SPECIFICATION -/
 
-/-- Public name for the literal machine in `machine276_correct`. -/
-abbrev headlineMachine : Machine 276 := machine276
+/-- Public name for the literal machine in `machine275_correct`. -/
+abbrev headlineMachine : Machine 275 := machine275
 
-/-- The stable headline is exactly `machine276_correct`, with no extra hypotheses. -/
+/-- The stable headline is exactly `machine275_correct`, with no extra hypotheses. -/
 theorem headline_correct : HaltsBlank headlineMachine ↔ ∃ n : ℕ, Counterexample n :=
-  machine276_correct
+  machine275_correct
 
 end RiemannMachineVerification

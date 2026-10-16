@@ -4,13 +4,13 @@ The unconditional headline is proved in
 [RiemannMachineVerification.lean](RiemannMachineVerification.lean):
 
 ```lean
-theorem machine276_correct :
-    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n
+theorem machine275_correct :
+    HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-`headlineMachine` is definitionally `machine276`; `headline_correct` exposes the
-same statement. The exact [276-state input](../results/forward-gap276/quotient-276.tm)
-has SHA-256 `46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695`.
+`headlineMachine` is definitionally `machine275`; `headline_correct` exposes the
+same statement. The exact [275-state input](../results/forward-gap275/quotient-275.tm)
+has SHA-256 `ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4`.
 The checker compares every literal transition. Only this primary table is
 covered by the headline theorem.
 
@@ -48,9 +48,9 @@ The following canonical files retain their exact approved bytes:
 | [MachineSemantics.lean](RiemannMachineVerification/Specification/MachineSemantics.lean) | `bf17d57e37bdce44be15c0ebc61cfb3a86db671adcd494173e86fb86f6d7424a` |
 | [Arithmetic.lean](RiemannMachineVerification/Specification/Arithmetic.lean) | `a4fc7ad44a5a5118e55236f849fa5cbc3c91b75b54477564744bb4115e87a24b` |
 
-The checker enforces both hashes, the 276-state input hash above, and the exact
-unconditional headline type. It compares every transition of the 389-, 339-
-and 276-state Lean tables with the corresponding construction inputs. The
+The checker enforces both hashes, the 275-state input hash above, and the exact
+unconditional headline type. It compares every transition of the 388-, 338-
+and 275-state Lean tables with the corresponding construction inputs. The
 intermediate machines remain essential parts of the proof.
 
 ## Acceptance command
@@ -73,8 +73,14 @@ local and ignored. See [README.md](README.md) for prerequisites and the proof ma
 
 ## Earlier verified results
 
+Commit `81c1511` preserves the complete accepted 276-state theorem and its
+389 → 339 → 276 construction. The current layout changes register placement
+and removes one private decoder state while retaining the same source and
+forward-gap routine. Recheck the 276-state headline in a separate checkout
+of `81c1511` using its own acceptance checker.
+
 Commit `c05cef7` preserves the complete accepted 278-state theorem, its literal
-table, and the earlier default acceptance checker. The 276-state backend result
+table, and the earlier default acceptance checker. The 275-state backend result
 uses the same arithmetic predicate and execution definitions. To inspect or
 recheck that prior headline, use a separate checkout of `c05cef7` and its own
 `formal/tools/check_current.py`.
@@ -82,14 +88,14 @@ recheck that prior headline, use a separate checkout of `c05cef7` and its own
 Commit `b5a869e` preserves the complete, successfully checked 299-, 298-, 297-
 and 295-state proofs, their generators, and the former acceptance checker.
 These machine-specific proofs are absent from the active tree and are not
-requirements of current acceptance. Shared lemmas used by the 276-state proof
+requirements of current acceptance. Shared lemmas used by the 275-state proof
 remain in the current library.
 
 The former acceptance gate additionally pinned a literal 299-state machine
 and a proposition named `ApprovedTarget` about that machine. Those two archived
 files are no longer active acceptance inputs. The arithmetic predicate and
-execution semantics retain their original byte hashes above, and the exact
-276-state machine and theorem remain unchanged. This removes supplementary
+execution semantics retain their original byte hashes above, and the current
+275-state theorem has the same unconditional mathematical scope. This removes supplementary
 machine targets without changing the mathematical statement about the current
 machine or adding hypotheses.
 

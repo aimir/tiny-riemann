@@ -13,4 +13,4 @@ operations on arbitrary-length words under explicit transition hypotheses.
 [Mirror.lean](Mirror.lean) transfers such arguments across left/right reflection.
 
 These lemmas are machine-independent. The [parent folder](../README.md)
-instantiates their transition hypotheses with the literal 389-state machine.
+instantiates their transition hypotheses with the literal 388-state machine.

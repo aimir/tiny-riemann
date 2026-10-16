@@ -19,8 +19,9 @@ branches, the full return, and the counter update. The remaining proof chain
 covers unbounded register values, exact blank initialization, caller
 compatibility, positive progress, path shortening, and the literal quotient.
 The mathematical predicate and machine execution definitions retain their
-approved hashes. The current accepted theorem is recorded in
-[formal/verification.json](../../formal/verification.json) after kernel checking.
+approved hashes. Commit `81c1511` preserves this complete accepted theorem and its verification
+report. Recheck it in a separate checkout of that commit using its acceptance
+checker; the active tree now verifies the subsequent 275-state layout.
 
 The table SHA-256 is
 `46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695`.

@@ -1,4 +1,4 @@
-"""Package the current 276-state result, its proof, and the construction artifacts."""
+"""Package the current 275-state result, its proof, and the construction artifacts."""
 from pathlib import Path
 import hashlib
 import json
@@ -49,7 +49,7 @@ def package_paths(manifest):
                       'results/register-kernels', 'results/fragments', 'results/fragments-zero',
                       'results/unified-beam', 'results/unified-challengers', 'results/unified-wide',
                       'results/unified-target278', 'results/neighborhood278',
-                      'results/clique-target278', 'results/forward-gap276'):
+                      'results/clique-target278', 'results/forward-gap276', 'results/forward-gap275'):
         paths.update(p for p in (ROOT / directory).rglob('*') if p.is_file())
 
     # Local runs may leave transcripts beside certificates. Only versioned
@@ -63,8 +63,8 @@ def package():
     # Verification reports and proof hashes are the durable inputs; console
     # logs are intentionally optional and never included in the archive.
     report = json.loads((FORMAL / 'verification.json').read_text())
-    assert report['status'] == 'accepted' and report['machine_states'] == 276
-    assert report['theorem'] == 'RiemannMachineVerification.machine276_correct'
+    assert report['status'] == 'accepted' and report['machine_states'] == 275
+    assert report['theorem'] == 'RiemannMachineVerification.machine275_correct'
     assert report['headline'] == 'RiemannMachineVerification.headline_correct'
     assert digest(ROOT / report['machine_file']) == report['machine_sha256']
     assert set(report['proof_source_sha256']) == {str(p.relative_to(FORMAL)) for p in proof_sources()}
@@ -80,8 +80,8 @@ def package():
     paths = package_paths(manifest)
     assert set(proof_sources()) <= paths, "Stage every proof source before packaging."
 
-    target = ROOT / 'riemann-276-verified.zip'
-    prefix = 'riemann-276/'
+    target = ROOT / 'riemann-275-verified.zip'
+    prefix = 'riemann-275/'
     with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as result:
         for path in sorted(paths):
             name = prefix + path.relative_to(ROOT).as_posix()

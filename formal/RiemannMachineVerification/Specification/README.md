@@ -5,8 +5,8 @@
 defines a two-sided binary tape, one-cell moves, the initially zero run, and
 `HaltsBlank`. Both files are byte-pinned acceptance definitions.
 
-[Machine276.lean](Machine276.lean) contains every literal transition, its array-size
-proof, and `machine276`. State 0 is `!ENTRY`; `none` is the separate halting state.
+[Machine275.lean](Machine275.lean) contains every literal transition, its array-size
+proof, and `machine275`. State 0 is `!ENTRY`; `none` is the separate halting state.
 The table importer and acceptance checker compare every row to the saved `.tm`.
 
 The [entry file](../../RiemannMachineVerification.lean) displays checked excerpts

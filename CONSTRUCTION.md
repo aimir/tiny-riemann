@@ -1,14 +1,14 @@
-# Construction and correctness of the 276-state machine
+# Construction and correctness of the 275-state machine
 
-The current verified [276-state table](results/forward-gap276/quotient-276.tm)
+The current verified [275-state table](results/forward-gap275/quotient-275.tm)
 has the complete [Lean theorem](formal/RiemannMachineVerification.lean):
 
 ```lean
-theorem machine276_correct :
-    HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n
+theorem machine275_correct :
+    HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n
 ```
 
-The construction is **389 compiled → 339 macro → 276 quotient states**,
+The construction is **388 compiled → 338 macro → 275 quotient states**,
 using a ten-bit counter and nine registers. All counts exclude the separate
 halting state. The proof checks the literal machine without trusting the
 compiler or solver. The [verification contract](formal/ACCEPTANCE.md) preserves
@@ -19,7 +19,7 @@ Sections 1–9 retain the arithmetic explanation and the earlier verified
 295-state construction (381 compiled → 342 macro → 295 quotient). The
 arithmetic argument also applies to the new machine. The search history
 below explains subsequent experiments; the final section explains the
-complete 276-state refinement proof. Earlier machine theorems are preserved in Git at commit `b5a869e`;
+complete 275-state refinement proof. Earlier machine theorems are preserved in Git at commit `b5a869e`;
 see [archival verification](formal/ACCEPTANCE.md#earlier-verified-results).
 Only the current proof is built in this checkout.
 
@@ -352,9 +352,18 @@ variant also reaches 276 and gives no further saving. Startup and initialization
 retain their exact blank-tape behavior; their redundant scan entries were
 already shared by the certified quotient.
 
-## Complete proof for the primary 276-state machine
 
-[`machine276_correct`](formal/RiemannMachineVerification.lean)
+The [275-state layout](results/forward-gap275/README.md) changes physical
+register placement while keeping the source byte for byte. Its decoder loses
+one private state, giving 388 compiled → 338 shortened → 275 quotient states.
+A two-generation beam completed 24 candidates using full reductions, followed
+by all 36 single register swaps around the best candidate. Eight distinct
+neighboring tables received final exact-solver checks; the best remained 275.
+These experiments do not establish a global lower bound.
+
+## Complete proof for the primary 275-state machine
+
+[`machine275_correct`](formal/RiemannMachineVerification.lean)
 connects the exact primary table to the unchanged approved predicate. The new
 register program is different from the older program, so its arithmetic
 correctness is transferred through an explicit equivalence proof.
@@ -371,13 +380,13 @@ are not bounded execution tests.
 The new backend proof checks 86 transfer sites, all 1,024 dispatch cases and
 both counter updates at every value. Generic unary-register proofs account
 for arbitrary contents and growing storage. Short-path certificates connect
-the compiled 389-state table to the 339-state table. Three inductive tape-mask
+the compiled 388-state table to the 338-state table. Three inductive tape-mask
 stages and all quotient transition equations connect that table to the final
-276-state machine. Composing these results with the original `arithmetic_program_correct`
+275-state machine. Composing these results with the original `arithmetic_program_correct`
 arithmetic theorem proves the unconditional result.
 
 The theorem's only axiom dependencies are `propext`, `Classical.choice`, and
 `Quot.sound`. The original arithmetic and execution specification hashes remain unchanged;
-acceptance pins the exact 276-state machine. See the
+acceptance pins the exact 275-state machine. See the
 [formal verification guide](formal/README.md) for rechecking commands, proof
 modules, the pinned table hash and generator instructions.

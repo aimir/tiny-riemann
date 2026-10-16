@@ -23,7 +23,7 @@ def generate():
             if dep in modules:result |= dependencies(dep)
         return result
     selected={name for name in dependencies('BackendCorrectness')
-        if dependencies(name)&{'Machine389','RegisterMachine'}}
+        if dependencies(name)&{'Machine388','RegisterMachine'}}
     for name in list(selected):
         m=re.fullmatch(r'(CounterChecks|DispatcherChecks)(\d+)',name)
         if m and int(m[2])>=16:selected.remove(name)
@@ -44,7 +44,7 @@ def generate():
             ns.update(additions or {})
             return ns
         agg=script('generate_grouped_checks.py',[('range(32)','range(16)')])['aggregate']
-        changes=[('range(2048)','range(1024)'),('range(32)','range(16)'),('chunk < 31','chunk < 15'),('011b','010b'),('381','389'),('% 2048','% 1024'),('2048 prefix certificates','1024 prefix certificates')]
+        changes=[('range(2048)','range(1024)'),('range(32)','range(16)'),('chunk < 31','chunk < 15'),('011b','010b'),('381','388'),('% 2048','% 1024'),('2048 prefix certificates','1024 prefix certificates')]
         code=(ROOT/'generate_dispatcher_proofs.py').read_text()
         code=re.sub(r'\b(11|12|13|14)\b',lambda m:str(int(m[1])-1),code)
         for a,b in changes:code=code.replace(a,b)
@@ -55,7 +55,7 @@ def generate():
         # Executable finite proof generators: adapt only their fixed dimensions.
         code=(ROOT/'generate_counter_proofs.py').read_text().replace('from generate_grouped_checks import aggregate','')
         code=re.sub(r'\b(11|12|13|14)\b',lambda m:str(int(m[1])-1),code)
-        code=code.replace('381','389').replace('2048','1024').replace('range(32)','range(16)').replace('176',str(return2)).replace('4096 counter-update','2048 counter-update')
+        code=code.replace('381','388').replace('2048','1024').replace('range(32)','range(16)').replace('176',str(return2)).replace('4096 counter-update','2048 counter-update')
         exec(compile(code,'counter278','exec'),{'__file__':str(temp/'formal/generate_counter_proofs.py'),'aggregate':agg})
         ns=script('generate_program_shape.py',[('range(32)','range(16)')])
         (target/'PrimitiveShape.lean').write_text(ns['generate']())
@@ -88,15 +88,15 @@ def generate():
         (target/'PhysicalRegisters.lean').write_text(physical[:start]+allocation+'\n'+physical[end:])
         selected={p.stem for p in target.glob('*.lean')}|{'RegisterProgram','RegisterMachine','RegisterExecution','ProgramCounterParts','TransferSite'}
         for file in target.glob('*.lean'):
-            if file.stem in {'RegisterMachine','RegisterProgram','RegisterExecution','ProgramCounterParts','TransferSite','Machine389'}:continue
+            if file.stem in {'RegisterMachine','RegisterProgram','RegisterExecution','ProgramCounterParts','TransferSite','Machine388'}:continue
             text=file.read_text()
             text=re.sub(r'^import RiemannMachineVerification\.(\w+)$',lambda m:'import '+PREFIX+'.'+m[1] if m[1] in selected else m[0],text,flags=re.M)
             text=text.replace('namespace RiemannMachineVerification','namespace '+PREFIX).replace('end RiemannMachineVerification','end '+PREFIX)
             (DEST/file.name).write_text(text)
     path=CANDIDATE/'compiled.tm'
-    text=literal_table(389,str(path.relative_to(ROOT.parent)),hashlib.sha256(path.read_bytes()).hexdigest())
+    text=literal_table(388,str(path.relative_to(ROOT.parent)),hashlib.sha256(path.read_bytes()).hexdigest())
     text=text.replace('namespace RiemannMachineVerification','namespace '+PREFIX).replace('end RiemannMachineVerification','end '+PREFIX)
-    (DEST/'Machine389.lean').write_text(text)
+    (DEST/'Machine388.lean').write_text(text)
     print('Generated ten-bit backend and transfer expansion proofs.')
 
 if __name__=='__main__':generate()

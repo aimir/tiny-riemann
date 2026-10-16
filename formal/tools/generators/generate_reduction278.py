@@ -1,4 +1,4 @@
-"""Kernel-checkable finite rewrites, reachability and quotient to 276 states."""
+"""Kernel-checkable finite rewrites, reachability and quotient to 275 states."""
 import hashlib
 import shutil
 import tempfile
@@ -6,8 +6,8 @@ from generate_optimized278 import *
 from generate_tables import generate as literal_table
 from tm_reduce import load
 
-FINAL = ROOT.parent/'results/forward-gap276/quotient-276.tm'
-DIGEST = '46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695'
+FINAL = ROOT.parent/'results/forward-gap275/quotient-275.tm'
+DIGEST = 'ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4'
 
 
 def generate():
@@ -21,7 +21,7 @@ def generate():
         shutil.copyfile(CANDIDATE/'macros.json',temp/'machine/macros.json')
         shutil.copyfile(FINAL.with_suffix('.certificate.json'),temp/'machine/reduction.json')
         def sizes(text):
-            return text.replace('381','389').replace('342','339').replace('341','338')
+            return text.replace('381','388').replace('342','338').replace('341','337')
         for name in ('MacroProofSupport','MacroCorrectness'):
             (target/f'{name}.lean').write_text(current_template(name))
         for script in ('generate_macro_data.py','generate_macro_proofs.py','generate_invariants.py'):
@@ -34,32 +34,32 @@ def generate():
         for i in range(count):
             name='read_mask_verified' if i==count-1 else f'read_mask{i}_verified'
             previous='(fun _ q _ => initial_mask_trivial q _)' if i==0 else f'read_mask{i-1}_verified'
-            out+=f'theorem {name} : ∀ t, RespectsReadMask inv{i}_after (run machine339 t) :=\n'
-            out+=f'  certify_read_mask machine339 inv{i}_before inv{i}_after inv{i}_predicate\n    inv{i}_initial (by\n      intro q t b hb ht hp\n      have h := inv{i}_closed q t b hb ht hp\n      cases he : (machine339.transition q b).next <;> simpa only [he] using h)\n    inv{i}_read_mask {previous}\n\n'
+            out+=f'theorem {name} : ∀ t, RespectsReadMask inv{i}_after (run machine338 t) :=\n'
+            out+=f'  certify_read_mask machine338 inv{i}_before inv{i}_after inv{i}_predicate\n    inv{i}_initial (by\n      intro q t b hb ht hp\n      have h := inv{i}_closed q t b hb ht hp\n      cases he : (machine338.transition q b).next <;> simpa only [he] using h)\n    inv{i}_read_mask {previous}\n\n'
         (target/'Invariants.lean').write_text(out+'end RiemannMachineVerification\n')
-        names={p.stem for p in target.glob('*.lean')}|{'Machine389','Machine339'}
+        names={p.stem for p in target.glob('*.lean')}|{'Machine388','Machine338'}
         for file in target.glob('*.lean'):
             text=file.read_text()
             text=re.sub(r'^import RiemannMachineVerification\.(\w+)$',lambda m:'import '+PREFIX+'.'+m[1] if m[1] in names else m[0],text,flags=re.M)
             text=text.replace('namespace RiemannMachineVerification','namespace '+PREFIX).replace('end RiemannMachineVerification','end '+PREFIX)
             (DEST/file.name).write_text(text)
     path=CANDIDATE/'macro.tm'
-    text=literal_table(339,str(path.relative_to(ROOT.parent)),hashlib.sha256(path.read_bytes()).hexdigest())
+    text=literal_table(338,str(path.relative_to(ROOT.parent)),hashlib.sha256(path.read_bytes()).hexdigest())
     text=text.replace('namespace RiemannMachineVerification','namespace '+PREFIX).replace('end RiemannMachineVerification','end '+PREFIX)
-    (DEST/'Machine339.lean').write_text(text)
-    (originals/'Machine278.lean').write_text(literal_table(276,str(FINAL.relative_to(ROOT.parent)),DIGEST))
+    (DEST/'Machine338.lean').write_text(text)
+    (originals/'Machine278.lean').write_text(literal_table(275,str(FINAL.relative_to(ROOT.parent)),DIGEST))
     sources=list(load(path));targets=list(load(FINAL))
     out=header(PREFIX+'.Invariants','RiemannMachineVerification.Machine278')
-    out+='def quotientMapTable : Array (Fin 276) := #[\n'
+    out+='def quotientMapTable : Array (Fin 275) := #[\n'
     out+=',\n'.join('  '+fin(targets.index(cert['mapping'][q] if cert['possible'][q] else '!ENTRY')) for q in sources)+'\n]\n\n'
-    out+='def quotientMap (q : Fin 339) : Fin 276 :=\n  quotientMapTable[q.val]\'(by simpa only [show quotientMapTable.size = 339 from rfl] using q.isLt)\n\n'
-    out+=f'theorem quotient_transitions : ∀ (q : Fin 339) (b : Bool),\n    inv{count-1}_after q b = true →\n    machine276.transition (quotientMap q) b =\n      renameInstruction quotientMap (machine339.transition q b) := by\n  intro q b h\n  fin_cases q <;> cases b\n'
+    out+='def quotientMap (q : Fin 338) : Fin 275 :=\n  quotientMapTable[q.val]\'(by simpa only [show quotientMapTable.size = 338 from rfl] using q.isLt)\n\n'
+    out+=f'theorem quotient_transitions : ∀ (q : Fin 338) (b : Bool),\n    inv{count-1}_after q b = true →\n    machine275.transition (quotientMap q) b =\n      renameInstruction quotientMap (machine338.transition q b) := by\n  intro q b h\n  fin_cases q <;> cases b\n'
     for q in sources:
         for b in (0,1):out+='  · rfl\n' if cert['possible'][q]&(1<<b) else '  · exact Bool.noConfusion (show false = true from h)\n'
     out+='''
-theorem machine339_iff_machine276 : HaltsBlank machine339 ↔ HaltsBlank machine276 := by
-  apply halts_iff_of_invariant_quotient machine339 machine276 quotientMap
-    (fun c => ∃ t, run machine339 t = c)
+theorem machine338_iff_machine275 : HaltsBlank machine338 ↔ HaltsBlank machine275 := by
+  apply halts_iff_of_invariant_quotient machine338 machine275 quotientMap
+    (fun c => ∃ t, run machine338 t = c)
   · exact ⟨0, rfl⟩
   · rintro c ⟨t, rfl⟩; exact ⟨t + 1, rfl⟩
   · rfl
@@ -68,6 +68,6 @@ theorem machine339_iff_machine276 : HaltsBlank machine339 ↔ HaltsBlank machine
 '''
     write('Quotient278',out)
     # The public composition theorem is maintained in the theorem-first entry module.
-    print('Generated the 276-state reduction certificates; acceptance still requires Lean.')
+    print('Generated the 275-state reduction certificates; acceptance still requires Lean.')
 
 if __name__=='__main__':generate()

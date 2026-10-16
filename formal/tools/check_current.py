@@ -1,4 +1,4 @@
-"""Check the exact 276-state theorem, fixed specification and literal machine inputs."""
+"""Check the exact 275-state theorem, fixed specification and literal machine inputs."""
 from pathlib import Path
 import datetime
 import hashlib
@@ -15,8 +15,8 @@ from build import lean_command
 from generate_tables import generate
 
 ROOT = FORMAL
-MACHINE = ROOT.parent / 'results/forward-gap276/quotient-276.tm'
-MACHINE_SHA256 = '46c8f130c667a98d496e193596aa301776b02b2e7a51d63e94628f7afc8e9695'
+MACHINE = ROOT.parent / 'results/forward-gap275/quotient-275.tm'
+MACHINE_SHA256 = 'ded5bdfc6be8747683e88903d39fcf6775ad661632d148b7ab4a84dfebc473b4'
 ALLOWED = {'propext', 'Classical.choice', 'Quot.sound'}
 SPECIFICATION_PINS = {
     'RiemannMachineVerification/Specification/MachineSemantics.lean':
@@ -63,9 +63,9 @@ def main():
         assert digest(ROOT / file) == expected, f'Approved specification changed: {file}'
     tables = {}
     for n, relative, module in (
-        (276, 'results/forward-gap276/quotient-276.tm', 'Machine278'),
-        (389, 'results/forward-gap276/compiled.tm', 'Optimized278/Machine389'),
-        (339, 'results/forward-gap276/macro.tm', 'Optimized278/Machine339'),
+        (275, 'results/forward-gap275/quotient-275.tm', 'Machine278'),
+        (388, 'results/forward-gap275/compiled.tm', 'Optimized278/Machine388'),
+        (338, 'results/forward-gap275/macro.tm', 'Optimized278/Machine338'),
     ):
         tables[relative] = digest(ROOT.parent / relative)
         expected = generate(n, relative, tables[relative])
@@ -88,37 +88,37 @@ def main():
         probe.write_text('''import RiemannMachineVerification
 open RiemannMachineVerification
 namespace RiemannMachineVerification.Implementation
-example : headlineMachine = machine276 := rfl
-example : HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n := machine276_correct
-example : HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n := headline_correct
+example : headlineMachine = machine275 := rfl
+example : HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n := machine275_correct
+example : HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n := headline_correct
 example (before after : List ℕ) (v : ℕ) (bound : before.length ≤ 8)
     (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (decrementSelector (before.length + 2)))
         11 pc (before ++ (v + 1) :: after)))
       (encodedRegisterZipper (counterNext pc true) (before ++ v :: after)) :=
   backend_decrement_positive before after v bound pc
 example (before after : List ℕ) (bound : before.length ≤ 8) (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (decrementSelector (before.length + 2)))
         11 pc (before ++ 0 :: after)))
       (encodedRegisterZipper (counterNext pc false) (before ++ 0 :: after)) :=
   backend_decrement_zero before after bound pc
 example : encodedRegisterZipper ⟨0, by decide⟩ [] =
-    ⟨some machine389.entry, fun _ => false, fun _ => false⟩ := encodedRegister_initial
+    ⟨some machine388.entry, fun _ => false, fun _ => false⟩ := encodedRegister_initial
 example (s : RegisterConfiguration) (pc : ProgramCounter) (hp : s.pc = some pc)
     (hv : RegisterValid s) :
     ∃ t, 0 < t ∧ RegisterRelation
-      (trajectory (zipperStep machine389)
+      (trajectory (zipperStep machine388)
         (encodedRegisterZipper pc (encodedStorage s.capacity s.values)) t)
       (registerStep primitiveProgram s) := backend_primitive_advance s pc hp hv
-#print axioms RiemannMachineVerification.machine276_correct
+#print axioms RiemannMachineVerification.machine275_correct
 #print axioms RiemannMachineVerification.headline_correct
 end RiemannMachineVerification.Implementation
 ''')
         output = run(lean_command(probe), 'headline.log')
     theorem_axioms = {name: checked_axioms(output, 'RiemannMachineVerification.' + name)
-                      for name in ('machine276_correct', 'headline_correct')}
+                      for name in ('machine275_correct', 'headline_correct')}
     audit_source = ROOT / 'Audit.lean'
     audit_output = run(lean_command(audit_source), 'axiom-audit.log')
     principal_axioms = {name: checked_axioms(audit_output, name)
@@ -126,15 +126,15 @@ end RiemannMachineVerification.Implementation
     report = {
         'verified_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
         'status': 'accepted',
-        'theorem': 'RiemannMachineVerification.machine276_correct',
+        'theorem': 'RiemannMachineVerification.machine275_correct',
         'headline': 'RiemannMachineVerification.headline_correct',
-        'statement': 'HaltsBlank machine276 ↔ ∃ n : ℕ, Counterexample n',
-        'axioms': theorem_axioms['machine276_correct'],
+        'statement': 'HaltsBlank machine275 ↔ ∃ n : ℕ, Counterexample n',
+        'axioms': theorem_axioms['machine275_correct'],
         'theorem_axioms': theorem_axioms,
         'principal_axioms': principal_axioms,
         'lean_toolchain': (ROOT / 'lean-toolchain').read_text().strip(),
         'mathlib_revision': '905b95818eb32af7874a58b427f50c1711a5e96c',
-        'machine_states': 276,
+        'machine_states': 275,
         'machine_file': str(MACHINE.relative_to(ROOT.parent)),
         'machine_sha256': MACHINE_SHA256,
         'specification_sha256': SPECIFICATION_PINS,
@@ -148,7 +148,7 @@ end RiemannMachineVerification.Implementation
         'proof_source_sha256': {str(p.relative_to(ROOT)): digest(p) for p in proof_sources()},
     }
     (ROOT / 'verification.json').write_text(json.dumps(report, indent=2) + '\n')
-    print('ACCEPTED: the exact 276-state headline is proved with the fixed specification and only permitted axioms.')
+    print('ACCEPTED: the exact 275-state headline is proved with the fixed specification and only permitted axioms.')
 
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ Proof: Combines `Nat.le_pred_of_lt` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem backend_increment_encoded (capacity : ℕ) (values : RegisterIndex → ℕ)
     (r : RegisterIndex) (hr : (registerSlot r).val < capacity) (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (backendIncrement r)) 11 pc (encodedStorage capacity values)))
       (encodedRegisterZipper (counterNext pc false)
         (encodedStorage capacity (Function.update values r (values r + 1)))) := by
@@ -28,7 +28,7 @@ Proof: Combines `Nat.le_pred_of_lt` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
 theorem backend_decrement_encoded (capacity : ℕ) (values : RegisterIndex → ℕ)
     (r : RegisterIndex) (hr : (registerSlot r).val < capacity) (pc : ProgramCounter) :
-    ZExec machine389
+    ZExec machine388
       (zipperOf (backendConfig (some (backendDecrement r)) 11 pc (encodedStorage capacity values)))
       (encodedRegisterZipper (counterNext pc (if values r = 0 then false else true))
         (encodedStorage capacity (Function.update values r (values r - 1)))) := by

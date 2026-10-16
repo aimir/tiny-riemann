@@ -31,15 +31,15 @@ theorem localStep_rename {N K : ℕ} (A : Machine N) (B : Machine K)
 /-- [proof-guide] A one-step expansion satisfies the local certificate when its literal transitions match.
 Proof: Combines `localStep_rename`, `transitions` with the displayed local equations.
 Role: Preserves blank-tape halting through local path replacement and the invariant-restricted quotient. -/
-theorem macroCheck_one (q : Fin 339)
+theorem macroCheck_one (q : Fin 338)
     (lengths : ∀ b, macroLength (some q) b = 1)
-    (transitions : ∀ b, machine389.transition (macroEmbedding q) b =
-      renameInstruction macroEmbedding (machine339.transition q b)) :
+    (transitions : ∀ b, machine388.transition (macroEmbedding q) b =
+      renameInstruction macroEmbedding (machine338.transition q b)) :
     MacroCheckFor q := by
   intro a b c d e
   dsimp only
   rw [lengths]
-  change localStep machine389
+  change localStep machine388
     (renameLocal macroEmbedding ⟨some q, 2, window5 a b c d e⟩) = _
   apply localStep_rename
   intro r hr

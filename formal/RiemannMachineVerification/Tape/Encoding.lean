@@ -6,20 +6,20 @@ namespace RiemannMachineVerification.Implementation
 def registerBackground (values : List ℕ) (p : ℤ) : Bool :=
   if 13 ≤ p then registerStream values (p - 13).toNat else false
 
-def backendConfig (state : Option (Fin 389)) (head : ℤ) (pc : ProgramCounter)
-    (values : List ℕ) : Configuration 389 :=
+def backendConfig (state : Option (Fin 388)) (head : ℤ) (pc : ProgramCounter)
+    (values : List ℕ) : Configuration 388 :=
   FiniteWindow.assemble 0 (registerBackground values) ⟨state, head, pcPrefix pc⟩
 
-def encodedRegisterZipper (pc : ProgramCounter) (values : List ℕ) : Zipper 389 :=
-  zipperOf (backendConfig (some machine389.entry) 0 pc values)
+def encodedRegisterZipper (pc : ProgramCounter) (values : List ℕ) : Zipper 388 :=
+  zipperOf (backendConfig (some machine388.entry) 0 pc values)
 
 def pcLeft (pc : ProgramCounter) : BitStream :=
-  (zipperOf (backendConfig (some machine389.entry) 11 pc [])).left
+  (zipperOf (backendConfig (some machine388.entry) 11 pc [])).left
 
 /-- [proof-guide] The register portion of the full tape encoding has the required unary stream shape.
 Proof: Combines `zipper_ext` with the displayed local equations.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
-theorem backend_register_area (state : Option (Fin 389)) (pc : ProgramCounter)
+theorem backend_register_area (state : Option (Fin 388)) (pc : ProgramCounter)
     (values : List ℕ) :
     zipperOf (backendConfig state 11 pc values) =
       ⟨state, pcLeft pc, streamCons false (streamCons false (registerStream values))⟩ := by
@@ -65,7 +65,7 @@ theorem zipperOf_move_left {N} (c : Configuration N) :
 /-- [proof-guide] The counter portion of the full encoding has the required bit-stream shape.
 Proof: Rewrites the defining equations and the cited arithmetic or execution facts.
 Role: Connects operations on the binary tape to unbounded natural-valued register execution. -/
-theorem backend_counter_area (state : Option (Fin 389)) (pc : ProgramCounter)
+theorem backend_counter_area (state : Option (Fin 388)) (pc : ProgramCounter)
     (values : List ℕ) :
     zipperOf (backendConfig state 10 pc values) =
       ⟨state, streamTail (pcLeft pc), streamCons (pcLeft pc 0)
